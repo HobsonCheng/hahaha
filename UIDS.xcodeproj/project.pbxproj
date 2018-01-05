@@ -12,9 +12,16 @@
 		E1A21DE51FFF319300596BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A21DE31FFF319300596BB7 /* Main.storyboard */; };
 		E1A21DE71FFF319300596BB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A21DE61FFF319300596BB7 /* Assets.xcassets */; };
 		E1A21DEA1FFF319300596BB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A21DE81FFF319300596BB7 /* LaunchScreen.storyboard */; };
+		E1EDAB4F1FFF86FC004DD7B9 /* MainTabberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB4E1FFF86FC004DD7B9 /* MainTabberVC.swift */; };
+		E1EDAB541FFF8841004DD7B9 /* MainRootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB531FFF8841004DD7B9 /* MainRootVC.swift */; };
+		E1EDAB561FFF8A29004DD7B9 /* Bhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB551FFF8A29004DD7B9 /* Bhead.swift */; };
+		F5BE3CBAD0F39EF485E36BCE /* Pods_UIDS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.debug.xcconfig"; sourceTree = "<group>"; };
+		5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIDS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.release.xcconfig"; sourceTree = "<group>"; };
 		E1A21DDC1FFF319300596BB7 /* UIDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A21DDF1FFF319300596BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A21DE11FFF319300596BB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,10 @@
 		E1A21DE61FFF319300596BB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A21DE91FFF319300596BB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A21DEB1FFF319300596BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1EDAB4E1FFF86FC004DD7B9 /* MainTabberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabberVC.swift; sourceTree = "<group>"; };
+		E1EDAB531FFF8841004DD7B9 /* MainRootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootVC.swift; sourceTree = "<group>"; };
+		E1EDAB551FFF8A29004DD7B9 /* Bhead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bhead.swift; sourceTree = "<group>"; };
+		E1EDAB571FFF8A62004DD7B9 /* UIDS.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDS.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +40,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BE3CBAD0F39EF485E36BCE /* Pods_UIDS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95C2F0CD76E3AD6C4FCCBD23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB31ACE4ABB8317BCCF4D7B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */,
+				C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E1A21DD31FFF319300596BB7 = {
 			isa = PBXGroup;
 			children = (
 				E1A21DDE1FFF319300596BB7 /* UIDS */,
 				E1A21DDD1FFF319300596BB7 /* Products */,
+				DB31ACE4ABB8317BCCF4D7B3 /* Pods */,
+				95C2F0CD76E3AD6C4FCCBD23 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +85,34 @@
 		E1A21DDE1FFF319300596BB7 /* UIDS */ = {
 			isa = PBXGroup;
 			children = (
+				E1F093B81FFF6A4000A6FD95 /* B+ */,
+				E1EDAB4D1FFF86A1004DD7B9 /* mainVC */,
 				E1A21DDF1FFF319300596BB7 /* AppDelegate.swift */,
 				E1A21DE11FFF319300596BB7 /* ViewController.swift */,
 				E1A21DE31FFF319300596BB7 /* Main.storyboard */,
 				E1A21DE61FFF319300596BB7 /* Assets.xcassets */,
 				E1A21DE81FFF319300596BB7 /* LaunchScreen.storyboard */,
 				E1A21DEB1FFF319300596BB7 /* Info.plist */,
+				E1EDAB571FFF8A62004DD7B9 /* UIDS.pch */,
 			);
 			path = UIDS;
+			sourceTree = "<group>";
+		};
+		E1EDAB4D1FFF86A1004DD7B9 /* mainVC */ = {
+			isa = PBXGroup;
+			children = (
+				E1EDAB4E1FFF86FC004DD7B9 /* MainTabberVC.swift */,
+				E1EDAB531FFF8841004DD7B9 /* MainRootVC.swift */,
+			);
+			path = mainVC;
+			sourceTree = "<group>";
+		};
+		E1F093B81FFF6A4000A6FD95 /* B+ */ = {
+			isa = PBXGroup;
+			children = (
+				E1EDAB551FFF8A29004DD7B9 /* Bhead.swift */,
+			);
+			path = "B+";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +122,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1A21DEE1FFF319300596BB7 /* Build configuration list for PBXNativeTarget "UIDS" */;
 			buildPhases = (
+				0F3E59561B8E96E3B7087727 /* [CP] Check Pods Manifest.lock */,
 				E1A21DD81FFF319300596BB7 /* Sources */,
 				E1A21DD91FFF319300596BB7 /* Frameworks */,
 				E1A21DDA1FFF319300596BB7 /* Resources */,
+				79259C4F8F0FCDB0C85CE9B9 /* [CP] Embed Pods Frameworks */,
+				5315534B711BE3CE83958554 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +150,7 @@
 				TargetAttributes = {
 					E1A21DDB1FFF319300596BB7 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,12 +186,95 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F3E59561B8E96E3B7087727 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UIDS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5315534B711BE3CE83958554 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIDS/Pods-UIDS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79259C4F8F0FCDB0C85CE9B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UIDS/Pods-UIDS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/Dodo/Dodo.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesomeKit/FontAwesomeKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/PKRevealController/PKRevealController.framework",
+				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/REFormattedNumberField/REFormattedNumberField.framework",
+				"${BUILT_PRODUCTS_DIR}/RETableViewManager/RETableViewManager.framework",
+				"${BUILT_PRODUCTS_DIR}/REValidation/REValidation.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/iRate/iRate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dodo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesomeKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKRevealController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/REFormattedNumberField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RETableViewManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/REValidation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iRate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIDS/Pods-UIDS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E1A21DD81FFF319300596BB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E1A21DE21FFF319300596BB7 /* ViewController.swift in Sources */,
+				E1EDAB541FFF8841004DD7B9 /* MainRootVC.swift in Sources */,
+				E1EDAB4F1FFF86FC004DD7B9 /* MainTabberVC.swift in Sources */,
+				E1EDAB561FFF8A29004DD7B9 /* Bhead.swift in Sources */,
 				E1A21DE01FFF319300596BB7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,24 +394,35 @@
 		};
 		E1A21DEF1FFF319300596BB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREFIX_HEADER = UIDS/UIDS.pch;
 				INFOPLIST_FILE = UIDS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = UIDS/UIDS.pch;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		E1A21DF01FFF319300596BB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREFIX_HEADER = UIDS/UIDS.pch;
 				INFOPLIST_FILE = UIDS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = UIDS/UIDS.pch;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -297,6 +446,7 @@
 				E1A21DF01FFF319300596BB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

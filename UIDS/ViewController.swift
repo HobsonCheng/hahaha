@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Dodo
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.dodo.success("hello bai");
+            
     }
 
     override func didReceiveMemoryWarning() {
