@@ -7,7 +7,7 @@
 //
 
 #import "VCAnimationBottom.h"
-
+#import "UIView+Frame.h"
 @implementation VCAnimationBottom
 
 + (VCAnimationBottom *)defaultAnimation

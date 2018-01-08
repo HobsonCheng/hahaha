@@ -7,7 +7,6 @@
 //
 
 #import "VCController.h"
-#import "AppInfo.h"
 #import "UIView+Frame.h"
 
 #define kMaxRightGuestureTouchWidth                         44
@@ -42,23 +41,22 @@ static VCController *globalVCController = nil;
         // 实例对象只分配一次
         if(globalVCController == nil)
         {
-            globalVCController = [[super allocWithZone:NULL] init];
+//            globalVCController = [[super allocWithZone:NULL] init];
+//
+//            BaseNameVC *rootBaseVController = [[BaseNameVC alloc] init];
+//            [[rootBaseVController view] setFrame:CGRectMake(0, 0, [AppInfo appFrame].size.width, [AppInfo appFrame].size.height)];
+//            [[rootBaseVController view] setBackgroundColor:[UIColor whiteColor]];
+//            [globalVCController setRootBaseVController:rootBaseVController];
+//            [globalVCController setRootBaseView:[rootBaseVController view]];
+//
+//            [[[[UIApplication sharedApplication] delegate] window] addSubview:[globalVCController rootBaseView]];
+//            [[[[UIApplication sharedApplication] delegate] window] setRootViewController:rootBaseVController];
             
-            BaseNameVC *rootBaseVController = [[BaseNameVC alloc] init];
-            [[rootBaseVController view] setFrame:CGRectMake(0, 0, [AppInfo appFrame].size.width, [AppInfo appFrame].size.height)];
-            [[rootBaseVController view] setBackgroundColor:[UIColor whiteColor]];
-            [globalVCController setRootBaseVController:rootBaseVController];
-            [globalVCController setRootBaseView:[rootBaseVController view]];
-            
-            [[[[UIApplication sharedApplication] delegate] window] addSubview:[globalVCController rootBaseView]];
-            [[[[UIApplication sharedApplication] delegate] window] setRootViewController:rootBaseVController];
-            
-            UIView *maskView = [[UIView alloc] initWithFrame:[AppInfo appFrame]];
-            [maskView setBackgroundColor:[UIColor clearColor]];
-            [globalVCController setMaskView:maskView];
+//            UIView *maskView = [[UIView alloc] initWithFrame:[AppInfo appFrame]];
+//            [maskView setBackgroundColor:[UIColor clearColor]];
+//            [globalVCController setMaskView:maskView];
             
             // 视野范围默认设置为屏幕size(!!!所有的VCSize的宽度必须保持和spotWidth保持一致，否者无法处理动画效果)
-            globalVCController.spotWidth = [AppInfo appFrame].size.width;
         }
     }
     

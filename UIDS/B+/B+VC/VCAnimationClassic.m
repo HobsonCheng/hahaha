@@ -7,6 +7,7 @@
 //
 
 #import "VCAnimationClassic.h"
+#import "UIView+Frame.h"
 
 @implementation VCAnimationClassic
 

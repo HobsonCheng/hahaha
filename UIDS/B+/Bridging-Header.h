@@ -19,9 +19,36 @@
 #import <REValidation/REValidation.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
+//categorise
+#import "NSBundle+Module.h"
+#import "NSDate+gyh.h"
+#import "NSMutableDictionary+Utility.h"
+#import "NSString+DrawingAdapter.h"
+#import "NSString+URL.h"
+#import "NSString+Utility.h"
+#import "UIButton+Addition.h"
+#import "UIColor+Utility.h"
+#import "UIImage+Utility.h"
+#import "UIImageView+GIFDecode.h"
+#import "UIView+Frame.h"
 
 //VC库
 #import "BaseNameVC.h"
+#import "LoadBlockPtc.h"
+#import "LoadBlockView.h"
+#import "LoadEmptyPtc.h"
+#import "NaviBarVC.h"
+#import "VCAnimation.h"
+#import "VCAnimationBottom.h"
+#import "VCAnimationClassic.h"
+#import "VCController.h"
+#import "VCControllerPtc.h"
 
+
+//uicontrol
+#import "NaviBar.h"
+#import "NaviBarItem.h"
+#import "LightControl.h"
+#import "ScrollColorHeader.h"
 
 #endif /* Bridging_Header_h */

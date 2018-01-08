@@ -22,6 +22,22 @@
 		E1EDAB7520033D26004DD7B9 /* VCController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB6C20033D25004DD7B9 /* VCController.m */; };
 		E1EDAB7620033D26004DD7B9 /* LoadEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB6E20033D26004DD7B9 /* LoadEmptyView.m */; };
 		E1EDAB7720033D26004DD7B9 /* VCAnimationBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB6F20033D26004DD7B9 /* VCAnimationBottom.m */; };
+		E594E0592003ABA200BDF511 /* ScrollColorHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0512003ABA100BDF511 /* ScrollColorHeader.m */; };
+		E594E05A2003ABA200BDF511 /* LightControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0532003ABA100BDF511 /* LightControl.m */; };
+		E594E05B2003ABA200BDF511 /* NaviBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0552003ABA200BDF511 /* NaviBar.m */; };
+		E594E05C2003ABA200BDF511 /* NaviBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0572003ABA200BDF511 /* NaviBarItem.m */; };
+		E594E0732003ABB800BDF511 /* UIButton+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E05D2003ABB100BDF511 /* UIButton+Addition.m */; };
+		E594E0742003ABB800BDF511 /* NSString+DrawingAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E05E2003ABB100BDF511 /* NSString+DrawingAdapter.m */; };
+		E594E0752003ABB800BDF511 /* UIImageView+GIFDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0602003ABB100BDF511 /* UIImageView+GIFDecode.m */; };
+		E594E0762003ABB800BDF511 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0612003ABB200BDF511 /* NSString+URL.m */; };
+		E594E0772003ABB800BDF511 /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0622003ABB200BDF511 /* NSString+Utility.m */; };
+		E594E0782003ABB800BDF511 /* UIImage+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0632003ABB200BDF511 /* UIImage+Utility.m */; };
+		E594E0792003ABB800BDF511 /* NSMutableDictionary+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0652003ABB300BDF511 /* NSMutableDictionary+Utility.m */; };
+		E594E07A2003ABB800BDF511 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0662003ABB300BDF511 /* UIView+Frame.m */; };
+		E594E07B2003ABB800BDF511 /* NSDate+gyh.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E06A2003ABB400BDF511 /* NSDate+gyh.m */; };
+		E594E07C2003ABB800BDF511 /* NSBundle+Module.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E06D2003ABB400BDF511 /* NSBundle+Module.m */; };
+		E594E07D2003ABB800BDF511 /* UIColor+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0712003ABB700BDF511 /* UIColor+Utility.m */; };
+		E594E0802003AEE200BDF511 /* AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E07F2003AEE200BDF511 /* AppInfo.m */; };
 		F5BE3CBAD0F39EF485E36BCE /* Pods_UIDS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +74,38 @@
 		E1EDAB6E20033D26004DD7B9 /* LoadEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadEmptyView.m; sourceTree = "<group>"; };
 		E1EDAB6F20033D26004DD7B9 /* VCAnimationBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCAnimationBottom.m; sourceTree = "<group>"; };
 		E1EDAB7020033D26004DD7B9 /* VCController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCController.h; sourceTree = "<group>"; };
+		E594E0502003ABA100BDF511 /* ScrollColorHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollColorHeader.h; sourceTree = "<group>"; };
+		E594E0512003ABA100BDF511 /* ScrollColorHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollColorHeader.m; sourceTree = "<group>"; };
+		E594E0522003ABA100BDF511 /* LightControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightControl.h; sourceTree = "<group>"; };
+		E594E0532003ABA100BDF511 /* LightControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightControl.m; sourceTree = "<group>"; };
+		E594E0552003ABA200BDF511 /* NaviBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviBar.m; sourceTree = "<group>"; };
+		E594E0562003ABA200BDF511 /* NaviBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviBarItem.h; sourceTree = "<group>"; };
+		E594E0572003ABA200BDF511 /* NaviBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviBarItem.m; sourceTree = "<group>"; };
+		E594E0582003ABA200BDF511 /* NaviBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviBar.h; sourceTree = "<group>"; };
+		E594E05D2003ABB100BDF511 /* UIButton+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Addition.m"; sourceTree = "<group>"; };
+		E594E05E2003ABB100BDF511 /* NSString+DrawingAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DrawingAdapter.m"; sourceTree = "<group>"; };
+		E594E05F2003ABB100BDF511 /* UIImageView+GIFDecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GIFDecode.h"; sourceTree = "<group>"; };
+		E594E0602003ABB100BDF511 /* UIImageView+GIFDecode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GIFDecode.m"; sourceTree = "<group>"; };
+		E594E0612003ABB200BDF511 /* NSString+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
+		E594E0622003ABB200BDF511 /* NSString+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utility.m"; sourceTree = "<group>"; };
+		E594E0632003ABB200BDF511 /* UIImage+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utility.m"; sourceTree = "<group>"; };
+		E594E0642003ABB200BDF511 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		E594E0652003ABB300BDF511 /* NSMutableDictionary+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Utility.m"; sourceTree = "<group>"; };
+		E594E0662003ABB300BDF511 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		E594E0672003ABB300BDF511 /* NSMutableDictionary+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Utility.h"; sourceTree = "<group>"; };
+		E594E0682003ABB300BDF511 /* NSBundle+Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Module.h"; sourceTree = "<group>"; };
+		E594E0692003ABB300BDF511 /* NSString+DrawingAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DrawingAdapter.h"; sourceTree = "<group>"; };
+		E594E06A2003ABB400BDF511 /* NSDate+gyh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+gyh.m"; sourceTree = "<group>"; };
+		E594E06B2003ABB400BDF511 /* NSString+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utility.h"; sourceTree = "<group>"; };
+		E594E06C2003ABB400BDF511 /* UIButton+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Addition.h"; sourceTree = "<group>"; };
+		E594E06D2003ABB400BDF511 /* NSBundle+Module.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Module.m"; sourceTree = "<group>"; };
+		E594E06E2003ABB600BDF511 /* NSString+URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
+		E594E06F2003ABB700BDF511 /* UIColor+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utility.h"; sourceTree = "<group>"; };
+		E594E0702003ABB700BDF511 /* NSDate+gyh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+gyh.h"; sourceTree = "<group>"; };
+		E594E0712003ABB700BDF511 /* UIColor+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utility.m"; sourceTree = "<group>"; };
+		E594E0722003ABB800BDF511 /* UIImage+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utility.h"; sourceTree = "<group>"; };
+		E594E07E2003AEE200BDF511 /* AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfo.h; sourceTree = "<group>"; };
+		E594E07F2003AEE200BDF511 /* AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +207,8 @@
 		E1EDAB5C20031980004DD7B9 /* B+Util */ = {
 			isa = PBXGroup;
 			children = (
+				E594E07E2003AEE200BDF511 /* AppInfo.h */,
+				E594E07F2003AEE200BDF511 /* AppInfo.m */,
 				E1EDAB5D200319A5004DD7B9 /* Util.swift */,
 			);
 			path = "B+Util";
@@ -168,10 +218,64 @@
 			isa = PBXGroup;
 			children = (
 				E1EDAB5A2003150D004DD7B9 /* Bridging-Header.h */,
+				E594E04E2003AB8700BDF511 /* B+Categories */,
+				E594E04F2003AB8700BDF511 /* B+UIControl */,
 				E1EDAB5B200318D9004DD7B9 /* B+VC */,
 				E1EDAB5C20031980004DD7B9 /* B+Util */,
 			);
 			path = "B+";
+			sourceTree = "<group>";
+		};
+		E594E04E2003AB8700BDF511 /* B+Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E594E0682003ABB300BDF511 /* NSBundle+Module.h */,
+				E594E06D2003ABB400BDF511 /* NSBundle+Module.m */,
+				E594E0702003ABB700BDF511 /* NSDate+gyh.h */,
+				E594E06A2003ABB400BDF511 /* NSDate+gyh.m */,
+				E594E0672003ABB300BDF511 /* NSMutableDictionary+Utility.h */,
+				E594E0652003ABB300BDF511 /* NSMutableDictionary+Utility.m */,
+				E594E0692003ABB300BDF511 /* NSString+DrawingAdapter.h */,
+				E594E05E2003ABB100BDF511 /* NSString+DrawingAdapter.m */,
+				E594E06E2003ABB600BDF511 /* NSString+URL.h */,
+				E594E0612003ABB200BDF511 /* NSString+URL.m */,
+				E594E06B2003ABB400BDF511 /* NSString+Utility.h */,
+				E594E0622003ABB200BDF511 /* NSString+Utility.m */,
+				E594E06C2003ABB400BDF511 /* UIButton+Addition.h */,
+				E594E05D2003ABB100BDF511 /* UIButton+Addition.m */,
+				E594E06F2003ABB700BDF511 /* UIColor+Utility.h */,
+				E594E0712003ABB700BDF511 /* UIColor+Utility.m */,
+				E594E0722003ABB800BDF511 /* UIImage+Utility.h */,
+				E594E0632003ABB200BDF511 /* UIImage+Utility.m */,
+				E594E05F2003ABB100BDF511 /* UIImageView+GIFDecode.h */,
+				E594E0602003ABB100BDF511 /* UIImageView+GIFDecode.m */,
+				E594E0642003ABB200BDF511 /* UIView+Frame.h */,
+				E594E0662003ABB300BDF511 /* UIView+Frame.m */,
+			);
+			path = "B+Categories";
+			sourceTree = "<group>";
+		};
+		E594E04F2003AB8700BDF511 /* B+UIControl */ = {
+			isa = PBXGroup;
+			children = (
+				E594E0542003ABA200BDF511 /* NaviBar */,
+				E594E0522003ABA100BDF511 /* LightControl.h */,
+				E594E0532003ABA100BDF511 /* LightControl.m */,
+				E594E0502003ABA100BDF511 /* ScrollColorHeader.h */,
+				E594E0512003ABA100BDF511 /* ScrollColorHeader.m */,
+			);
+			path = "B+UIControl";
+			sourceTree = "<group>";
+		};
+		E594E0542003ABA200BDF511 /* NaviBar */ = {
+			isa = PBXGroup;
+			children = (
+				E594E0582003ABA200BDF511 /* NaviBar.h */,
+				E594E0552003ABA200BDF511 /* NaviBar.m */,
+				E594E0562003ABA200BDF511 /* NaviBarItem.h */,
+				E594E0572003ABA200BDF511 /* NaviBarItem.m */,
+			);
+			path = NaviBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,17 +434,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E594E07A2003ABB800BDF511 /* UIView+Frame.m in Sources */,
 				E1A21DE21FFF319300596BB7 /* ViewController.swift in Sources */,
+				E594E0592003ABA200BDF511 /* ScrollColorHeader.m in Sources */,
 				E1EDAB541FFF8841004DD7B9 /* MainRootVC.swift in Sources */,
 				E1EDAB7520033D26004DD7B9 /* VCController.m in Sources */,
 				E1EDAB7320033D26004DD7B9 /* VCAnimationClassic.m in Sources */,
 				E1EDAB7720033D26004DD7B9 /* VCAnimationBottom.m in Sources */,
+				E594E07D2003ABB800BDF511 /* UIColor+Utility.m in Sources */,
 				E1EDAB5E200319A5004DD7B9 /* Util.swift in Sources */,
+				E594E07C2003ABB800BDF511 /* NSBundle+Module.m in Sources */,
+				E594E0772003ABB800BDF511 /* NSString+Utility.m in Sources */,
+				E594E0762003ABB800BDF511 /* NSString+URL.m in Sources */,
 				E1EDAB7420033D26004DD7B9 /* BaseNameVC.m in Sources */,
+				E594E0732003ABB800BDF511 /* UIButton+Addition.m in Sources */,
+				E594E05B2003ABA200BDF511 /* NaviBar.m in Sources */,
 				E1EDAB7620033D26004DD7B9 /* LoadEmptyView.m in Sources */,
+				E594E0752003ABB800BDF511 /* UIImageView+GIFDecode.m in Sources */,
+				E594E0802003AEE200BDF511 /* AppInfo.m in Sources */,
+				E594E05C2003ABA200BDF511 /* NaviBarItem.m in Sources */,
+				E594E0742003ABB800BDF511 /* NSString+DrawingAdapter.m in Sources */,
+				E594E0792003ABB800BDF511 /* NSMutableDictionary+Utility.m in Sources */,
 				E1EDAB7220033D26004DD7B9 /* NaviBarVC.m in Sources */,
+				E594E05A2003ABA200BDF511 /* LightControl.m in Sources */,
+				E594E07B2003ABB800BDF511 /* NSDate+gyh.m in Sources */,
 				E1EDAB4F1FFF86FC004DD7B9 /* MainTabberVC.swift in Sources */,
 				E1EDAB7120033D26004DD7B9 /* LoadBlockView.m in Sources */,
+				E594E0782003ABB800BDF511 /* UIImage+Utility.m in Sources */,
 				E1A21DE01FFF319300596BB7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,6 @@
 #import "NaviBarItem.h"
 #import "VCController.h"
 #import "VCAnimationClassic.h"
-#import "WebImageDownload.h"
 // ==================================================================
 // 布局参数
 // ==================================================================

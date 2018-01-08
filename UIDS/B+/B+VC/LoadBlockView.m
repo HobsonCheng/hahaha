@@ -11,6 +11,7 @@
 #import "UIColor+Utility.h"
 #import "NSString+DrawingAdapter.h"
 #import "UIImageView+GIFDecode.h"
+#import "UIView+Frame.h"
 // ==================================================================
 // 布局参数
 // ==================================================================
@@ -151,18 +152,18 @@
         // =======================================================================
         // 骆驼背景动画 ImageView
         // =======================================================================
-        _imageBGAnimation = [[UIImageView alloc] initWithImage:UIMaster_Image(@"icon_server_error.png")];
-        [_imageBGAnimation setFrame:CGRectMake(0, 0, [imageBGView frame].size.width, [imageBGView frame].size.height)];
+//        _imageBGAnimation = [[UIImageView alloc] initWithImage:UIMaster_Image(@"icon_server_error.png")];
+//        [_imageBGAnimation setFrame:CGRectMake(0, 0, [imageBGView frame].size.width, [imageBGView frame].size.height)];
         [imageBGView addSubview:_imageBGAnimation];
         
         // =======================================================================
         // 遮罩Mask
         // =======================================================================
-        UIImage *maskImage = UIMaster_Image(@"LoadingCamelBGMask.png");
-        CALayer *maskLayer = [CALayer layer];
-        [maskLayer setFrame:CGRectMake(([imageBGView frame].size.width - kLoadBlockBGMaskWidth) / 2, ([imageBGView frame].size.height - kLoadBlockBGMaskHeight) / 2, kLoadBlockBGMaskWidth, kLoadBlockBGMaskHeight)];
-        [maskLayer setContents:(id)[maskImage CGImage]];
-        [[imageBGView layer] setMask:maskLayer];
+//        UIImage *maskImage = UIMaster_Image(@"LoadingCamelBGMask.png");
+//        CALayer *maskLayer = [CALayer layer];
+//        [maskLayer setFrame:CGRectMake(([imageBGView frame].size.width - kLoadBlockBGMaskWidth) / 2, ([imageBGView frame].size.height - kLoadBlockBGMaskHeight) / 2, kLoadBlockBGMaskWidth, kLoadBlockBGMaskHeight)];
+//        [maskLayer setContents:(id)[maskImage CGImage]];
+//        [[imageBGView layer] setMask:maskLayer];
         
         
         _imageViewLoad = [[UIImageView alloc] init];
@@ -173,8 +174,8 @@
         // 设置动画图片
         NSMutableArray *arrayImages = [[NSMutableArray alloc] init];
         for (int i=1; i<=12; i++) {
-            NSString *name = [NSString stringWithFormat:@"%zd.tiff",i];
-            [arrayImages addObject:UIMaster_Image(name)];
+//            NSString *name = [NSString stringWithFormat:@"%zd.tiff",i];
+//            [arrayImages addObject:UIMaster_Image(name)];
         }
         [_imageViewLoad setAnimationImages:arrayImages];
         
@@ -231,8 +232,8 @@
     if(_buttonCancel == nil)
     {
         _buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_buttonCancel setBackgroundImage:UIMaster_Image(@"CClossIcon.png") forState:UIControlStateNormal];
-        [_buttonCancel setBackgroundImage:UIMaster_Image(@"CClossIcon.png") forState:UIControlStateHighlighted];
+//        [_buttonCancel setBackgroundImage:UIMaster_Image(@"CClossIcon.png") forState:UIControlStateNormal];
+//        [_buttonCancel setBackgroundImage:UIMaster_Image(@"CClossIcon.png") forState:UIControlStateHighlighted];
         [_buttonCancel addTarget:self action:@selector(doCancel:) forControlEvents:UIControlEventTouchUpInside];
         
         // 保存
@@ -256,7 +257,7 @@
     if (viewParent != nil && spaceYStart > parentFrame.size.height)
     {
         CGPoint center = [viewParent center];
-        [viewParent setHeight:spaceYStart];
+        [viewParent setViewHeight:spaceYStart];
         [viewParent setCenter:center];
     }
 

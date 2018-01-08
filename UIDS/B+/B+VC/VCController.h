@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "VCControllerPtc.h"
 #import "VCAnimation.h"
 #import "BaseNameVC.h"

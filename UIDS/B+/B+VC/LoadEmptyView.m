@@ -6,14 +6,13 @@
 //  Copyright © 2016年 com.UIMaster.com. All rights reserved.
 //
 
-
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "LoadEmptyView.h"
-#import "AppInfo.h"
 #import "UIColor+Utility.h"
 #import "NSString+DrawingAdapter.h"
 #import "UIImage+Utility.h"
-#import "AppDelegate.h"
-
+#import "AppInfo.h"
 
 // ==================================================================
 // 布局参数
@@ -180,14 +179,14 @@
         // =======================================================================
         // 骆驼背景动画 ImageView
         // =======================================================================
-        _imageBGAnimation = [[UIImageView alloc] initWithImage:UIMaster_Image(@"icon_server_error.png")];
+//        _imageBGAnimation = [[UIImageView alloc] initWithImage:UIMaster_Image(@"icon_server_error.png")];
         [_imageBGAnimation setFrame:CGRectMake(0, 0, [imageBGView frame].size.width, [imageBGView frame].size.height)];
         [imageBGView addSubview:_imageBGAnimation];
         
         // =======================================================================
         // 遮罩Mask
         // =======================================================================
-        UIImage *maskImage = UIMaster_Image(@"LoadingCamelBGMask.png");
+        UIImage *maskImage = [UIImage imageFromColor:[UIColor redColor]];//UIMaster_Image(@"LoadingCamelBGMask.png");
         CALayer *maskLayer = [CALayer layer];
         [maskLayer setFrame:CGRectMake(([imageBGView frame].size.width - kLoadEmptyBGMaskWidth) / 2, ([imageBGView frame].size.height - kLoadEmptyBGMaskHeight) / 2, kLoadEmptyBGMaskWidth, kLoadEmptyBGMaskHeight)];
         [maskLayer setContents:(id)[maskImage CGImage]];
@@ -205,7 +204,7 @@
         NSMutableArray *arrayImages = [[NSMutableArray alloc] init];
         for (int i=1; i<=12; i++) {
             NSString *name = [NSString stringWithFormat:@"%zd.tiff",i];
-            UIImage *image = UIMaster_Image(name);
+            UIImage *image = [UIImage imageFromColor:[UIColor redColor]];//UIMaster_Image(name);
             [arrayImages addObject:image];
         }
         [_imageViewLoad setAnimationImages:arrayImages];
@@ -287,7 +286,7 @@
         _imageViewError = [[UIImageView alloc] init];
         [_imageViewError setFrame:CGRectMake((parentFrame.size.width - kLoadEmptyErrorImageViewWidth) / 2,
                                              spaceYStart, kLoadEmptyErrorImageViewWidth, kLoadEmptyErrorImageViewHeight)];
-        [_imageViewError setImage:UIMaster_Image(@"加载失败400.png")];
+        [_imageViewError setImage:[UIImage imageFromColor:[UIColor yellowColor]]];//UIMaster_Image(@"加载失败400.png")
         
         // 保存
         [viewParent addSubview:_imageViewError];

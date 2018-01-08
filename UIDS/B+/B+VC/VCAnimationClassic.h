@@ -5,7 +5,7 @@
 //  Created by bai on 16/5/16.
 //  Copyright © 2016年 com.UIMaster.com. All rights reserved.
 //
-
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "VCAnimation.h"
 

@@ -8,8 +8,7 @@
 
 #import "BaseNameVC.h"
 #import "VCController.h"
-
-#import "AppDelegate.h"
+#import "UIColor+Utility.h"
 
 @interface BaseNameVC ()
 
@@ -181,9 +180,9 @@
 {
     [super viewDidLoad];
     
-    CGRect appFrame = [AppInfo appFrame];
-    [[self view] setFrame:CGRectMake(0, 0, appFrame.size.width, appFrame.size.height)];
-    [[self view] setBackgroundColor:[UIColor colorWithHex:0xf2f8fb alpha:1.0f]];
+//    CGRect appFrame = [AppInfo appFrame];
+//    [[self view] setFrame:CGRectMake(0, 0, appFrame.size.width, appFrame.size.height)];
+//    [[self view] setBackgroundColor:[UIColor colorWithHex:0xf2f8fb alpha:1.0f]];
 }
 
 // 设置StatusBar控制的ViewController
