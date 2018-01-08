@@ -20,5 +20,8 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 
+//VC库
+#import "BaseNameVC.h"
+
 
 #endif /* Bridging_Header_h */
