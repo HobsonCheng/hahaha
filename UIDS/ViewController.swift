@@ -16,7 +16,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.view.dodo.success("hello bai");
-            
+        
+        let sgU = Util.shared;
+        sgU.checkAndRateWithController(vc:self);
     }
 
     override func didReceiveMemoryWarning() {

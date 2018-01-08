@@ -14,7 +14,7 @@
 		E1A21DEA1FFF319300596BB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A21DE81FFF319300596BB7 /* LaunchScreen.storyboard */; };
 		E1EDAB4F1FFF86FC004DD7B9 /* MainTabberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB4E1FFF86FC004DD7B9 /* MainTabberVC.swift */; };
 		E1EDAB541FFF8841004DD7B9 /* MainRootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB531FFF8841004DD7B9 /* MainRootVC.swift */; };
-		E1EDAB561FFF8A29004DD7B9 /* Bhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB551FFF8A29004DD7B9 /* Bhead.swift */; };
+		E1EDAB5E200319A5004DD7B9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB5D200319A5004DD7B9 /* Util.swift */; };
 		F5BE3CBAD0F39EF485E36BCE /* Pods_UIDS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +31,8 @@
 		E1A21DEB1FFF319300596BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1EDAB4E1FFF86FC004DD7B9 /* MainTabberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabberVC.swift; sourceTree = "<group>"; };
 		E1EDAB531FFF8841004DD7B9 /* MainRootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootVC.swift; sourceTree = "<group>"; };
-		E1EDAB551FFF8A29004DD7B9 /* Bhead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bhead.swift; sourceTree = "<group>"; };
-		E1EDAB571FFF8A62004DD7B9 /* UIDS.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDS.pch; sourceTree = "<group>"; };
+		E1EDAB5A2003150D004DD7B9 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		E1EDAB5D200319A5004DD7B9 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,6 @@
 				E1A21DE61FFF319300596BB7 /* Assets.xcassets */,
 				E1A21DE81FFF319300596BB7 /* LaunchScreen.storyboard */,
 				E1A21DEB1FFF319300596BB7 /* Info.plist */,
-				E1EDAB571FFF8A62004DD7B9 /* UIDS.pch */,
 			);
 			path = UIDS;
 			sourceTree = "<group>";
@@ -107,10 +106,27 @@
 			path = mainVC;
 			sourceTree = "<group>";
 		};
+		E1EDAB5B200318D9004DD7B9 /* B+VC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "B+VC";
+			sourceTree = "<group>";
+		};
+		E1EDAB5C20031980004DD7B9 /* B+Util */ = {
+			isa = PBXGroup;
+			children = (
+				E1EDAB5D200319A5004DD7B9 /* Util.swift */,
+			);
+			path = "B+Util";
+			sourceTree = "<group>";
+		};
 		E1F093B81FFF6A4000A6FD95 /* B+ */ = {
 			isa = PBXGroup;
 			children = (
-				E1EDAB551FFF8A29004DD7B9 /* Bhead.swift */,
+				E1EDAB5A2003150D004DD7B9 /* Bridging-Header.h */,
+				E1EDAB5B200318D9004DD7B9 /* B+VC */,
+				E1EDAB5C20031980004DD7B9 /* B+Util */,
 			);
 			path = "B+";
 			sourceTree = "<group>";
@@ -273,8 +289,8 @@
 			files = (
 				E1A21DE21FFF319300596BB7 /* ViewController.swift in Sources */,
 				E1EDAB541FFF8841004DD7B9 /* MainRootVC.swift in Sources */,
+				E1EDAB5E200319A5004DD7B9 /* Util.swift in Sources */,
 				E1EDAB4F1FFF86FC004DD7B9 /* MainTabberVC.swift in Sources */,
-				E1EDAB561FFF8A29004DD7B9 /* Bhead.swift in Sources */,
 				E1A21DE01FFF319300596BB7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +362,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -387,6 +404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -398,15 +416,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				GCC_PREFIX_HEADER = UIDS/UIDS.pch;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = UIDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = UIDS/UIDS.pch;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -416,14 +435,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				GCC_PREFIX_HEADER = UIDS/UIDS.pch;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = UIDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = UIDS/UIDS.pch;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
