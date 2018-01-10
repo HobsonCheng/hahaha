@@ -19,10 +19,11 @@ target 'UIDS' do
 #  pod 'SnapKit'
   pod 'SwiftyJSON'
 #  pod 'HanekeSwift'
-  pod 'RAMAnimatedTabBarController'
+  pod 'ESTabBarController-swift'
   pod 'BWWalkthrough'
 #  pod 'SwiftAlert'
   pod 'Dodo'
+  pod 'Kingfisher'
 
 end
 
