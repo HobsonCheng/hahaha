@@ -24,7 +24,9 @@ target 'UIDS' do
 #  pod 'SwiftAlert'
   pod 'Dodo'
   pod 'Kingfisher'
-
+  pod 'PermissionScope'
+  pod 'Onboard'
+  pod 'ImageViewer'
 end
 
 
