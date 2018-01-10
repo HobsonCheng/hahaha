@@ -23,9 +23,9 @@
 @property (nonatomic, assign) NSInteger tagInt;     //页面唯一标示
 
 // 初始化函数
-- (instancetype)init;
-- (instancetype)initWithClassName;
-- (instancetype)initWithName:(NSString *)vcNameInit;
+- (BaseNameVC *)init;
+- (BaseNameVC *)initWithClassName;
+- (BaseNameVC *)initWithName:(NSString *)vcNameInit;
 
 /**
  *  获取一个 BaseNameVC 的 Name

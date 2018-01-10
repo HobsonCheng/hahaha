@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Dodo
+
 
 class ViewController: UIViewController {
 
@@ -15,10 +15,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.dodo.success("hello bai");
+        self.view.backgroundColor = UIColor.white;
         
         let sgU = Util.shared;
         sgU.checkAndRateWithController(vc:self);
+        
+        //main rootView
+        let mainvc = MainVC();
+        VCController.push(mainvc!, with:nil);
     }
 
     override func didReceiveMemoryWarning() {

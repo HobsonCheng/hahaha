@@ -9,7 +9,7 @@
 #import "BaseNameVC.h"
 #import "VCController.h"
 #import "UIColor+Utility.h"
-
+#import "AppInfo.h"
 @interface BaseNameVC ()
 
 @property (nonatomic, strong) LoadBlockView *loadBlockView;     // 弹窗加载框
@@ -24,7 +24,7 @@
 @implementation BaseNameVC
 
 // 重载初始化函数
-- (instancetype)init
+- (BaseNameVC *)init
 {
     if((self = [super init]) != nil)
     {
@@ -47,12 +47,12 @@
     return nil;
 }
 
-- (instancetype)initWithClassName
+- (BaseNameVC *)initWithClassName
 {
     return [self initWithName:NSStringFromClass([self class])];
 }
 
-- (instancetype)initWithName:(NSString *)vcNameInit
+- (BaseNameVC *)initWithName:(NSString *)vcNameInit
 {
     if((self = [self init]) != nil)
     {
@@ -180,9 +180,9 @@
 {
     [super viewDidLoad];
     
-//    CGRect appFrame = [AppInfo appFrame];
-//    [[self view] setFrame:CGRectMake(0, 0, appFrame.size.width, appFrame.size.height)];
-//    [[self view] setBackgroundColor:[UIColor colorWithHex:0xf2f8fb alpha:1.0f]];
+    CGRect appFrame = [AppInfo appFrame];
+    [[self view] setFrame:CGRectMake(0, 0, appFrame.size.width, appFrame.size.height)];
+    [[self view] setBackgroundColor:[UIColor colorWithHex:0xf2f8fb alpha:1.0f]];
 }
 
 // 设置StatusBar控制的ViewController

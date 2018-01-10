@@ -1,21 +1,19 @@
 //
-//  MainTabberVC.swift
+//  NextVC.swift
 //  UIDS
 //
-//  Created by one2much on 2018/1/5.
+//  Created by one2much on 2018/1/10.
 //  Copyright © 2018年 one2much. All rights reserved.
 //
 
 import UIKit
-import RAMAnimatedTabBarController
 
-class MainTabberVC: RAMAnimatedTabBarController {
+class NextVC: NaviBarVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.red
-        ///添加所有的子控制器
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
