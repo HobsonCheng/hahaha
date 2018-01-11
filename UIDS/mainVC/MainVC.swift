@@ -50,6 +50,7 @@ class MainVC: BaseNameVC {
     func  initTabber() {
 
         let tabBarController = ESTabBarController()
+        
         self.setupTabber(tabBarController: tabBarController);
         if let tabBar = tabBarController.tabBar as? ESTabBar {
             tabBar.itemCustomPositioning = .fillIncludeSeparator

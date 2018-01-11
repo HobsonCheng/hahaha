@@ -51,4 +51,9 @@
 #import "LightControl.h"
 #import "ScrollColorHeader.h"
 
+
+//Launch
+#import "EAIntroPage.h"
+#import "EAIntroView.h"
+
 #endif /* Bridging_Header_h */

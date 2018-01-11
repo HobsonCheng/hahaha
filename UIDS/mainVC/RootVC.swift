@@ -17,6 +17,8 @@ class RootVC: NaviBarVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.naviBar().setTitle("首页")
+        
         self.view.dodo.success("hello bai")
         
         self.startY = 0;
