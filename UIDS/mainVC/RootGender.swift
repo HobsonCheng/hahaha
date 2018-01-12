@@ -13,15 +13,19 @@ extension RootVC {//扩展
     //MARK: 生成组件信息
     func genderModelList(modelList: NSArray) {
         
-        self.startY = self.naviBar().height;
+        self.startY = 0;
         
         self.genderSwipImg(list: NSArray(), startY: &self.startY!)
         
         self.genderOneImg(obj: NSObject(), startY: &self.startY!)
         
+        self.genderSlifer(obj: NSObject(), startY: &self.startY!)
         
         
         self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
+        
+        self.mainView?.showEmpty = false
+        self.mainView?.reloadEmptyDataSet()
     }
     
     func genderSwipImg(list: NSArray,startY: UnsafeMutablePointer<CGFloat>){
@@ -68,5 +72,16 @@ extension RootVC {//扩展
         self.mainView!.addSubview(oneImg);
         
         startY.pointee = oneImg.bottom
+    }
+    
+    func genderSlifer(obj: NSObject,startY: UnsafeMutablePointer<CGFloat>) {
+        
+        let sliderView = Slider.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 100))
+        
+        sliderView.genderInit(menuList: [1,2,3,4,5,6,7,8,9,0,10,11,12,13,14,14,15,15,6,7,8,9], row: 2, rank: 4)
+        
+        self.mainView?.addSubview(sliderView)
+        
+        startY.pointee = sliderView.bottom
     }
 }

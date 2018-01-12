@@ -59,6 +59,8 @@
 		E1C03206200780BC00B1A377 /* test_13.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C03205200780BC00B1A377 /* test_13.png */; };
 		E1C03208200780C300B1A377 /* test_14.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C03207200780C300B1A377 /* test_14.png */; };
 		E1C0320A200780C900B1A377 /* test_15.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C03209200780C900B1A377 /* test_15.png */; };
+		E1C0320D2008923500B1A377 /* MainScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C0320C2008923500B1A377 /* MainScrollView.swift */; };
+		E1C032102008987900B1A377 /* ArticleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C0320F2008987900B1A377 /* ArticleList.swift */; };
 		E1EDAB5E200319A5004DD7B9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB5D200319A5004DD7B9 /* Util.swift */; };
 		E1EDAB7120033D26004DD7B9 /* LoadBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB6220033D24004DD7B9 /* LoadBlockView.m */; };
 		E1EDAB7220033D26004DD7B9 /* NaviBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB6420033D24004DD7B9 /* NaviBarVC.m */; };
@@ -150,6 +152,8 @@
 		E1C03205200780BC00B1A377 /* test_13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_13.png; sourceTree = "<group>"; };
 		E1C03207200780C300B1A377 /* test_14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_14.png; sourceTree = "<group>"; };
 		E1C03209200780C900B1A377 /* test_15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_15.png; sourceTree = "<group>"; };
+		E1C0320C2008923500B1A377 /* MainScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScrollView.swift; sourceTree = "<group>"; };
+		E1C0320F2008987900B1A377 /* ArticleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleList.swift; sourceTree = "<group>"; };
 		E1EDAB5A2003150D004DD7B9 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E1EDAB5D200319A5004DD7B9 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		E1EDAB5F20033D23004DD7B9 /* LoadBlockPtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadBlockPtc.h; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 		E1C031A12005CC8200B1A377 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				E1C0320B2008921000B1A377 /* mainScrollView */,
+				E1C0320E2008986000B1A377 /* ArticleList */,
 				E1C031C12006383700B1A377 /* Slider */,
 				E1C031BE20062CA900B1A377 /* OneImg */,
 				E1C031A420061DC300B1A377 /* SwipImgArea */,
@@ -356,6 +362,22 @@
 				E1C031CD200707A800B1A377 /* EARestrictedScrollView.m */,
 			);
 			path = LaunchGuide;
+			sourceTree = "<group>";
+		};
+		E1C0320B2008921000B1A377 /* mainScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E1C0320C2008923500B1A377 /* MainScrollView.swift */,
+			);
+			path = mainScrollView;
+			sourceTree = "<group>";
+		};
+		E1C0320E2008986000B1A377 /* ArticleList */ = {
+			isa = PBXGroup;
+			children = (
+				E1C0320F2008987900B1A377 /* ArticleList.swift */,
+			);
+			path = ArticleList;
 			sourceTree = "<group>";
 		};
 		E1EDAB4D1FFF86A1004DD7B9 /* mainVC */ = {
@@ -680,6 +702,7 @@
 				E1C031C020062CBC00B1A377 /* OneImg.swift in Sources */,
 				E594E0592003ABA200BDF511 /* ScrollColorHeader.m in Sources */,
 				E1C031A620061DF500B1A377 /* SwipImgAreaCell.swift in Sources */,
+				E1C0320D2008923500B1A377 /* MainScrollView.swift in Sources */,
 				E1EDAB7520033D26004DD7B9 /* VCController.m in Sources */,
 				E1EDAB7320033D26004DD7B9 /* VCAnimationClassic.m in Sources */,
 				E1C031B42006223C00B1A377 /* SwipImgAreaImagePageControl.swift in Sources */,
@@ -718,6 +741,7 @@
 				E1C031AA20061E6B00B1A377 /* SwipImgAreaPageControl.swift in Sources */,
 				E1C031BD200623A300B1A377 /* RootGender.swift in Sources */,
 				E1EDAB7120033D26004DD7B9 /* LoadBlockView.m in Sources */,
+				E1C032102008987900B1A377 /* ArticleList.swift in Sources */,
 				E594E0782003ABB800BDF511 /* UIImage+Utility.m in Sources */,
 				E1A21DE01FFF319300596BB7 /* AppDelegate.swift in Sources */,
 				E1C031CA200704DF00B1A377 /* EAIntroView.m in Sources */,

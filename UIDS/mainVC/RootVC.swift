@@ -9,10 +9,10 @@
 import UIKit
 import Dodo
 
-class RootVC: NaviBarVC {
+class RootVC: NaviBarVC{
 
     var moduleList: NSArray?
-    var mainView: UIScrollView?
+    var mainView: MainScrollView?
     var startY: CGFloat?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +22,9 @@ class RootVC: NaviBarVC {
         self.view.dodo.success("hello bai")
         
         self.startY = 0;
-        self.mainView = UIScrollView.init(frame: self.view.bounds);
+        self.mainView = MainScrollView.init(frame: CGRect.init(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().bottom - 50));
         self.view.addSubview(self.mainView!);
-    
+        
         
         self.moduleList = NSArray()
         self.genderModelList(modelList: self.moduleList!)
@@ -51,5 +51,9 @@ class RootVC: NaviBarVC {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    //MARK: 协议
+    
 
 }

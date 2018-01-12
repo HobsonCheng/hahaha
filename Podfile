@@ -25,6 +25,9 @@ target 'UIDS' do
   pod 'Dodo'
   pod 'Kingfisher'
   pod 'PermissionScope'
+  #PageMenu
+  #pod 'TextFieldEffects'
+  #KMPlaceholderTextView
 end
 
 
