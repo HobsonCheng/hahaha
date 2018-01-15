@@ -17,6 +17,7 @@ target 'UIDS' do
   pod 'SVProgressHUD'
   pod 'FontAwesomeKit'
 #  pod 'SnapKit'
+  pod 'HandyJSON'
   pod 'SwiftyJSON'
 #  pod 'HanekeSwift'
   pod 'ESTabBarController-swift'
@@ -25,6 +26,8 @@ target 'UIDS' do
   pod 'Dodo'
   pod 'Kingfisher'
   pod 'PermissionScope'
+  pod 'Alamofire'
+  pod 'Reachability'
   #PageMenu
   #pod 'TextFieldEffects'
   #KMPlaceholderTextView
