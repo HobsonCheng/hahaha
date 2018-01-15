@@ -18,6 +18,7 @@
 #import <RETableViewManager/RETableViewManager.h>
 #import <REValidation/REValidation.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <HandyJSON/HandyJSON.h>
 
 //categorise
 #import "NSBundle+Module.h"
@@ -43,7 +44,6 @@
 #import "VCAnimationClassic.h"
 #import "VCController.h"
 #import "VCControllerPtc.h"
-
 
 //uicontrol
 #import "NaviBar.h"

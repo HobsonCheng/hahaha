@@ -149,7 +149,20 @@ enum NaviBarTitleViewTags {
     // 刷新界面
     [self reLayout];
 }
-
+- (void)setTitleColor:(NSString *)titleColor{
+    if(!titleColor){
+        return;
+    }
+    if([_viewTitle isKindOfClass:[LightControl class]])
+    {
+        UILabel *titleLabel = (UILabel *)[_viewTitle viewWithTag:kNaviBarTitleViewLabelViewTag];
+        
+        if (titleLabel != nil)
+        {
+            [titleLabel setTextColor:[UIColor colorWithHexString:titleColor]];
+        }
+    }
+}
 // 获取和设置左边的Item
 - (UIView *)leftBarItem
 {

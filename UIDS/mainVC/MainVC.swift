@@ -55,28 +55,34 @@ class MainVC: BaseNameVC {
         if let tabBar = tabBarController.tabBar as? ESTabBar {
             tabBar.itemCustomPositioning = .fillIncludeSeparator
         }
-        let v1 = RootVC()
-        let v2 = RootVC()
-        let v3 = RootVC()
-        let v4 = RootVC()
-        let v5 = RootVC()
-        v1?.tabBarItem = ESTabBarItem.init(ExampleBouncesContentView(), title: "Home", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
-        v2?.tabBarItem = ESTabBarItem.init(ExampleBouncesContentView(), title: "Find", image: UIImage(named: "find"), selectedImage: UIImage(named: "find_1"))
-        v3?.tabBarItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "photo_verybig"), selectedImage: UIImage(named: "photo_verybig"))
-        v4?.tabBarItem = ESTabBarItem.init(ExampleBouncesContentView(), title: "Favor", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
-        v5?.tabBarItem = ESTabBarItem.init(ExampleBouncesContentView(), title: "Me", image: UIImage(named: "me"), selectedImage: UIImage(named: "me_1"))
+
+//        let appInfo = AppInfoData.shared.appModel
+        let pageListinfo = PageListInfo.shared.pageListModel
+
+        let tmpTabbers = NSMutableArray()
+
+        for item in (pageListinfo?.enumerated())! {
+
+            let tabber = RootVC()
+            tabber?.pageData = item.element
+            tabber?.tabBarItem = ESTabBarItem.init(ExampleBouncesContentView(), title: item.element.name, image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
+            tmpTabbers.add(tabber!)
+        }
+
+////        v3?.tabBarItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "photo_verybig"), selectedImage: UIImage(named: "photo_verybig"))
+
         
-        tabBarController.viewControllers = [v1!, v2!, v3!, v4!, v5!]
+        tabBarController.viewControllers = tmpTabbers as? [UIViewController]
         
         self.addChildViewController(tabBarController);
         self.view.addSubview(tabBarController.view);
         
         
-        if let tabBarItem = v2?.tabBarItem as? ESTabBarItem {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
-                tabBarItem.badgeValue = "10"
-            }
-        }
+//        if let tabBarItem = v2?.tabBarItem as? ESTabBarItem {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
+//                tabBarItem.badgeValue = "10"
+//            }
+//        }
     }
 
 }

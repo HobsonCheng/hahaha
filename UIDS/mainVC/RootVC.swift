@@ -11,8 +11,10 @@ import Dodo
 
 class RootVC: NaviBarVC{
 
+    var pageData: PageInfo?
     var moduleList: NSArray?
     var mainView: MainScrollView?
+    var mainTable: UITableView?
     var startY: CGFloat?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +23,12 @@ class RootVC: NaviBarVC{
         
         self.view.dodo.success("hello bai")
         
+        
         self.startY = 0;
         self.mainView = MainScrollView.init(frame: CGRect.init(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().bottom - 50));
         self.view.addSubview(self.mainView!);
         
-        
-        self.moduleList = NSArray()
-        self.genderModelList(modelList: self.moduleList!)
+        self.initAppInfo()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.view.dodo.hide();
@@ -41,17 +42,8 @@ class RootVC: NaviBarVC{
         // Dispose of any resources that can be recreated.
     }
     
+    //数据分析
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     //MARK: 协议
     

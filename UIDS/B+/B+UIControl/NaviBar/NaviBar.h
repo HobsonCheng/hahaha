@@ -28,6 +28,7 @@
 // Title
 - (NSString *)title;
 - (void)setTitle:(NSString *)titleNew;
+- (void)setTitleColor:(NSString *)titleColor;
 
 // Title
 //- (UIColor *)titleColor;

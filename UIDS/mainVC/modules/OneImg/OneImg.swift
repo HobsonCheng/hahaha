@@ -9,6 +9,14 @@
 import UIKit
 import Kingfisher
 
+class OneImgMode: ConfigModel {
+    var imgList: [PageInfo]?
+    
+}
+
+
+
+
 class OneImg: UIView {
 
     var imgView :UIImageView?

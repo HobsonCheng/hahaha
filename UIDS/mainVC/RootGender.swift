@@ -7,23 +7,38 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 extension RootVC {//扩展
-    
+
     //MARK: 生成组件信息
-    func genderModelList(modelList: NSArray) {
+    func genderModelList() {
         
         self.startY = 0;
         
-        self.genderSwipImg(list: NSArray(), startY: &self.startY!)
-        
-        self.genderOneImg(obj: NSObject(), startY: &self.startY!)
-        
-        self.genderSlifer(obj: NSObject(), startY: &self.startY!)
-        
-        
+        //分析模板信息
+        let model_str = self.pageData?.model_id
+        let models = JSON.init(parseJSON: (model_str)!)
+        for item in models.enumerated() {
+            let modelName = item.element.1
+            let tmpList = String(describing: modelName).components(separatedBy: "_")
+            switch tmpList[1] {
+            case "OneImg" :
+                self.genderOneImg(model_id: tmpList[0], startY: &self.startY!)
+            case "Slider" :
+                self.genderSlifer(model_id: tmpList[0], startY: &self.startY!)
+            case "SwipImgArea" :
+                self.genderSwipImg(list: NSArray(), startY: &self.startY!)
+            case "ArticleList" :
+                self.genderArticleList(model_id: tmpList[0], startY: &self.startY!)
+            case "PersonalCenter" :
+                print("PersonalCenter")
+            default: break
+                
+            }
+        }
+    
         self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
-        
         self.mainView?.showEmpty = false
         self.mainView?.reloadEmptyDataSet()
     }
@@ -65,23 +80,52 @@ extension RootVC {//扩展
         startY.pointee = bannerDemo.bottom
     }
     
-    func genderOneImg(obj: NSObject,startY: UnsafeMutablePointer<CGFloat>){
+    func genderOneImg(model_id: String,startY: UnsafeMutablePointer<CGFloat>){
+        
+        
+        let obj = self.findConfigData(name: "OneImg_content",model_id: model_id)
+        
+        let oneModel: OneImgMode? = OneImgMode.deserialize(from: obj)
         
         let oneImg = OneImg.init(frame: CGRect(x: 0,y: startY.pointee,width: self.view.width,height: 200))
-        oneImg.setUrl(url: "http://static.123rf.com.cn/public/images/corp/photo/201701/indexpage_11.jpg")
+        if ((oneModel?.imgList) != nil) {
+            oneImg.setUrl(url: oneModel!.imgList![0].icon! as NSString)
+        }else {
+            oneImg.setUrl(url: "http://omzvdb61q.bkt.clouddn.com/UIdashi_9484892")
+        }
+    
         self.mainView!.addSubview(oneImg);
         
         startY.pointee = oneImg.bottom
     }
     
-    func genderSlifer(obj: NSObject,startY: UnsafeMutablePointer<CGFloat>) {
+    func genderSlifer(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+        
+        let objContent = self.findConfigData(name: "Slider_content",model_id: model_id)
+        
+        let sliderContent: SliderContentMode? = SliderContentMode.deserialize(from: objContent)
+        
+        let objLayout = self.findConfigData(name: "Slider_layout",model_id: model_id)
+        
+        let sliderLayout: SliderLayoutMode? = SliderLayoutMode.deserialize(from: objLayout)
         
         let sliderView = Slider.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 100))
         
-        sliderView.genderInit(menuList: [1,2,3,4,5,6,7,8,9,0,10,11,12,13,14,14,15,15,6,7,8,9], row: 2, rank: 4)
+        if sliderLayout?.shapeObj != nil {
+            sliderView.genderInit(contentData: sliderContent!, row: Int((sliderLayout?.shapeObj?.row)!)!, rank: Int((sliderLayout?.shapeObj?.line)!)!)
+        }else {
+            sliderView.genderInit(contentData: sliderContent!, row:2, rank:4)
+        }
         
         self.mainView?.addSubview(sliderView)
         
         startY.pointee = sliderView.bottom
+    }
+    func genderArticleList(model_id: String,startY: UnsafeMutablePointer<CGFloat>){
+        
+        let aritclalist = ArticleList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        
+        aritclalist.genderView()
+        
     }
 }
