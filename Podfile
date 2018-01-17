@@ -11,26 +11,44 @@ target 'UIDS' do
   pod 'ChameleonFramework'
   pod 'MagicalRecord'
   pod 'iRate'
-  pod 'PKRevealController'
+  pod 'Then'
+  
 #  pod 'SlackTextViewController'
-  pod 'RETableViewManager'
-  pod 'SVProgressHUD'
-  pod 'FontAwesomeKit'
 #  pod 'SnapKit'
   pod 'HandyJSON'
   pod 'SwiftyJSON'
 #  pod 'HanekeSwift'
-  pod 'ESTabBarController-swift'
   pod 'BWWalkthrough'
 #  pod 'SwiftAlert'
   pod 'Dodo'
-  pod 'Kingfisher'
+  pod 'SDWebImage'
   pod 'PermissionScope'
   pod 'Alamofire'
   pod 'Reachability'
+  
+  #ui
+  pod 'TYPagerController'
+  pod 'SVProgressHUD'
+  pod 'PKRevealController'
+  pod 'RETableViewManager'
+  pod 'FontAwesomeKit'
+  pod 'ESTabBarController-swift'
+  pod 'MJRefresh'
+  pod 'IQKeyboardManagerSwift'#键盘
+  pod 'SnapKit'
+  
+  #    pod 'MLeaksFinder'              # 检测内存泄漏
+  
   #PageMenu
   #pod 'TextFieldEffects'
   #KMPlaceholderTextView
+  
+  # Rx
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'NSObject+Rx'
+  pod 'RxGesture'
+  
 end
 
 
