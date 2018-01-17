@@ -10,6 +10,15 @@ import UIKit
 
 class InputValidator: NSObject {
     
+    class func isValidPhone(phoneNum: String) -> Bool {
+        
+        if (!phoneNum.isEmpty)  && phoneNum.count == 11{
+            
+            return true
+        }
+        
+        return false
+    }
     class func isValidEmail(email: String) -> Bool {
         
         let re = try? NSRegularExpression(pattern: "^\\S+@\\S+\\.\\S+$", options: .caseInsensitive)
@@ -24,6 +33,6 @@ class InputValidator: NSObject {
     }
     
     class func isvalidationPassword(password: String) -> Bool {
-        return password.characters.count >= 8
+        return password.count >= 8
     }
 }

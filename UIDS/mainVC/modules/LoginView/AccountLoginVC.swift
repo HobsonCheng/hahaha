@@ -56,7 +56,8 @@ extension AccountLoginVC: AccountLoginable {
         // 创建 协议组件
         let accountField = initAccountField { }
         let passwordField = initPasswordField { }
-        let (loginBtnView, loginBtn) = initLoginBtnView { event in print(event.title ?? "") }
+        let imgCodeView = initImgCodeView() {}
+        let (loginBtnView, loginBtn) = initLoginBtnView(showFP: true) { event in print(event.title ?? "") }
         let otherLoginView = initOtherLoginView { event in print(event.title ?? "") }
         
         // 创建 视图模型
@@ -64,8 +65,11 @@ extension AccountLoginVC: AccountLoginable {
 
         accountLoginView.accountUseable.drive(accountField.rx.validationResult).disposed(by: rx.disposeBag)
         accountLoginView.passwordUseable.drive(passwordField.rx.validationResult).disposed(by: rx.disposeBag)
+        
         accountLoginView.loginBtnEnable.drive(onNext: { (beel) in
+            
             loginBtn.isEnabled = beel
+            
         }).disposed(by: rx.disposeBag)
         accountLoginView.loginResult.drive(onNext: { (result) in
             switch result {
@@ -86,7 +90,7 @@ extension AccountLoginVC: AccountLoginable {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginBtnView)
         scrollView.addSubview(otherLoginView)
-        
+        scrollView.addSubview(imgCodeView)
         // 布局
         scrollView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
@@ -104,10 +108,20 @@ extension AccountLoginVC: AccountLoginable {
             make.height.equalTo(Metric.fieldHeight)
         }
         
-        passwordField.snp.makeConstraints { (make) in
+        imgCodeView.snp.makeConstraints { (make) in
+            
             make.left.equalTo(accountField.snp.left)
             make.right.equalTo(accountField.snp.right)
-            make.top.equalTo(accountField.snp.bottom).offset(MetricGlobal.margin * 2)
+            make.top.equalTo(accountField.snp.bottom).offset(MetricGlobal.margin * 1)
+            make.height.equalTo(Metric.fieldHeight)
+            
+        }
+        
+        
+        passwordField.snp.makeConstraints { (make) in
+            make.left.equalTo(imgCodeView.snp.left)
+            make.right.equalTo(imgCodeView.snp.right)
+            make.top.equalTo(imgCodeView.snp.bottom).offset(MetricGlobal.margin * 1)
             make.height.equalTo(Metric.fieldHeight)
         }
         

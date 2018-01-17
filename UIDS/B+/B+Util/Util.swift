@@ -88,6 +88,18 @@ final class Util: NSObject,iRateDelegate{
         let userd = UserDefaults.standard
         return userd.object(forKey: key)
     }
+    
+    
+    //MARK: 获取验证码
+    static func getImgCode() -> String? {
+        
+        let codeUrl: String?
+        
+        codeUrl = "ssss"
+        
+        return codeUrl
+    }
+    
 }
 
 

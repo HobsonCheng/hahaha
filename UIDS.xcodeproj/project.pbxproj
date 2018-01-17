@@ -663,6 +663,7 @@
 			children = (
 				E1F5E26C200F0B4600FD18FD /* LoginView.swift */,
 				E1F5E272200F2D7500FD18FD /* LoginInit.swift */,
+				E1F5E276200F343200FD18FD /* ThridLoginVC.swift */,
 				E1F5E274200F340500FD18FD /* AccountLoginVC.swift */,
 				E1F5E278200F356000FD18FD /* AccountLoginable.swift */,
 				E1E31B87200F439A00776701 /* HCOtherLoginModeView.swift */,
@@ -670,7 +671,6 @@
 				E1E31B90200F522E00776701 /* HCAccountLoginViewModel.swift */,
 				E1E31B92200F524400776701 /* HCAccountLoginResult.swift */,
 				E1E31B94200F529200776701 /* HCAccountLoginService.swift */,
-				E1F5E276200F343200FD18FD /* ThridLoginVC.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";

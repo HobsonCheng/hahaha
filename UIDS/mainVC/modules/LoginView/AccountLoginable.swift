@@ -52,6 +52,7 @@ fileprivate struct Metric {
     static let accountLeftTip = "+86"
     static let accountPlaceholder = "请输入手机号/邮箱"
     static let passswordPlaceholder = "请输入密码"
+    static let imgCodePlaceholder = "请输入验证码"
 }
 
 protocol AccountLoginable {
@@ -59,7 +60,7 @@ protocol AccountLoginable {
 }
 
 // MARK:- 自定义组件
-extension AccountLoginable where Self : AccountLoginVC {
+extension AccountLoginable where Self : BaseNameVC{
     
     // MARK:- 其他登录方式
     func initOtherLoginView(onNext: @escaping (_ event: AccountLoginEvent)->Void) -> UIView {
@@ -83,7 +84,7 @@ extension AccountLoginable where Self : AccountLoginVC {
     }
     
     // MARK:- 登录按钮部分
-    func initLoginBtnView(onNext: @escaping (_ event: AccountLoginEvent)->Void) -> (UIView, UIButton) {
+    func initLoginBtnView(showFP: Bool,onNext: @escaping (_ event: AccountLoginEvent)->Void) -> (UIView, UIButton) {
         
         // 创建
         let btnView = UIView().then {
@@ -101,6 +102,7 @@ extension AccountLoginable where Self : AccountLoginVC {
                 onNext(AccountLoginEvent.init(type: .login, title: "登陆按钮"))
             }).subscribe().disposed(by: rx.disposeBag)
         }
+    
         
         let forgetBtn = UIButton().then {
             $0.setTitleColor(kThemeTomatoColor, for: .normal)
@@ -113,7 +115,10 @@ extension AccountLoginable where Self : AccountLoginVC {
         
         // 添加
         btnView.addSubview(loginBtn)
-        btnView.addSubview(forgetBtn)
+        if showFP {
+            btnView.addSubview(forgetBtn)
+        }
+        
         
         // 布局
         loginBtn.snp.makeConstraints { (make) in
@@ -122,15 +127,18 @@ extension AccountLoginable where Self : AccountLoginVC {
             make.height.equalTo(Metric.loginBtnHeight)
         }
         
-        forgetBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(loginBtn.snp.bottom).offset(MetricGlobal.margin)
-            make.right.equalTo(loginBtn.snp.right)
-            if let width = forgetBtn.titleLabel?.text?.getSize(font: Metric.forgetFontSize).width {
-                make.width.equalTo(width)
+        if showFP {
+            forgetBtn.snp.makeConstraints { (make) in
+                make.top.equalTo(loginBtn.snp.bottom).offset(MetricGlobal.margin)
+                make.right.equalTo(loginBtn.snp.right)
+                if let width = forgetBtn.titleLabel?.text?.getSize(font: Metric.forgetFontSize).width {
+                    make.width.equalTo(width)
+                }
+                make.height.equalTo(30)
+                make.bottom.equalToSuperview().offset(-MetricGlobal.margin)
             }
-            make.height.equalTo(30)
-            make.bottom.equalToSuperview().offset(-MetricGlobal.margin)
         }
+        
         
         return (btnView, loginBtn)
     }
@@ -275,6 +283,90 @@ extension AccountLoginable where Self : AccountLoginVC {
         return leftView
     }
     
+    //MARK: - 图片验证码入口
+    func initImgCodeView(onNext: @escaping ()->Void) -> UITextField {
+        
+        let field = UITextField().then {
+            $0.layer.masksToBounds = true
+            $0.layer.borderColor = kThemeGainsboroColor?.cgColor
+            $0.layer.borderWidth = Metric.borderWidth
+            $0.layer.cornerRadius = Metric.cornerRadius
+            $0.borderStyle = .none
+            $0.leftViewMode = .always
+            $0.leftView = self.ImgCodeViewLeft()
+            $0.rightViewMode = .always
+            $0.rightView = self.ImgCodeViewRight()
+            $0.placeholder = Metric.imgCodePlaceholder
+        }
+        
+        
+        
+        
+        
+        return field
+    }
+    
+    private func ImgCodeViewLeft() -> UIView {
+        
+        let leftView = UIView().then {
+            $0.frame = CGRect(x: 0, y: 0, width: 40, height: 44)
+        }
+        
+        let tipBtn = UIButton().then {
+            $0.contentMode = .scaleAspectFit
+            $0.isUserInteractionEnabled = false
+            $0.setImage(UIImage(named: "registerAndLogin_password_textField"), for: .normal)
+        }
+        
+        // 添加
+        leftView.addSubview(tipBtn)
+        
+        tipBtn.snp.makeConstraints { (make) in
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(MetricGlobal.margin)
+            make.right.equalToSuperview().offset(-MetricGlobal.margin)
+            make.width.equalTo(Metric.tipBtnWidth)
+        }
+        
+        return leftView
+        
+    }
+    
+    private func ImgCodeViewRight() -> UIView {
+        
+        
+        let rightView = UIView().then {
+            $0.frame = CGRect(x: 0, y: 0, width: 150, height: 44)
+            $0.backgroundColor = UIColor.yellow
+        }
+        
+        let tipBtn = UIButton().then {
+            $0.contentMode = .scaleAspectFit
+            $0.isUserInteractionEnabled = false
+            $0.sd_setImage(with: URL.init(string: Util.getImgCode()!), for: UIControlState.normal, completed: nil)
+        }
+        
+        // 添加
+        rightView.addSubview(tipBtn)
+        
+        tipBtn.snp.makeConstraints { (make) in
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(MetricGlobal.margin)
+            make.right.equalToSuperview().offset(-MetricGlobal.margin)
+            make.width.equalTo(Metric.tipBtnWidth)
+        }
+        
+        
+    
+        
+        
+        
+        return rightView
+        
+    }
+    
+    
+    //MARK: - 手机短信验证码入口
 }
 
 
