@@ -9,6 +9,11 @@
 import UIKit
 import iRate
 
+
+
+
+
+
 private let singleUtil = Util()
 
 final class Util: NSObject,iRateDelegate{
@@ -70,4 +75,58 @@ final class Util: NSObject,iRateDelegate{
     func shouldPromptForRating() -> Bool {
         return false
     }
+    
+    //MARK: 存储 user set 信息
+    static func save_defult(key: String,value: String?){
+        
+        let userd = UserDefaults.standard
+        
+        userd.set(value, forKey: key)
+        userd.synchronize()
+    }
+    static func get_defult(key: String) -> Any?{
+        let userd = UserDefaults.standard
+        return userd.object(forKey: key)
+    }
 }
+
+
+// MARK:- 常用按钮颜色
+
+let kThemeWhiteColor = UIColor.init(hexString: "0xFFFFFF")
+let kThemeWhiteSmokeColor = UIColor.init(hexString: "0xF5F5F5")
+let kThemeGainsboroColor = UIColor.init(hexString: "0xF3F4F5")  // 亮灰色
+let kThemeOrangeRedColor = UIColor.init(hexString: "0xFF4500")  // 橙红色
+let kThemeSnowColor = UIColor.init(hexString: "0xFFFAFA")
+let kThemeLightGreyColor = UIColor.init(hexString: "0xD3D3D3")
+let kThemeGreyColor = UIColor.init(hexString: "0xA9A9A9")
+let kThemeTomatoColor = UIColor.init(hexString: "0xF7583B")
+let kThemeDimGrayColor = UIColor.init(hexString: "0x696969")
+let kThemeBlackColor = UIColor.init(hexString: "0x000000")
+let kThemeBackgroundColor = UIColor.init(hexString: "0xF4F4F4")
+
+
+
+// 屏幕宽度
+let kScreenH = UIScreen.main.bounds.height
+// 屏幕高度
+let kScreenW = UIScreen.main.bounds.width
+
+
+// MARK:- 常量
+struct MetricGlobal {
+    static let padding: CGFloat = 10.0
+    static let margin: CGFloat = 10.0
+}
+
+
+//适配iPhoneX
+let is_iPhoneX = (kScreenW == 375.0 && kScreenH == 812.0 ?true:false)
+let kNavibarH: CGFloat = is_iPhoneX ? 88.0 : 64.0
+let kTabbarH: CGFloat = is_iPhoneX ? 49.0+34.0 : 49.0
+let kStatusbarH: CGFloat = is_iPhoneX ? 44.0 : 20.0
+let iPhoneXBottomH: CGFloat = 34.0
+let iPhoneXTopH: CGFloat = 24.0
+
+
+

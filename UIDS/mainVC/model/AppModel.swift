@@ -68,6 +68,7 @@ class AppData: HandyJSON {
     var identify: Int?
     var status: Int?
     var client_type: Int?
+    var config_key: String?
     
     required init() {}
 }
@@ -92,3 +93,7 @@ class AdvInfo: HandyJSON {
     
     required init() {}
 }
+
+
+
+

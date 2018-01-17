@@ -19,7 +19,7 @@
 #import <REValidation/REValidation.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <HandyJSON/HandyJSON.h>
-
+#import <SDWebImage/SDWebImage-umbrella.h>
 //categorise
 #import "NSBundle+Module.h"
 #import "NSDate+gyh.h"
@@ -55,5 +55,10 @@
 //Launch
 #import "EAIntroPage.h"
 #import "EAIntroView.h"
+
+
+//宏参数
+
+#define  B_USER_KEY_NAV_BG_COLOR  @"B_USER_KEY_NAV_BG_COLOR"
 
 #endif /* Bridging_Header_h */

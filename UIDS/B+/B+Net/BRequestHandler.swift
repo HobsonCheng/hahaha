@@ -26,7 +26,7 @@ enum B_ResponseStatus: Int{
 
 
 /// 网络请求回调
-typealias NetworkFinished = (_ status: B_ResponseStatus, _ result: JSON?, _ tipString: String?) -> ()
+typealias NetworkFinished = (_ status: B_ResponseStatus, _ result: String?, _ tipString: String?) -> ()
 typealias CallBackHostName = (_ apiName: String?) -> ()
 
 private let shareHandler = BRequestHandler()
@@ -202,10 +202,10 @@ extension BRequestHandler {
         switch response.result {
         case .success(let value):
             
-            print(response.request?.url ?? "", value)
+            print(response.request?.url ?? "", JSON.init(value))
             let json = JSON(value)
             if json["code"].intValue == 0 {
-                finished(.success, json["data"], nil)
+                finished(.success, json.description, nil)
             } else if json["code"].intValue == 0203 {
 //                JFProgressHUD.dismiss()
 //                // 注销登录

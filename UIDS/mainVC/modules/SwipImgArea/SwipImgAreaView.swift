@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 public enum PageControlStyle {
     case none
@@ -581,7 +580,7 @@ class SwipImgAreaView: UIView, UICollectionViewDelegate, UICollectionViewDataSou
                 
                 // 根据imagePath，来判断是网络图片还是本地图
                 if imagePath.hasPrefix("http") {
-                    cell.imageView.kf.setImage(with: URL(string: imagePath), placeholder: placeHolderImage)
+                    cell.imageView.sd_setImage(with: URL(string: imagePath), placeholderImage: placeHolderImage)
                 }else{
                     if let image = UIImage.init(named: imagePath) {
                         cell.imageView.image = image;

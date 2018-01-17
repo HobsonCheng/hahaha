@@ -48,6 +48,8 @@ class Slider: UIView,UIScrollViewDelegate {
     //MARK: 初始化页面信息
     public func genderInit(contentData: SliderContentMode,row: NSInteger,rank: NSInteger){
         
+        self.backgroundColor = UIColor.white
+        
         //驻扎住view
         bgScroll = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: self.width, height: 100))
         bgScroll?.delegate = self
@@ -105,8 +107,8 @@ class Slider: UIView,UIScrollViewDelegate {
 
 
                 let speedView = UIImageView.init()
-                speedView.kf.setImage(with: URL.init(string: tmpSonItem.icon!))
-                speedView.frame = CGRect.init(x: startX + 10, y: startY+top + 10, width: W  - 20, height: H - 20)
+                speedView.sd_setImage(with: URL.init(string: tmpSonItem.icon!))
+                speedView.frame = CGRect.init(x: startX + 20, y: startY+top + 20, width: W  - 40, height: H - 40)
                 speedView.backgroundColor = UIColor.clear
                 bgScroll?.addSubview(speedView)
 

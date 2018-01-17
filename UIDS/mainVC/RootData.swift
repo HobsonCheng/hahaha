@@ -23,22 +23,7 @@ extension RootVC {
     }
     
     func findConfigData(name: String,model_id: String) -> NSDictionary{
-        let configData = JSON.init(parseJSON: (self.pageData?.config_key)!)
-        
-        for item in configData {//数据拆分
-            let configName: String? = String(describing: item.0)
-            if ((configName?.range(of: name)) != nil){
-                if !model_id.isEmpty {
-                    if ((configName?.range(of: model_id)) != nil){
-                        return item.1.rawValue as! NSDictionary
-                    }
-                }else{
-                    return item.1.rawValue as! NSDictionary
-                }
-            }
-        }
-        
-        return NSDictionary()
+        return DownData.findConfigData(name: name, model_id: model_id, config_key: (self.pageData?.config_key)!)
     }
     
     private func updateVC(){
@@ -67,8 +52,12 @@ extension RootVC {
         
         let bgData = dic.object(forKey: "bg")
         
-        let bgColor = UIColor.init(hexString: (bgData! as! NSDictionary).object(forKey: "bgColor") as! String, withAlpha: 1)
+        let colorStr = (bgData! as! NSDictionary).object(forKey: "bgColor") as! String
+        
+        let bgColor = UIColor.init(hexString: colorStr, withAlpha: 1)
     
+        Util.save_defult(key: B_USER_KEY_NAV_BG_COLOR, value: colorStr)
+        
         self.naviBar().setNaviBarBackgroundColor(bgColor)
         
     }
@@ -87,10 +76,44 @@ extension RootVC {
     
     private func navibar_leftViews(list: NSArray){
         
+        let leftlist = NSMutableArray()
+        //整理
+        for (index,item) in list.enumerated() {
+            
+            let pageData = PageInfo.deserialize(from: item as? NSDictionary)
+            
+            let left = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchLeft))
+            left?.tag = index
+            left?.setIconImageUrl(pageData?.icon, for: eNaviBarItemStateNormal)
+            left?.setIconImageUrl(pageData?.icon_sel, for: eNaviBarItemStateHighlighted)
+            
+            leftlist.add(left!)
+        }
+        
+        self.naviBar().leftBarItems = leftlist as! [Any]
     }
     
     private func navibar_rightViews(list: NSArray){
         
+        let rightlist = NSMutableArray()
+        //整理
+        for (index,item) in list.enumerated() {
+            
+            let pageData = PageInfo.deserialize(from: item as? NSDictionary)
+            
+            let right = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchLeft))
+            right?.tag = index
+            right?.setIconImageUrl(pageData?.icon, for: eNaviBarItemStateNormal)
+            right?.setIconImageUrl(pageData?.icon_sel, for: eNaviBarItemStateHighlighted)
+            
+            rightlist.add(right!)
+        }
+        
+        self.naviBar().rightBarItems = rightlist as! [Any]
     }
     
+    
+    @objc func touchLeft() {
+        
+    }
 }

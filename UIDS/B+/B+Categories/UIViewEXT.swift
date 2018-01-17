@@ -83,5 +83,11 @@ extension UIView {
         }
     }
     
-    
+    static func loadFromXib_Swift() ->  AnyObject?{
+        
+        let className =  NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last
+        let xibArray = Bundle.main.loadNibNamed(className!, owner: nil, options: nil)
+        return xibArray?[0] as AnyObject
+
+    }
 }

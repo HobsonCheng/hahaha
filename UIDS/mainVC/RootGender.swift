@@ -14,7 +14,7 @@ extension RootVC {//扩展
     //MARK: 生成组件信息
     func genderModelList() {
         
-        self.startY = 0;
+        self.startY = 1;
         
         //分析模板信息
         let model_str = self.pageData?.model_id
@@ -75,9 +75,12 @@ extension RootVC {//扩展
         
         // 下边约束
         bannerDemo.pageControlBottom = 15
+        
+        bannerDemo.tag = Int(startY.pointee)
+        
         self.mainView!.addSubview(bannerDemo)
         
-        startY.pointee = bannerDemo.bottom
+        startY.pointee = bannerDemo.bottom + 10
     }
     
     func genderOneImg(model_id: String,startY: UnsafeMutablePointer<CGFloat>){
@@ -94,9 +97,11 @@ extension RootVC {//扩展
             oneImg.setUrl(url: "http://omzvdb61q.bkt.clouddn.com/UIdashi_9484892")
         }
     
+        oneImg.tag = Int(startY.pointee)
+        
         self.mainView!.addSubview(oneImg);
         
-        startY.pointee = oneImg.bottom
+        startY.pointee = oneImg.bottom + 10
     }
     
     func genderSlifer(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
@@ -117,15 +122,43 @@ extension RootVC {//扩展
             sliderView.genderInit(contentData: sliderContent!, row:2, rank:4)
         }
         
+        sliderView.tag = Int(startY.pointee)
+        
         self.mainView?.addSubview(sliderView)
         
-        startY.pointee = sliderView.bottom
+        startY.pointee = sliderView.bottom + 10
     }
     func genderArticleList(model_id: String,startY: UnsafeMutablePointer<CGFloat>){
         
         let aritclalist = ArticleList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
         
-        aritclalist.genderView()
+        weak var selfweak = self
+        aritclalist.genderView {
+            selfweak?.reloadMainScroll()
+        }
         
+        aritclalist.tag = Int(startY.pointee)
+        
+        self.mainView?.addSubview(aritclalist)
+        
+        startY.pointee = aritclalist.bottom + 10
+    }
+    
+    
+    private func reloadMainScroll(){
+        
+        self.startY = 1;
+        
+        for sonView in (self.mainView?.subviews)! {
+            
+            if sonView.tag > 0 {
+                
+                sonView.top = self.startY!
+                self.startY = sonView.bottom  + 10
+            }
+
+        }
+        
+        self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
     }
 }

@@ -159,23 +159,23 @@
         // =======================================================================
         // 遮罩Mask
         // =======================================================================
-//        UIImage *maskImage = UIMaster_Image(@"LoadingCamelBGMask.png");
-//        CALayer *maskLayer = [CALayer layer];
-//        [maskLayer setFrame:CGRectMake(([imageBGView frame].size.width - kLoadBlockBGMaskWidth) / 2, ([imageBGView frame].size.height - kLoadBlockBGMaskHeight) / 2, kLoadBlockBGMaskWidth, kLoadBlockBGMaskHeight)];
-//        [maskLayer setContents:(id)[maskImage CGImage]];
-//        [[imageBGView layer] setMask:maskLayer];
+        UIImage *maskImage = [[UIImage alloc] init];
+        CALayer *maskLayer = [CALayer layer];
+        [maskLayer setFrame:CGRectMake(([imageBGView frame].size.width - kLoadBlockBGMaskWidth) / 2, ([imageBGView frame].size.height - kLoadBlockBGMaskHeight) / 2, kLoadBlockBGMaskWidth, kLoadBlockBGMaskHeight)];
+        [maskLayer setContents:(id)[maskImage CGImage]];
+        [[imageBGView layer] setMask:maskLayer];
         
         
         _imageViewLoad = [[UIImageView alloc] init];
         [_imageViewLoad setFrame:CGRectMake((parentFrame.size.width - kLoadBlockImageViewWidth) / 2,
                                             spaceYStart, kLoadBlockImageViewWidth, kLoadBlockImageViewHeight)];
-        [_imageViewLoad setAnimationDuration:0.7];
+        [_imageViewLoad setAnimationDuration:3];
         
         // 设置动画图片
         NSMutableArray *arrayImages = [[NSMutableArray alloc] init];
-        for (int i=1; i<=12; i++) {
-//            NSString *name = [NSString stringWithFormat:@"%zd.tiff",i];
-//            [arrayImages addObject:UIMaster_Image(name)];
+        for (int i=0; i<=15; i++) {
+            NSString *name = [NSString stringWithFormat:@"test_%zd.png",i];
+            [arrayImages addObject:[UIImage imageNamed:name]];
         }
         [_imageViewLoad setAnimationImages:arrayImages];
         

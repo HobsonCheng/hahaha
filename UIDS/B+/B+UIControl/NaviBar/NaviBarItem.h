@@ -47,6 +47,9 @@ typedef enum
 // 设置图片按钮
 - (void)setIconImage:(UIImage *)image forState:(NaviBarItemState)state;
 
+//网络图片
+- (void)setIconImageUrl:(NSString *)imageUrl forState:(NaviBarItemState)state;
+
 // 设置Item是否为Disabled
 - (void)setItemEnable:(BOOL)isEnable;
 

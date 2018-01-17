@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class OneImgMode: ConfigModel {
     var imgList: [PageInfo]?
@@ -30,6 +29,9 @@ class OneImg: UIView {
     }
     //MARK: 创建页面
     private func genderView(){
+        
+        self.backgroundColor = UIColor.white
+        
         self.imgView = UIImageView.init(frame: CGRect(x: 10,y: 10,width: self.width - 20,height: self.height - 20))
         self.addSubview(self.imgView!)
         self.imgView?.layer.cornerRadius = 8
@@ -38,7 +40,7 @@ class OneImg: UIView {
     
     public func setUrl(url: NSString){
         if url.hasPrefix("http") {
-            self.imgView?.kf.setImage(with: URL(string: url as String))
+            self.imgView?.sd_setImage(with: URL(string: url as String))
         }else{
             if let image = UIImage.init(named: url as String) {
                 self.imgView?.image = image;

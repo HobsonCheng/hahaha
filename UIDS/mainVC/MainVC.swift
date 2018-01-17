@@ -56,20 +56,45 @@ class MainVC: BaseNameVC {
             tabBar.itemCustomPositioning = .fillIncludeSeparator
         }
 
-//        let appInfo = AppInfoData.shared.appModel
+        //分析
+        let appinfo = AppInfoData.shared.appModel
+        let getConfig = DownData.findConfigData(name: "module_TabberView_Tabber_layout", model_id: nil, config_key: (appinfo?.config_key)!)
+        
+        let tabobj = TabberModel.deserialize(from: getConfig)
+        
+        
         let pageListinfo = PageListInfo.shared.pageListModel
 
+        var bigNum = 10000
+        if (tabobj?.bigShow)! {
+            if (pageListinfo?.count)!%2 != 0 {
+                bigNum = (((pageListinfo?.count)! + 1)/2)
+                bigNum -= 1
+            }
+        }
+        
         let tmpTabbers = NSMutableArray()
-
+        var count = 1
         for item in (pageListinfo?.enumerated())! {
 
             let tabber = RootVC()
             tabber?.pageData = item.element
-            tabber?.tabBarItem = ESTabBarItem.init(ExampleBouncesContentView(), title: item.element.name, image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
-            tmpTabbers.add(tabber!)
+            if (bigNum + 1) == count {
+                tabber?.tabBarItem = DImgTabber.init(contentView: ExampleIrregularityContentView(), title: nil, image: tabber?.pageData?.icon, selectedImage: tabber?.pageData?.icon_sel, tag: count)
+//
+//                tabber?.tabBarItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "photo_verybig"), selectedImage: UIImage(named: "photo_verybig"))
+                
+                tmpTabbers.add(tabber!)
+            }else{
+                tabber?.tabBarItem = DImgTabber.init(contentView: ExampleBouncesContentView(), title: tabber?.pageData?.name, image: tabber?.pageData?.icon, selectedImage: tabber?.pageData?.icon_sel, tag: count)
+                tmpTabbers.add(tabber!)
+            }
+            
+            count += 1
+            
+            
         }
 
-////        v3?.tabBarItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "photo_verybig"), selectedImage: UIImage(named: "photo_verybig"))
 
         
         tabBarController.viewControllers = tmpTabbers as? [UIViewController]

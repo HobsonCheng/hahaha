@@ -9,31 +9,33 @@
 #import "NaviBarItem.h"
 #import "NSString+DrawingAdapter.h"
 #import "UIColor+Utility.h"
+#import <SDWebImage/SDWebImage-umbrella.h>
+
 // 状态
 typedef enum
 {
-    eNaviBarItemTypeImage,		// 图片按钮
-    eNaviBarItemTypeText,		// 文本按钮
-    eNaviBarItemTypeBack,		// 返回按钮
-    eNaviBarItemTypeClose,		// 关闭按钮
-    eNaviBarItemTypeEmptyRight,	// 空右边按钮
+    eNaviBarItemTypeImage,        // 图片按钮
+    eNaviBarItemTypeText,        // 文本按钮
+    eNaviBarItemTypeBack,        // 返回按钮
+    eNaviBarItemTypeClose,        // 关闭按钮
+    eNaviBarItemTypeEmptyRight,    // 空右边按钮
 } NaviBarItemType;
 
 // ==================================================================
 // 布局参数
 // ==================================================================
 // 控件尺寸
-#define	kNaviBarItemHeight					44
-#define kNaviBarItemBackWidth				44
-#define kNaviBarItemCloseWidth				44
-#define kNaviBarItemEmptyLeftWidth			50
-#define kNaviBarItemEmptyRightWidth			50
+#define    kNaviBarItemHeight                    44
+#define kNaviBarItemBackWidth                44
+#define kNaviBarItemCloseWidth                44
+#define kNaviBarItemEmptyLeftWidth            50
+#define kNaviBarItemEmptyRightWidth            50
 
 // 控件间距
-#define	kNaviBarItemHMargin					6
+#define    kNaviBarItemHMargin                    6
 
 // 控件字体
-#define	kNaviBarItemFont					(16)
+#define    kNaviBarItemFont                    (16)
 // 控件颜色
 #define kNaviBarTextButtonNormalColor       [UIColor colorWithHex:(0xffffff) alpha:1.0]
 #define kNaviBarTextButtonPressColor        [UIColor colorWithHex:(0xffffff) alpha:0.5]
@@ -41,8 +43,8 @@ typedef enum
 
 @interface NaviBarItem ()
 
-@property (nonatomic, strong) UIButton *button;			// 按钮
-@property (nonatomic, assign) NaviBarItemType type;		// 类型
+@property (nonatomic, strong) UIButton *button;            // 按钮
+@property (nonatomic, assign) NaviBarItemType type;        // 类型
 
 @end
 
@@ -155,9 +157,9 @@ typedef enum
                             action:action]) != nil)
     {
         // 设置Button的背景图片
-//        [_button setBackgroundImage:UIMaster_Image(@"goBackIcon.png") forState:UIControlStateNormal];
-//        [_button setBackgroundImage:UIMaster_Image(@"goBackIcon.png") forState:UIControlStateHighlighted];
-//        [_button setBackgroundImage:UIMaster_Image(@"goBackIcon.png") forState:UIControlStateDisabled];
+        [_button setBackgroundImage:[UIImage imageNamed:@"goBackIcon.png"] forState:UIControlStateNormal];
+        [_button setBackgroundImage:[UIImage imageNamed:@"goBackIcon.png"] forState:UIControlStateHighlighted];
+        [_button setBackgroundImage:[UIImage imageNamed:@"goBackIcon.png"] forState:UIControlStateDisabled];
         // 类型
         _type = eNaviBarItemTypeBack;
         
@@ -265,6 +267,26 @@ typedef enum
         }
     }
     
+    _button.imageView.contentMode = UIViewContentModeScaleAspectFit;
+}
+- (void)setIconImageUrl:(NSString *)imageUrl forState:(NaviBarItemState)state{
+    
+    if(_type == eNaviBarItemTypeImage)
+    {
+        if(state == eNaviBarItemStateNormal)
+        {
+            [_button sd_setImageWithURL:[NSURL URLWithString:imageUrl] forState:UIControlStateNormal];
+        }
+        else if(state == eNaviBarItemDisable)
+        {
+            [_button sd_setImageWithURL:[NSURL URLWithString:imageUrl] forState:UIControlStateDisabled];
+        }
+        else if(state == eNaviBarItemStateHighlighted)
+        {
+            [_button sd_setImageWithURL:[NSURL URLWithString:imageUrl] forState:UIControlStateHighlighted];
+        }
+    }
+
     _button.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
