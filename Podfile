@@ -31,7 +31,7 @@ target 'UIDS' do
   pod 'SVProgressHUD'
   pod 'PKRevealController'
   pod 'RETableViewManager'
-  pod 'FontAwesomeKit'
+  pod 'Font-Awesome-Swift'
   pod 'ESTabBarController-swift'
   pod 'MJRefresh'
   pod 'IQKeyboardManagerSwift'#键盘

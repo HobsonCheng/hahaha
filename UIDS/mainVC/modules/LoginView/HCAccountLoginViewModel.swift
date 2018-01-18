@@ -14,14 +14,16 @@ class HCAccountLoginViewModel {
 
     let accountUseable: Driver<HCAccountLoginResult>
     let passwordUseable: Driver<HCAccountLoginResult>
+    let codeUseable: Driver<Bool>
     let loginBtnEnable: Driver<Bool>
     let loginResult: Driver<HCAccountLoginResult>
-
-    init(input: (accountField: UITextField, passwordField: UITextField, loginBtn: UIButton), service: HCAccountLoginService)  {
+    
+    init(input: (accountField: UITextField, passwordField: UITextField, loginBtn: UIButton,codeField: UITextField), service: HCAccountLoginService)  {
         
         let accountDriver = input.accountField.rx.text.orEmpty.asDriver()
         let passwordDriver = input.passwordField.rx.text.orEmpty.asDriver()
         let loginTapDriver = input.loginBtn.rx.tap.asDriver()
+        let codeDriver = input.codeField.rx.text.orEmpty.asDriver()
         
         accountUseable = accountDriver.skip(1).flatMapLatest { account in
             return service.validationAccount(account).asDriver(onErrorJustReturn: .failed(message: "连接service失败"))
@@ -31,15 +33,19 @@ class HCAccountLoginViewModel {
             return service.validationPassword(password).asDriver(onErrorJustReturn: .failed(message: "连接service失败"))
         }
         
-        let accountAndPassword = Driver.combineLatest(accountDriver, passwordDriver) {
-            return ($0, $1)
+        codeUseable = codeDriver.skip(1).flatMapLatest { codeStr in
+            return service.chechText(codeStr: codeStr).asDriver(onErrorJustReturn: false)
         }
         
-        loginBtnEnable = accountAndPassword.flatMap { (account, password) in
-            return service.loginBtnEnable(account: account, password: password).asDriver(onErrorJustReturn: false)
+        let accountAndPassword = Driver.combineLatest(accountDriver, passwordDriver, codeDriver) {
+            return ($0, $1, $2)
         }
         
-        loginResult = loginTapDriver.withLatestFrom(accountAndPassword).flatMapLatest{ (account, password)  in
+        loginBtnEnable = accountAndPassword.flatMap { (account, password,codeStr) in
+            return service.loginBtnEnable(account: account, password: password,codeStr: codeStr).asDriver(onErrorJustReturn: false)
+        }
+        
+        loginResult = loginTapDriver.withLatestFrom(accountAndPassword).flatMapLatest{ (account, password,codeStr)  in
             return service.login(account: account, password: password).asDriver(onErrorJustReturn: .failed(message: "连接service失败"))
         }
     }

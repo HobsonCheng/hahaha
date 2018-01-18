@@ -47,11 +47,19 @@ class HCAccountLoginService {
     }
     
     // 登录按钮是否可用
-    func loginBtnEnable(account: String, password: String) -> Observable<Bool> {
+    func loginBtnEnable(account: String, password: String,codeStr: String) -> Observable<Bool> {
         
-        if InputValidator.isValidPhone(phoneNum: account) && InputValidator.isvalidationPassword(password: password) {
+        if InputValidator.isValidPhone(phoneNum: account) && InputValidator.isvalidationPassword(password: password) && !(codeStr.isEmpty){
             return Observable.just(true)
         } else {
+            return Observable.just(false)
+        }
+    }
+    //在验证吗是否填写
+    func chechText(codeStr: String) -> Observable<Bool> {
+        if !codeStr.isEmpty {
+            return Observable.just(true)
+        }else{
             return Observable.just(false)
         }
     }

@@ -11,7 +11,6 @@
 
 #import <ChameleonFramework/Chameleon.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-#import <FontAwesomeKit/FontAwesomeKit.h>
 #import <iRate/iRate.h>
 #import <MagicalRecord/MagicalRecord.h>
 #import <PKRevealController/PKRevealController.h>

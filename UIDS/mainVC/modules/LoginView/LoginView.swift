@@ -11,18 +11,6 @@ import UIKit
 import Then
 import TYPagerController
 
-//MARK: -常亮
-fileprivate struct Metric {
-    
-    static let leftTitle = "账号密码登录"
-    static let rightTitle = "快捷免密登录"
-    
-    static let pagerBarFontSize = UIFont.systemFont(ofSize: 15.0)
-    static let pagerBarHeight: CGFloat = 49.0
-    
-}
-
-
 class LoginView: NaviBarVC {
 
     var pageVC = TYTabPagerController().then {

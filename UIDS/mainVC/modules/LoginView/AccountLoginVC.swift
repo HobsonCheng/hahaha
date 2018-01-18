@@ -13,12 +13,6 @@ import RxSwift
 import RxGesture
 import NSObject_Rx
 
-// MARK:- 常量
-fileprivate struct Metric {
-    
-    static let fieldHeight: CGFloat = 45.0
-}
-
 class AccountLoginVC: BaseNameVC {
 
     override func viewDidLoad() {
@@ -61,7 +55,7 @@ extension AccountLoginVC: AccountLoginable {
         let otherLoginView = initOtherLoginView { event in print(event.title ?? "") }
         
         // 创建 视图模型
-        let accountLoginView = HCAccountLoginViewModel(input: (accountField, passwordField, loginBtn), service: HCAccountLoginService.shareInstance)
+        let accountLoginView = HCAccountLoginViewModel(input: (accountField, passwordField, loginBtn, imgCodeView), service: HCAccountLoginService.shareInstance)
 
         accountLoginView.accountUseable.drive(accountField.rx.validationResult).disposed(by: rx.disposeBag)
         accountLoginView.passwordUseable.drive(passwordField.rx.validationResult).disposed(by: rx.disposeBag)

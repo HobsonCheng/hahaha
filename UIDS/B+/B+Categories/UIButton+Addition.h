@@ -47,4 +47,9 @@
                      hightImagename:(NSString *)hightImagename
                         bgImagename:(NSString *)bgImagename 
                          touchBlock:(void(^)())block;
+
+
+
+//验证码
+- (void)startTime;
 @end

@@ -13,12 +13,6 @@ import RxSwift
 import RxGesture
 import NSObject_Rx
 
-// MARK:- 常量
-fileprivate struct Metric {
-    
-    static let fieldHeight: CGFloat = 45.0
-}
-
 class ThridLoginVC: BaseNameVC {
 
     override func viewDidLoad() {
@@ -54,7 +48,9 @@ extension ThridLoginVC: AccountLoginable{
         //创建页面信息
         // 创建 协议组件
         let accountField = initAccountField { }
-        let passwordField = initPasswordField { }
+        let imgCodeView = initImgCodeView() {}
+        let smsCodeField = initSMSCode { }
+        
         let (loginBtnView, loginBtn) = initLoginBtnView(showFP: false) { event in print(event.title ?? "") }
         
         
@@ -62,7 +58,8 @@ extension ThridLoginVC: AccountLoginable{
         // 添加
         view.addSubview(scrollView)
         scrollView.addSubview(accountField)
-        scrollView.addSubview(passwordField)
+        scrollView.addSubview(imgCodeView)
+        scrollView.addSubview(smsCodeField)
         scrollView.addSubview(loginBtnView)
         
         
@@ -83,17 +80,25 @@ extension ThridLoginVC: AccountLoginable{
             make.height.equalTo(Metric.fieldHeight)
         }
         
-        passwordField.snp.makeConstraints { (make) in
+        imgCodeView.snp.makeConstraints { (make) in
             make.left.equalTo(accountField.snp.left)
             make.right.equalTo(accountField.snp.right)
             make.top.equalTo(accountField.snp.bottom).offset(MetricGlobal.margin * 2)
             make.height.equalTo(Metric.fieldHeight)
         }
         
+        smsCodeField.snp.makeConstraints { (make) in
+            make.left.equalTo(imgCodeView.snp.left)
+            make.right.equalTo(imgCodeView.snp.right)
+            make.top.equalTo(imgCodeView.snp.bottom).offset(MetricGlobal.margin * 2)
+            make.height.equalTo(Metric.fieldHeight)
+        }
+        
+        
         loginBtnView.snp.makeConstraints { (make) in
             make.left.equalTo(accountField.snp.left)
             make.right.equalTo(accountField.snp.right)
-            make.top.equalTo(passwordField.snp.bottom).offset(MetricGlobal.margin * 2)
+            make.top.equalTo(smsCodeField.snp.bottom).offset(MetricGlobal.margin * 2)
         }
         
     }

@@ -91,13 +91,40 @@ final class Util: NSObject,iRateDelegate{
     
     
     //MARK: 获取验证码
-    static func getImgCode() -> String? {
+    static func getImgCode(callback: @escaping (_ Url: String?)->()) {
         
-        let codeUrl: String?
+        var codeUrl: String?
         
-        codeUrl = "ssss"
+        BRequestHandler.shared.get(APIString: "authCodeKey", parameters: nil) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                let codedata = CodeMode.deserialize(from: data)?.data
+                
+                let temp = Int(arc4random()%10000)+1
+                
+                codeUrl = String.init(format: "http://%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codedata?.code_key)!)
+                
+                callback(codeUrl)
+            }
+        }
+    }
+    
+    static func getSMSCode(callback: @escaping (_ code: String?) -> ()) {
         
-        return codeUrl
+        let params = NSMutableDictionary()
+        params.setValue("getPhoneEmailAuthCode", forKey: "ac")
+        params.setValue("uc", forKey: "sn")
+        params.setValue("login", forKey: "auth_type")
+        
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            if B_ResponseStatus.success == status {
+                callback("1111")
+            }else{
+                callback(nil)
+            }
+        }
+        
     }
     
 }
@@ -112,11 +139,11 @@ let kThemeOrangeRedColor = UIColor.init(hexString: "0xFF4500")  // 橙红色
 let kThemeSnowColor = UIColor.init(hexString: "0xFFFAFA")
 let kThemeLightGreyColor = UIColor.init(hexString: "0xD3D3D3")
 let kThemeGreyColor = UIColor.init(hexString: "0xA9A9A9")
-let kThemeTomatoColor = UIColor.init(hexString: "0xF7583B")
+let kThemeTomatoColor = UIColor.init(hexString: "0x5c92e0")
 let kThemeDimGrayColor = UIColor.init(hexString: "0x696969")
 let kThemeBlackColor = UIColor.init(hexString: "0x000000")
 let kThemeBackgroundColor = UIColor.init(hexString: "0xF4F4F4")
-
+let kThemeTitielColor = UIColor.init(hexString: "0x9E9E9E")
 
 
 // 屏幕宽度
