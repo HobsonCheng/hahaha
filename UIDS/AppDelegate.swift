@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        BQLAuthEngine.single.registerApp()
         IQKeyboardManager.sharedManager().enable = true
         
         
@@ -47,6 +48,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        if url.scheme == WECHAT_APPID {
+            return WXApi.handleOpen(url, delegate: BQLAuthEngine.single)
+        }
+        else if url.scheme == "tencent" + QQ_APPID {
+            return TencentOAuth.handleOpen(url)
+        }
+        else if url.scheme == "wb" + SINA_APPKEY {
+            return WeiboSDK.handleOpen(url, delegate: BQLAuthEngine.single)
+        }
+        return true
+    }
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        
+        if url.scheme == WECHAT_APPID {
+            return WXApi.handleOpen(url, delegate: BQLAuthEngine.single)
+        }
+        else if url.scheme == "tencent" + QQ_APPID {
+            return TencentOAuth.handleOpen(url)
+        }
+        else if url.scheme == "wb" + SINA_APPKEY {
+            return WeiboSDK.handleOpen(url, delegate: BQLAuthEngine.single)
+        }
+        return true
+    }
 
 }
 
