@@ -41,6 +41,8 @@ class LoginView: NaviBarVC {
         
         self.naviBar().setTitle("登录😑")
         
+        self.canRightPan = false
+        
         self.initEnableMudule()
         self.initPageController()
     }
