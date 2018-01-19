@@ -14,6 +14,10 @@ class MainVC: BaseNameVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTabber();
+        if UserUtil.isValid() {
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

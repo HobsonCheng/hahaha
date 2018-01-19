@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import RxGesture
+import NSObject_Rx
 
 class SliderContentMode: ConfigModel {
     
@@ -45,6 +49,7 @@ class Slider: UIView,UIScrollViewDelegate {
 
     var bgScroll: UIScrollView?
     var pageControl: UIPageControl?
+    var allList: NSArray?
     //MARK: 初始化页面信息
     public func genderInit(contentData: SliderContentMode,row: NSInteger,rank: NSInteger){
         
@@ -64,6 +69,9 @@ class Slider: UIView,UIScrollViewDelegate {
         pageControl?.pageIndicatorTintColor = UIColor.yellow
         pageControl?.currentPageIndicatorTintColor = UIColor.red
         self.addSubview(pageControl!)
+        
+        self.allList = contentData.List! as NSArray
+        
         //分组数据
         let onePageNum = row * rank - 1
         let tmpList = NSMutableArray()
@@ -111,7 +119,7 @@ class Slider: UIView,UIScrollViewDelegate {
                 speedView.frame = CGRect.init(x: startX + 20, y: startY+top + 20, width: W  - 40, height: H - 40)
                 speedView.backgroundColor = UIColor.clear
                 bgScroll?.addSubview(speedView)
-
+                
                 let titleLabel = UILabel.init()
                 titleLabel.text = String(describing: tmpSonItem.name!)
                 titleLabel.frame = CGRect.init(x: startX, y: Int(speedView.bottom + 10), width: W, height: 20)
@@ -120,6 +128,16 @@ class Slider: UIView,UIScrollViewDelegate {
                 titleLabel.textAlignment = NSTextAlignment.center
                 bgScroll?.addSubview(titleLabel)
 
+                
+                let touchBt = UIButton().then{
+                    $0.frame = CGRect.init(x: speedView.left, y: speedView.top, width: speedView.width, height: titleLabel.height+speedView.height + 10)
+                    $0.backgroundColor = UIColor.clear
+                    $0.addTarget(self, action: #selector(Slider.touchItem(bt:)), for: .touchUpInside)
+                    $0.tag = count+(index*onePageNum)
+                }
+                
+                bgScroll?.addSubview(touchBt)
+                
                 if !isGetHeight {
                     allHeight = Int(titleLabel.bottom)
                 }
@@ -154,5 +172,15 @@ class Slider: UIView,UIScrollViewDelegate {
         let page = (self.bgScroll?.contentOffset.x)!/self.width
         
         pageControl?.currentPage = Int(page)
+    }
+    
+    //MARK: - 点击启动器
+    func touchItem(bt: UIButton) {
+        
+        let itemobj: PageInfo = self.allList?.object(at: bt.tag) as! PageInfo
+    
+        OpenVC.share.goToPage(pageType: (itemobj.page_type)!, pageInfo: itemobj)
+        
+        
     }
 }

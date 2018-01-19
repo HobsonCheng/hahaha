@@ -44,6 +44,10 @@ class PageListInfo: NSObject {
 }
 
 
+class PageInfoModel: BaseModel {
+    var data: PageInfo?
+}
+
 class PageInfo: HandyJSON{
     
     var page_id: Int?
@@ -60,7 +64,7 @@ class PageInfo: HandyJSON{
     var css_key: String?
     var page_key: String?
     var model_id: String?
-    
+    var jump_url: String?
     required init() {}
 }
 

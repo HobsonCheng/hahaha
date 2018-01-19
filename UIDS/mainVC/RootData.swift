@@ -82,13 +82,15 @@ extension RootVC {
             
             let pageData = PageInfo.deserialize(from: item as? NSDictionary)
             
-            let left = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchLeft))
+            let left = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchLeft(button:)))
             left?.tag = index
             left?.setIconImageUrl(pageData?.icon, for: eNaviBarItemStateNormal)
             left?.setIconImageUrl(pageData?.icon_sel, for: eNaviBarItemStateHighlighted)
             
             leftlist.add(left!)
         }
+        
+        self.leftList = list
         
         self.naviBar().leftBarItems = leftlist as! [Any]
     }
@@ -101,7 +103,7 @@ extension RootVC {
             
             let pageData = PageInfo.deserialize(from: item as? NSDictionary)
             
-            let right = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchLeft))
+            let right = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchRight(button:)))
             right?.tag = index
             right?.setIconImageUrl(pageData?.icon, for: eNaviBarItemStateNormal)
             right?.setIconImageUrl(pageData?.icon_sel, for: eNaviBarItemStateHighlighted)
@@ -109,11 +111,26 @@ extension RootVC {
             rightlist.add(right!)
         }
         
+        self.rightList = list
+        
         self.naviBar().rightBarItems = rightlist as! [Any]
     }
     
     
-    @objc func touchLeft() {
+    @objc func touchLeft(button: UIButton) {
         
+        let item = self.leftList?.object(at: button.tag)
+        
+        let itemobj = PageInfo.deserialize(from: item as? NSDictionary)
+        
+        OpenVC.share.goToPage(pageType: (itemobj?.page_type)!, pageInfo: itemobj)
+    }
+    @objc func touchRight(button: UIButton) {
+        
+        let item = self.rightList?.object(at: button.tag)
+        
+        let itemobj = PageInfo.deserialize(from: item as? NSDictionary)
+        
+        OpenVC.share.goToPage(pageType: (itemobj?.page_type)!, pageInfo: itemobj)
     }
 }

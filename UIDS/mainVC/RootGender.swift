@@ -25,14 +25,22 @@ extension RootVC {//扩展
             switch tmpList[1] {
             case "OneImg" :
                 self.genderOneImg(model_id: tmpList[0], startY: &self.startY!)
+                break
             case "Slider" :
                 self.genderSlifer(model_id: tmpList[0], startY: &self.startY!)
+                break
             case "SwipImgArea" :
                 self.genderSwipImg(list: NSArray(), startY: &self.startY!)
+                break
             case "ArticleList" :
                 self.genderArticleList(model_id: tmpList[0], startY: &self.startY!)
+                break
             case "PersonalCenter" :
                 print("PersonalCenter")
+                break
+            case "MakeToCustomer" :
+                print("MakeToCustomer")
+                break
             default: break
                 
             }

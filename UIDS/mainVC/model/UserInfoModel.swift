@@ -9,7 +9,7 @@
 import UIKit
 
 class UserInfoModel: BaseModel {
-
+    var data: UserInfoData?
 }
 
 class UserInfoData: HandyJSON {
@@ -26,6 +26,15 @@ class UserInfoData: HandyJSON {
     var signature : String!
     var uid : Int!
 
+    var addTime : String!
+    var header : String!
+    var status : Int!
+    var updateTime : String!
+    var userCode : String!
+    var userCodeCode : Int!
+    var username : String!
+    var usernameCode : Int!
+    var zhName : String!
     
     required init() {}
 }

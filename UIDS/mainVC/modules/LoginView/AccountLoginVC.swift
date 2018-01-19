@@ -47,10 +47,14 @@ extension AccountLoginVC: AccountLoginable {
             $0.showsVerticalScrollIndicator = false
         }
         
+        
+        var getCodeKey: String?
         // 创建 协议组件
         let accountField = initAccountField { }
         let passwordField = initPasswordField { }
-        let imgCodeView = initImgCodeView() {}
+        let imgCodeView = initImgCodeView() { (codekey) in
+            getCodeKey = codekey
+        }
         let (loginBtnView, loginBtn) = initLoginBtnView(showFP: true) { event in print(event.title ?? "") }
         let otherLoginView = initOtherLoginView { event in print(event.title ?? "") }
         
@@ -66,16 +70,22 @@ extension AccountLoginVC: AccountLoginable {
             
         }).disposed(by: rx.disposeBag)
         accountLoginView.loginResult.drive(onNext: { (result) in
-            switch result {
-            case .ok:
-                print("\(result.description)")
-                break
-            case .empty:
-                break
-            case .failed:
-                print("\(result.description)")
-                break
-            }
+           
+            result.paramsObj.setValue(getCodeKey, forKey: "code_key")
+            ApiUtil.share.userLogin(params: result.paramsObj, fininsh: { (status, data, msg) in
+                
+                let topview = VCController.getTopVC()
+                topview?.view.dodo.success("登录成功")
+                
+                UserUtil.share.saveUser(userInfo: data)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    
+                    VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())
+                };
+
+            })
+            
         }).disposed(by: rx.disposeBag)
         
         // 添加

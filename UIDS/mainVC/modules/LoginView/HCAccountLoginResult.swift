@@ -9,11 +9,24 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftyJSON
 
 enum HCAccountLoginResult {
     case ok(message:String)
     case empty
     case failed(message:String)
+    case params(paramsObj: NSMutableDictionary)
+}
+
+extension HCAccountLoginResult {
+    var paramsObj: NSMutableDictionary {
+        switch self {
+        case let .params(paramsObj):
+            return paramsObj
+        default:
+            return NSMutableDictionary()
+        }
+    }
 }
 
 extension HCAccountLoginResult {
@@ -25,9 +38,13 @@ extension HCAccountLoginResult {
             return ""
         case let .failed(message):
             return message
+        case .params:
+            return ""
         }
+        
     }
 }
+
 
 extension HCAccountLoginResult {
     var borderColor: CGColor {
@@ -38,6 +55,8 @@ extension HCAccountLoginResult {
             return kThemeOrangeRedColor!.cgColor
         case .failed:
             return kThemeOrangeRedColor!.cgColor
+        case .params:
+            return kThemeGainsboroColor!.cgColor
         }
     }
 }

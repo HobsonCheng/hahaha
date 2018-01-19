@@ -51,7 +51,9 @@ target 'UIDS' do
   
   
   #授权
-  pod "WeiboSDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
+  pod 'Weibo_SDK', :git => 'https://github.com/sinaweibosdk/weibo_ios_sdk.git'
+  pod 'WechatOpenSDK'
+  
   
 end
 

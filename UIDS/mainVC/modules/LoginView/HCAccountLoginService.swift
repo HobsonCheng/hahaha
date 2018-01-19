@@ -37,10 +37,15 @@ class HCAccountLoginService {
     }
         
     // 登录请求
-    func login(account: String, password: String) -> Observable<HCAccountLoginResult> {
+    func login(account: String, password: String,codeStr: String) -> Observable<HCAccountLoginResult> {
         
-        if account.count > 10 {
-            return Observable.just(HCAccountLoginResult.ok(message: "登录成功"))
+        if account.count > 0 {
+            let obj = NSMutableDictionary()
+            obj.setValue(account, forKey: "username")
+            obj.setValue(password, forKey: "password")
+            obj.setValue(codeStr, forKey: "auth_code")
+        
+            return Observable.just(HCAccountLoginResult.params(paramsObj: obj))
         } else {
             return Observable.just(HCAccountLoginResult.failed(message: "密码错误"))
         }

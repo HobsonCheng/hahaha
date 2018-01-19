@@ -19,7 +19,7 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
     
     
     // MARK:- 注册按钮
-    func initRegBtnView(onNext: @escaping (_ event: AccountLoginEvent)->Void) -> (UIView, UIButton) {
+    func initRegBtnView(onNext: @escaping (_ event: Bool)->Void) -> (UIView, UIButton) {
         
         // 创建
         let btnView = UIView().then {
@@ -34,7 +34,7 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
             $0.setTitleColor(kThemeWhiteColor, for: .normal)
             $0.setTitle(Metric.regBtnTitle, for: .normal)
             $0.rx.tap.do(onNext: {
-                onNext(AccountLoginEvent.init(type: .login, title: "注册"))
+                onNext(true)
             }).subscribe().disposed(by: rx.disposeBag)
         }
         
@@ -66,21 +66,24 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
             $0.leftViewMode = .always
             $0.leftView = self.OtherLeftView(type: type, titleStr: titleStr)
             $0.placeholder = String.init(format: "请输入%@", titleStr!)
+            if type == 2 {//密码
+                $0.isSecureTextEntry = true
+            }
         }
         
 //        // 输入内容 校验
-//        let fieldObservable = field.rx.text.skip(1).throttle(0.75, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
-//            guard let input  = input else { return false }
-//            print("\(input)")
-//            return InputValidator.isValidEmail(email: input)
-//        }
-//
-//        fieldObservable.map { (valid: Bool) -> UIColor in
-//            let color = valid ? kThemeGainsboroColor : kThemeOrangeRedColor
-//            return color!
-//            }.subscribe(onNext: { (color) in
-//                field.layer.borderColor = color.cgColor
-//            }).disposed(by: rx.disposeBag)
+        let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
+            guard let input  = input else { return false }
+            print("\(input)")
+            return !input.isEmpty
+        }
+
+        fieldObservable.map { (valid: Bool) -> UIColor in
+            let color = valid ? kThemeGainsboroColor : kThemeOrangeRedColor
+            return color!
+            }.subscribe(onNext: { (color) in
+                field.layer.borderColor = color.cgColor
+            }).disposed(by: rx.disposeBag)
         
         return field
     }

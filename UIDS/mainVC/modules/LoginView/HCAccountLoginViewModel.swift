@@ -46,7 +46,7 @@ class HCAccountLoginViewModel {
         }
         
         loginResult = loginTapDriver.withLatestFrom(accountAndPassword).flatMapLatest{ (account, password,codeStr)  in
-            return service.login(account: account, password: password).asDriver(onErrorJustReturn: .failed(message: "连接service失败"))
+            return service.login(account: account, password: password, codeStr: codeStr).asDriver(onErrorJustReturn: .failed(message: "连接service失败"))
         }
     }
 }

@@ -26,6 +26,7 @@ class RegVC: NaviBarVC {
             self?.view.endEditing(true)
         }).subscribe().disposed(by: rx.disposeBag)
         //
+        
         initEnableMudule()
     }
 
@@ -54,33 +55,22 @@ extension RegVC: AccountLoginable {
         let passwordField = initOtherField(type: 2, titleStr: "密码") { }
         let passwordField_2 = initOtherField(type: 2, titleStr: "确认密码") {}
         let nicknameField = initOtherField(type: 3, titleStr: "昵称") {}
-        let imgCodeView = initImgCodeView() {}
-        let (loginBtnView, loginBtn) = initRegBtnView() { event in print(event.title ?? "") }
-        let otherLoginView = initOtherLoginView { event in print(event.title ?? "") }
-        
-        // 创建 视图模型
-        let accountLoginView = HCAccountLoginViewModel(input: (accountField, passwordField, loginBtn, imgCodeView), service: HCAccountLoginService.shareInstance)
-        
-        accountLoginView.accountUseable.drive(accountField.rx.validationResult).disposed(by: rx.disposeBag)
-        accountLoginView.passwordUseable.drive(passwordField.rx.validationResult).disposed(by: rx.disposeBag)
-        
-        accountLoginView.loginBtnEnable.drive(onNext: { (beel) in
+        let (regBtnView, regBT) = initRegBtnView { event in print(event ) }
+        weak var tmpimgCodeView: UITextField?
+        tmpimgCodeView = UITextField()
+        let imgCodeView = initImgCodeView { [weak self] (codekey) in
+            let regServise = RegVCService(input: (accountField, passwordField, passwordField_2, nicknameField, tmpimgCodeView!, regBT), codekey: codekey!)
             
-            loginBtn.isEnabled = beel
-            
-        }).disposed(by: rx.disposeBag)
-        accountLoginView.loginResult.drive(onNext: { (result) in
-            switch result {
-            case .ok:
-                print("\(result.description)")
-                break
-            case .empty:
-                break
-            case .failed:
-                print("\(result.description)")
-                break
-            }
-        }).disposed(by: rx.disposeBag)
+            regServise.loginBtnEnable.drive(onNext: { (beel) in
+                
+                regBT.isEnabled = beel
+                
+            }).disposed(by: (self?.rx.disposeBag)!)
+            regServise.loginResult.drive().disposed(by: (self?.rx.disposeBag)!)
+    
+        }
+        
+        tmpimgCodeView = imgCodeView
         
         // 添加
         view.addSubview(scrollView)
@@ -88,9 +78,9 @@ extension RegVC: AccountLoginable {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(passwordField_2)
         scrollView.addSubview(nicknameField)
-        scrollView.addSubview(loginBtnView)
-        scrollView.addSubview(otherLoginView)
         scrollView.addSubview(imgCodeView)
+        scrollView.addSubview(regBtnView)
+        
         // 布局
         scrollView.snp.makeConstraints { [weak self] (make) in
             make.left.bottom.equalToSuperview()
@@ -139,23 +129,13 @@ extension RegVC: AccountLoginable {
             
         }
         
-        loginBtnView.snp.makeConstraints { (make) in
+        regBtnView.snp.makeConstraints { (make) in
             make.left.equalTo(imgCodeView.snp.left)
             make.right.equalTo(imgCodeView.snp.right)
             make.top.equalTo(imgCodeView.snp.bottom).offset(MetricGlobal.margin * 2)
+            make.height.equalTo(Metric.fieldHeight)
         }
-        
-        otherLoginView.snp.makeConstraints { (make) in
-            
-            if kScreenW <= 320 {
-                make.left.equalTo(accountField.snp.left).offset(-MetricGlobal.margin * 1)
-            } else {
-                make.left.equalTo(accountField.snp.left).offset(-MetricGlobal.margin * 2)
-            }
-            make.centerX.equalToSuperview()
-            make.top.equalTo(loginBtnView.snp.bottom)
-            make.bottom.equalToSuperview()
-        }
+    
     }
     
     

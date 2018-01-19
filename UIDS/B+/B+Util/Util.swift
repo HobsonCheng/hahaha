@@ -20,6 +20,7 @@ final class Util: NSObject,iRateDelegate{
     
     var mainVC: UIViewController?
     
+    
     static var shared: Util {
         return singleUtil
     }
@@ -91,7 +92,7 @@ final class Util: NSObject,iRateDelegate{
     
     
     //MARK: 获取验证码
-    static func getImgCode(callback: @escaping (_ Url: String?)->()) {
+    static func getImgCode(callback: @escaping (_ Url: String?,_ codekey: String?)->()) {
         
         var codeUrl: String?
         
@@ -104,17 +105,28 @@ final class Util: NSObject,iRateDelegate{
                 
                 codeUrl = String.init(format: "http://%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codedata?.code_key)!)
                 
-                callback(codeUrl)
+                callback(codeUrl,codedata?.code_key)
             }
         }
     }
+    static func getCodeUrl(codeKey: String) -> String {
+        let temp = Int(arc4random()%10000)+1
+        
+        let codeUrl = String.init(format: "http://%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codeKey))
+        
+        return codeUrl
+    }
     
-    static func getSMSCode(callback: @escaping (_ code: String?) -> ()) {
+    static func getSMSCode(phone: String,codekey: String,auth_code: String,callback: @escaping (_ code: String?) -> ()) {
         
         let params = NSMutableDictionary()
         params.setValue("getPhoneEmailAuthCode", forKey: "ac")
         params.setValue("uc", forKey: "sn")
-        params.setValue("login", forKey: "auth_type")
+        params.setValue("phone_login", forKey: "auth_type")
+        params.setValue(codekey, forKey: "code_key")
+        params.setValue(phone, forKey: "phone_Email_num")
+        params.setValue(auth_code, forKey: "auth_code")
+        
         
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
@@ -124,6 +136,25 @@ final class Util: NSObject,iRateDelegate{
                 callback(nil)
             }
         }
+        
+    }
+    
+    //MARK: TOASD 1: 普通 2：成功 3： 失败
+    static func msg(msg: String,_ type: Int) {
+        
+        let view = VCController.getTopVC()
+        if type == 2 {
+            view?.view.dodo.success(msg)
+        }else if type == 3 {
+            view?.view.dodo.error(msg)
+        }else{
+            view?.view.dodo.show(msg)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            view?.view.dodo.hide()
+        };
         
     }
     

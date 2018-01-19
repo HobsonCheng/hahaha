@@ -79,14 +79,21 @@ extension AccountLoginable where Self : BaseNameVC{
         let otherLoginView = HCOtherLoginModeView.loadFromNib()
         
         otherLoginView.weixinBtn.rx.tap.do(onNext: {
+            
+            Util.msg(msg: "通用版APP是无法第三方授权登录", 1)
+            
             onNext(AccountLoginEvent.init(type: .weixin, title: "微信登陆"))
         }).subscribe().disposed(by: rx.disposeBag)
 
         otherLoginView.weiboBtn.rx.tap.do(onNext: {
+            
+            Util.msg(msg: "通用版APP是无法第三方授权登录", 1)
+            
             onNext(AccountLoginEvent.init(type: .weibo, title: "微博登陆"))
         }).subscribe().disposed(by: rx.disposeBag)
 
         otherLoginView.qqBtn.rx.tap.do(onNext: {
+            Util.msg(msg: "通用版APP是无法第三方授权登录", 1)
             onNext(AccountLoginEvent.init(type: .qq, title: "QQ登陆"))
         }).subscribe().disposed(by: rx.disposeBag)
         
@@ -168,10 +175,10 @@ extension AccountLoginable where Self : BaseNameVC{
         }
         
         // 输入内容 校验
-        let fieldObservable = field.rx.text.skip(1).throttle(0.75, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
+        let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
-            return InputValidator.isValidEmail(email: input)
+            return input.count == 11
         }
         
         fieldObservable.map { (valid: Bool) -> UIColor in
@@ -200,7 +207,7 @@ extension AccountLoginable where Self : BaseNameVC{
         }
         
         // 输入内容 校验
-        let fieldObservable = field.rx.text.skip(1).throttle(0.75, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
+        let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
             return InputValidator.isvalidationPassword(password: input)
@@ -272,7 +279,7 @@ extension AccountLoginable where Self : BaseNameVC{
     }
     
     //MARK: - 图片验证码入口
-    func initImgCodeView(onNext: @escaping ()->Void) -> UITextField {
+    func initImgCodeView(onNext: @escaping (_ codekey: String?)->Void) -> UITextField {
         
         let field = UITextField().then {
             $0.layer.masksToBounds = true
@@ -283,12 +290,14 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.leftViewMode = .always
             $0.leftView = self.ImgCodeViewLeft()
             $0.rightViewMode = .always
-            $0.rightView = self.ImgCodeViewRight()
+            $0.rightView = self.ImgCodeViewRight(callback: { (codekey) in
+                onNext(codekey)
+            })
             $0.placeholder = Metric.imgCodePlaceholder
         }
         
         // 输入内容 校验
-        let fieldObservable = field.rx.text.skip(1).throttle(0.75, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
+        let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
             return !(input.isEmpty)
@@ -300,9 +309,7 @@ extension AccountLoginable where Self : BaseNameVC{
             }.subscribe(onNext: { (color) in
                 field.layer.borderColor = color.cgColor
             }).disposed(by: rx.disposeBag)
-        
-
-        
+    
         return field
     }
     
@@ -333,27 +340,35 @@ extension AccountLoginable where Self : BaseNameVC{
         
     }
     
-    private func ImgCodeViewRight() -> UIView {
+    private func ImgCodeViewRight(callback: @escaping (_ codekey: String?) -> ()) -> UIView {
         
         
         let rightView = UIView().then {
             $0.frame = CGRect(x: 0, y: 0, width: 130, height: 44)
         }
         
-        
-        
         let tipBtn = UIButton().then {
             $0.contentMode = .scaleAspectFit
         }
         
-        Util.getImgCode { (codeUrl) in
+        var mycodeKey: String?
+        
+        Util.getImgCode { (codeUrl,codekey) in
+            mycodeKey = codekey
             tipBtn.sd_setImage(with: URL.init(string: codeUrl!), for: UIControlState.normal, completed: nil)
+            callback(codekey)
         }
         
         tipBtn.rx.tap.do(onNext: {
-            Util.getImgCode { (codeUrl) in
-                tipBtn.sd_setImage(with: URL.init(string: codeUrl!), for: UIControlState.normal, completed: nil)
+            if((mycodeKey) != nil){
+                tipBtn.sd_setImage(with: URL.init(string: Util.getCodeUrl(codeKey: mycodeKey!)), for: UIControlState.normal, completed: nil)
+            }else{
+                Util.getImgCode { (codeUrl,codekey) in
+                    tipBtn.sd_setImage(with: URL.init(string: codeUrl!), for: UIControlState.normal, completed: nil)
+                    callback(codekey)
+                }
             }
+            
         }).subscribe().disposed(by: rx.disposeBag)
         
         // 添加
@@ -374,27 +389,28 @@ extension AccountLoginable where Self : BaseNameVC{
     
     //MARK: - 手机短信验证码入口
     
-    func initSMSCode(onNext: @escaping ()->Void) -> UITextField{
+    func initSMSCode(onNext: @escaping ()->Void) -> (UITextField,UIButton){
+        
+        let (rightview, button) = self.SMSCodeRight()
         
         let field = UITextField().then {
             $0.layer.masksToBounds = true
             $0.layer.borderColor = kThemeGainsboroColor?.cgColor
             $0.layer.borderWidth = Metric.borderWidth
             $0.layer.cornerRadius = Metric.cornerRadius
-            $0.isSecureTextEntry = true
             $0.borderStyle = .none
             $0.leftViewMode = .always
             $0.leftView = self.SMSCodeLeft()
             $0.rightViewMode = .always
-            $0.rightView = self.SMSCodeRight()
+            $0.rightView = rightview
             $0.placeholder = Metric.passswordPlaceholder
         }
         
         // 输入内容 校验
-        let fieldObservable = field.rx.text.skip(1).throttle(0.75, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
+        let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
-            return InputValidator.isvalidationPassword(password: input)
+            return !input.isEmpty
         }
         
         fieldObservable.map { (valid: Bool) -> UIColor in
@@ -404,7 +420,7 @@ extension AccountLoginable where Self : BaseNameVC{
                 field.layer.borderColor = color.cgColor
             }).disposed(by: rx.disposeBag)
         
-        return field
+        return (field,button)
     }
     private func SMSCodeLeft() -> UIView {
         
@@ -434,7 +450,7 @@ extension AccountLoginable where Self : BaseNameVC{
         
     }
     
-    private func SMSCodeRight() -> UIView {
+    private func SMSCodeRight() -> (UIView, UIButton) {
         
         let rightView = UIView().then {
             $0.frame = CGRect(x: 0, y: 0, width: 130, height: 44)
@@ -449,11 +465,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.setTitle("获取验证码", for: UIControlState.normal)
             $0.setTitleColor(UIColor.white, for: UIControlState.normal)
         }
-    
-        tipBtn.rx.tap.do(onNext: { [weak self] _ in
-            self?.getCode(button: tipBtn)
-        }).subscribe().disposed(by: rx.disposeBag)
-        
+
         // 添加
         rightView.addSubview(tipBtn)
         
@@ -465,22 +477,22 @@ extension AccountLoginable where Self : BaseNameVC{
         }
         
         
-        return rightView
+        return (rightView,tipBtn)
     }
     
     private func getCode(button: UIButton) {
         
         button.isUserInteractionEnabled = false
 
-        Util.getSMSCode { (code) in
-            
-            if code != nil {
-                button.startTime()
-            }else{
-                button.isUserInteractionEnabled = true
-                button.setTitle("获取失败请重试", for: UIControlState.normal)
-            }
-        }
+//        Util.getSMSCode { (code) in
+//
+//            if code != nil {
+//                button.startTime()
+//            }else{
+//                button.isUserInteractionEnabled = true
+//                button.setTitle("获取失败请重试", for: UIControlState.normal)
+//            }
+//        }
     }
 
 }

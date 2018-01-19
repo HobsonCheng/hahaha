@@ -310,7 +310,7 @@ final class BQLAuthEngine: NSObject ,WBHttpRequestDelegate,TencentSessionDelegat
         self.successBlock = success;
         self.failureBlock = failure;
         let req = SendAuthReq.init()
-        req.scope = "snsapi_userinfo"
+        req.scope = "snsapi_userinfo"//001oSrW00gLqZE1U4sZ0078NW00oSrWl 071WC6qR05dnk92BBvqR0qfYpR0WC6qc
         req.state = "dsfjdfwfhwjfhwihfiuewhfwefhweiu"
         WXApi.send(req)
     }

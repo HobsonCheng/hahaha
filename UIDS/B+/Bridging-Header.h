@@ -56,8 +56,8 @@
 #import "EAIntroView.h"
 
 //第三方库
-#import "WXApi.h"
-#import "WeiboSDK.h"
+#import <WechatOpenSDK/WXApi.h>
+#import <Weibo_SDK/WeiboSDK.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 

@@ -103,6 +103,14 @@
 		E1E31B97201045B400776701 /* CodeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E31B96201045B400776701 /* CodeMode.swift */; };
 		E1E31B9920107E1500776701 /* uidashi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1E31B9820107E1400776701 /* uidashi.ttf */; };
 		E1E31B9B20109F0800776701 /* RegVCAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E31B9A20109F0800776701 /* RegVCAble.swift */; };
+		E1EA270C2011B6C900F31796 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EA270B2011B6C900F31796 /* UserUtil.swift */; };
+		E1EA27112011C5FB00F31796 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EA270E2011C5FB00F31796 /* String+MD5.swift */; };
+		E1EA27122011C5FB00F31796 /* ZZDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EA270F2011C5FB00F31796 /* ZZDiskCache.swift */; };
+		E1EA27132011C5FB00F31796 /* ZZDiskCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EA27102011C5FB00F31796 /* ZZDiskCacheHelper.swift */; };
+		E1EA27172011F4D800F31796 /* PhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EA27162011F4D800F31796 /* PhoneService.swift */; };
+		E1EA2719201200AA00F31796 /* OpenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EA2718201200A900F31796 /* OpenVC.swift */; };
+		E1EABAC220118F1F00CBE71A /* RegVCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EABAC120118F1F00CBE71A /* RegVCService.swift */; };
+		E1EABAC420119E4E00CBE71A /* ApiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EABAC320119E4E00CBE71A /* ApiUtil.swift */; };
 		E1EDAB5E200319A5004DD7B9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB5D200319A5004DD7B9 /* Util.swift */; };
 		E1EDAB7120033D26004DD7B9 /* LoadBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB6220033D24004DD7B9 /* LoadBlockView.m */; };
 		E1EDAB7220033D26004DD7B9 /* NaviBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EDAB6420033D24004DD7B9 /* NaviBarVC.m */; };
@@ -127,8 +135,6 @@
 		E56C909C2010F8F7002339C6 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908B2010F8F7002339C6 /* weibo.png */; };
 		E56C909D2010F8F7002339C6 /* wechatf.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908C2010F8F7002339C6 /* wechatf.png */; };
 		E56C909E2010F8F7002339C6 /* qqf.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908D2010F8F7002339C6 /* qqf.png */; };
-		E56C909F2010F8F7002339C6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = E56C90922010F8F7002339C6 /* README.txt */; };
-		E56C90A02010F8F7002339C6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E56C90942010F8F7002339C6 /* libWeChatSDK.a */; };
 		E56C90A12010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E56C90962010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		E56C90A22010F8F7002339C6 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56C90972010F8F7002339C6 /* TencentOpenAPI.framework */; };
 		E56C90A32010F8F7002339C6 /* BQLAuthEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90982010F8F7002339C6 /* BQLAuthEngine.swift */; };
@@ -256,6 +262,14 @@
 		E1E31B96201045B400776701 /* CodeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeMode.swift; sourceTree = "<group>"; };
 		E1E31B9820107E1400776701 /* uidashi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = uidashi.ttf; sourceTree = "<group>"; };
 		E1E31B9A20109F0800776701 /* RegVCAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegVCAble.swift; sourceTree = "<group>"; };
+		E1EA270B2011B6C900F31796 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
+		E1EA270E2011C5FB00F31796 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		E1EA270F2011C5FB00F31796 /* ZZDiskCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZDiskCache.swift; sourceTree = "<group>"; };
+		E1EA27102011C5FB00F31796 /* ZZDiskCacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZDiskCacheHelper.swift; sourceTree = "<group>"; };
+		E1EA27162011F4D800F31796 /* PhoneService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneService.swift; sourceTree = "<group>"; };
+		E1EA2718201200A900F31796 /* OpenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenVC.swift; sourceTree = "<group>"; };
+		E1EABAC120118F1F00CBE71A /* RegVCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegVCService.swift; sourceTree = "<group>"; };
+		E1EABAC320119E4E00CBE71A /* ApiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUtil.swift; sourceTree = "<group>"; };
 		E1EDAB5A2003150D004DD7B9 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E1EDAB5D200319A5004DD7B9 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		E1EDAB5F20033D23004DD7B9 /* LoadBlockPtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadBlockPtc.h; sourceTree = "<group>"; };
@@ -292,11 +306,6 @@
 		E56C908B2010F8F7002339C6 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
 		E56C908C2010F8F7002339C6 /* wechatf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechatf.png; sourceTree = "<group>"; };
 		E56C908D2010F8F7002339C6 /* qqf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qqf.png; sourceTree = "<group>"; };
-		E56C90902010F8F7002339C6 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		E56C90912010F8F7002339C6 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		E56C90922010F8F7002339C6 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		E56C90932010F8F7002339C6 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		E56C90942010F8F7002339C6 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		E56C90962010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		E56C90972010F8F7002339C6 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		E56C90982010F8F7002339C6 /* BQLAuthEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BQLAuthEngine.swift; sourceTree = "<group>"; };
@@ -339,7 +348,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E56C90A02010F8F7002339C6 /* libWeChatSDK.a in Frameworks */,
 				E56C90A22010F8F7002339C6 /* TencentOpenAPI.framework in Frameworks */,
 				F5BE3CBAD0F39EF485E36BCE /* Pods_UIDS.framework in Frameworks */,
 			);
@@ -577,6 +585,16 @@
 			path = "B+Net";
 			sourceTree = "<group>";
 		};
+		E1EA270D2011C5FB00F31796 /* DiskCache */ = {
+			isa = PBXGroup;
+			children = (
+				E1EA270E2011C5FB00F31796 /* String+MD5.swift */,
+				E1EA270F2011C5FB00F31796 /* ZZDiskCache.swift */,
+				E1EA27102011C5FB00F31796 /* ZZDiskCacheHelper.swift */,
+			);
+			path = DiskCache;
+			sourceTree = "<group>";
+		};
 		E1EDAB4D1FFF86A1004DD7B9 /* mainVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +639,7 @@
 		E1EDAB5C20031980004DD7B9 /* B+Util */ = {
 			isa = PBXGroup;
 			children = (
+				E1EA270D2011C5FB00F31796 /* DiskCache */,
 				E56C90862010F8F7002339C6 /* BQLAuthEngine_Swift */,
 				E1C031C5200704CA00B1A377 /* LaunchGuide */,
 				E594E07E2003AEE200BDF511 /* AppInfo.h */,
@@ -630,6 +649,9 @@
 				E1C0319D2005C09D00B1A377 /* ExampleBouncesContentView.swift */,
 				E1C031A22005CF5100B1A377 /* ExampleIrregularityBasicContentView.swift */,
 				E1E31B8E200F4EC700776701 /* InputValidator.swift */,
+				E1EABAC320119E4E00CBE71A /* ApiUtil.swift */,
+				E1EA270B2011B6C900F31796 /* UserUtil.swift */,
+				E1EA2718201200A900F31796 /* OpenVC.swift */,
 			);
 			path = "B+Util";
 			sourceTree = "<group>";
@@ -663,6 +685,7 @@
 			children = (
 				E1E31B8C200F463A00776701 /* RegVC.swift */,
 				E1E31B9A20109F0800776701 /* RegVCAble.swift */,
+				E1EABAC120118F1F00CBE71A /* RegVCService.swift */,
 			);
 			path = reg;
 			sourceTree = "<group>";
@@ -673,6 +696,7 @@
 				E1F5E26C200F0B4600FD18FD /* LoginView.swift */,
 				E1F5E272200F2D7500FD18FD /* LoginInit.swift */,
 				E1F5E276200F343200FD18FD /* ThridLoginVC.swift */,
+				E1EA27162011F4D800F31796 /* PhoneService.swift */,
 				E1F5E274200F340500FD18FD /* AccountLoginVC.swift */,
 				E1F5E278200F356000FD18FD /* AccountLoginable.swift */,
 				E1E31B87200F439A00776701 /* HCOtherLoginModeView.swift */,
@@ -710,22 +734,9 @@
 		E56C908E2010F8F7002339C6 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				E56C908F2010F8F7002339C6 /* Wechat */,
 				E56C90952010F8F7002339C6 /* QQ */,
 			);
 			path = SDK;
-			sourceTree = "<group>";
-		};
-		E56C908F2010F8F7002339C6 /* Wechat */ = {
-			isa = PBXGroup;
-			children = (
-				E56C90902010F8F7002339C6 /* WXApi.h */,
-				E56C90912010F8F7002339C6 /* WXApiObject.h */,
-				E56C90922010F8F7002339C6 /* README.txt */,
-				E56C90932010F8F7002339C6 /* WechatAuthSDK.h */,
-				E56C90942010F8F7002339C6 /* libWeChatSDK.a */,
-			);
-			path = Wechat;
 			sourceTree = "<group>";
 		};
 		E56C90952010F8F7002339C6 /* QQ */ = {
@@ -858,6 +869,7 @@
 				TargetAttributes = {
 					E1A21DDB1FFF319300596BB7 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 73KJWP69HD;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -898,7 +910,6 @@
 				E1C031EE2007807600B1A377 /* test_1.png in Resources */,
 				E1C031DE20070B2700B1A377 /* bg4@2x.png in Resources */,
 				E1C031D620070B1600B1A377 /* title4@2x.png in Resources */,
-				E56C909F2010F8F7002339C6 /* README.txt in Resources */,
 				E1E31B7B200F3ADF00776701 /* registerAndLogin_password_textField@2x.png in Resources */,
 				E1C03204200780B600B1A377 /* test_12.png in Resources */,
 				E1E31B83200F3ADF00776701 /* registerAndLogin_code_textField@2x.png in Resources */,
@@ -975,9 +986,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UIDS/Pods-UIDS-resources.sh",
+				"${PODS_ROOT}/Weibo_SDK/libWeiboSDK/WeiboSDK.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1073,7 +1087,10 @@
 				E1C031A620061DF500B1A377 /* SwipImgAreaCell.swift in Sources */,
 				E1C0320D2008923500B1A377 /* MainScrollView.swift in Sources */,
 				E1EDAB7520033D26004DD7B9 /* VCController.m in Sources */,
+				E1EA2719201200AA00F31796 /* OpenVC.swift in Sources */,
 				E1EDAB7320033D26004DD7B9 /* VCAnimationClassic.m in Sources */,
+				E1EA27172011F4D800F31796 /* PhoneService.swift in Sources */,
+				E1EABAC220118F1F00CBE71A /* RegVCService.swift in Sources */,
 				E1F5E273200F2D7500FD18FD /* LoginInit.swift in Sources */,
 				E1E31B91200F522E00776701 /* HCAccountLoginViewModel.swift in Sources */,
 				E1E31B9B20109F0800776701 /* RegVCAble.swift in Sources */,
@@ -1089,6 +1106,7 @@
 				E1C031A820061E2800B1A377 /* SwipImgAreaView.swift in Sources */,
 				E594E07C2003ABB800BDF511 /* NSBundle+Module.m in Sources */,
 				E594E0772003ABB800BDF511 /* NSString+Utility.m in Sources */,
+				E1EA27122011C5FB00F31796 /* ZZDiskCache.swift in Sources */,
 				E594E0762003ABB800BDF511 /* NSString+URL.m in Sources */,
 				E1C031A32005CF5200B1A377 /* ExampleIrregularityBasicContentView.swift in Sources */,
 				E1C031AC20061E8500B1A377 /* SwipImgAreaPillPageControl.swift in Sources */,
@@ -1096,6 +1114,7 @@
 				E1C0319E2005C09D00B1A377 /* ExampleBouncesContentView.swift in Sources */,
 				E1C03235200CAFCA00B1A377 /* BRequestHandler.swift in Sources */,
 				E1EDAB7420033D26004DD7B9 /* BaseNameVC.m in Sources */,
+				E1EA27132011C5FB00F31796 /* ZZDiskCacheHelper.swift in Sources */,
 				E56C90992010F8F7002339C6 /* BQLShareModel.swift in Sources */,
 				E1F5E275200F340500FD18FD /* AccountLoginVC.swift in Sources */,
 				E594E0732003ABB800BDF511 /* UIButton+Addition.m in Sources */,
@@ -1113,14 +1132,17 @@
 				E1EDAB7B2005B001004DD7B9 /* RootVC.swift in Sources */,
 				E594E0742003ABB800BDF511 /* NSString+DrawingAdapter.m in Sources */,
 				E1C031EA2007805500B1A377 /* Slider.swift in Sources */,
+				E1EA27112011C5FB00F31796 /* String+MD5.swift in Sources */,
 				E1C0322C200C429B00B1A377 /* DownData.swift in Sources */,
 				E1C0323D200DF66700B1A377 /* TabberModel.swift in Sources */,
 				E594E0792003ABB800BDF511 /* NSMutableDictionary+Utility.m in Sources */,
+				E1EABAC420119E4E00CBE71A /* ApiUtil.swift in Sources */,
 				E1F5E277200F343200FD18FD /* ThridLoginVC.swift in Sources */,
 				E1EDAB7220033D26004DD7B9 /* NaviBarVC.m in Sources */,
 				E1E31B89200F439A00776701 /* HCOtherLoginModeView.swift in Sources */,
 				E1C031AE20061EA000B1A377 /* SwipImgAreaSnakePageControl.swift in Sources */,
 				E594E05A2003ABA200BDF511 /* LightControl.m in Sources */,
+				E1EA270C2011B6C900F31796 /* UserUtil.swift in Sources */,
 				E1C03217200C367400B1A377 /* PersonalCenter.swift in Sources */,
 				E594E07B2003ABB800BDF511 /* NSDate+gyh.m in Sources */,
 				E1F5E271200F28D800FD18FD /* String+GetSize.swift in Sources */,
@@ -1269,6 +1291,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 73KJWP69HD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/QQ",
@@ -1298,6 +1321,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 73KJWP69HD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/QQ",

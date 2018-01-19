@@ -212,7 +212,7 @@ extension BRequestHandler {
 //                JFUserModel.logout()
                 finished(.notLogin, nil, "请重新登录(\(json["code"].intValue))")
             } else {
-                finished(.unusual, nil, json["message"].stringValue + "(\(json["code"].intValue))")
+                finished(.unusual, nil, json["msg"].stringValue + "(\(json["code"].intValue))")
             }
             
         case .failure(let error):
