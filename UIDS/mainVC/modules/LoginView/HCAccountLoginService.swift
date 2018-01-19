@@ -63,4 +63,50 @@ class HCAccountLoginService {
             return Observable.just(false)
         }
     }
+    
+    
+    /*
+     BQLAuthEngine.single.auth_qq_login(success: { (response) in
+     
+     print("success")
+     
+     }) { (error) in
+     
+     print("error" + error!)
+     }
+     
+     BQLAuthEngine.single.auth_wechat_login(success: { (response) in
+     
+     print("success")
+     
+     }) { (error) in
+     
+     print("error" + error!)
+     }
+     
+     
+     
+     BQLAuthEngine.single.auth_sina_login(success: { (response) in
+     
+     print(response!)
+     
+     }) { (error) in
+     
+     print("error" + error!)
+     }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     */
+    
+    
 }

@@ -55,6 +55,12 @@
 #import "EAIntroPage.h"
 #import "EAIntroView.h"
 
+//第三方库
+#import "WXApi.h"
+#import "WeiboSDK.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+
 
 //宏参数
 
