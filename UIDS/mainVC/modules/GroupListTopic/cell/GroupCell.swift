@@ -1,26 +1,23 @@
 //
-//  ArticleListCell.swift
+//  GroupCell.swift
 //  UIDS
 //
-//  Created by one2much on 2018/1/15.
+//  Created by bai on 2018/1/20.
 //  Copyright © 2018年 one2much. All rights reserved.
 //
 
 import UIKit
-import SnapKit
-import RxCocoa
-import RxSwift
-import NSObject_Rx
 
-class ArticleListCell: UITableViewCell {
+class GroupCell: UITableViewCell {
 
-    
-    var cellObj: AritcleItem?
+    var cellObj: GroupData?
     var cellButton: UIButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.backgroundColor = UIColor.white
+        
         self.addNewButton()
     }
 
@@ -32,10 +29,11 @@ class ArticleListCell: UITableViewCell {
     
     private func touchcell(){
         
-        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_news, actionType: "content")
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_news, actionType: "TopicList")
         getPage?.anyObj = self.cellObj
-        
-        OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
     }
     
     private func addNewButton() {
@@ -50,5 +48,4 @@ class ArticleListCell: UITableViewCell {
         
         self.addSubview(cellButton!)
     }
-    
 }

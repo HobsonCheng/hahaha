@@ -41,6 +41,9 @@ extension RootVC {//扩展
             case "MakeToCustomer" :
                 print("MakeToCustomer")
                 break
+            case "GroupListTopic" :
+                self.genderGroupListTopic(model_id: tmpList[0], startY: &self.startY!)
+                break
             default: break
                 
             }
@@ -140,9 +143,8 @@ extension RootVC {//扩展
         
         let aritclalist = ArticleList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
         
-        weak var selfweak = self
-        aritclalist.genderView {
-            selfweak?.reloadMainScroll()
+        aritclalist.genderView { [weak self] in
+            self?.reloadMainScroll()
         }
         
         aritclalist.tag = Int(startY.pointee)
@@ -150,6 +152,19 @@ extension RootVC {//扩展
         self.mainView?.addSubview(aritclalist)
         
         startY.pointee = aritclalist.bottom + 10
+    }
+    func genderGroupListTopic(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+        
+        let groupListTopic = GroupListTopic.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        groupListTopic.genderList { [weak self] in
+            self?.reloadMainScroll()
+        }
+        
+        groupListTopic.tag = Int(startY.pointee)
+        
+        self.mainView?.addSubview(groupListTopic)
+        
+        startY.pointee = groupListTopic.bottom + 10
     }
     
     

@@ -53,8 +53,8 @@ target 'UIDS' do
   #授权
   pod 'Weibo_SDK', :git => 'https://github.com/sinaweibosdk/weibo_ios_sdk.git'
   pod 'WechatOpenSDK'
-  
-  
+#  pod 'zhPopupController'
+
 end
 
 

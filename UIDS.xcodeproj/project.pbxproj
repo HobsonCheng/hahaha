@@ -138,6 +138,13 @@
 		E56C90A12010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E56C90962010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		E56C90A22010F8F7002339C6 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56C90972010F8F7002339C6 /* TencentOpenAPI.framework */; };
 		E56C90A32010F8F7002339C6 /* BQLAuthEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90982010F8F7002339C6 /* BQLAuthEngine.swift */; };
+		E56C90AC2013793A002339C6 /* GroupListTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90AB2013793A002339C6 /* GroupListTopic.swift */; };
+		E56C90B020137AE8002339C6 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90AE20137AE8002339C6 /* GroupCell.swift */; };
+		E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56C90AF20137AE8002339C6 /* GroupCell.xib */; };
+		E56C90B320138069002339C6 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90B220138069002339C6 /* GroupModel.swift */; };
+		E56C90C42013A61D002339C6 /* TopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90C32013A61D002339C6 /* TopicList.swift */; };
+		E56C90C82013A641002339C6 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90C62013A641002339C6 /* TopicCell.swift */; };
+		E56C90C92013A641002339C6 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56C90C72013A641002339C6 /* TopicCell.xib */; };
 		E594E0592003ABA200BDF511 /* ScrollColorHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0512003ABA100BDF511 /* ScrollColorHeader.m */; };
 		E594E05A2003ABA200BDF511 /* LightControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0532003ABA100BDF511 /* LightControl.m */; };
 		E594E05B2003ABA200BDF511 /* NaviBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0552003ABA200BDF511 /* NaviBar.m */; };
@@ -154,6 +161,11 @@
 		E594E07C2003ABB800BDF511 /* NSBundle+Module.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E06D2003ABB400BDF511 /* NSBundle+Module.m */; };
 		E594E07D2003ABB800BDF511 /* UIColor+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0712003ABB700BDF511 /* UIColor+Utility.m */; };
 		E594E0802003AEE200BDF511 /* AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E07F2003AEE200BDF511 /* AppInfo.m */; };
+		E5E59AC82014CE4E0040D30D /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E59ABF2014CE4E0040D30D /* UIView+SDAutoLayout.m */; };
+		E5E59AC92014CE4E0040D30D /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E59AC12014CE4E0040D30D /* UITableView+SDAutoTableViewCellHeight.m */; };
+		E5E59ACA2014CE4E0040D30D /* LSXAlertInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E59AC42014CE4E0040D30D /* LSXAlertInputView.m */; };
+		E5E59ACB2014CE4E0040D30D /* LSXPlacehoderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E59AC52014CE4E0040D30D /* LSXPlacehoderTextView.m */; };
+		E5E59ACE2014CE580040D30D /* UIColor+YMHex.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E59ACD2014CE570040D30D /* UIColor+YMHex.m */; };
 		F5BE3CBAD0F39EF485E36BCE /* Pods_UIDS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */; };
 /* End PBXBuildFile section */
 
@@ -309,6 +321,13 @@
 		E56C90962010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		E56C90972010F8F7002339C6 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		E56C90982010F8F7002339C6 /* BQLAuthEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BQLAuthEngine.swift; sourceTree = "<group>"; };
+		E56C90AB2013793A002339C6 /* GroupListTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListTopic.swift; sourceTree = "<group>"; };
+		E56C90AE20137AE8002339C6 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		E56C90AF20137AE8002339C6 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
+		E56C90B220138069002339C6 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		E56C90C32013A61D002339C6 /* TopicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicList.swift; sourceTree = "<group>"; };
+		E56C90C62013A641002339C6 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		E56C90C72013A641002339C6 /* TopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
 		E594E0502003ABA100BDF511 /* ScrollColorHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollColorHeader.h; sourceTree = "<group>"; };
 		E594E0512003ABA100BDF511 /* ScrollColorHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollColorHeader.m; sourceTree = "<group>"; };
 		E594E0522003ABA100BDF511 /* LightControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightControl.h; sourceTree = "<group>"; };
@@ -341,6 +360,16 @@
 		E594E0722003ABB800BDF511 /* UIImage+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utility.h"; sourceTree = "<group>"; };
 		E594E07E2003AEE200BDF511 /* AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfo.h; sourceTree = "<group>"; };
 		E594E07F2003AEE200BDF511 /* AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfo.m; sourceTree = "<group>"; };
+		E5E59ABF2014CE4E0040D30D /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		E5E59AC02014CE4E0040D30D /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
+		E5E59AC12014CE4E0040D30D /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
+		E5E59AC22014CE4E0040D30D /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		E5E59AC42014CE4E0040D30D /* LSXAlertInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSXAlertInputView.m; sourceTree = "<group>"; };
+		E5E59AC52014CE4E0040D30D /* LSXPlacehoderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSXPlacehoderTextView.m; sourceTree = "<group>"; };
+		E5E59AC62014CE4E0040D30D /* LSXAlertInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSXAlertInputView.h; sourceTree = "<group>"; };
+		E5E59AC72014CE4E0040D30D /* LSXPlacehoderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSXPlacehoderTextView.h; sourceTree = "<group>"; };
+		E5E59ACC2014CE570040D30D /* UIColor+YMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YMHex.h"; sourceTree = "<group>"; };
+		E5E59ACD2014CE570040D30D /* UIColor+YMHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YMHex.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,6 +594,7 @@
 				E1C0323E200E13F400B1A377 /* AritcleModel.swift */,
 				E1C03240200E15CF00B1A377 /* UserInfoModel.swift */,
 				E1E31B96201045B400776701 /* CodeMode.swift */,
+				E56C90B220138069002339C6 /* GroupModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -639,6 +669,8 @@
 		E1EDAB5C20031980004DD7B9 /* B+Util */ = {
 			isa = PBXGroup;
 			children = (
+				E5E59AC32014CE4E0040D30D /*  LSXInputAlertView */,
+				E5E59ABE2014CE4E0040D30D /* SDAutoLayout */,
 				E1EA270D2011C5FB00F31796 /* DiskCache */,
 				E56C90862010F8F7002339C6 /* BQLAuthEngine_Swift */,
 				E1C031C5200704CA00B1A377 /* LaunchGuide */,
@@ -765,6 +797,8 @@
 		E56C90A62010FB38002339C6 /* GroupListTopic */ = {
 			isa = PBXGroup;
 			children = (
+				E56C90AD20137AC7002339C6 /* cell */,
+				E56C90AB2013793A002339C6 /* GroupListTopic.swift */,
 			);
 			path = GroupListTopic;
 			sourceTree = "<group>";
@@ -772,13 +806,35 @@
 		E56C90A72010FB39002339C6 /* TopicList */ = {
 			isa = PBXGroup;
 			children = (
+				E56C90C52013A62D002339C6 /* cell */,
+				E56C90C32013A61D002339C6 /* TopicList.swift */,
 			);
 			path = TopicList;
+			sourceTree = "<group>";
+		};
+		E56C90AD20137AC7002339C6 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				E56C90AE20137AE8002339C6 /* GroupCell.swift */,
+				E56C90AF20137AE8002339C6 /* GroupCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		E56C90C52013A62D002339C6 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				E56C90C62013A641002339C6 /* TopicCell.swift */,
+				E56C90C72013A641002339C6 /* TopicCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		E594E04E2003AB8700BDF511 /* B+Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E5E59ACC2014CE570040D30D /* UIColor+YMHex.h */,
+				E5E59ACD2014CE570040D30D /* UIColor+YMHex.m */,
 				E594E0682003ABB300BDF511 /* NSBundle+Module.h */,
 				E594E06D2003ABB400BDF511 /* NSBundle+Module.m */,
 				E594E0702003ABB700BDF511 /* NSDate+gyh.h */,
@@ -832,6 +888,28 @@
 				E594E0572003ABA200BDF511 /* NaviBarItem.m */,
 			);
 			path = NaviBar;
+			sourceTree = "<group>";
+		};
+		E5E59ABE2014CE4E0040D30D /* SDAutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E5E59ABF2014CE4E0040D30D /* UIView+SDAutoLayout.m */,
+				E5E59AC02014CE4E0040D30D /* UITableView+SDAutoTableViewCellHeight.h */,
+				E5E59AC12014CE4E0040D30D /* UITableView+SDAutoTableViewCellHeight.m */,
+				E5E59AC22014CE4E0040D30D /* UIView+SDAutoLayout.h */,
+			);
+			path = SDAutoLayout;
+			sourceTree = "<group>";
+		};
+		E5E59AC32014CE4E0040D30D /*  LSXInputAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				E5E59AC62014CE4E0040D30D /* LSXAlertInputView.h */,
+				E5E59AC42014CE4E0040D30D /* LSXAlertInputView.m */,
+				E5E59AC72014CE4E0040D30D /* LSXPlacehoderTextView.h */,
+				E5E59AC52014CE4E0040D30D /* LSXPlacehoderTextView.m */,
+			);
+			path = " LSXInputAlertView";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -915,6 +993,8 @@
 				E1E31B83200F3ADF00776701 /* registerAndLogin_code_textField@2x.png in Resources */,
 				E56C909A2010F8F7002339C6 /* qqz.png in Resources */,
 				E1E31B7C200F3ADF00776701 /* registerAndLogin_nickname_icon@2x.png in Resources */,
+				E56C90C92013A641002339C6 /* TopicCell.xib in Resources */,
+				E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */,
 				E1A21DEA1FFF319300596BB7 /* LaunchScreen.storyboard in Resources */,
 				E1EDAB9B2005B236004DD7B9 /* ToolsAnimation.plist in Resources */,
 				E1A21DE71FFF319300596BB7 /* Assets.xcassets in Resources */,
@@ -1078,18 +1158,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1E31B95200F529300776701 /* HCAccountLoginService.swift in Sources */,
+				E56C90C42013A61D002339C6 /* TopicList.swift in Sources */,
 				E594E07A2003ABB800BDF511 /* UIView+Frame.m in Sources */,
 				E1A21DE21FFF319300596BB7 /* ViewController.swift in Sources */,
 				E1C031C020062CBC00B1A377 /* OneImg.swift in Sources */,
 				E1C03230200CA05C00B1A377 /* ConfigModel.swift in Sources */,
 				E594E0592003ABA200BDF511 /* ScrollColorHeader.m in Sources */,
 				E1E31B8D200F463A00776701 /* RegVC.swift in Sources */,
+				E5E59ACA2014CE4E0040D30D /* LSXAlertInputView.m in Sources */,
 				E1C031A620061DF500B1A377 /* SwipImgAreaCell.swift in Sources */,
 				E1C0320D2008923500B1A377 /* MainScrollView.swift in Sources */,
 				E1EDAB7520033D26004DD7B9 /* VCController.m in Sources */,
+				E56C90AC2013793A002339C6 /* GroupListTopic.swift in Sources */,
 				E1EA2719201200AA00F31796 /* OpenVC.swift in Sources */,
 				E1EDAB7320033D26004DD7B9 /* VCAnimationClassic.m in Sources */,
 				E1EA27172011F4D800F31796 /* PhoneService.swift in Sources */,
+				E5E59ACB2014CE4E0040D30D /* LSXPlacehoderTextView.m in Sources */,
 				E1EABAC220118F1F00CBE71A /* RegVCService.swift in Sources */,
 				E1F5E273200F2D7500FD18FD /* LoginInit.swift in Sources */,
 				E1E31B91200F522E00776701 /* HCAccountLoginViewModel.swift in Sources */,
@@ -1098,7 +1182,9 @@
 				E1EDAB7720033D26004DD7B9 /* VCAnimationBottom.m in Sources */,
 				E1C03225200C3CFB00B1A377 /* AppModel.swift in Sources */,
 				E1C0321A200C395000B1A377 /* ArticleListCell.swift in Sources */,
+				E56C90B320138069002339C6 /* GroupModel.swift in Sources */,
 				E1C031CB200704DF00B1A377 /* EAIntroPage.m in Sources */,
+				E56C90C82013A641002339C6 /* TopicCell.swift in Sources */,
 				E594E07D2003ABB800BDF511 /* UIColor+Utility.m in Sources */,
 				E1EDAB5E200319A5004DD7B9 /* Util.swift in Sources */,
 				E56C90A32010F8F7002339C6 /* BQLAuthEngine.swift in Sources */,
@@ -1106,6 +1192,7 @@
 				E1C031A820061E2800B1A377 /* SwipImgAreaView.swift in Sources */,
 				E594E07C2003ABB800BDF511 /* NSBundle+Module.m in Sources */,
 				E594E0772003ABB800BDF511 /* NSString+Utility.m in Sources */,
+				E5E59ACE2014CE580040D30D /* UIColor+YMHex.m in Sources */,
 				E1EA27122011C5FB00F31796 /* ZZDiskCache.swift in Sources */,
 				E594E0762003ABB800BDF511 /* NSString+URL.m in Sources */,
 				E1C031A32005CF5200B1A377 /* ExampleIrregularityBasicContentView.swift in Sources */,
@@ -1121,6 +1208,7 @@
 				E1EDAC352005BA0D004DD7B9 /* MainVC.swift in Sources */,
 				E1F5E26F200F0F3700FD18FD /* NaviDefult.swift in Sources */,
 				E594E05B2003ABA200BDF511 /* NaviBar.m in Sources */,
+				E56C90B020137AE8002339C6 /* GroupCell.swift in Sources */,
 				E1C03229200C40D700B1A377 /* RootData.swift in Sources */,
 				E1C031B22006217C00B1A377 /* UIViewEXT.swift in Sources */,
 				E1C031A02005CBF400B1A377 /* NextVC.swift in Sources */,
@@ -1140,6 +1228,8 @@
 				E1F5E277200F343200FD18FD /* ThridLoginVC.swift in Sources */,
 				E1EDAB7220033D26004DD7B9 /* NaviBarVC.m in Sources */,
 				E1E31B89200F439A00776701 /* HCOtherLoginModeView.swift in Sources */,
+				E5E59AC82014CE4E0040D30D /* UIView+SDAutoLayout.m in Sources */,
+				E5E59AC92014CE4E0040D30D /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				E1C031AE20061EA000B1A377 /* SwipImgAreaSnakePageControl.swift in Sources */,
 				E594E05A2003ABA200BDF511 /* LightControl.m in Sources */,
 				E1EA270C2011B6C900F31796 /* UserUtil.swift in Sources */,

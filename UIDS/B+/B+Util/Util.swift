@@ -143,6 +143,17 @@ final class Util: NSObject,iRateDelegate{
     static func msg(msg: String,_ type: Int) {
         
         let view = VCController.getTopVC()
+        
+        view?.view.dodo.style.bar.hideAfterDelaySeconds = 3
+        view?.view.dodo.style.bar.hideOnTap = true
+//        view?.view.dodo.style.bar.locationTop = false
+
+        
+        if (view?.isKind(of: NaviBarVC.classForCoder()))!{
+            let navToP: NaviBarVC = view as! NaviBarVC
+            navToP.view.dodo.topAnchor = navToP.naviBar().bottomAnchor
+        }
+        
         if type == 2 {
             view?.view.dodo.success(msg)
         }else if type == 3 {
@@ -150,11 +161,6 @@ final class Util: NSObject,iRateDelegate{
         }else{
             view?.view.dodo.show(msg)
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            
-            view?.view.dodo.hide()
-        };
         
     }
     

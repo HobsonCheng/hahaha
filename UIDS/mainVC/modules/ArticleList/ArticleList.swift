@@ -18,29 +18,23 @@ class ArticleList: UIView {
     func genderView(callback: @escaping ReloadOver){
         
         self.reloadOver = callback
-        let apiHandler = BRequestHandler.shared
-        
+
         let params = NSMutableDictionary()
-        params.setValue("getInvitationList", forKey: "ac")
-        params.setValue("cms", forKey: "sn")
         params.setValue("1", forKey: "page")
         params.setValue("10", forKey: "page_context")
         params.setValue("51", forKey: "group_id")
         
-        weak var selfWeak = self
-        apiHandler.get(APIString: "mt", parameters: params as? [String : Any]) { (status, result, tipString) in
-            
-            if B_ResponseStatus.success == status {
-            
-                selfWeak?.articleList = AritcleModel.deserialize(from: result)?.data
-                selfWeak?.genderlist()
-            }
+        ApiUtil.share.getInvitationList(params: params) { [weak self] (status, result, tipString) in
+            self?.articleList = AritcleModel.deserialize(from: result)?.data
+            self?.genderlist()
         }
+
     }
 
     private func genderCellView(itemObj: AritcleItem) -> ArticleListCell {
         
         let cell: ArticleListCell? = ArticleListCell.loadFromXib_Swift() as? ArticleListCell
+        cell?.cellObj = itemObj
         cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 44)
         cell?.textLabel?.text = itemObj.title
         cell?.textLabel?.font = UIFont.systemFont(ofSize: 12)

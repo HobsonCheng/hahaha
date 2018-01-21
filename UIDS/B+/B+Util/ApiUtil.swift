@@ -78,4 +78,53 @@ class ApiUtil: NSObject {
             }
         }
     }
+    
+    //MARK: - 获取所有页面
+    func getPageList(fininsh: ApiUtilFinished?) {
+        
+        let params = NSMutableDictionary()
+        params.setValue("project", forKey: "sn")
+        params.setValue("getPageKeyList", forKey: "ac")
+        
+        let appinfo = AppInfoData.shared.appModel
+        params.setValue(appinfo?.app_id, forKey: "app_id")
+        params.setValue(appinfo?.group_id, forKey: "group_id")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 推荐新闻
+    func getInvitationList(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("getInvitationList", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 话题列表
+    func getGroupList(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("getGroupList", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }

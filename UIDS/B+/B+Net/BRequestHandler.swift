@@ -207,9 +207,10 @@ extension BRequestHandler {
             if json["code"].intValue == 0 {
                 finished(.success, json.description, nil)
             } else if json["code"].intValue == 0203 {
-//                JFProgressHUD.dismiss()
-//                // 注销登录
-//                JFUserModel.logout()
+                //自动进入登录
+                let gotoLogin = LoginView.init(name: "LoginView")
+                VCController.push(gotoLogin!, with: VCAnimationBottom.defaultAnimation())
+                
                 finished(.notLogin, nil, "请重新登录(\(json["code"].intValue))")
             } else {
                 finished(.unusual, nil, json["msg"].stringValue + "(\(json["code"].intValue))")

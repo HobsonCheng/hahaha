@@ -15,7 +15,7 @@ extension NaviBarVC {
     
     public func setNaviDefulat(){
         
-        self.view.dodo.topAnchor = self.naviBar().bottomAnchor
+//        self.view.dodo.topAnchor = self.naviBar().bottomAnchor
         
         let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
         

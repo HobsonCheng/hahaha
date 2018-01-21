@@ -18,6 +18,9 @@ class MainVC: BaseNameVC {
             
         }
         
+        if (OpenVC.share.pageList != nil) {
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

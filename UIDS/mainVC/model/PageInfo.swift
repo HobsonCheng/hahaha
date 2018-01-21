@@ -65,9 +65,19 @@ class PageInfo: HandyJSON{
     var page_key: String?
     var model_id: String?
     var jump_url: String?
+    
+    var page_name: String?
+    
     required init() {}
+    
+    
+    
+    //扩展属性  便于特殊页面获取信息值
+    var anyObj: AnyObject?
+
 }
 
 class PageListModel: BaseModel {
     var data: [PageInfo]?
 }
+
