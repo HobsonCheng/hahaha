@@ -90,4 +90,12 @@ extension UIView {
         return xibArray?[0] as AnyObject
 
     }
+    
+    
+    public func removeAllSubviews() {
+        while self.subviews.count != 0 {
+            self.subviews.last?.removeFromSuperview()
+        }
+    }
+    
 }

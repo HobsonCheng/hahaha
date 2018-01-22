@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "LoadEmptyView.h"
 #import "UIColor+Utility.h"
-#import "NSString+DrawingAdapter.h"
+#import "NSString+Utility.h"
 #import "UIImage+Utility.h"
 #import "AppInfo.h"
 

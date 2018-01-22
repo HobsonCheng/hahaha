@@ -8,56 +8,77 @@
 
 import UIKit
 
-class GroupListTopic: UIView {
+class GroupListTopic: BaseModuleView {
 
-    
+    private var page: Int?
     var groupList: [GroupData]?
     var reloadOver: ReloadOver?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.refreshCB = { [weak self] in
+            self?.page = (self?.page)! + 1
+            self?.request()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func reloadViewData() {
+        super.reloadViewData()
+        self.page = 1
+        self.request()
+    }
+    
     
     //MARK: - 生成
     func genderList(callback: @escaping ReloadOver) {
         
         self.reloadOver = callback
+        self.page = 1
         
-        
-        
-        
-        
-        let params = NSMutableDictionary()
-        params.setValue("1", forKey: "page")
-        params.setValue("30", forKey: "page_context")
-        
-        ApiUtil.share.getGroupList(params: params) { [weak self] (status, data, msg) in
-            self?.groupList = GroupModel.deserialize(from: data)?.data
-            self?.genderlist()
-        }
-        
-        
-        let tmplist = NSMutableArray()
-        for item in 1...9 {
-            let newI = GroupData()
-            newI.name = String.init(format: "index_%d", item)
-            tmplist.add(newI)
-        }
-        self.groupList = tmplist as? [GroupData]
-        self.genderlist()
-        
+        self.request()
+
     }
 
+    private func request(){
+        let params = NSMutableDictionary()
+        params.setValue(self.page, forKey: "page")
+        params.setValue("20", forKey: "page_context")
+        
+        ApiUtil.share.getGroupList(params: params) { [weak self] (status, data, msg) in
+            let tmpList: [GroupData]! = GroupModel.deserialize(from: data)?.data
+            
+            if self?.page == 1 {
+                self?.height = 0
+                self?.removeAllSubviews()
+                self?.groupList = tmpList
+            }else {
+                self?.groupList = (self?.groupList)! + tmpList
+            }
+            
+            self?.refreshES?()
+            
+            self?.genderlist(moveList: tmpList!)
+        }
+    }
+    
     private func genderCellView(itemObj: GroupData) -> GroupCell {
         
         let cell: GroupCell? = GroupCell.loadFromXib_Swift() as? GroupCell
         cell?.cellObj = itemObj
-        cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 44)
-        cell?.textLabel?.text = itemObj.name
-        cell?.textLabel?.font = UIFont.systemFont(ofSize: 12)
+        cell?.showData()
+        cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 60)
         cell?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell!
     }
     
-    private func genderlist(){
+    private func genderlist(moveList: [GroupData]!){
         
-        for item in self.groupList!{
+        for item in moveList!{
             
             let cell = self.genderCellView(itemObj: item)
             cell.top = self.height + 0.5
@@ -68,3 +89,4 @@ class GroupListTopic: UIView {
         self.reloadOver?()
     }
 }
+

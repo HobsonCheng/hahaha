@@ -13,6 +13,13 @@ extension RootVC {
     
     func initAppInfo(){
         
+        //监听结束
+        self.esCallBack = { [weak self] in
+            self?.mainView?.es.stopPullToRefresh()
+            self?.mainView?.es.stopLoadingMore()
+        }
+        
+        
         //MARK: 数据刷新
         
         self.updateVC()

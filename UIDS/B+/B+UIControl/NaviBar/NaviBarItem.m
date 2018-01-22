@@ -7,7 +7,7 @@
 //
 
 #import "NaviBarItem.h"
-#import "NSString+DrawingAdapter.h"
+#import "NSString+Utility.h"
 #import "UIColor+Utility.h"
 #import <SDWebImage/SDWebImage-umbrella.h>
 
@@ -43,7 +43,6 @@ typedef enum
 
 @interface NaviBarItem ()
 
-@property (nonatomic, strong) UIButton *button;            // 按钮
 @property (nonatomic, assign) NaviBarItemType type;        // 类型
 
 @end

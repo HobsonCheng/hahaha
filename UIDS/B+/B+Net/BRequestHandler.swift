@@ -91,11 +91,13 @@ class BRequestHandler: NSObject {
             
             ]
         
-        // token
-//        if let token = JFUserModel.shareAccount()?.token {
-//            headers["Authorization"] = "Bearer \(token)"
-//            print("请求头加入了token", "Bearer \(token)")
-//        }
+        
+        //添加m3token
+        let Authorization = UserUtil.share.appUserInfo?.Authorization
+        if Authorization != nil {
+            headers["Authorization-M3"] = Authorization
+            print("请求头加入了token", Authorization as Any)
+        }
         
         // uuid
 //        if let uuid = JFObjcTools.uuidString() {

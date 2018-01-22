@@ -45,7 +45,7 @@ class SliderLayoutMode: ConfigModel {
     var shapeObj: shapeObjData?
 }
 
-class Slider: UIView,UIScrollViewDelegate {
+class Slider: BaseModuleView,UIScrollViewDelegate {
 
     var bgScroll: UIScrollView?
     var pageControl: UIPageControl?

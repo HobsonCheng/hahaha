@@ -13,18 +13,14 @@ target 'UIDS' do
   pod 'iRate'
   pod 'Then'
   
-#  pod 'SlackTextViewController'
-#  pod 'SnapKit'
   pod 'HandyJSON'
   pod 'SwiftyJSON'
-#  pod 'HanekeSwift'
-  pod 'BWWalkthrough'
-#  pod 'SwiftAlert'
   pod 'Dodo'
   pod 'SDWebImage'
-  pod 'PermissionScope'
+  pod 'PermissionScope'#汉化
   pod 'Alamofire'
   pod 'Reachability'
+  
   
   #ui
   pod 'TYPagerController'
@@ -33,15 +29,14 @@ target 'UIDS' do
   pod 'RETableViewManager'
   pod 'Font-Awesome-Swift'
   pod 'ESTabBarController-swift'
-  pod 'MJRefresh'
+  pod 'ESPullToRefresh'
   pod 'IQKeyboardManagerSwift'#键盘
   pod 'SnapKit'
-  
+  pod 'TextFieldEffects'
+  pod 'KMPlaceholderTextView'
   #    pod 'MLeaksFinder'              # 检测内存泄漏
+  pod 'LPDQuoteImagesView'
   
-  #PageMenu
-  #pod 'TextFieldEffects'
-  #KMPlaceholderTextView
   
   # Rx
   pod 'RxSwift'
@@ -54,6 +49,9 @@ target 'UIDS' do
   pod 'Weibo_SDK', :git => 'https://github.com/sinaweibosdk/weibo_ios_sdk.git'
   pod 'WechatOpenSDK'
 #  pod 'zhPopupController'
+
+#骑牛上传
+  pod 'Qiniu'
 
 end
 

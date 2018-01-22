@@ -79,6 +79,27 @@
 		E1C0323D200DF66700B1A377 /* TabberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C0323C200DF66700B1A377 /* TabberModel.swift */; };
 		E1C0323F200E13F400B1A377 /* AritcleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C0323E200E13F400B1A377 /* AritcleModel.swift */; };
 		E1C03241200E15CF00B1A377 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C03240200E15CF00B1A377 /* UserInfoModel.swift */; };
+		E1C3E55B2015718B00B13306 /* RootNarBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E55A2015718B00B13306 /* RootNarBar.swift */; };
+		E1C3E55D20158C3700B13306 /* icon_wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E55C20158C3700B13306 /* icon_wechat@2x.png */; };
+		E1C3E55F20158CAA00B13306 /* DSRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E55E20158CAA00B13306 /* DSRefresh.swift */; };
+		E1C3E5612015C88F00B13306 /* TopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E5602015C88F00B13306 /* TopicModel.swift */; };
+		E1C3E5632015D89600B13306 /* BaseModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E5622015D89600B13306 /* BaseModuleView.swift */; };
+		E1C3E5652015DFD100B13306 /* GroupTopicSendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E5642015DFD100B13306 /* GroupTopicSendVC.swift */; };
+		E1C3E5732015E15000B13306 /* icon_pull_animation_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E5662015E14D00B13306 /* icon_pull_animation_3.png */; };
+		E1C3E5742015E15000B13306 /* icon_pull_animation_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E5672015E14D00B13306 /* icon_pull_animation_2.png */; };
+		E1C3E5752015E15000B13306 /* icon_pull_animation_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E5682015E14E00B13306 /* icon_pull_animation_5.png */; };
+		E1C3E5762015E15000B13306 /* icon_shake_animation_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E5692015E14E00B13306 /* icon_shake_animation_1.png */; };
+		E1C3E5772015E15000B13306 /* icon_shake_animation_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E56A2015E14F00B13306 /* icon_shake_animation_3.png */; };
+		E1C3E5782015E15000B13306 /* icon_pull_animation_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E56B2015E14F00B13306 /* icon_pull_animation_4.png */; };
+		E1C3E5792015E15000B13306 /* icon_shake_animation_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E56C2015E14F00B13306 /* icon_shake_animation_2.png */; };
+		E1C3E57A2015E15000B13306 /* icon_shake_animation_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E56D2015E14F00B13306 /* icon_shake_animation_4.png */; };
+		E1C3E57B2015E15000B13306 /* icon_pull_animation_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E56E2015E14F00B13306 /* icon_pull_animation_1.png */; };
+		E1C3E57C2015E15000B13306 /* icon_shake_animation_6.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E56F2015E15000B13306 /* icon_shake_animation_6.png */; };
+		E1C3E57D2015E15000B13306 /* icon_shake_animation_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E5702015E15000B13306 /* icon_shake_animation_5.png */; };
+		E1C3E57E2015E15000B13306 /* icon_shake_animation_8.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E5712015E15000B13306 /* icon_shake_animation_8.png */; };
+		E1C3E57F2015E15000B13306 /* icon_shake_animation_7.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C3E5722015E15000B13306 /* icon_shake_animation_7.png */; };
+		E1C3E5832015E1C400B13306 /* DS2RefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E5822015E1C400B13306 /* DS2RefreshHeader.swift */; };
+		E1C3E5852015E1CF00B13306 /* DS2RefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E5842015E1CF00B13306 /* DS2RefreshFooter.swift */; };
 		E1E31B78200F3ADF00776701 /* regview_tab_r@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E31B6C200F3ADC00776701 /* regview_tab_r@2x.png */; };
 		E1E31B79200F3ADF00776701 /* registerAndLogin_user_textField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E31B6D200F3ADD00776701 /* registerAndLogin_user_textField@2x.png */; };
 		E1E31B7A200F3ADF00776701 /* registerAndLogin_password_hide_textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E31B6E200F3ADD00776701 /* registerAndLogin_password_hide_textfield@2x.png */; };
@@ -150,7 +171,6 @@
 		E594E05B2003ABA200BDF511 /* NaviBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0552003ABA200BDF511 /* NaviBar.m */; };
 		E594E05C2003ABA200BDF511 /* NaviBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0572003ABA200BDF511 /* NaviBarItem.m */; };
 		E594E0732003ABB800BDF511 /* UIButton+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E05D2003ABB100BDF511 /* UIButton+Addition.m */; };
-		E594E0742003ABB800BDF511 /* NSString+DrawingAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E05E2003ABB100BDF511 /* NSString+DrawingAdapter.m */; };
 		E594E0752003ABB800BDF511 /* UIImageView+GIFDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0602003ABB100BDF511 /* UIImageView+GIFDecode.m */; };
 		E594E0762003ABB800BDF511 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0612003ABB200BDF511 /* NSString+URL.m */; };
 		E594E0772003ABB800BDF511 /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E594E0622003ABB200BDF511 /* NSString+Utility.m */; };
@@ -250,6 +270,27 @@
 		E1C0323C200DF66700B1A377 /* TabberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabberModel.swift; sourceTree = "<group>"; };
 		E1C0323E200E13F400B1A377 /* AritcleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AritcleModel.swift; sourceTree = "<group>"; };
 		E1C03240200E15CF00B1A377 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		E1C3E55A2015718B00B13306 /* RootNarBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNarBar.swift; sourceTree = "<group>"; };
+		E1C3E55C20158C3700B13306 /* icon_wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_wechat@2x.png"; sourceTree = "<group>"; };
+		E1C3E55E20158CAA00B13306 /* DSRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSRefresh.swift; sourceTree = "<group>"; };
+		E1C3E5602015C88F00B13306 /* TopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicModel.swift; sourceTree = "<group>"; };
+		E1C3E5622015D89600B13306 /* BaseModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModuleView.swift; sourceTree = "<group>"; };
+		E1C3E5642015DFD100B13306 /* GroupTopicSendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTopicSendVC.swift; sourceTree = "<group>"; };
+		E1C3E5662015E14D00B13306 /* icon_pull_animation_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pull_animation_3.png; sourceTree = "<group>"; };
+		E1C3E5672015E14D00B13306 /* icon_pull_animation_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pull_animation_2.png; sourceTree = "<group>"; };
+		E1C3E5682015E14E00B13306 /* icon_pull_animation_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pull_animation_5.png; sourceTree = "<group>"; };
+		E1C3E5692015E14E00B13306 /* icon_shake_animation_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_1.png; sourceTree = "<group>"; };
+		E1C3E56A2015E14F00B13306 /* icon_shake_animation_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_3.png; sourceTree = "<group>"; };
+		E1C3E56B2015E14F00B13306 /* icon_pull_animation_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pull_animation_4.png; sourceTree = "<group>"; };
+		E1C3E56C2015E14F00B13306 /* icon_shake_animation_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_2.png; sourceTree = "<group>"; };
+		E1C3E56D2015E14F00B13306 /* icon_shake_animation_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_4.png; sourceTree = "<group>"; };
+		E1C3E56E2015E14F00B13306 /* icon_pull_animation_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pull_animation_1.png; sourceTree = "<group>"; };
+		E1C3E56F2015E15000B13306 /* icon_shake_animation_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_6.png; sourceTree = "<group>"; };
+		E1C3E5702015E15000B13306 /* icon_shake_animation_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_5.png; sourceTree = "<group>"; };
+		E1C3E5712015E15000B13306 /* icon_shake_animation_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_8.png; sourceTree = "<group>"; };
+		E1C3E5722015E15000B13306 /* icon_shake_animation_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shake_animation_7.png; sourceTree = "<group>"; };
+		E1C3E5822015E1C400B13306 /* DS2RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS2RefreshHeader.swift; sourceTree = "<group>"; };
+		E1C3E5842015E1CF00B13306 /* DS2RefreshFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DS2Refresh\U0010Footer.swift"; sourceTree = "<group>"; };
 		E1E31B6C200F3ADC00776701 /* regview_tab_r@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "regview_tab_r@2x.png"; sourceTree = "<group>"; };
 		E1E31B6D200F3ADD00776701 /* registerAndLogin_user_textField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "registerAndLogin_user_textField@2x.png"; sourceTree = "<group>"; };
 		E1E31B6E200F3ADD00776701 /* registerAndLogin_password_hide_textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "registerAndLogin_password_hide_textfield@2x.png"; sourceTree = "<group>"; };
@@ -337,7 +378,6 @@
 		E594E0572003ABA200BDF511 /* NaviBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviBarItem.m; sourceTree = "<group>"; };
 		E594E0582003ABA200BDF511 /* NaviBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviBar.h; sourceTree = "<group>"; };
 		E594E05D2003ABB100BDF511 /* UIButton+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Addition.m"; sourceTree = "<group>"; };
-		E594E05E2003ABB100BDF511 /* NSString+DrawingAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DrawingAdapter.m"; sourceTree = "<group>"; };
 		E594E05F2003ABB100BDF511 /* UIImageView+GIFDecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GIFDecode.h"; sourceTree = "<group>"; };
 		E594E0602003ABB100BDF511 /* UIImageView+GIFDecode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GIFDecode.m"; sourceTree = "<group>"; };
 		E594E0612003ABB200BDF511 /* NSString+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
@@ -348,7 +388,6 @@
 		E594E0662003ABB300BDF511 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		E594E0672003ABB300BDF511 /* NSMutableDictionary+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Utility.h"; sourceTree = "<group>"; };
 		E594E0682003ABB300BDF511 /* NSBundle+Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Module.h"; sourceTree = "<group>"; };
-		E594E0692003ABB300BDF511 /* NSString+DrawingAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DrawingAdapter.h"; sourceTree = "<group>"; };
 		E594E06A2003ABB400BDF511 /* NSDate+gyh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+gyh.m"; sourceTree = "<group>"; };
 		E594E06B2003ABB400BDF511 /* NSString+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utility.h"; sourceTree = "<group>"; };
 		E594E06C2003ABB400BDF511 /* UIButton+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Addition.h"; sourceTree = "<group>"; };
@@ -439,6 +478,7 @@
 		E1C031A12005CC8200B1A377 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				E1C3E5622015D89600B13306 /* BaseModuleView.swift */,
 				E56C90A42010FB38002339C6 /* GroupGender */,
 				E56C90A62010FB38002339C6 /* GroupListTopic */,
 				E56C90A52010FB38002339C6 /* GroupTopicSend */,
@@ -471,6 +511,20 @@
 		E1C031B52006235B00B1A377 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				E1C3E56E2015E14F00B13306 /* icon_pull_animation_1.png */,
+				E1C3E5672015E14D00B13306 /* icon_pull_animation_2.png */,
+				E1C3E5662015E14D00B13306 /* icon_pull_animation_3.png */,
+				E1C3E56B2015E14F00B13306 /* icon_pull_animation_4.png */,
+				E1C3E5682015E14E00B13306 /* icon_pull_animation_5.png */,
+				E1C3E5692015E14E00B13306 /* icon_shake_animation_1.png */,
+				E1C3E56C2015E14F00B13306 /* icon_shake_animation_2.png */,
+				E1C3E56A2015E14F00B13306 /* icon_shake_animation_3.png */,
+				E1C3E56D2015E14F00B13306 /* icon_shake_animation_4.png */,
+				E1C3E5702015E15000B13306 /* icon_shake_animation_5.png */,
+				E1C3E56F2015E15000B13306 /* icon_shake_animation_6.png */,
+				E1C3E5722015E15000B13306 /* icon_shake_animation_7.png */,
+				E1C3E5712015E15000B13306 /* icon_shake_animation_8.png */,
+				E1C3E55C20158C3700B13306 /* icon_wechat@2x.png */,
 				E1C03236200DB45F00B1A377 /* goBackIcon@2x.png */,
 				E1E31B84200F3B0D00776701 /* lastLoginTip@2x.png */,
 				E1E31B77200F3ADF00776701 /* registerAndLogin_code_textField@2x.png */,
@@ -595,6 +649,7 @@
 				E1C03240200E15CF00B1A377 /* UserInfoModel.swift */,
 				E1E31B96201045B400776701 /* CodeMode.swift */,
 				E56C90B220138069002339C6 /* GroupModel.swift */,
+				E1C3E5602015C88F00B13306 /* TopicModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -636,6 +691,7 @@
 				E1C03228200C40D700B1A377 /* RootData.swift */,
 				E1C031BC200623A300B1A377 /* RootGender.swift */,
 				E1C0321C200C3A5D00B1A377 /* RootTable.swift */,
+				E1C3E55A2015718B00B13306 /* RootNarBar.swift */,
 				E1EDAC342005BA0D004DD7B9 /* MainVC.swift */,
 			);
 			path = mainVC;
@@ -790,6 +846,7 @@
 		E56C90A52010FB38002339C6 /* GroupTopicSend */ = {
 			isa = PBXGroup;
 			children = (
+				E1C3E5642015DFD100B13306 /* GroupTopicSendVC.swift */,
 			);
 			path = GroupTopicSend;
 			sourceTree = "<group>";
@@ -841,8 +898,6 @@
 				E594E06A2003ABB400BDF511 /* NSDate+gyh.m */,
 				E594E0672003ABB300BDF511 /* NSMutableDictionary+Utility.h */,
 				E594E0652003ABB300BDF511 /* NSMutableDictionary+Utility.m */,
-				E594E0692003ABB300BDF511 /* NSString+DrawingAdapter.h */,
-				E594E05E2003ABB100BDF511 /* NSString+DrawingAdapter.m */,
 				E594E06E2003ABB600BDF511 /* NSString+URL.h */,
 				E594E0612003ABB200BDF511 /* NSString+URL.m */,
 				E594E06B2003ABB400BDF511 /* NSString+Utility.h */,
@@ -863,6 +918,9 @@
 				E1F5E26E200F0F3700FD18FD /* NaviDefult.swift */,
 				E1F5E270200F28D800FD18FD /* String+GetSize.swift */,
 				E1E31B8A200F43B900776701 /* NibLoadable.swift */,
+				E1C3E55E20158CAA00B13306 /* DSRefresh.swift */,
+				E1C3E5822015E1C400B13306 /* DS2RefreshHeader.swift */,
+				E1C3E5842015E1CF00B13306 /* DS2RefreshFooter.swift */,
 			);
 			path = "B+Categories";
 			sourceTree = "<group>";
@@ -980,6 +1038,9 @@
 				E1C031DB20070B2700B1A377 /* bg1@2x.png in Resources */,
 				E1C03208200780C300B1A377 /* test_14.png in Resources */,
 				E1C031B92006236500B1A377 /* lldotInActive.png in Resources */,
+				E1C3E5752015E15000B13306 /* icon_pull_animation_5.png in Resources */,
+				E1C3E5732015E15000B13306 /* icon_pull_animation_3.png in Resources */,
+				E1C3E57B2015E15000B13306 /* icon_pull_animation_1.png in Resources */,
 				E1E31B7E200F3ADF00776701 /* registerAndLogin_wechat_button@2x.png in Resources */,
 				E1E31B7F200F3ADF00776701 /* registerAndLogin_confirm_logo@2x.png in Resources */,
 				E1C031BA2006236500B1A377 /* lldotActive.png in Resources */,
@@ -988,12 +1049,16 @@
 				E1C031EE2007807600B1A377 /* test_1.png in Resources */,
 				E1C031DE20070B2700B1A377 /* bg4@2x.png in Resources */,
 				E1C031D620070B1600B1A377 /* title4@2x.png in Resources */,
+				E1C3E5762015E15000B13306 /* icon_shake_animation_1.png in Resources */,
 				E1E31B7B200F3ADF00776701 /* registerAndLogin_password_textField@2x.png in Resources */,
+				E1C3E5772015E15000B13306 /* icon_shake_animation_3.png in Resources */,
 				E1C03204200780B600B1A377 /* test_12.png in Resources */,
 				E1E31B83200F3ADF00776701 /* registerAndLogin_code_textField@2x.png in Resources */,
+				E1C3E57D2015E15000B13306 /* icon_shake_animation_5.png in Resources */,
 				E56C909A2010F8F7002339C6 /* qqz.png in Resources */,
 				E1E31B7C200F3ADF00776701 /* registerAndLogin_nickname_icon@2x.png in Resources */,
 				E56C90C92013A641002339C6 /* TopicCell.xib in Resources */,
+				E1C3E57F2015E15000B13306 /* icon_shake_animation_7.png in Resources */,
 				E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */,
 				E1A21DEA1FFF319300596BB7 /* LaunchScreen.storyboard in Resources */,
 				E1EDAB9B2005B236004DD7B9 /* ToolsAnimation.plist in Resources */,
@@ -1002,13 +1067,17 @@
 				E1C031F82007809300B1A377 /* test_6.png in Resources */,
 				E1C031BB2006236500B1A377 /* llplaceholder.png in Resources */,
 				E1A21DE51FFF319300596BB7 /* Main.storyboard in Resources */,
+				E1C3E57C2015E15000B13306 /* icon_shake_animation_6.png in Resources */,
 				E1C031DD20070B2700B1A377 /* bg2@2x.png in Resources */,
 				E1C0321B200C395000B1A377 /* ArticleListCell.xib in Resources */,
 				E1E31B85200F3B0D00776701 /* lastLoginTip@2x.png in Resources */,
 				E1E31B78200F3ADF00776701 /* regview_tab_r@2x.png in Resources */,
 				E56C909B2010F8F7002339C6 /* wechatt.png in Resources */,
 				E1C03237200DB45F00B1A377 /* goBackIcon@2x.png in Resources */,
+				E1C3E57A2015E15000B13306 /* icon_shake_animation_4.png in Resources */,
+				E1C3E5742015E15000B13306 /* icon_pull_animation_2.png in Resources */,
 				E56C909C2010F8F7002339C6 /* weibo.png in Resources */,
+				E1C3E55D20158C3700B13306 /* icon_wechat@2x.png in Resources */,
 				E1C031FC2007809D00B1A377 /* test_8.png in Resources */,
 				E1E31B7D200F3ADF00776701 /* registerAndLogin_qq_button@2x.png in Resources */,
 				E56C909E2010F8F7002339C6 /* qqf.png in Resources */,
@@ -1025,8 +1094,10 @@
 				E1E31B9920107E1500776701 /* uidashi.ttf in Resources */,
 				E1C031D320070B1600B1A377 /* title3@2x.png in Resources */,
 				E1E31B7A200F3ADF00776701 /* registerAndLogin_password_hide_textfield@2x.png in Resources */,
+				E1C3E57E2015E15000B13306 /* icon_shake_animation_8.png in Resources */,
 				E1C031EC2007807000B1A377 /* test_0.png in Resources */,
 				E1C031F02007807C00B1A377 /* test_2.png in Resources */,
+				E1C3E5792015E15000B13306 /* icon_shake_animation_2.png in Resources */,
 				E1C03222200C3B2B00B1A377 /* UIPageList.json in Resources */,
 				E1C0320A200780C900B1A377 /* test_15.png in Resources */,
 				E1C031F62007808E00B1A377 /* test_5.png in Resources */,
@@ -1034,6 +1105,7 @@
 				E1C031E120070B3600B1A377 /* pageDot@2x.png in Resources */,
 				E1E31B80200F3ADF00776701 /* registerAndLogin_password_show_textfield@2x.png in Resources */,
 				E1C03221200C3B2B00B1A377 /* UIAppInfo.json in Resources */,
+				E1C3E5782015E15000B13306 /* icon_pull_animation_4.png in Resources */,
 				E1E31B82200F3ADF00776701 /* registerAndLogin_nickname_triangleLogo@2x.png in Resources */,
 				E1E31B88200F439A00776701 /* HCOtherLoginModeView.xib in Resources */,
 			);
@@ -1086,19 +1158,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-UIDS/Pods-UIDS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/Dodo/Dodo.framework",
+				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Font-Awesome-Swift/Font_Awesome_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/LPDQuoteImagesView/LPDQuoteImagesView.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
 				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
 				"${BUILT_PRODUCTS_DIR}/PKRevealController/PKRevealController.framework",
 				"${BUILT_PRODUCTS_DIR}/PermissionScope/PermissionScope.framework",
+				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
 				"${BUILT_PRODUCTS_DIR}/REFormattedNumberField/REFormattedNumberField.framework",
 				"${BUILT_PRODUCTS_DIR}/RETableViewManager/RETableViewManager.framework",
 				"${BUILT_PRODUCTS_DIR}/REValidation/REValidation.framework",
@@ -1111,25 +1186,29 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TYPagerController/TYPagerController.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 				"${BUILT_PRODUCTS_DIR}/iRate/iRate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dodo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Font_Awesome_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LPDQuoteImagesView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKRevealController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PermissionScope.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/REFormattedNumberField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RETableViewManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/REValidation.framework",
@@ -1142,6 +1221,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TYPagerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iRate.framework",
 			);
@@ -1162,6 +1242,7 @@
 				E594E07A2003ABB800BDF511 /* UIView+Frame.m in Sources */,
 				E1A21DE21FFF319300596BB7 /* ViewController.swift in Sources */,
 				E1C031C020062CBC00B1A377 /* OneImg.swift in Sources */,
+				E1C3E55B2015718B00B13306 /* RootNarBar.swift in Sources */,
 				E1C03230200CA05C00B1A377 /* ConfigModel.swift in Sources */,
 				E594E0592003ABA200BDF511 /* ScrollColorHeader.m in Sources */,
 				E1E31B8D200F463A00776701 /* RegVC.swift in Sources */,
@@ -1200,6 +1281,7 @@
 				E1C0322E200C5AF500B1A377 /* PageInfo.swift in Sources */,
 				E1C0319E2005C09D00B1A377 /* ExampleBouncesContentView.swift in Sources */,
 				E1C03235200CAFCA00B1A377 /* BRequestHandler.swift in Sources */,
+				E1C3E5652015DFD100B13306 /* GroupTopicSendVC.swift in Sources */,
 				E1EDAB7420033D26004DD7B9 /* BaseNameVC.m in Sources */,
 				E1EA27132011C5FB00F31796 /* ZZDiskCacheHelper.swift in Sources */,
 				E56C90992010F8F7002339C6 /* BQLShareModel.swift in Sources */,
@@ -1212,14 +1294,15 @@
 				E1C03229200C40D700B1A377 /* RootData.swift in Sources */,
 				E1C031B22006217C00B1A377 /* UIViewEXT.swift in Sources */,
 				E1C031A02005CBF400B1A377 /* NextVC.swift in Sources */,
+				E1C3E5612015C88F00B13306 /* TopicModel.swift in Sources */,
 				E1EDAB7620033D26004DD7B9 /* LoadEmptyView.m in Sources */,
 				E594E0752003ABB800BDF511 /* UIImageView+GIFDecode.m in Sources */,
 				E1E31B8F200F4EC700776701 /* InputValidator.swift in Sources */,
 				E594E0802003AEE200BDF511 /* AppInfo.m in Sources */,
 				E594E05C2003ABA200BDF511 /* NaviBarItem.m in Sources */,
 				E1EDAB7B2005B001004DD7B9 /* RootVC.swift in Sources */,
-				E594E0742003ABB800BDF511 /* NSString+DrawingAdapter.m in Sources */,
 				E1C031EA2007805500B1A377 /* Slider.swift in Sources */,
+				E1C3E5852015E1CF00B13306 /* DS2RefreshFooter.swift in Sources */,
 				E1EA27112011C5FB00F31796 /* String+MD5.swift in Sources */,
 				E1C0322C200C429B00B1A377 /* DownData.swift in Sources */,
 				E1C0323D200DF66700B1A377 /* TabberModel.swift in Sources */,
@@ -1237,6 +1320,7 @@
 				E594E07B2003ABB800BDF511 /* NSDate+gyh.m in Sources */,
 				E1F5E271200F28D800FD18FD /* String+GetSize.swift in Sources */,
 				E1C03227200C3E1B00B1A377 /* BaseModel.swift in Sources */,
+				E1C3E5632015D89600B13306 /* BaseModuleView.swift in Sources */,
 				E1C031CE200707A800B1A377 /* EARestrictedScrollView.m in Sources */,
 				E1E31B8B200F43B900776701 /* NibLoadable.swift in Sources */,
 				E1C0319A2005C08100B1A377 /* ExampleBasicContentView.swift in Sources */,
@@ -1244,12 +1328,14 @@
 				E1E31B97201045B400776701 /* CodeMode.swift in Sources */,
 				E1C03241200E15CF00B1A377 /* UserInfoModel.swift in Sources */,
 				E1F5E279200F356000FD18FD /* AccountLoginable.swift in Sources */,
+				E1C3E55F20158CAA00B13306 /* DSRefresh.swift in Sources */,
 				E1C0323B200DD86600B1A377 /* DImgTabber.swift in Sources */,
 				E1C0321D200C3A5D00B1A377 /* RootTable.swift in Sources */,
 				E1C031BD200623A300B1A377 /* RootGender.swift in Sources */,
 				E1EDAB7120033D26004DD7B9 /* LoadBlockView.m in Sources */,
 				E1F5E26D200F0B4600FD18FD /* LoginView.swift in Sources */,
 				E594E0782003ABB800BDF511 /* UIImage+Utility.m in Sources */,
+				E1C3E5832015E1C400B13306 /* DS2RefreshHeader.swift in Sources */,
 				E1E31B93200F524500776701 /* HCAccountLoginResult.swift in Sources */,
 				E1A21DE01FFF319300596BB7 /* AppDelegate.swift in Sources */,
 				E1C031CA200704DF00B1A377 /* EAIntroView.m in Sources */,

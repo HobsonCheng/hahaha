@@ -9,7 +9,7 @@
 #import "LoadBlockView.h"
 #import "AppInfo.h"
 #import "UIColor+Utility.h"
-#import "NSString+DrawingAdapter.h"
+#import "NSString+Utility.h"
 #import "UIImageView+GIFDecode.h"
 #import "UIView+Frame.h"
 // ==================================================================

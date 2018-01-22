@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NaviBarItem.h"
 
+
 @interface NaviBar : UIControl
 
 @property (nonatomic, assign) BOOL isClickEnable;

@@ -12,6 +12,7 @@ let PAGE_TYPE_login = "login"
 let PAGE_TYPE_custom = "custom"
 let PAGE_TYPE_default = "default"
 let PAGE_TYPE_news = "news"
+let PAGE_TYPE_TopicList = "TopicList"
 
 class OpenVC: NSObject {
 
@@ -55,16 +56,13 @@ class OpenVC: NSObject {
         case PAGE_TYPE_custom:
             Util.msg(msg: "hybrid - 牛逼", 1)
             break
-        case PAGE_TYPE_default:
-            let rootVC = RootVC.init(name: "RootVC")
-            rootVC?.pageData = pageInfo
-            VCController.push(rootVC!, with: VCAnimationClassic.defaultAnimation())
-            break
         case PAGE_TYPE_news:
             
             break
         default:
-            
+            let rootVC = RootVC.init(name: "RootVC")
+            rootVC?.pageData = pageInfo
+            VCController.push(rootVC!, with: VCAnimationClassic.defaultAnimation())
             break
             
         }

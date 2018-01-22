@@ -13,16 +13,16 @@ import UIKit
             注意下：需要在didFinishLaunchingWithOptions return之前注册方法：BQLAuthEngine.single.registerApp()
  ***************************************************************
 */
-public let QQ_APPID : String = ""
-public let QQ_APPKEY : String = ""
+public let QQ_APPID : String = "1"
+public let QQ_APPKEY : String = "1"
 
-public let WECHAT_APPID : String = ""
-public let WECHAT_APPSECRET : String = ""
+public let WECHAT_APPID : String = "1"
+public let WECHAT_APPSECRET : String = "1"
 
-public let SINA_APPKEY : String = ""
-public let SINA_APPSECRET : String = ""
-public let SINA_REDIRECTURI : String = ""
-public let SINA_OBJECTID : String = ""
+public let SINA_APPKEY : String = "1"
+public let SINA_APPSECRET : String = "1"
+public let SINA_REDIRECTURI : String = "1"
+public let SINA_OBJECTID : String = "1"
 
 enum AuthErrorCode: String {
     case common            = "通用错误"

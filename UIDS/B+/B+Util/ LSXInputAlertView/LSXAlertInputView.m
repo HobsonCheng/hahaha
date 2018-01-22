@@ -93,7 +93,10 @@ typedef void(^doneBlock)(NSString *);
     
     okbtn=[UIButton new];
     [okbtn addTarget:self action:@selector(okTap) forControlEvents:UIControlEventTouchUpInside];
-    okbtn.backgroundColor=[UIColor blueColor];
+    
+    
+    NSString *color = [[NSUserDefaults standardUserDefaults] objectForKey:@"B_USER_KEY_NAV_BG_COLOR"];
+    okbtn.backgroundColor=[UIColor colorWithHexString:color];
     [okbtn setTitle:@"确定" forState:UIControlStateNormal];
     [alertView addSubview:okbtn];
    

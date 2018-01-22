@@ -17,24 +17,27 @@ class UserInfoData: HandyJSON {
     var birthday : String!
     var explanation : String!
     var gender : Int!
-    var headPortrait : String!
+    var head_portrait : String!
     var id : Int!
     var interests : String!
     var labels : String!
-    var nickName : String!
+    var nick_name : String!
     var pid : Int!
     var signature : String!
     var uid : Int!
 
-    var addTime : String!
+    var add_time : String!
     var header : String!
     var status : Int!
-    var updateTime : String!
-    var userCode : String!
-    var userCodeCode : Int!
+    var update_time : String!
+    var user_code : String!
+    var user_code_code : Int!
     var username : String!
-    var usernameCode : Int!
-    var zhName : String!
+    var username_code : Int!
+    var zh_name : String!
+    
+    
+    var Authorization: String!
     
     required init() {}
 }

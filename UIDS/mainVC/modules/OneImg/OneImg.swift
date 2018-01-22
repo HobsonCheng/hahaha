@@ -16,7 +16,7 @@ class OneImgMode: ConfigModel {
 
 
 
-class OneImg: UIView {
+class OneImg: BaseModuleView {
 
     var imgView :UIImageView?
     override init(frame: CGRect) {

@@ -10,7 +10,7 @@
 #import "LightControl.h"
 #import "UIColor+Utility.h"
 #import "UIView+Frame.h"
-#import "NSString+DrawingAdapter.h"
+#import "NSString+Utility.h"
 // ==================================================================
 // 布局参数
 // ==================================================================
@@ -57,6 +57,7 @@ enum NaviBarTitleViewTags {
 {
     if((self = [super initWithFrame:frameInit]) != nil)
     {
+        self.tag = 1000000000000;
         // 初始化View(nil)
         _viewLeft = nil;
         _viewRight = nil;

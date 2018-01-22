@@ -37,7 +37,7 @@ class ApiUtil: NSObject {
         params.setValue("userLogin", forKey: "ac")
         params.setValue("login", forKey: "auth_code_type")
         
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+        BRequestHandler.shared.get(APIString: "userLogin", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
                 fininsh?(status,data,msg)
@@ -53,7 +53,7 @@ class ApiUtil: NSObject {
         params.setValue("userLoginByPhone", forKey: "ac")
         params.setValue("login", forKey: "auth_code_type")
         
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+        BRequestHandler.shared.get(APIString: "userLoginByPhone", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
                 fininsh?(status,data,msg)
@@ -117,6 +117,54 @@ class ApiUtil: NSObject {
     func getGroupList(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
         params.setValue("getGroupList", forKey: "ac")
         params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 创建群组
+    func addGroup(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("addGroup", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        params.setValue("4", forKey: "classify_id")
+        params.setValue("1", forKey: "has_sign_in")
+        params.setValue("1", forKey: "invitation_authority")
+        params.setValue("1", forKey: "reply_authority")
+        params.setValue("2", forKey: "replay_authority")
+        params.setValue("1", forKey: "attachment")
+        params.setValue("cms", forKey: "sn")
+        
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARL:- 发布话题
+    func addInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("addInvitation", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        params.setValue("1", forKey: "can_reply")
+        params.setValue("2", forKey: "can_replay")
+        params.setValue("1", forKey: "can_store")
+        params.setValue("1", forKey: "can_out")
+        params.setValue("2", forKey: "can_see_reply")
+        params.setValue("1", forKey: "use_signature")
+        params.setValue("1", forKey: "attechment")
+        params.setValue("1", forKey: "pay_type")
+        params.setValue("一几网络_IOS", forKey: "source")
+        params.setValue("119", forKey: "x_coord")
+        params.setValue("39", forKey: "y_coord")
+        
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             

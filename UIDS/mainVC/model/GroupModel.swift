@@ -14,52 +14,52 @@ class GroupModel: BaseModel {
 
 class GroupData: HandyJSON {
     
-    var addTime : String!
-    var addType : Int!
+    var add_time : String!
+    var add_type : Int!
     var address : String!
-    var areaId : Int!
+    var area_id : Int!
     var attachment : Int!
-    var blockId : Int!
-    var buildUid : Int!
-    var canOut : Int!
-    var canShare : Int!
-    var canSubscribe : Int!
-    var cityId : Int!
-    var classifyId : Int!
-    var countryId : Int!
-    var currentTop : Int!
-    var groupStencil : Int!
-    var groupType : Int!
-    var hasSignIn : Int!
+    var block_id : Int!
+    var build_uid : Int!
+    var can_out : Int!
+    var can_share : Int!
+    var can_subscribe : Int!
+    var city_id : Int!
+    var classify_id : Int!
+    var country_id : Int!
+    var current_top : Int!
+    var group_stencil : Int!
+    var group_type : Int!
+    var hasSign_in : Int!
     var id : Int!
     var identify : Int!
-    var indexId : String!
-    var indexPic : String!
+    var index_id : String!
+    var index_pic : String!
     var introduction : String!
-    var invitationAuthority : Int!
-    var invitationNum : Int!
-    var invitationTypes : String!
+    var invitation_authority : Int!
+    var invitation_num : Int?
+    var invitation_types : String!
     var labels : String!
-    var maxBM : Int!
-    var maxTop : Int!
-    var maxUser : Int!
+    var max_bm : Int!
+    var max_top : Int!
+    var max_user : Int!
     var name : String!
-    var nameCode : Int!
-    var payPerpetualMoney : Int!
-    var payTemporaryMoney : String!
-    var payType : Int!
+    var name_code : Int!
+    var payPerpetual_money : Int!
+    var payTemporary_money : String!
+    var pay_type : Int!
     var pid : Int!
-    var proId : Int!
-    var replayAuthority : Int!
-    var replyAuthority : Int!
-    var scoreRule : String!
+    var pro_id : Int!
+    var replay_authority : Int!
+    var reply_authority : Int!
+    var score_rule : String!
     var status : Int!
-    var updateTime : String!
-    var useJurisdiction : Int!
-    var userAuthority : Int!
-    var userNum : Int!
-    var xCoord : Int!
-    var yCoord : Int!
+    var update_time : String!
+    var use_jurisdiction : Int!
+    var user_authority : Int!
+    var user_num : Int!
+    var x_coord : Int!
+    var y_coord : Int!
     
     required init() {}
 }

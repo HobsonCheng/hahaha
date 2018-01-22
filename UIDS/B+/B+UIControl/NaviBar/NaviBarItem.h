@@ -20,6 +20,8 @@ typedef enum
 // 导航栏按钮
 @interface NaviBarItem : UIView
 
+@property (nonatomic, strong) UIButton *button;            // 按钮
+    
 // 创建BarItem
 - (NaviBarItem *)initImageItem:(CGRect)frameInit target:(id)target action:(SEL)action;
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import ESPullToRefresh
 
 extension RootVC {//扩展
 
@@ -17,7 +18,14 @@ extension RootVC {//扩展
         self.startY = 1;
         
         //分析模板信息
-        let model_str = self.pageData?.model_id
+        var model_str = self.pageData?.model_id
+        if model_str?.count == 0 {//如果模板数据为空 查询是否含有默认模板数据
+            //这个逻辑应该不需要存在
+            if self.pageData?.page_type == PAGE_TYPE_TopicList {
+                model_str = "[\"module_TopicList_nodel\"]"
+            }
+        }
+        
         let models = JSON.init(parseJSON: (model_str)!)
         for item in models.enumerated() {
             let modelName = item.element.1
@@ -44,6 +52,9 @@ extension RootVC {//扩展
             case "GroupListTopic" :
                 self.genderGroupListTopic(model_id: tmpList[0], startY: &self.startY!)
                 break
+            case "TopicList" :
+                self.genderTopicList(model_id: tmpList[0], startY: &self.startY!)
+                break
             default: break
                 
             }
@@ -52,8 +63,10 @@ extension RootVC {//扩展
         self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
         self.mainView?.showEmpty = false
         self.mainView?.reloadEmptyDataSet()
+        
+        self.mainView?.es.stopPullToRefresh()
     }
-    
+
     func genderSwipImg(list: NSArray,startY: UnsafeMutablePointer<CGFloat>){
     
         
@@ -155,7 +168,13 @@ extension RootVC {//扩展
     }
     func genderGroupListTopic(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
+        //遇到话题列表的组件  自动添加右上角 按钮
+        self.gender_extension_Right_navbar(type: NAV_BAR_TYPE.NAV_BAR_TYPE_ADD_GROUP)
+        
         let groupListTopic = GroupListTopic.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        self.refreshCallback = groupListTopic.refreshCB
+        groupListTopic.refreshES = self.esCallBack
+        
         groupListTopic.genderList { [weak self] in
             self?.reloadMainScroll()
         }
@@ -165,6 +184,30 @@ extension RootVC {//扩展
         self.mainView?.addSubview(groupListTopic)
         
         startY.pointee = groupListTopic.bottom + 10
+    }
+    
+    func genderTopicList(model_id: String,startY: UnsafeMutablePointer<CGFloat>)  {
+        
+        //遇到话题列表的组件  自动添加右上角 按钮
+        self.gender_extension_Right_navbar(type: NAV_BAR_TYPE.NAV_BAR_TYPE_ADD_TOPOC)
+        
+        let topicList = TopicList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        
+        topicList.groupItem = self.pageData?.anyObj as? GroupData
+        
+        self.refreshCallback = topicList.refreshCB
+        topicList.refreshES = self.esCallBack
+        
+        topicList.genderList { [weak self] in
+            self?.reloadMainScroll()
+        }
+        
+        topicList.tag = Int(startY.pointee)
+        
+        self.mainView?.addSubview(topicList)
+        
+        startY.pointee = topicList.bottom + 10
+        
     }
     
     
@@ -183,5 +226,51 @@ extension RootVC {//扩展
         }
         
         self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
+    }
+}
+
+//MARK: - 增加刷新机制
+extension RootVC {
+    
+    func genderRefresh() {
+        
+        //上拉  下拉
+        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        var footer: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        
+        header = DS2RefreshHeader.init(frame: CGRect.zero)
+        footer = DS2RefreshFooter.init(frame: CGRect.zero)
+        
+        self.mainView?.es.addPullToRefresh(animator: header) { [weak self] in
+            self?.refresh()
+        }
+        self.mainView?.es.addInfiniteScrolling(animator: footer) { [weak self] in
+            self?.loadMore()
+        }
+    }
+    
+    private func refresh() {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            
+            for sonView in (self?.mainView?.subviews)! {
+                
+                if sonView.tag > 0 {
+                    (sonView as! BaseModuleView).reloadViewData()
+                }
+                
+            }
+        }
+        
+    }
+    private func loadMore() {
+        
+        if self.refreshCallback != nil {
+            self.refreshCallback!()
+        }else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+                self?.mainView?.es.noticeNoMoreData()
+            }
+        }
     }
 }

@@ -19,11 +19,11 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <HandyJSON/HandyJSON.h>
 #import <SDWebImage/SDWebImage-umbrella.h>
+#import <LPDQuoteImagesView/LPDQuoteImagesView.h>
 //categorise
 #import "NSBundle+Module.h"
 #import "NSDate+gyh.h"
 #import "NSMutableDictionary+Utility.h"
-#import "NSString+DrawingAdapter.h"
 #import "NSString+URL.h"
 #import "NSString+Utility.h"
 #import "UIButton+Addition.h"
@@ -60,7 +60,7 @@
 #import <Weibo_SDK/WeiboSDK.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
-
+#import "LSXAlertInputView.h"
 
 //宏参数
 

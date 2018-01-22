@@ -9,6 +9,9 @@
 import UIKit
 import Dodo
 
+typealias ESCallBack = () -> ()
+typealias VCRefreshCallBack = () -> ()
+
 class RootVC: NaviBarVC{
 
     var pageData: PageInfo?
@@ -18,6 +21,11 @@ class RootVC: NaviBarVC{
     var startY: CGFloat?
     var leftList: NSArray?
     var rightList: NSArray?
+    
+    
+    public var refreshCallback: VCRefreshCallBack?
+    public var esCallBack: ESCallBack?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,37 +39,45 @@ class RootVC: NaviBarVC{
             
         }else{
             
-            
-            self.view.dodo.success("hello bai")
             self.startLoadBlock(nil, withHint: "加载中...")
-            
-            let params = NSMutableDictionary()
-            params.setValue(self.pageData?.page_key, forKey: "page_key")
-            params.setValue("0", forKey: "client_type")
-            params.setValue(self.pageData?.page_id, forKey: "page_id")
-            
-            ApiUtil.share.getPage(params: params, fininsh: { [weak self] (status, data, msg) in
-                self?.pageData = PageInfoModel.deserialize(from: data)?.data
-                
-                self?.stopLoadBlock()
-                self?.view.dodo.hide()
-                
-                self?.goto()
-                
-            })
-            
+            self.requestPageInfo()
+    
         }
     
+    }
+    
+    public func requestPageInfo(){
+        
+        let params = NSMutableDictionary()
+        params.setValue(self.pageData?.page_key, forKey: "page_key")
+        params.setValue("0", forKey: "client_type")
+        params.setValue(self.pageData?.page_id, forKey: "page_id")
+        
+        ApiUtil.share.getPage(params: params, fininsh: { [weak self] (status, data, msg) in
+            let tmpObj = self?.pageData?.anyObj
+            self?.pageData = PageInfoModel.deserialize(from: data)?.data
+            self?.pageData?.anyObj = tmpObj
+            
+            
+            self?.naviBar().setTitle(self?.pageData?.name)
+            
+            self?.stopLoadBlock()
+    
+            self?.goto()
+            
+        })
     }
     
     private func goto() {
         
         self.startY = 0;
+        
         self.mainView = MainScrollView.init(frame: CGRect.init(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().bottom - 50));
         self.view.addSubview(self.mainView!)
     
         self.initAppInfo()
     
+        self.genderRefresh()
     }
 
     override func didReceiveMemoryWarning() {

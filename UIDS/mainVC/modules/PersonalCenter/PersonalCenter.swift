@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonalCenter: UIView {
+class PersonalCenter: BaseModuleView {
 
     /*
     // Only override draw() if you perform custom drawing.

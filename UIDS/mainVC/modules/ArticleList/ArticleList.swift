@@ -10,7 +10,7 @@ import UIKit
 
 typealias ReloadOver = () -> ()
 
-class ArticleList: UIView {
+class ArticleList: BaseModuleView {
 
     var articleList: [AritcleItem]?
     var reloadOver: ReloadOver?

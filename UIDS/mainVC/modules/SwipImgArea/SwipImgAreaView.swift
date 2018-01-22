@@ -25,7 +25,7 @@ public enum PageControlPosition {
 
 public typealias LLdidSelectItemAtIndexClosure = (NSInteger) -> Void
 
-class SwipImgAreaView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate  {
+class SwipImgAreaView: BaseModuleView, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate  {
 
     // MARK: 控制参数
     // 是否自动滚动，默认true
