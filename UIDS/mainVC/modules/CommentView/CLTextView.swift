@@ -8,8 +8,8 @@
 
 import UIKit
 
-let kCommentTextViewHeight = 168.0
-let kMininumKeyboardHeight = 216.0
+let kCommentTextViewHeight: CGFloat = 168.0
+let kMininumKeyboardHeight: CGFloat = 216.0
 
 class CLTextView: UIView, UITextViewDelegate {
 
@@ -30,7 +30,7 @@ class CLTextView: UIView, UITextViewDelegate {
         self.contentView.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: kScreenH)
         self.addSubview(self.contentView)
 
-        
+        self.configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,6 +39,12 @@ class CLTextView: UIView, UITextViewDelegate {
     
     
     func configure() {
+        
+        
+        self.backgroundView = UIVisualEffectView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenW, height: kScreenH))
+        self.backgroundView?.backgroundColor = UIColor.black
+        self.backgroundView?.alpha = 0.5
+        self.backgroundView?.effect = UIBlurEffect.init(style: UIBlurEffectStyle.dark)
         
         self.commentTextView.layer.borderColor = UIColor.init(hex: 0xBCBAC1, alpha: 1).cgColor;
         self.commentTextView.layer.borderWidth = 0.5;
@@ -56,12 +62,9 @@ class CLTextView: UIView, UITextViewDelegate {
         
         self.insertSubview(self.backgroundView!, at: 0)
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(CLTextView.keyboardWasShown(aNotification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-    
-        self.backgroundView = UIVisualEffectView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenW, height: kScreenH))
-        self.backgroundView?.backgroundColor = UIColor.black
-        self.backgroundView?.alpha = 0.5
-        self.backgroundView?.effect = UIBlurEffect.init(style: UIBlurEffectStyle.dark)
+        NotificationCenter.default.addObserver(self, selector: #selector(CLTextView.keyboardhidShown(aNotification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
     
@@ -86,16 +89,20 @@ class CLTextView: UIView, UITextViewDelegate {
             self.dismissCommentTextView()
         }
     }
+    
+    func keyboardhidShown(aNotification: Notification) {
+        self.dismissCommentTextView()
+    }
     func keyboardWasShown(aNotification: Notification)  {
         
         let info = aNotification.userInfo
-//        let kbsize = info[UIKeyboardFrameEndUserInfoKey]
-//
-//        if (kbSize.height > kMininumKeyboardHeight) {
-//            self.containerViewConstraintHeight.constant = kCommentTextViewHeight + 20 + kbSize.height;
-//        } else {
-//            self.containerViewConstraintHeight.constant = kCommentTextViewHeight + 20 + kMininumKeyboardHeight;
-//        }
+        let  keyBoardBounds = (info![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        if (keyBoardBounds.size.height > kMininumKeyboardHeight) {
+            self.containerViewConstraintHeight.constant = kCommentTextViewHeight + 20 + keyBoardBounds.size.height;
+        } else {
+            self.containerViewConstraintHeight.constant = kCommentTextViewHeight + 20 + kMininumKeyboardHeight;
+        }
     }
     
     
