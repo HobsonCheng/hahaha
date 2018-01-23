@@ -80,6 +80,10 @@ class TopicList: BaseModuleView {
         
         cell?.height = 115 + size.height
     
+        if itemObj.attachment_value.count != 0 {
+            cell?.height = (cell?.height)! + (cell?.imgViewHeight.constant)!
+        }
+        
         return cell!
     }
     

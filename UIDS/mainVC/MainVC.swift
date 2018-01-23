@@ -85,6 +85,7 @@ class MainVC: BaseNameVC {
         for item in (pageListinfo?.enumerated())! {
 
             let tabber = RootVC()
+            tabber?.isHomePage = true
             tabber?.pageData = item.element
             if (bigNum + 1) == count {
                 tabber?.tabBarItem = DImgTabber.init(contentView: ExampleIrregularityContentView(), title: nil, image: tabber?.pageData?.icon, selectedImage: tabber?.pageData?.icon_sel, tag: count)

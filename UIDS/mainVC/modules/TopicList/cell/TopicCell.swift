@@ -15,6 +15,8 @@ class TopicCell: UITableViewCell {
     var cellObj: TopicData?
     var cellButton: UIButton?
     
+    @IBOutlet weak var imgViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var showImgView: UIView!
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var zan: UIButton!
@@ -30,7 +32,7 @@ class TopicCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.white
-        
+        self.imgViewHeight.constant = 0.0
         self.icon.layer.cornerRadius = 20
         self.icon.layer.masksToBounds = true
         
@@ -55,12 +57,69 @@ class TopicCell: UITableViewCell {
             self.title.text = String.init(format: "来自：%@", (self.cellObj?.source)!)
             self.content.text = self.cellObj?.title
             
+            if self.cellObj?.attachment_value.count != 0 {
+                self.genderImgs()
+            }
+            
+            
         }
+    }
+    
+    private func genderImgs (){
+        
+        let imgs = self.cellObj?.attachment_value.components(separatedBy: ",")
+        
+        let rank = 3
+        //每列间距
+        let rankMargin = 5
+        //每个Item宽高
+        let W = (Int(kScreenW - 30) - (rank+1)*rankMargin)/rank
+        let H = W
+        //每行间距
+        let rowMargin = 5
+        
+        var allHeight = 50.0
+        
+        var index = 0
+        
+        for item in imgs! {
+        
+            let startX = ((index)%rank) * (W + rankMargin)
+            let startY = (index/rank) * (H + rowMargin)
+            let top = 5
+            
+            let speedView = UIImageView.init()
+            
+            speedView.sd_setImage(with: URL.init(string: item))
+            speedView.frame = CGRect.init(x: startX, y: startY+top, width: W, height: H)
+            speedView.backgroundColor = UIColor.clear
+            self.showImgView?.addSubview(speedView)
+            
+            let touchBt = UIButton().then{
+                $0.frame = CGRect.init(x: speedView.left, y: speedView.top, width: speedView.width, height: speedView.height + 10)
+                $0.backgroundColor = UIColor.clear
+                $0.addTarget(self, action: #selector(Slider.touchItem(bt:)), for: .touchUpInside)
+                $0.tag = index
+            }
+            self.showImgView?.addSubview(touchBt)
+         
+            index = index + 1
+            
+            allHeight = Double(speedView.bottom)
+        }
+     
+        
+        self.imgViewHeight.constant = CGFloat(allHeight)
+        
+    }
+    
+    func touchItem(bt: UIButton) {
+        
     }
     
     private func touchcell(){
         
-        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_TopicList, actionType: PAGE_TYPE_news)
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_news, actionType: "content")
         getPage?.anyObj = self.cellObj
         if (getPage != nil) {
             OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
@@ -74,7 +133,7 @@ class TopicCell: UITableViewCell {
             $0.rx.tap.do(onNext: { [weak self] _ in
                 self?.touchcell()
             }).subscribe().disposed(by: rx.disposeBag)
-            $0.frame = CGRect.init(x: 0, y: 0, width: self.width, height: self.height)
+            $0.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: self.height)
         })
         
         self.addSubview(cellButton!)

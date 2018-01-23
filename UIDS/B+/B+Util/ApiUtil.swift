@@ -5,8 +5,10 @@
 //  Created by one2much on 2018/1/19.
 //  Copyright © 2018年 one2much. All rights reserved.
 //
-
+import Foundation
 import UIKit
+import SwiftyJSON
+import HandyJSON
 
 typealias ApiUtilFinished = (_ status: B_ResponseStatus, _ result: String?, _ tipString: String?) -> ()
 
@@ -175,45 +177,20 @@ class ApiUtil: NSObject {
             }
         }
     }
-    //MARK: - 获取token 七牛云
-    func getuptoken(callback: (_ token: String) -> ()) {
-        let getTokenApi = "http://121.42.154.36:11124/getuptoken"
+    //MARK: - CMS_detail
+    func getInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getInvitation", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
-            // Check for error
-            if error != nil
-            {
-                print("error=\(error)")
-                return
+            if B_ResponseStatus.success == status {
+                
+            }else {
+                Util.msg(msg: msg!, 3)
             }
             
-            // Print out response string
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
-            
-            
-            // Convert server json response to NSDictionary
-            do {
-                if let convertedJsonIntoDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    
-                    // Print out dictionary
-                    print(convertedJsonIntoDict)
-                    
-                    // Get value by key
-                    let firstNameValue = convertedJsonIntoDict["userName"] as? String
-                    print(firstNameValue!)
-                    
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            
+            fininsh?(status,data,msg)
         }
-        
-        task.resume()
-        
-        
     }
 }

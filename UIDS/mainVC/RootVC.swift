@@ -21,6 +21,7 @@ class RootVC: NaviBarVC{
     var startY: CGFloat?
     var leftList: NSArray?
     var rightList: NSArray?
+    var isHomePage: Bool! = false
     
     
     public var refreshCallback: VCRefreshCallBack?
@@ -28,7 +29,7 @@ class RootVC: NaviBarVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setNaviDefulat()
         
         self.naviBar().setTitle(self.pageData?.name)
@@ -72,7 +73,10 @@ class RootVC: NaviBarVC{
         
         self.startY = 0;
         
-        self.mainView = MainScrollView.init(frame: CGRect.init(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().bottom - 50));
+        self.mainView = MainScrollView.init(frame: CGRect.init(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().bottom - 50))
+        if !self.isHomePage! {
+            self.mainView?.height = self.view.height - self.naviBar().bottom
+        }
         self.view.addSubview(self.mainView!)
     
         self.initAppInfo()

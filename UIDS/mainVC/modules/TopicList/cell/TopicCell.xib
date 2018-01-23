@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="KGk-i7-Jjw" customClass="TopicCell" customModule="UIDS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="391" height="145"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="218" id="KGk-i7-Jjw" customClass="TopicCell" customModule="UIDS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="391" height="226"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="391" height="144.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="391" height="225.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohj-nP-J80">
@@ -49,7 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9M-9g-zpA">
-                        <rect key="frame" x="0.0" y="114.5" width="391" height="30"/>
+                        <rect key="frame" x="0.0" y="195.5" width="391" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAH-gp-xHn">
                                 <rect key="frame" x="0.0" y="0.0" width="391" height="0.5"/>
@@ -115,7 +115,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="流量当、针织当、，好看视频：下受到老师授课计划：" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YT-NF-Lzo">
-                        <rect key="frame" x="15" y="71" width="361" height="37.5"/>
+                        <rect key="frame" x="15" y="71" width="361" height="57.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <color key="textColor" red="0.21434863768710988" green="0.21434863768710988" blue="0.21434863768710988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -129,6 +129,13 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O50-0Q-n1J">
+                        <rect key="frame" x="15" y="130.5" width="361" height="60"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="5t3-UY-zeO"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="G9M-9g-zpA" secondAttribute="trailing" id="24Q-a7-fzw"/>
@@ -136,12 +143,15 @@
                     <constraint firstItem="drP-tR-sLz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BuF-BX-AB5"/>
                     <constraint firstItem="a2q-YW-TYV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="G4V-N4-jDf"/>
                     <constraint firstItem="G9M-9g-zpA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="N5X-bW-j2z"/>
-                    <constraint firstItem="G9M-9g-zpA" firstAttribute="top" secondItem="3YT-NF-Lzo" secondAttribute="bottom" constant="6" id="WXE-Qw-HfA"/>
+                    <constraint firstItem="G9M-9g-zpA" firstAttribute="top" secondItem="O50-0Q-n1J" secondAttribute="bottom" constant="5" id="RYM-6o-MDI"/>
                     <constraint firstItem="bSu-nP-xzV" firstAttribute="top" secondItem="drP-tR-sLz" secondAttribute="bottom" constant="2" id="Z7i-ai-gka"/>
+                    <constraint firstItem="O50-0Q-n1J" firstAttribute="top" secondItem="3YT-NF-Lzo" secondAttribute="bottom" constant="2" id="bst-NA-EgR"/>
+                    <constraint firstItem="O50-0Q-n1J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="feM-gq-itk"/>
                     <constraint firstItem="Ohj-nP-J80" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fhO-w6-s3g"/>
                     <constraint firstAttribute="trailing" secondItem="a2q-YW-TYV" secondAttribute="trailing" constant="15" id="gWS-QZ-4Ov"/>
                     <constraint firstItem="3YT-NF-Lzo" firstAttribute="top" secondItem="a2q-YW-TYV" secondAttribute="bottom" constant="2" id="j2v-l7-wNz"/>
                     <constraint firstAttribute="trailing" secondItem="3YT-NF-Lzo" secondAttribute="trailing" constant="15" id="nIg-LV-h7a"/>
+                    <constraint firstAttribute="trailing" secondItem="O50-0Q-n1J" secondAttribute="trailing" constant="15" id="oYj-hi-wFj"/>
                     <constraint firstItem="bSu-nP-xzV" firstAttribute="leading" secondItem="Ohj-nP-J80" secondAttribute="trailing" constant="5" id="qPf-dE-mnp"/>
                     <constraint firstItem="3YT-NF-Lzo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="smD-4f-4cT"/>
                     <constraint firstItem="a2q-YW-TYV" firstAttribute="top" secondItem="Ohj-nP-J80" secondAttribute="bottom" constant="5" id="srk-pF-AlS"/>
@@ -156,11 +166,13 @@
                 <outlet property="content" destination="3YT-NF-Lzo" id="uaZ-Zh-EbN"/>
                 <outlet property="forward" destination="XuP-mR-Olc" id="r9A-Ba-pAX"/>
                 <outlet property="icon" destination="Ohj-nP-J80" id="l0B-ud-c8W"/>
+                <outlet property="imgViewHeight" destination="5t3-UY-zeO" id="oa7-VS-UuA"/>
+                <outlet property="showImgView" destination="O50-0Q-n1J" id="puG-fN-sAm"/>
                 <outlet property="title" destination="a2q-YW-TYV" id="bEp-x5-cn5"/>
                 <outlet property="username" destination="drP-tR-sLz" id="HUn-ob-nIn"/>
                 <outlet property="zan" destination="xpZ-Xc-04I" id="n7g-Js-ZSA"/>
             </connections>
-            <point key="canvasLocation" x="-167.5" y="-60"/>
+            <point key="canvasLocation" x="-296.5" y="-69"/>
         </tableViewCell>
     </objects>
 </document>

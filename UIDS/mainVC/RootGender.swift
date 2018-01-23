@@ -59,8 +59,14 @@ extension RootVC {//扩展
                 
             }
         }
+        
+        
+        if (self.startY! + 50) > (self.mainView?.height)! {
+            self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
+        }else {
+            self.mainView?.contentSize = CGSize.init(width: 0, height: (self.mainView?.height)! + 50);
+        }
     
-        self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
         self.mainView?.showEmpty = false
         self.mainView?.reloadEmptyDataSet()
         
@@ -225,7 +231,13 @@ extension RootVC {//扩展
 
         }
         
-        self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
+        
+        if (self.startY! + 50) > (self.mainView?.height)! {
+            self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
+        }else {
+            self.mainView?.contentSize = CGSize.init(width: 0, height: (self.mainView?.height)! + 50);
+        }
+    
     }
 }
 

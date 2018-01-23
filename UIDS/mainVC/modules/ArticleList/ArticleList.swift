@@ -12,7 +12,7 @@ typealias ReloadOver = () -> ()
 
 class ArticleList: BaseModuleView {
 
-    var articleList: [AritcleItem]?
+    var articleList: [TopicData]?
     var reloadOver: ReloadOver?
     //MARK: 创建页面
     func genderView(callback: @escaping ReloadOver){
@@ -31,7 +31,7 @@ class ArticleList: BaseModuleView {
 
     }
 
-    private func genderCellView(itemObj: AritcleItem) -> ArticleListCell {
+    private func genderCellView(itemObj: TopicData) -> ArticleListCell {
         
         let cell: ArticleListCell? = ArticleListCell.loadFromXib_Swift() as? ArticleListCell
         cell?.cellObj = itemObj

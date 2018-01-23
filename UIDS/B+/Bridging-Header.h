@@ -63,8 +63,13 @@
 #import "LSXAlertInputView.h"
 #import <Qiniu/QiniuSDK.h>
 
+#import "UploadImageTool.h"
+
 //宏参数
 
 #define  B_USER_KEY_NAV_BG_COLOR  @"B_USER_KEY_NAV_BG_COLOR"
+
+//七牛 host
+#define  QINIU_HOST_NAME    @"http://omzvdb61q.bkt.clouddn.com/"
 
 #endif /* Bridging_Header_h */

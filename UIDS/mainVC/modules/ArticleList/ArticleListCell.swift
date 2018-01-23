@@ -15,7 +15,7 @@ import NSObject_Rx
 class ArticleListCell: UITableViewCell {
 
     
-    var cellObj: AritcleItem?
+    var cellObj: TopicData?
     var cellButton: UIButton?
     
     override func awakeFromNib() {

@@ -202,10 +202,9 @@
         
         // 设置动画图片
         NSMutableArray *arrayImages = [[NSMutableArray alloc] init];
-        for (int i=1; i<=12; i++) {
-            NSString *name = [NSString stringWithFormat:@"%zd.tiff",i];
-            UIImage *image = [UIImage imageFromColor:[UIColor redColor]];//UIMaster_Image(name);
-            [arrayImages addObject:image];
+        for (int i=1; i<=15; i++) {
+            NSString *name = [NSString stringWithFormat:@"test_%zd.png",i];
+            [arrayImages addObject:[UIImage imageNamed:name]];
         }
         [_imageViewLoad setAnimationImages:arrayImages];
         

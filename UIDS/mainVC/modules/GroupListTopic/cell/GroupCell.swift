@@ -68,7 +68,7 @@ class GroupCell: UITableViewCell {
             $0.rx.tap.do(onNext: { [weak self] _ in
                 self?.touchcell()
             }).subscribe().disposed(by: rx.disposeBag)
-            $0.frame = CGRect.init(x: 0, y: 0, width: self.width, height: self.height)
+            $0.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: self.height)
         })
         
         self.addSubview(cellButton!)

@@ -57,8 +57,9 @@ class OpenVC: NSObject {
             Util.msg(msg: "hybrid - 牛逼", 1)
             break
         case PAGE_TYPE_news:
-            
-            break
+            let detail = DetatilVC.init(name: "DetatilVC")
+            detail?.pageData = pageInfo
+            VCController.push(detail!, with: VCAnimationClassic.defaultAnimation())
         default:
             let rootVC = RootVC.init(name: "RootVC")
             rootVC?.pageData = pageInfo

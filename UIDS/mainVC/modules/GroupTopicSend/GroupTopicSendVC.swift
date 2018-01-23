@@ -12,14 +12,18 @@ import KMPlaceholderTextView
 import TextFieldEffects
 import LPDQuoteImagesView
 import Qiniu
+import SVProgressHUD
+import SwiftyJSON
 
 class GroupTopicSendVC: NaviBarVC, LPDQuoteImagesViewDelegate {
 
+    var upLoadNum: Int?
     var pageData: PageInfo?
     var mainScroll: UIScrollView?
     var titleTextF: KaedeTextField?
     var contentTxt: KMPlaceholderTextView?
     var selectPhoto: LPDQuoteImagesView?
+    var attechment_value: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +47,7 @@ extension GroupTopicSendVC {
 
     func genderNavi() {
         
-        let left = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(GroupTopicSendVC.goBack(_:)))
+        let left = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(GroupTopicSendVC.closeVC))
         left?.button.setFAIcon(icon: FAType.FAClose, iconSize: 20, forState: UIControlState.normal)
         self.naviBar().setLeftBarItem(left!)
         
@@ -52,6 +56,10 @@ extension GroupTopicSendVC {
         right?.button.setFAIcon(icon: FAType.FASendO, iconSize: 20, forState: UIControlState.normal)
         self.naviBar().setRightBarItem(right!)
         
+    }
+    
+    func closeVC()  {
+        VCController.pop(with: VCAnimationBottom.defaultAnimation())
     }
     
     func sendTxt() {
@@ -71,7 +79,9 @@ extension GroupTopicSendVC {
             return
         }
         
-        if self.selectPhoto.count == 0 {
+        self.view.endEditing(true)
+        
+        if self.selectPhoto?.selectedPhotos.count == 0 {
             self.goOnSend()
         }else {
             self.upLoadImg { [weak self] in
@@ -91,7 +101,7 @@ extension GroupTopicSendVC {
         params.setValue(self.titleTextF?.text, forKey: "title")
         params.setValue(self.titleTextF?.text, forKey: "summarize")
         params.setValue(self.contentTxt?.text, forKey: "content")
-        
+        params.setValue(self.attechment_value, forKey: "attachment_value")
         
         self.startLoadBlock(nil, withHint: "发布中...")
         ApiUtil.share.addInvitation(params: params) { [weak self] (status, data, msg) in
@@ -118,7 +128,7 @@ extension GroupTopicSendVC {
     
     func genderRoot() {
         
-        self.mainScroll = UIScrollView.init(frame: CGRect.init(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().bottom))
+        self.mainScroll = UIScrollView.init(frame: CGRect.init(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().height))
         self.view.addSubview(self.mainScroll!)
         
         
@@ -174,31 +184,46 @@ extension GroupTopicSendVC {
 //MARK: - 上传图片
 extension GroupTopicSendVC {
     
-    func upLoadImg(callback: () -> ())  {
+    func upLoadImg(callback: @escaping () -> ())  {
         
-        
-        
-        
-        let Img: UIImage = self.selectPhoto?.selectedPhotos.object(at: 0) as! UIImage
-        let dataImg = Img.sd_imageData()
-        self.oneUpImg(dataImg: dataImg!) {
+        UploadImageTool.uploadImages(self.selectPhoto?.selectedPhotos as! [Any], progress: { [weak self] (propress) in
+            self?.UpLoadProgres(progressNum: propress)
+        }, success: { [weak self] (obj) in
+            
+            for item in obj! {
+                if self?.attechment_value != nil {
+                    self?.attechment_value = String.init(format: "%@,%@", (self?.attechment_value)!,item as! CVarArg)
+                }else {
+                    self?.attechment_value = item as? String
+                }
+            }
+            
+            self?.UpLoadProgres(progressNum: 1)
+            
+            callback()
+        }) {
             
         }
     
     }
+}
+
+
+//进度控制
+extension GroupTopicSendVC {
     
-    func oneUpImg(dataImg: Data, callback: () -> ()) {
+    func UpLoadProgres(progressNum: CGFloat) {
         
-        let upManager = QNUploadManager()
-        let uploadOption = QNUploadOption.init(mime: nil, progressHandler: { (key, percent) in
-            
-        }, params: nil, checkCrc: false) { () -> Bool in
-            
+        if progressNum == 1 {
+            SVProgressHUD.showSuccess(withStatus: "图片上传成功")
+            SVProgressHUD.dismiss(withDelay: 0.3)
+            return
         }
         
-        upManager?.put(dataImg, key: nil, token: "", complete: { (info, key, resp) in
-            
-        }, option: uploadOption)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
+        SVProgressHUD.showProgress(Float(progressNum), status: "上传中...")
         
     }
     

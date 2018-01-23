@@ -19,7 +19,7 @@ private let singleUtil = Util()
 final class Util: NSObject,iRateDelegate{
     
     var mainVC: UIViewController?
-    
+    var upLoadImgToken: String?
     
     static var shared: Util {
         return singleUtil
