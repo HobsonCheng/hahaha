@@ -175,4 +175,45 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - 获取token 七牛云
+    func getuptoken(callback: (_ token: String) -> ()) {
+        let getTokenApi = "http://121.42.154.36:11124/getuptoken"
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            // Check for error
+            if error != nil
+            {
+                print("error=\(error)")
+                return
+            }
+            
+            // Print out response string
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+            
+            
+            // Convert server json response to NSDictionary
+            do {
+                if let convertedJsonIntoDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                    
+                    // Print out dictionary
+                    print(convertedJsonIntoDict)
+                    
+                    // Get value by key
+                    let firstNameValue = convertedJsonIntoDict["userName"] as? String
+                    print(firstNameValue!)
+                    
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        task.resume()
+        
+        
+    }
 }

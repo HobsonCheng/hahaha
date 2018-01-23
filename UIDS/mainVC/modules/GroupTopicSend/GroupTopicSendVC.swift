@@ -11,6 +11,7 @@ import Font_Awesome_Swift
 import KMPlaceholderTextView
 import TextFieldEffects
 import LPDQuoteImagesView
+import Qiniu
 
 class GroupTopicSendVC: NaviBarVC, LPDQuoteImagesViewDelegate {
 
@@ -18,6 +19,7 @@ class GroupTopicSendVC: NaviBarVC, LPDQuoteImagesViewDelegate {
     var mainScroll: UIScrollView?
     var titleTextF: KaedeTextField?
     var contentTxt: KMPlaceholderTextView?
+    var selectPhoto: LPDQuoteImagesView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +71,18 @@ extension GroupTopicSendVC {
             return
         }
         
+        if self.selectPhoto.count == 0 {
+            self.goOnSend()
+        }else {
+            self.upLoadImg { [weak self] in
+                self?.goOnSend()
+            }
+        }
+    
+    }
+    
+    func goOnSend()  {
+        
         let groupData: GroupData = self.pageData?.anyObj as! GroupData
         
         let params = NSMutableDictionary()
@@ -95,7 +109,7 @@ extension GroupTopicSendVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             self?.stopLoadBlock()
         }
-    
+        
     }
     
 }
@@ -144,11 +158,47 @@ extension GroupTopicSendVC {
         photoImg?.maxSelectedCount = 9
         bgView.addSubview(photoImg!)
         
+        self.selectPhoto = photoImg
+        
         if (self.mainScroll?.height)! > bgView.bottom {
             self.mainScroll?.contentSize = CGSize.init(width: 0, height: (self.mainScroll?.height)! + 1)
         }else{
             self.mainScroll?.contentSize = CGSize.init(width: 0, height: bgView.bottom)
         }
+        
+    }
+    
+}
+
+
+//MARK: - 上传图片
+extension GroupTopicSendVC {
+    
+    func upLoadImg(callback: () -> ())  {
+        
+        
+        
+        
+        let Img: UIImage = self.selectPhoto?.selectedPhotos.object(at: 0) as! UIImage
+        let dataImg = Img.sd_imageData()
+        self.oneUpImg(dataImg: dataImg!) {
+            
+        }
+    
+    }
+    
+    func oneUpImg(dataImg: Data, callback: () -> ()) {
+        
+        let upManager = QNUploadManager()
+        let uploadOption = QNUploadOption.init(mime: nil, progressHandler: { (key, percent) in
+            
+        }, params: nil, checkCrc: false) { () -> Bool in
+            
+        }
+        
+        upManager?.put(dataImg, key: nil, token: "", complete: { (info, key, resp) in
+            
+        }, option: uploadOption)
         
     }
     

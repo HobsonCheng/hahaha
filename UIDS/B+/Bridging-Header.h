@@ -61,6 +61,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "LSXAlertInputView.h"
+#import <Qiniu/QiniuSDK.h>
 
 //宏参数
 
