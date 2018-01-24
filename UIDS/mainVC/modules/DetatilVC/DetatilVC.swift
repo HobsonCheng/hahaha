@@ -6,6 +6,7 @@
 //  Copyright © 2018年 one2much. All rights reserved.
 //
 import UIKit
+import IQKeyboardManagerSwift
 
 let kBottomViewHeight: CGFloat = 46.0
 
@@ -55,6 +56,17 @@ class DetatilVC: NaviBarVC, UITableViewDelegate, UITableViewDataSource, UIWebVie
     var backBtn: UIButton!
     var replyCountBtn: UIButton!
     var tableView: UITableView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.sharedManager().enableAutoToolbar = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KMPlaceholderTextView
 
 let kCommentTextViewHeight: CGFloat = 168.0
 let kMininumKeyboardHeight: CGFloat = 216.0
@@ -17,7 +18,7 @@ class CLTextView: UIView, UITextViewDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var commentTextView: KMPlaceholderTextView!
     
     @IBOutlet weak var containerViewConstraintHeight: NSLayoutConstraint!
     var delegate: CLBottomCommentViewDelegate?
@@ -47,6 +48,7 @@ class CLTextView: UIView, UITextViewDelegate {
         self.backgroundView?.effect = UIBlurEffect.init(style: UIBlurEffectStyle.dark)
         
         self.commentTextView.layer.borderColor = UIColor.init(hex: 0xBCBAC1, alpha: 1).cgColor;
+        self.commentTextView.placeholder = "留下足迹..."
         self.commentTextView.layer.borderWidth = 0.5;
         self.commentTextView.delegate = self;
         
