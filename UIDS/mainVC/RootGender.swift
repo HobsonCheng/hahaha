@@ -44,7 +44,7 @@ extension RootVC {//扩展
                 self.genderArticleList(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "PersonalCenter" :
-                print("PersonalCenter")
+                self.genderPersonalCenter(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "MakeToCustomer" :
                 print("MakeToCustomer")
@@ -172,6 +172,21 @@ extension RootVC {//扩展
         
         startY.pointee = aritclalist.bottom + 10
     }
+    
+    func genderPersonalCenter(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+        
+        let personalCenter = PersonalCenter.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        personalCenter.tag = Int(startY.pointee)
+        
+        personalCenter.reloadCell = {[weak self] in
+            self?.reloadMainScroll()
+        }
+        
+        self.mainView?.addSubview(personalCenter)
+        
+        startY.pointee = personalCenter.bottom + 10
+    }
+    
     func genderGroupListTopic(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         //遇到话题列表的组件  自动添加右上角 按钮
@@ -264,13 +279,21 @@ extension RootVC {
     private func refresh() {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            
+            var find = false
             for sonView in (self?.mainView?.subviews)! {
                 
                 if sonView.tag > 0 {
-                    (sonView as! BaseModuleView).reloadViewData()
+                    if find {
+                        
+                    }else {
+                        find = (sonView as! BaseModuleView).reloadViewData()
+                    }
                 }
                 
+            }
+            
+            if !find {
+                self?.mainView?.es.stopPullToRefresh()
             }
         }
         

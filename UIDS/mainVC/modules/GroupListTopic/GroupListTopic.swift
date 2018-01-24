@@ -27,10 +27,10 @@ class GroupListTopic: BaseModuleView {
     }
     
     
-    override func reloadViewData() {
-        super.reloadViewData()
+    override func reloadViewData()-> Bool {
         self.page = 1
         self.request()
+        return true
     }
     
     

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="JFNewsBottomBar" customModule="UIDS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvc-f6-6ar" userLabel="lineView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="4Mw-tz-YOt"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5h-0G-nc5" userLabel="Comment">
+                    <rect key="frame" x="80" y="1" width="80" height="44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" image="bottom_bar_comment_selected.png">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="didTappedCommentButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="2db-8N-oAX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilo-Ts-jCo" userLabel="Collection" customClass="JFNoHighlightedButton">
+                    <rect key="frame" x="160" y="1" width="80" height="44"/>
+                    <state key="normal" image="favorite_undo.png"/>
+                    <state key="selected" image="favorite_done.png"/>
+                    <state key="highlighted" image="bottom_bar_collection_selected"/>
+                    <connections>
+                        <action selector="didTappedCollectButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="KDe-ie-Gl6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqX-Vs-qKK" userLabel="Share">
+                    <rect key="frame" x="240" y="1" width="80" height="44"/>
+                    <state key="normal" image="shareButton.png"/>
+                    <connections>
+                        <action selector="didTappedShareButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="ice-cz-sOL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhf-80-ImR" userLabel="Edit">
+                    <rect key="frame" x="0.0" y="1" width="80" height="44"/>
+                    <state key="normal" image="bottom_bar_edit_selected.png"/>
+                    <connections>
+                        <action selector="didTappedEditButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="JMf-GC-3eZ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="MqX-Vs-qKK" firstAttribute="leading" secondItem="ilo-Ts-jCo" secondAttribute="trailing" id="1se-VE-3mu"/>
+                <constraint firstItem="MqX-Vs-qKK" firstAttribute="top" secondItem="Cvc-f6-6ar" secondAttribute="bottom" id="2gE-VM-oEy"/>
+                <constraint firstItem="j5h-0G-nc5" firstAttribute="leading" secondItem="Yhf-80-ImR" secondAttribute="trailing" id="4cX-hS-UA8"/>
+                <constraint firstItem="Yhf-80-ImR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5Kz-bt-xwC"/>
+                <constraint firstItem="j5h-0G-nc5" firstAttribute="height" secondItem="Yhf-80-ImR" secondAttribute="height" id="6jO-AB-8XB"/>
+                <constraint firstAttribute="bottom" secondItem="Yhf-80-ImR" secondAttribute="bottom" id="AaO-p6-x1n"/>
+                <constraint firstAttribute="bottom" secondItem="Yhf-80-ImR" secondAttribute="bottom" id="EXO-jT-YDI"/>
+                <constraint firstItem="ilo-Ts-jCo" firstAttribute="height" secondItem="Yhf-80-ImR" secondAttribute="height" id="KSf-cu-lMX"/>
+                <constraint firstItem="ilo-Ts-jCo" firstAttribute="leading" secondItem="j5h-0G-nc5" secondAttribute="trailing" id="Pwi-eO-sx5"/>
+                <constraint firstAttribute="bottom" secondItem="MqX-Vs-qKK" secondAttribute="bottom" id="Sup-az-enY"/>
+                <constraint firstAttribute="bottom" secondItem="ilo-Ts-jCo" secondAttribute="bottom" id="VUr-ms-h74"/>
+                <constraint firstAttribute="trailing" secondItem="MqX-Vs-qKK" secondAttribute="trailing" id="VuU-bV-8MM"/>
+                <constraint firstItem="Cvc-f6-6ar" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WpG-6C-oZn"/>
+                <constraint firstItem="MqX-Vs-qKK" firstAttribute="leading" secondItem="ilo-Ts-jCo" secondAttribute="trailing" id="Y0A-eK-WBz"/>
+                <constraint firstAttribute="bottom" secondItem="ilo-Ts-jCo" secondAttribute="bottom" id="ZGo-wl-VUS"/>
+                <constraint firstItem="ilo-Ts-jCo" firstAttribute="leading" secondItem="j5h-0G-nc5" secondAttribute="trailing" id="a4a-1e-ZnD"/>
+                <constraint firstAttribute="trailing" secondItem="MqX-Vs-qKK" secondAttribute="trailing" id="bOR-ii-H2z"/>
+                <constraint firstItem="j5h-0G-nc5" firstAttribute="leading" secondItem="Yhf-80-ImR" secondAttribute="trailing" id="bOX-J5-Qcy"/>
+                <constraint firstItem="ilo-Ts-jCo" firstAttribute="top" secondItem="Cvc-f6-6ar" secondAttribute="bottom" id="e8b-Lh-AnV"/>
+                <constraint firstItem="Cvc-f6-6ar" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gh3-oU-Ht5"/>
+                <constraint firstItem="j5h-0G-nc5" firstAttribute="width" secondItem="Yhf-80-ImR" secondAttribute="width" id="hXF-rn-hSU"/>
+                <constraint firstAttribute="trailing" secondItem="Cvc-f6-6ar" secondAttribute="trailing" id="haH-U8-Pte"/>
+                <constraint firstItem="ilo-Ts-jCo" firstAttribute="width" secondItem="Yhf-80-ImR" secondAttribute="width" id="juC-RE-F5W"/>
+                <constraint firstAttribute="bottom" secondItem="j5h-0G-nc5" secondAttribute="bottom" id="nLP-wX-kBe"/>
+                <constraint firstItem="MqX-Vs-qKK" firstAttribute="height" secondItem="Yhf-80-ImR" secondAttribute="height" id="oIG-hf-i5P"/>
+                <constraint firstAttribute="bottom" secondItem="j5h-0G-nc5" secondAttribute="bottom" id="rZ9-U0-w0R"/>
+                <constraint firstItem="j5h-0G-nc5" firstAttribute="top" secondItem="Cvc-f6-6ar" secondAttribute="bottom" id="s6Q-vQ-dZR"/>
+                <constraint firstItem="MqX-Vs-qKK" firstAttribute="width" secondItem="Yhf-80-ImR" secondAttribute="width" id="x4A-Y4-Hdo"/>
+                <constraint firstItem="Yhf-80-ImR" firstAttribute="top" secondItem="Cvc-f6-6ar" secondAttribute="bottom" id="xfd-x1-Xt8"/>
+                <constraint firstAttribute="bottom" secondItem="MqX-Vs-qKK" secondAttribute="bottom" id="zfi-Pb-Sxt"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionButton" destination="ilo-Ts-jCo" id="3g2-OS-Pba"/>
+                <outlet property="commentButton" destination="j5h-0G-nc5" id="Sg9-Nn-WJp"/>
+            </connections>
+            <point key="canvasLocation" x="877" y="438.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bottom_bar_collection_selected" width="24" height="24"/>
+        <image name="bottom_bar_comment_selected.png" width="23" height="23"/>
+        <image name="bottom_bar_edit_selected.png" width="20" height="20"/>
+        <image name="favorite_done.png" width="20" height="20"/>
+        <image name="favorite_undo.png" width="20" height="20"/>
+        <image name="shareButton.png" width="20" height="20"/>
+    </resources>
+</document>

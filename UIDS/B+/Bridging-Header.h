@@ -64,6 +64,7 @@
 #import <Qiniu/QiniuSDK.h>
 
 #import "UploadImageTool.h"
+#import "WebViewJavascriptBridge.h"
 
 //宏参数
 

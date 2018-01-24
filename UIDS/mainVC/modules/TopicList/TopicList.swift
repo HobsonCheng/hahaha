@@ -29,10 +29,12 @@ class TopicList: BaseModuleView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func reloadViewData() {
-        super.reloadViewData()
+    override func reloadViewData()-> Bool {
+        
         self.page = 1
         self.request()
+        
+        return true
     }
     
     

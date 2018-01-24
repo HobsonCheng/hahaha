@@ -52,7 +52,12 @@ target 'UIDS' do
 
 #骑牛上传
   pod 'Qiniu'
-
+  
+  #protobuf
+  pod 'SwiftProtobuf'
+  #webscoket
+  pod 'Starscream'
+  
 end
 
 

@@ -13,6 +13,7 @@ let PAGE_TYPE_custom = "custom"
 let PAGE_TYPE_default = "default"
 let PAGE_TYPE_news = "news"
 let PAGE_TYPE_TopicList = "TopicList"
+let PAGE_TYPE_navLeft = "navLeft"
 
 class OpenVC: NSObject {
 
@@ -57,9 +58,20 @@ class OpenVC: NSObject {
             Util.msg(msg: "hybrid - 牛逼", 1)
             break
         case PAGE_TYPE_news:
-            let detail = DetatilVC.init(name: "DetatilVC")
+            let detail = NewsDetailVC.init(name: "DetatilVC")
             detail?.pageData = pageInfo
             VCController.push(detail!, with: VCAnimationClassic.defaultAnimation())
+        case PAGE_TYPE_navLeft:
+            if pageInfo?.action_type == "AppSet" {
+                let appset = AppSet.init(name: "AppSet")
+                appset?.pageData = pageInfo
+                VCController.push(appset!, with: VCAnimationClassic.defaultAnimation())
+            }else{
+                let rootVC = RootVC.init(name: "RootVC")
+                rootVC?.pageData = pageInfo
+                VCController.push(rootVC!, with: VCAnimationClassic.defaultAnimation())
+            }
+            break
         default:
             let rootVC = RootVC.init(name: "RootVC")
             rootVC?.pageData = pageInfo

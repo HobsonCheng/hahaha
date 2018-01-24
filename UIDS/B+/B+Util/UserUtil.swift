@@ -37,16 +37,35 @@ class UserUtil: NSObject {
         if (userInfo?.isEmpty)! {
             return
         }
-        ZZDiskCacheHelper.saveObj(MY_APP_USER_INFO, value: userInfo)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] _ in
-            self?.getUserInfo()
+        
+        let tmpData = UserInfoModel.deserialize(from: userInfo)?.data
+        if tmpData?.Authorization != nil {
+            self.appUserInfo = tmpData
+        }else {
+            tmpData?.Authorization = self.appUserInfo?.Authorization
+            
+            self.appUserInfo = tmpData
         }
+        
+        let newInfo = UserInfoModel.deserialize(from: userInfo)
+        newInfo?.data?.Authorization = tmpData?.Authorization
+        
+        let newUserInfo = newInfo?.toJSONString()
+        
+        ZZDiskCacheHelper.saveObj(MY_APP_USER_INFO, value: newUserInfo)
     }
 
     func getUserInfo(){
         ZZDiskCacheHelper.getObj(MY_APP_USER_INFO) { [weak self] (obj) in
             if (obj != nil){
-                self?.appUserInfo = UserInfoModel.deserialize(from: String.init(format: "%@", obj as! CVarArg))?.data
+                let tmpData = UserInfoModel.deserialize(from: String.init(format: "%@", obj as! CVarArg))?.data
+                if tmpData?.Authorization != nil {
+                    self?.appUserInfo = tmpData
+                }else {
+                    tmpData?.Authorization = self?.appUserInfo?.Authorization
+                    
+                    self?.appUserInfo = tmpData
+                }
             }else {
                 self?.appUserInfo = nil
             }

@@ -45,11 +45,11 @@ class ViewController: UIViewController,EAIntroDelegate {
         //根据版本号来判断是否需要显示引导页，一般来说每更新一个版本引导页都会有相应的修改
         let show = userDefaults.bool(forKey: "version_"+version)
         
-        if !show && nil == self.view {
+        if !show  {
             userDefaults.set(true, forKey: "version_"+version)
             userDefaults.synchronize()
         }else{
-            
+            return
         }
         
         

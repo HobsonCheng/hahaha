@@ -193,4 +193,53 @@ class ApiUtil: NSObject {
             fininsh?(status,data,msg)
         }
     }
+    //MARK: - 获取评论列表
+    func getReplyList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getReplyList", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 添加评论
+    func addReply(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("addReply", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 用户信息
+    func getInfo(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getInfo", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+    
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.uid, forKey: "user_id")
+        
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                UserUtil.share.saveUser(userInfo: data)
+            
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }

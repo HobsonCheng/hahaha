@@ -122,4 +122,11 @@ class CLTextView: UIView, UITextViewDelegate {
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         return true
     }
+    
+    
+    func show() -> Void {
+        self.commentTextView.becomeFirstResponder()
+        UIApplication.shared.keyWindow?.addSubview(self)
+        
+    }
 }

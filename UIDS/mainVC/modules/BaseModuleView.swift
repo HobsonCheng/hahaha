@@ -15,7 +15,7 @@ class BaseModuleView: UIView {
     open var refreshES: VCRefreshCallBack?
     
     //MARK: - 下拉刷新
-    open func reloadViewData() {  }
+    open func reloadViewData()-> Bool { return false }
     
 
 }

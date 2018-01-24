@@ -37,7 +37,41 @@ class UserInfoData: HandyJSON {
     var zh_name : String!
     
     
+    var black_num : Int!
+    var browse_num : Int!
+    var company_id : Int!
+    var email : String!
+    var faculty_id : Int!
+    var fan_num : Int!
+    var follow_num : Int!
+    var friend_num : Int!
+    
+    var state_last_update : String!
+    var trade_id : Int!
+    
+    
+    var relations : [Relation]!
+    
+    
     var Authorization: String!
+    
+    required init() {}
+}
+
+class Relation: HandyJSON {
+    
+    var add_time : String!
+    var color : String!
+    var icon : String!
+    var id : Int!
+    var num : Int!
+    var order_number : Int!
+    var pid : Int!
+    var relation_name : String!
+    var relation_type : Int!
+    var relation_url : String!
+    var status : Int!
+    var uid : Int!
     
     required init() {}
 }
