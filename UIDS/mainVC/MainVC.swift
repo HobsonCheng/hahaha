@@ -58,7 +58,7 @@ class MainVC: BaseNameVC {
 
         let tabBarController = ESTabBarController()
         
-        self.setupTabber(tabBarController: tabBarController);
+//        self.setupTabber(tabBarController: tabBarController);
         if let tabBar = tabBarController.tabBar as? ESTabBar {
             tabBar.itemCustomPositioning = .fillIncludeSeparator
         }

@@ -168,6 +168,19 @@ final class Util: NSObject,iRateDelegate{
         
     }
     
+    static func getNavBgColor() -> UIColor {
+        
+        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
+        
+        if bgColor != nil {
+            
+            let bgColorObj = UIColor.init(hexString: bgColor, withAlpha: 1)
+            
+            return bgColorObj ?? UIColor.blue
+        }
+    
+        return UIColor.blue
+    }
 }
 
 

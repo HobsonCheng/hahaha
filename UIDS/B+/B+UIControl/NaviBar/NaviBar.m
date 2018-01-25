@@ -70,6 +70,13 @@ enum NaviBarTitleViewTags {
         [_viewBG setBackgroundColor:kNaviBarBackGroundColor];
         [self addSubview:_viewBG];
         
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"B_USER_KEY_NAV_BG_COLOR"]) {
+            
+        }else {
+            [[NSUserDefaults standardUserDefaults] setObject:@"#1ba9ba" forKey:@"B_USER_KEY_NAV_BG_COLOR"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        
         // 创建Label类型的Title
         _viewTitle = [[LightControl alloc] init];
         [_viewTitle setUserInteractionEnabled:NO];

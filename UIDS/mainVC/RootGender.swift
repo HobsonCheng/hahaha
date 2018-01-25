@@ -27,6 +27,9 @@ extension RootVC {//扩展
         }
         
         let models = JSON.init(parseJSON: (model_str)!)
+        
+        print("当前页面models:\(model_str!)")
+        
         for item in models.enumerated() {
             let modelName = item.element.1
             let tmpList = String(describing: modelName).components(separatedBy: "_")
@@ -55,6 +58,9 @@ extension RootVC {//扩展
             case "TopicList" :
                 self.genderTopicList(model_id: tmpList[0], startY: &self.startY!)
                 break
+            case "SingleOrder":
+                self.genderSingleOrder(model_id: tmpList[0], startY: &self.startY!)
+                break
             default: break
                 
             }
@@ -71,6 +77,8 @@ extension RootVC {//扩展
         self.mainView?.reloadEmptyDataSet()
         
         self.mainView?.es.stopPullToRefresh()
+        
+        self.reloadMainScroll()
     }
 
     func genderSwipImg(list: NSArray,startY: UnsafeMutablePointer<CGFloat>){
@@ -232,9 +240,33 @@ extension RootVC {//扩展
     }
     
     
+    func genderSingleOrder(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+        
+        var height = (self.mainView?.height)!
+        if self.isHomePage {
+            height = height - 50
+        }
+
+        let singleOrder = SingleOrder.init(frame: CGRect.init(x: 0, y: startY.pointee, width: kScreenW, height: height))
+        singleOrder.pageData = self.pageData
+        singleOrder.genderView()
+        singleOrder.tag = Int(startY.pointee)
+        
+        self.mainView?.addSubview(singleOrder)
+        
+        startY.pointee = singleOrder.bottom + 10
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            //存在次组件  可以删除 上拉细腻
+            self?.mainView?.es.removeRefreshFooter()
+        }
+        
+    }
+    
+    
     private func reloadMainScroll(){
         
-        self.startY = 1;
+        self.startY = 0;
         
         for sonView in (self.mainView?.subviews)! {
             

@@ -14,6 +14,7 @@ let PAGE_TYPE_default = "default"
 let PAGE_TYPE_news = "news"
 let PAGE_TYPE_TopicList = "TopicList"
 let PAGE_TYPE_navLeft = "navLeft"
+let PAGE_TYPE_AppSet = "AppSet"
 
 class OpenVC: NSObject {
 
@@ -43,6 +44,16 @@ class OpenVC: NSObject {
     //MARK: - 打开page
     func goToPage(pageType: String,pageInfo: PageInfo?) {
         
+        
+        if pageType == "default" {
+            
+            let otherweb = OtherWebVC.init(name: "webview")
+            otherweb?.urlString = "http://m.baidu.com"
+            VCController.push(otherweb!, with: VCAnimationClassic.defaultAnimation())
+            
+            return
+        }
+        
         switch pageType {
         case PAGE_TYPE_login:
             
@@ -71,6 +82,11 @@ class OpenVC: NSObject {
                 rootVC?.pageData = pageInfo
                 VCController.push(rootVC!, with: VCAnimationClassic.defaultAnimation())
             }
+            break
+        case PAGE_TYPE_AppSet:
+            let appset = AppSet.init(name: "AppSet")
+            appset?.pageData = pageInfo
+            VCController.push(appset!, with: VCAnimationClassic.defaultAnimation())
             break
         default:
             let rootVC = RootVC.init(name: "RootVC")

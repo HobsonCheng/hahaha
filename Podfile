@@ -36,13 +36,14 @@ target 'UIDS' do
   pod 'KMPlaceholderTextView'
   #    pod 'MLeaksFinder'              # 检测内存泄漏
   pod 'LPDQuoteImagesView'
-  
+  pod 'ReusableKit'
   
   # Rx
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'NSObject+Rx'
   pod 'RxGesture'
+  pod 'RxDataSources'
   
   
   #授权

@@ -295,16 +295,7 @@ class NewsDetailVC: NaviBarVC {
         moreCommentButton.addTarget(self, action: #selector(didTappedmoreCommentButton(_:)), for: UIControlEvents.touchUpInside)
         moreCommentButton.setTitle("更多评论", for: UIControlState())
         
-        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
-        
-        if bgColor != nil {
-            
-            let bgColor = UIColor.init(hexString: bgColor, withAlpha: 1)
-            
-            moreCommentButton.backgroundColor = bgColor
-        }else {
-            moreCommentButton.backgroundColor = UIColor.yellow
-        }
+        moreCommentButton.backgroundColor = Util.getNavBgColor()
         moreCommentButton.layer.cornerRadius = 10
         
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenW, height: 44))

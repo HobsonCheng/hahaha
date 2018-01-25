@@ -44,7 +44,6 @@ class RootVC: NaviBarVC{
             self.requestPageInfo()
     
         }
-    
     }
     
     public func requestPageInfo(){

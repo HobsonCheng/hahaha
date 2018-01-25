@@ -32,20 +32,9 @@ class JFProfileHeaderView: UIView {
     var image :UIImage?
     
     func initView() {
-        
-        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
-        
-        if bgColor != nil {
-            
-            let bgColor = UIColor.init(hexString: bgColor, withAlpha: 1)
-            
-            self.backgroundColor = bgColor
-        }
+        self.backgroundColor = Util.getNavBgColor()
     }
-    
-    
-    
-    
+
     var delegate: JFProfileHeaderViewDelegate?
     
     @IBAction func didTappedAvatarButton() {
@@ -102,7 +91,7 @@ class JFProfileHeaderView: UIView {
             self.autyHeight.constant = (self.button?.bottom)! + 10
         }
         
-        self.height = self.autyHeight.constant + 160 - 65
+        self.height = self.autyHeight.constant + 100
         
         self.delegate?.reloadViewSize()
         

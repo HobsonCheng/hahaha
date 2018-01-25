@@ -14,22 +14,36 @@ class NextVC: NaviBarVC {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let scoket = WSUtil.share()
+        scoket.delegate = self
+        scoket.connectSever()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+}
+
+extension NextVC: WSUtilDelegate {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func websocketDidConnect(sock: WSUtil) {
+        
     }
-    */
+    
+    func websocketDidDisconnect(socket: WSUtil, error: NSError?) {
+        
+    }
+    
+    func websocketDidReceiveMessage(socket: WSUtil, text: String) {
+        
+    }
+    
+    func websocketDidReceiveData(socket: WSUtil, data: NSData) {
+        
+    }
 
 }

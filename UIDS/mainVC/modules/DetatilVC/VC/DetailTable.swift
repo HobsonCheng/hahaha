@@ -77,14 +77,7 @@ extension NewsDetailVC: UITableViewDataSource, UITableViewDelegate {
             // 竖线
             let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 3, height: 30))
             
-            let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
-            
-            if bgColor != nil {
-                let bgColor = UIColor.init(hexString: bgColor, withAlpha: 1)
-                leftView.backgroundColor = bgColor
-            }else{
-                leftView.backgroundColor = UIColor.red
-            }
+            leftView.backgroundColor = Util.getNavBgColor()
             
             // 灰色背景
             let bgView = UIView(frame: CGRect(x: 3, y: 0, width: kScreenW - 3, height: 30))

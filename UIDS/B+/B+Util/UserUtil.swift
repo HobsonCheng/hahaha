@@ -73,6 +73,7 @@ class UserUtil: NSObject {
     }
     
     func removerUser(){
+        self.appUserInfo = nil
         ZZDiskCacheHelper.saveObj(MY_APP_USER_INFO, value: nil)
     }
     

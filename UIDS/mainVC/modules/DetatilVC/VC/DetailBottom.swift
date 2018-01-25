@@ -72,7 +72,7 @@ extension NewsDetailVC: JFNewsBottomBarDelegate, CLBottomCommentViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         if (scrollView.contentOffset.y + kScreenH) > scrollView.contentSize.height {
-            if (scrollView.contentOffset.y + kScreenH) - scrollView.contentSize.height >= 60 {
+            if (scrollView.contentOffset.y + kScreenH) - scrollView.contentSize.height >= 50 {
                 
                 UIGraphicsBeginImageContext(CGSize.init(width: kScreenW, height: kScreenH))
                 UIApplication.shared.keyWindow?.layer.render(in: UIGraphicsGetCurrentContext()!)

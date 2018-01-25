@@ -136,12 +136,7 @@ extension GroupTopicSendVC {
         let textField = KaedeTextField(frame: CGRect.init(x: 0, y: 0, width: self.view.width, height: 40))
         textField.placeholderColor = UIColor.white
         
-        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
-        if bgColor != nil {
-            let bgColor = UIColor.init(hexString: bgColor, withAlpha: 1)
-            
-            textField.foregroundColor = bgColor
-        }
+        textField.foregroundColor = Util.getNavBgColor()
         textField.backgroundColor = UIColor.white
         textField.placeholder = "加个标题呦...（点我）"
         self.mainScroll?.addSubview(textField)
