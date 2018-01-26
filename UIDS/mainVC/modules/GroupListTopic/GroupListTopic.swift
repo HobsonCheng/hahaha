@@ -50,19 +50,21 @@ class GroupListTopic: BaseModuleView {
         params.setValue("20", forKey: "page_context")
         
         ApiUtil.share.getGroupList(params: params) { [weak self] (status, data, msg) in
+            
             let tmpList: [GroupData]! = GroupModel.deserialize(from: data)?.data
-            
-            if self?.page == 1 {
-                self?.height = 0
-                self?.removeAllSubviews()
-                self?.groupList = tmpList
-            }else {
-                self?.groupList = (self?.groupList)! + tmpList
+            if tmpList != nil {
+                if self?.page == 1 {
+                    self?.height = 0
+                    self?.removeAllSubviews()
+                    self?.groupList = tmpList
+                }else {
+                    self?.groupList = (self?.groupList)! + tmpList
+                }
+                
+                self?.refreshES?()
+                
+                self?.genderlist(moveList: tmpList!)
             }
-            
-            self?.refreshES?()
-            
-            self?.genderlist(moveList: tmpList!)
         }
     }
     

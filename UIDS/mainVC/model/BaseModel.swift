@@ -17,3 +17,8 @@ class BaseModel: HandyJSON {
     
     required init() {}
 }
+
+class BaseData: HandyJSON {
+    
+    required init() {}
+}

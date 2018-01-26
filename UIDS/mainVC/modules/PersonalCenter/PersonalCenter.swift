@@ -86,7 +86,7 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
     }
     
     func reloadViewSize() {
-        self.height = (header?.bottom)!
+//        self.height = (header?.bottom)!
         self.reloadCell?()
     }
 }

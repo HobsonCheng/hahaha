@@ -44,6 +44,8 @@ class JFProfileHeaderView: UIView {
     
     func showMenu(list: [Relation]) {
 
+        self.menuView.removeAllSubviews()
+        
         var col = 5
         let nums = list.count
         
@@ -63,6 +65,9 @@ class JFProfileHeaderView: UIView {
         let vMargin:CGFloat = hMargin
         
         var row:Int = 0
+        
+        var getHeight: CGFloat? = 0.0
+        
         for i in 0..<nums {
             
             let item = list[i]
@@ -88,10 +93,12 @@ class JFProfileHeaderView: UIView {
             self.button!.frame = CGRect.init(x: x, y: y, width: width, height: heigth)
             self.menuView.addSubview(self.button!)
             
-            self.autyHeight.constant = (self.button?.bottom)! + 10
+            getHeight = (self.button?.bottom)! + 10
         }
         
-        self.height = self.autyHeight.constant + 100
+        self.autyHeight.constant = getHeight!
+        
+        self.height = getHeight! + 135
         
         self.delegate?.reloadViewSize()
         

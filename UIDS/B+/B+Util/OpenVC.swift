@@ -44,15 +44,15 @@ class OpenVC: NSObject {
     //MARK: - 打开page
     func goToPage(pageType: String,pageInfo: PageInfo?) {
         
-        
-        if pageType == "default" {
-            
-            let otherweb = OtherWebVC.init(name: "webview")
-            otherweb?.urlString = "http://m.baidu.com"
-            VCController.push(otherweb!, with: VCAnimationClassic.defaultAnimation())
-            
-            return
-        }
+//
+//        if pageType == "default" {
+//
+//            let otherweb = OtherWebVC.init(name: "webview")
+//            otherweb?.urlString = "http://m.baidu.com"
+//            VCController.push(otherweb!, with: VCAnimationClassic.defaultAnimation())
+//
+//            return
+//        }
         
         switch pageType {
         case PAGE_TYPE_login:

@@ -56,14 +56,14 @@ class RegVCService {
             
             ApiUtil.share.userRegist(params: params, fininsh: { (status, data, msg) in
                
-                let topview = VCController.getTopVC()
-                topview?.view.dodo.success("注册成功")
+                
+                Util.msg(msg: "注册成功", 2)
                 
                 UserUtil.share.saveUser(userInfo: data)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     
-                    VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())
+                    VCController.pop(with: VCAnimationClassic.defaultAnimation())
                 };
             })
             

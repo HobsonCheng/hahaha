@@ -242,4 +242,45 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - 提交表单
+    func saveSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("saveSubscribe", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.uid, forKey: "from_uid")
+        params.setValue(user?.pid, forKey: "from_app_id")
+        
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+
+                fininsh?(status,data,msg)
+            }else {
+                Util.svpStop(ok: false,callback: {
+                    
+                })
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 表单 待接单
+    func getWaitSubscribeList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("getWaitSubscribeList", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }

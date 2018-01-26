@@ -33,8 +33,8 @@ class SingleOrder: BaseModuleView {
         $0.tabBar.backgroundColor = kThemeWhiteColor
         $0.tabBar.layout.cellWidth = kScreenW * (1/3)
         $0.tabBar.layout.progressWidth = Metric.leftTitle.getSize(font: Metric.pagerBarFontSize).width + MetricGlobal.margin * (1/3)
-        $0.tabBar.layout.progressColor = kThemeTomatoColor
-        $0.tabBar.layout.selectedTextColor = kThemeTomatoColor!
+        $0.tabBar.layout.progressColor = Util.getNavBgColor()
+        $0.tabBar.layout.selectedTextColor = Util.getNavBgColor()
         $0.tabBar.layout.progressHeight = 3.0
         $0.tabBar.layout.cellSpacing = 0
         $0.tabBar.layout.cellEdging = 0

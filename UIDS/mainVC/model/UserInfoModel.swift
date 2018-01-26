@@ -12,7 +12,7 @@ class UserInfoModel: BaseModel {
     var data: UserInfoData?
 }
 
-class UserInfoData: HandyJSON {
+class UserInfoData: BaseData {
     
     var birthday : String!
     var explanation : String!
@@ -55,10 +55,9 @@ class UserInfoData: HandyJSON {
     
     var Authorization: String!
     
-    required init() {}
 }
 
-class Relation: HandyJSON {
+class Relation: BaseData {
     
     var add_time : String!
     var color : String!
@@ -73,5 +72,4 @@ class Relation: HandyJSON {
     var status : Int!
     var uid : Int!
     
-    required init() {}
 }

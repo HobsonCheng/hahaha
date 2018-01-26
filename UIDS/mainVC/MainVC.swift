@@ -73,7 +73,7 @@ class MainVC: BaseNameVC {
         let pageListinfo = PageListInfo.shared.pageListModel
 
         var bigNum = 10000
-        if (tabobj?.bigShow)! {
+        if tabobj?.bigShow ?? false {
             if (pageListinfo?.count)!%2 != 0 {
                 bigNum = (((pageListinfo?.count)! + 1)/2)
                 bigNum -= 1

@@ -48,7 +48,7 @@ class PageInfoModel: BaseModel {
     var data: PageInfo?
 }
 
-class PageInfo: HandyJSON{
+class PageInfo: BaseData{
     
     var page_id: Int?
     var app_id: Int?
@@ -67,8 +67,6 @@ class PageInfo: HandyJSON{
     var jump_url: String?
     
     var page_name: String?
-    
-    required init() {}
     
     
     

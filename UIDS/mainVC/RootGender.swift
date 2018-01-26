@@ -50,7 +50,7 @@ extension RootVC {//扩展
                 self.genderPersonalCenter(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "MakeToCustomer" :
-                print("MakeToCustomer")
+                self.genderMakeToCustomer(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "GroupListTopic" :
                 self.genderGroupListTopic(model_id: tmpList[0], startY: &self.startY!)
@@ -73,12 +73,13 @@ extension RootVC {//扩展
             self.mainView?.contentSize = CGSize.init(width: 0, height: (self.mainView?.height)! + 50);
         }
     
-        self.mainView?.showEmpty = false
         self.mainView?.reloadEmptyDataSet()
         
         self.mainView?.es.stopPullToRefresh()
         
         self.reloadMainScroll()
+        
+        
     }
 
     func genderSwipImg(list: NSArray,startY: UnsafeMutablePointer<CGFloat>){
@@ -195,6 +196,21 @@ extension RootVC {//扩展
         startY.pointee = personalCenter.bottom + 10
     }
     
+    func genderMakeToCustomer(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+        
+        let obj = self.findConfigData(name: "maketocustomer_content",model_id: model_id)
+        let formobj = FromModel.deserialize(from: obj)
+        
+        let maketoCustomer = MakeToCustomer.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        maketoCustomer.genderInit(FormObj: formobj!)
+        
+        maketoCustomer.tag = Int(startY.pointee)
+        
+        self.mainView?.addSubview(maketoCustomer)
+        
+        startY.pointee = maketoCustomer.bottom + 10
+    }
+    
     func genderGroupListTopic(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         //遇到话题列表的组件  自动添加右上角 按钮
@@ -266,6 +282,9 @@ extension RootVC {//扩展
     
     private func reloadMainScroll(){
         
+        
+        self.mainView?.showEmpty = true
+        
         self.startY = 0;
         
         for sonView in (self.mainView?.subviews)! {
@@ -274,8 +293,12 @@ extension RootVC {//扩展
                 
                 sonView.top = self.startY!
                 self.startY = sonView.bottom  + 10
+                
+                if self.startY! > CGFloat(30.0) {
+                    self.mainView?.showEmpty = false
+                }
             }
-
+            
         }
         
         
@@ -284,6 +307,9 @@ extension RootVC {//扩展
         }else {
             self.mainView?.contentSize = CGSize.init(width: 0, height: (self.mainView?.height)! + 50);
         }
+        
+        
+        self.mainView?.reloadEmptyDataSet()
     
     }
 }

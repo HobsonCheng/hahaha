@@ -39,8 +39,6 @@ class TopicCell: UITableViewCell {
         self.forward.setFAIcon(icon: FAType.FAMailForward, iconSize: 14, forState: UIControlState.normal)
         self.comment.setFAIcon(icon: FAType.FAComment, iconSize: 14, forState: UIControlState.normal)
         self.zan.setFAIcon(icon: FAType.FAThumbsOUp, iconSize: 14, forState: UIControlState.normal)
-        
-        self.addNewButton()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,7 +59,7 @@ class TopicCell: UITableViewCell {
                 self.genderImgs()
             }
             
-            
+            self.addNewButton()
         }
     }
     
@@ -111,6 +109,7 @@ class TopicCell: UITableViewCell {
         
         self.imgViewHeight.constant = CGFloat(allHeight)
         
+        
     }
     
     func touchItem(bt: UIButton) {
@@ -133,10 +132,14 @@ class TopicCell: UITableViewCell {
             $0.rx.tap.do(onNext: { [weak self] _ in
                 self?.touchcell()
             }).subscribe().disposed(by: rx.disposeBag)
-            $0.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: self.height)
         })
         
         self.addSubview(cellButton!)
+        
+        
+        cellButton?.snp.makeConstraints({ (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        })
     }
     
     

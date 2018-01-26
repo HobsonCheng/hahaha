@@ -13,10 +13,9 @@ class TokenModel: BaseModel {
     var data: TokenData?
 }
 
-class TokenData : HandyJSON {
+class TokenData : BaseData {
     
     var token: String?
     var name: String?
     
-    required init() {}
 }

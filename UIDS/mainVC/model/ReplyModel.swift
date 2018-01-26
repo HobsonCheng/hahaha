@@ -15,7 +15,7 @@ class ReplyListModel: BaseModel {
     var data: [ReplyData]!
 }
 
-class ReplyData: HandyJSON {
+class ReplyData: BaseData {
     
     var add_time : String!
     var address : String!
@@ -46,7 +46,6 @@ class ReplyData: HandyJSON {
     var y_coord : Int!
 
     
-    required init() {}
     
     /// 缓存行高
     var rowHeight: CGFloat = 0

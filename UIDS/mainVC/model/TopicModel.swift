@@ -12,7 +12,7 @@ class TopicModel: BaseModel {
     var data: [TopicData]?
 }
 
-class TopicData: HandyJSON {
+class TopicData: BaseData {
     
     var add_time : String!
     var address : String!
@@ -72,7 +72,6 @@ class TopicData: HandyJSON {
     var x_coord : Float!
     var y_coord : Float!
     
-    required init() {}
 }
 
 
@@ -81,7 +80,7 @@ class DetailModel: BaseModel {
     var data: DetailData?
 }
 
-class DetailData: HandyJSON {
+class DetailData: BaseData {
     
     var add_time : String!
     var address : String!
@@ -142,7 +141,6 @@ class DetailData: HandyJSON {
     var y_coord : Int!
 
     
-    required init() {}
 }
 
 

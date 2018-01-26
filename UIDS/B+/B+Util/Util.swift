@@ -8,7 +8,7 @@
 
 import UIKit
 import iRate
-
+import SVProgressHUD
 
 
 
@@ -180,6 +180,28 @@ final class Util: NSObject,iRateDelegate{
         }
     
         return UIColor.blue
+    }
+    
+    static func svploading(str: String) {
+        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
+        
+        SVProgressHUD.show(withStatus: str)
+    }
+    
+    static func svpStop(ok: Bool,callback: @escaping ()-> ()){
+        
+        if ok {
+            SVProgressHUD.showSuccess(withStatus: "ok")
+        }else {
+            SVProgressHUD.showError(withStatus: "失败")
+        }
+        SVProgressHUD.dismiss(withDelay: 1) {
+            callback()
+        }
+        
     }
 }
 

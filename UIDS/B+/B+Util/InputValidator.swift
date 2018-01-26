@@ -33,6 +33,6 @@ class InputValidator: NSObject {
     }
     
     class func isvalidationPassword(password: String) -> Bool {
-        return password.count >= 8
+        return password.count >= 5
     }
 }

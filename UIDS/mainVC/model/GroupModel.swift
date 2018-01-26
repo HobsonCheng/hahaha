@@ -12,7 +12,7 @@ class GroupModel: BaseModel {
     var data: [GroupData]?
 }
 
-class GroupData: HandyJSON {
+class GroupData: BaseData {
     
     var add_time : String!
     var add_type : Int!
@@ -61,5 +61,4 @@ class GroupData: HandyJSON {
     var x_coord : Int!
     var y_coord : Int!
     
-    required init() {}
 }

@@ -11,8 +11,8 @@ import UIKit
 
 class TabberModel: ConfigModel {
 
-    var footer_icon: Bool?
-    var footer_title: Bool?
-    var bigShow: Bool?
+    var footer_icon: Bool!
+    var footer_title: Bool!
+    var bigShow: Bool!
 }
 

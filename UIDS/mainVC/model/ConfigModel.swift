@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ConfigModel: HandyJSON {
+class ConfigModel: BaseData {
 
     var divID: String?
     var setName: String?
     var setTabberNum: Int?
     
-    
-    required init() {}
+
 }

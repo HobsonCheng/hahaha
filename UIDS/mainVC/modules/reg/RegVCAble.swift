@@ -29,7 +29,7 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
         let regBtn = UIButton().then {
             $0.layer.masksToBounds = true
             $0.layer.cornerRadius = Metric.cornerRadius
-            $0.setBackgroundImage(UIImage.init(from: kThemeTomatoColor), for: .normal)
+            $0.setBackgroundImage(UIImage.init(from: Util.getNavBgColor()), for: .normal)
             $0.titleLabel?.font = Metric.loginBtnFontSize
             $0.setTitleColor(kThemeWhiteColor, for: .normal)
             $0.setTitle(Metric.regBtnTitle, for: .normal)

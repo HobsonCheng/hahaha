@@ -55,11 +55,11 @@ class ViewController: UIViewController,EAIntroDelegate {
         
         //启动轮播图
         
-        let launchList = [["title":"hello，bai 1","desc":"1","imgName":"title1","bg":"bg1"],
-                          ["title":"hello，bai 2","desc":"2","imgName":"title2","bg":"bg2"],
-                          ["title":"hello，bai 3","desc":"3","imgName":"title3","bg":"bg3"],
-                          ["title":"hello，bai 4","desc":"4","imgName":"title4","bg":"bg4"]
-                          ]
+        let launchList = [["title":"hello，bai 1","desc":"1","imgName":"title1","bg":"guiImage1"],
+                          ["title":"hello，bai 2","desc":"2","imgName":"title2","bg":"guiImage2"],
+                          ["title":"hello，bai 3","desc":"3","imgName":"title3","bg":"guiImage3"],
+                          ["title":"hello，bai 4","desc":"4","imgName":"title4","bg":"guiImage4"]
+        ]
         
         
         let tmpList = NSMutableArray()

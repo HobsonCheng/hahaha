@@ -49,7 +49,7 @@ class AppModel: BaseModel {
     var data: AppData?
 }
 
-class AppData: HandyJSON {
+class AppData: BaseData {
     
     var app_id: Int?
     var uid: Int?
@@ -70,20 +70,18 @@ class AppData: HandyJSON {
     var client_type: Int?
     var config_key: String?
     
-    required init() {}
 }
 
-class WCItem: HandyJSON {
+class WCItem: BaseData {
     
     var id: Int?
     var app_id: Int?
     var group_id: Int?
     var pic: String?
-    
-    required init() {}
+
 }
 
-class AdvInfo: HandyJSON {
+class AdvInfo: BaseData {
     
     var app_id: Int?
     var group_id: Int?
@@ -91,7 +89,6 @@ class AdvInfo: HandyJSON {
     var app_name: String?
     var icon: String?
     
-    required init() {}
 }
 
 
