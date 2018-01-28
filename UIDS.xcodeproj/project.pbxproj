@@ -169,7 +169,6 @@
 		E1C3E5852015E1CF00B13306 /* DS2RefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3E5842015E1CF00B13306 /* DS2RefreshFooter.swift */; };
 		E1C70DAB201B3B9100030CB6 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C70DAA201B3B9100030CB6 /* OrderViewModel.swift */; };
 		E1C70DB1201B446600030CB6 /* OrderCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C70DB0201B446600030CB6 /* OrderCModel.swift */; };
-		E1C70DB3201B500900030CB6 /* OrderCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C70DB2201B500900030CB6 /* OrderCellModel.swift */; };
 		E1C7AA682016D54E00E67D33 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C7AA672016D54E00E67D33 /* TokenModel.swift */; };
 		E1C7AA6E2016EE3D00E67D33 /* QiniuUploadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C7AA6B2016EE3A00E67D33 /* QiniuUploadHelper.m */; };
 		E1C7AA6F2016EE3D00E67D33 /* UploadImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C7AA6D2016EE3C00E67D33 /* UploadImageTool.m */; };
@@ -234,6 +233,11 @@
 		E1F7225E2019D1F50092AC8C /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F7225D2019D1F50092AC8C /* close@2x.png */; };
 		E1F72261201A00A80092AC8C /* GrapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7225F201A00A80092AC8C /* GrapCell.swift */; };
 		E1F72262201A00A80092AC8C /* GrapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F72260201A00A80092AC8C /* GrapCell.xib */; };
+		E5312FC6201DA91E003A1043 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FC5201DA91E003A1043 /* CellViewModel.swift */; };
+		E5312FC9201DB515003A1043 /* orderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FC7201DB515003A1043 /* orderCell.swift */; };
+		E5312FCA201DB515003A1043 /* orderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5312FC8201DB515003A1043 /* orderCell.xib */; };
+		E5312FCD201DB842003A1043 /* orderTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FCB201DB842003A1043 /* orderTwoCell.swift */; };
+		E5312FCE201DB842003A1043 /* orderTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5312FCC201DB842003A1043 /* orderTwoCell.xib */; };
 		E56C90992010F8F7002339C6 /* BQLShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90872010F8F7002339C6 /* BQLShareModel.swift */; };
 		E56C909A2010F8F7002339C6 /* qqz.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C90892010F8F7002339C6 /* qqz.png */; };
 		E56C909B2010F8F7002339C6 /* wechatt.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908A2010F8F7002339C6 /* wechatt.png */; };
@@ -445,7 +449,6 @@
 		E1C3E5842015E1CF00B13306 /* DS2RefreshFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DS2Refresh\U0010Footer.swift"; sourceTree = "<group>"; };
 		E1C70DAA201B3B9100030CB6 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		E1C70DB0201B446600030CB6 /* OrderCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCModel.swift; sourceTree = "<group>"; };
-		E1C70DB2201B500900030CB6 /* OrderCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCellModel.swift; sourceTree = "<group>"; };
 		E1C7AA672016D54E00E67D33 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		E1C7AA6A2016EE3A00E67D33 /* UploadImageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageTool.h; sourceTree = "<group>"; };
 		E1C7AA6B2016EE3A00E67D33 /* QiniuUploadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuUploadHelper.m; sourceTree = "<group>"; };
@@ -524,6 +527,11 @@
 		E1F7225D2019D1F50092AC8C /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		E1F7225F201A00A80092AC8C /* GrapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapCell.swift; sourceTree = "<group>"; };
 		E1F72260201A00A80092AC8C /* GrapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrapCell.xib; sourceTree = "<group>"; };
+		E5312FC5201DA91E003A1043 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
+		E5312FC7201DB515003A1043 /* orderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderCell.swift; sourceTree = "<group>"; };
+		E5312FC8201DB515003A1043 /* orderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderCell.xib; sourceTree = "<group>"; };
+		E5312FCB201DB842003A1043 /* orderTwoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTwoCell.swift; sourceTree = "<group>"; };
+		E5312FCC201DB842003A1043 /* orderTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderTwoCell.xib; sourceTree = "<group>"; };
 		E56C90872010F8F7002339C6 /* BQLShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BQLShareModel.swift; sourceTree = "<group>"; };
 		E56C90892010F8F7002339C6 /* qqz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qqz.png; sourceTree = "<group>"; };
 		E56C908A2010F8F7002339C6 /* wechatt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechatt.png; sourceTree = "<group>"; };
@@ -1198,7 +1206,6 @@
 			isa = PBXGroup;
 			children = (
 				E1C70DAA201B3B9100030CB6 /* OrderViewModel.swift */,
-				E1C70DB2201B500900030CB6 /* OrderCellModel.swift */,
 			);
 			path = "V&M";
 			sourceTree = "<group>";
@@ -1208,6 +1215,11 @@
 			children = (
 				E1F7225F201A00A80092AC8C /* GrapCell.swift */,
 				E1F72260201A00A80092AC8C /* GrapCell.xib */,
+				E5312FC5201DA91E003A1043 /* CellViewModel.swift */,
+				E5312FC7201DB515003A1043 /* orderCell.swift */,
+				E5312FC8201DB515003A1043 /* orderCell.xib */,
+				E5312FCB201DB842003A1043 /* orderTwoCell.swift */,
+				E5312FCC201DB842003A1043 /* orderTwoCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1496,6 +1508,7 @@
 				E56C90C92013A641002339C6 /* TopicCell.xib in Resources */,
 				E1C3E57F2015E15000B13306 /* icon_shake_animation_7.png in Resources */,
 				E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */,
+				E5312FCE201DB842003A1043 /* orderTwoCell.xib in Resources */,
 				E12BC0F32017242D00099ED4 /* CLBottomCommentView.xib in Resources */,
 				E12BC15120173E2500099ED4 /* QR_code_icon@2x.png in Resources */,
 				E1A21DEA1FFF319300596BB7 /* LaunchScreen.storyboard in Resources */,
@@ -1558,6 +1571,7 @@
 				E11B62A42018254B00CE5E1D /* JFSetFontView.xib in Resources */,
 				E1D0B6BB201B02FA00332C79 /* placeholder_instagram@2x.png in Resources */,
 				E1F7225E2019D1F50092AC8C /* close@2x.png in Resources */,
+				E5312FCA201DB515003A1043 /* orderCell.xib in Resources */,
 				E12BC0EF201723FB00099ED4 /* CLTextView.xib in Resources */,
 				E1C031F02007807C00B1A377 /* test_2.png in Resources */,
 				E1C3E5792015E15000B13306 /* icon_shake_animation_2.png in Resources */,
@@ -1726,6 +1740,7 @@
 				E56C90C42013A61D002339C6 /* TopicList.swift in Sources */,
 				E594E07A2003ABB800BDF511 /* UIView+Frame.m in Sources */,
 				E12D91CA201874FA00CFB9E9 /* JFProfileHeaderView.swift in Sources */,
+				E5312FC9201DB515003A1043 /* orderCell.swift in Sources */,
 				E1ABEB2B2018540400F7FF91 /* DetailWeb.swift in Sources */,
 				E1A21DE21FFF319300596BB7 /* ViewController.swift in Sources */,
 				E11B62A62018254B00CE5E1D /* JFStarAndShareCell.swift in Sources */,
@@ -1806,6 +1821,7 @@
 				E1C03229200C40D700B1A377 /* RootData.swift in Sources */,
 				E1C031B22006217C00B1A377 /* UIViewEXT.swift in Sources */,
 				E11B62A82018254B00CE5E1D /* JFShareItemCell.swift in Sources */,
+				E5312FCD201DB842003A1043 /* orderTwoCell.swift in Sources */,
 				E139375920198DBD00F32909 /* SetConfig.swift in Sources */,
 				E1C031A02005CBF400B1A377 /* NextVC.swift in Sources */,
 				E1C3E5612015C88F00B13306 /* TopicModel.swift in Sources */,
@@ -1851,6 +1867,7 @@
 				E1C03241200E15CF00B1A377 /* UserInfoModel.swift in Sources */,
 				E12BC0EB2017230700099ED4 /* CLBottomCommentViewDelegate.swift in Sources */,
 				E1ABEB252018538F00F7FF91 /* DetailTable.swift in Sources */,
+				E5312FC6201DA91E003A1043 /* CellViewModel.swift in Sources */,
 				E1F5E279200F356000FD18FD /* AccountLoginable.swift in Sources */,
 				E1C3E55F20158CAA00B13306 /* DSRefresh.swift in Sources */,
 				E1C0323B200DD86600B1A377 /* DImgTabber.swift in Sources */,
@@ -1870,7 +1887,6 @@
 				E1C031CA200704DF00B1A377 /* EAIntroView.m in Sources */,
 				E1C03232200CAF3600B1A377 /* ArticleList.swift in Sources */,
 				E1C0323F200E13F400B1A377 /* AritcleModel.swift in Sources */,
-				E1C70DB3201B500900030CB6 /* OrderCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -257,13 +257,9 @@ extension RootVC {//扩展
     
     
     func genderSingleOrder(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
-        
-        var height = (self.mainView?.height)!
-        if self.isHomePage {
-            height = height - 50
-        }
+    
 
-        let singleOrder = SingleOrder.init(frame: CGRect.init(x: 0, y: startY.pointee, width: kScreenW, height: height))
+        let singleOrder = SingleOrder.init(frame: CGRect.init(x: 0, y: startY.pointee, width: kScreenW, height: (self.mainView?.height)!))
         singleOrder.pageData = self.pageData
         singleOrder.genderView()
         singleOrder.tag = Int(startY.pointee)

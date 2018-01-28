@@ -15,6 +15,7 @@ import RxGesture
 import ReusableKit
 import RxDataSources
 import Differentiator
+import SwiftyJSON
 
 
 public enum ORDER_TYPE: Int {
@@ -26,9 +27,9 @@ public enum ORDER_TYPE: Int {
 // MARK:- 复用
 private enum Reusable {
     
-    static let grapCell = ReusableCell<GrapCell>()
-    static let noingCell = ReusableCell<GrapCell>()
-    static let overCell = ReusableCell<GrapCell>()
+    static let grapCell = ReusableCell<GrapCell>(nibName: "GrapCell")
+    static let noingCell = ReusableCell<orderCell>(nibName: "orderCell")
+    static let overCell = ReusableCell<orderTwoCell>(nibName: "orderTwoCell")
 }
 
 // MARK:- 常量
@@ -50,8 +51,8 @@ class OrderVC: BaseNameVC {
     fileprivate var tableView: UITableView!
     
     // DataSuorce
-    var dataSource : RxTableViewSectionedReloadDataSource<[SectionModelType<OrderCellModel>]>!
-    
+    var in_dataSource: RxTableViewSectionedReloadDataSource<SectionModel<String, OrderCData>>!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,9 +74,7 @@ extension OrderVC {
     
     // MARK:- 初始化视图
     fileprivate func initUI() {
-        
-        self.title = "设置"
-        
+
         let tableView = BaseTableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
@@ -85,7 +84,7 @@ extension OrderVC {
         self.tableView = tableView
         
         tableView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
+            make.left.top.right.bottom.equalToSuperview()
         }
         
         // 设置代理
@@ -105,40 +104,60 @@ extension OrderVC {
     // MARK:- 绑定视图
     func bindUI() {
     
-        dataSource = RxTableViewSectionedReloadDataSource(configureCell: { (ds, tv, indexPath, item) -> UITableViewCell in
-            if indexPath.row == 0 {
-                // 充当 SectionHeader 占位
-                let placeCell = UITableViewCell()
-                placeCell.backgroundColor = kThemeGainsboroColor
-                return placeCell
-            }
+        self.in_dataSource = RxTableViewSectionedReloadDataSource(configureCell: { (ds, tv, indexPath, item) -> UITableViewCell in
             
             // 注册cell
             if self.orderType == ORDER_TYPE.grab {
                 
             }else if self.orderType == ORDER_TYPE.oning {
-                let cell = tv.dequeue(Reusable.noingCell, for: indexPath)
+                let cell = tv.dequeue(Reusable.noingCell,for: indexPath)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
-                
+                cell.cellData = item
                 return cell
             }else if self.orderType == ORDER_TYPE.over {
                 let cell = tv.dequeue(Reusable.overCell, for: indexPath)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
-                
+                cell.cellData = item
                 return cell
             }
             
             let cell = tv.dequeue(Reusable.grapCell, for: indexPath)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
-            
+            cell.cellData = item
             return cell
         })
         
-        
-        viewModel.getGarp(params: NSMutableDictionary()) { [weak self] (obsever) in
-            obsever.bind(to: self?.tableView.rx.items(dataSource: self?.dataSource)).disposed(by: rx.disposeBag)
+        if self.orderType == ORDER_TYPE.grab {
+            viewModel.getGarp(params: NSMutableDictionary()) {[weak self] (observAble) in
+                
+                observAble.bind(to: (self?.tableView.rx.items(dataSource: (self?.in_dataSource)!))!).disposed(by: (self?.rx.disposeBag)!)
+                
+            }
+        }else if self.orderType == ORDER_TYPE.oning {
+            
+            let params = NSMutableDictionary()
+            params.setSafeObject("1", forKey: "status" as NSCopying)
+            params.setSafeObject("1", forKey: "page" as NSCopying)
+            params.setSafeObject("20", forKey: "page_context" as NSCopying)
+            
+            viewModel.getOrderList(params: params) {[weak self] (observAble) in
+                
+                observAble.bind(to: (self?.tableView.rx.items(dataSource: (self?.in_dataSource)!))!).disposed(by: (self?.rx.disposeBag)!)
+                
+            }
+        }else if self.orderType == ORDER_TYPE.over {
+            
+            let params = NSMutableDictionary()
+            params.setSafeObject("2,0", forKey: "status" as NSCopying)
+            params.setSafeObject("1", forKey: "page" as NSCopying)
+            params.setSafeObject("20", forKey: "page_context" as NSCopying)
+            
+            viewModel.getOrderList(params: params) {[weak self] (observAble) in
+                
+                observAble.bind(to: (self?.tableView.rx.items(dataSource: (self?.in_dataSource)!))!).disposed(by: (self?.rx.disposeBag)!)
+                
+            }
         }
-    
     }
 }
 
@@ -147,11 +166,23 @@ extension OrderVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        // 充当 SectionHeader 数据模型
-        if indexPath.row == 0 {
-            return MetricAppSet.sectionHeight
+        let itemData = viewModel.orderList![indexPath.row]
+        
+        // 注册cell
+        if self.orderType == ORDER_TYPE.grab {
+            
+        }else if self.orderType == ORDER_TYPE.oning {
+            
+            return 153 - 37
+            
+        }else if self.orderType == ORDER_TYPE.over {
+            return 73
         }
-        return MetricAppSet.cellHeight
+        let getStr = JSON.init(parseJSON: (itemData.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "")
+        let size = getStr?.getSize(font: UIFont.systemFont(ofSize: 15), viewWidth: kScreenW - 30.0)
+        
+        return 153 - 37 + (size?.height)!
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

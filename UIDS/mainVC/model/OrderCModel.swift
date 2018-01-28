@@ -30,6 +30,8 @@ struct OrderCData: HandyJSON {
     var platform_uid : Int!
     var status : Int!
     var value : String!
+    var form_user: OrderUser!
+    var order_status: Int!
 
 }
 

@@ -283,4 +283,69 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - 订单列表
+    func getUserSubscribeList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getUserSubscribeList", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 接单
+    func orderSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("orderSubscribe", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 订单处理
+    func confirmSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("confirmSubscribe", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 订单取消
+    func cancelOrderSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("cancelOrderSubscribe", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }
+

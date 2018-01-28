@@ -103,7 +103,7 @@ extension SingleOrder: TYTabPagerControllerDelegate, TYTabPagerControllerDataSou
             vc?.orderType = ORDER_TYPE.grab
         }else if index == 1 {
             vc?.orderType = ORDER_TYPE.oning
-        }else if index == 1 {
+        }else if index == 2 {
             vc?.orderType = ORDER_TYPE.over
         }
         
