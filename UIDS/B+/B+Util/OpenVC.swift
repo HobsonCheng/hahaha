@@ -14,6 +14,7 @@ let PAGE_TYPE_default = "default"
 let PAGE_TYPE_news = "news"
 let PAGE_TYPE_TopicList = "TopicList"
 let PAGE_TYPE_navLeft = "navLeft"
+let PAGE_TYPE_navRight = "navRight"
 let PAGE_TYPE_AppSet = "AppSet"
 
 class OpenVC: NSObject {
@@ -73,6 +74,17 @@ class OpenVC: NSObject {
             detail?.pageData = pageInfo
             VCController.push(detail!, with: VCAnimationClassic.defaultAnimation())
         case PAGE_TYPE_navLeft:
+            if pageInfo?.action_type == "AppSet" {
+                let appset = AppSet.init(name: "AppSet")
+                appset?.pageData = pageInfo
+                VCController.push(appset!, with: VCAnimationClassic.defaultAnimation())
+            }else{
+                let rootVC = RootVC.init(name: "RootVC")
+                rootVC?.pageData = pageInfo
+                VCController.push(rootVC!, with: VCAnimationClassic.defaultAnimation())
+            }
+            break
+        case PAGE_TYPE_navRight:
             if pageInfo?.action_type == "AppSet" {
                 let appset = AppSet.init(name: "AppSet")
                 appset?.pageData = pageInfo

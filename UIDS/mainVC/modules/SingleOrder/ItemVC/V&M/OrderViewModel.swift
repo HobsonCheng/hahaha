@@ -19,10 +19,11 @@ public enum OrderViewModelType {
 
 class OrderViewModel: NSObject {
     
-    var orderList: [OrderCData]?
+    //创建监听对象
+    var orderList = Variable([SectionModel<String, OrderCData>]())
     
     
-    func getGarp(params: NSMutableDictionary,callback: @escaping (_ obj: Observable<[SectionModel<String, OrderCData>]>)->()){
+    func getGarp(params: NSMutableDictionary,callback: @escaping ()->()){
 
         let paramsAll = NSMutableDictionary()
         paramsAll.setObject("1", forKey: "page" as NSCopying)
@@ -30,59 +31,30 @@ class OrderViewModel: NSObject {
 
         ApiUtil.share.getWaitSubscribeList(params: paramsAll) {[weak self] (status, data, msg) in
 
-            self?.orderList = OrderCModel.deserialize(from: data)?.data
-            
-            let obj = Observable<[SectionModel<String, OrderCData>]>.create({ (observer) -> Disposable in
+            let datalist  = OrderCModel.deserialize(from: data)?.data
 
-                let section = [SectionModel(model: "", items: (self?.orderList)!)]
-                observer.onNext(section)
-                observer.onCompleted()
-                
-                return Disposables.create()
-                
-            })
-            callback(obj)
+            let section = [SectionModel(model: "", items: datalist!)]
+            
+            self?.orderList.value = section
+            
+            callback()
         }
     }
     
-    func getOrderList(params: NSMutableDictionary,callback: @escaping (_ obj: Observable<[SectionModel<String, OrderCData>]>)->()){
+    func getOrderList(params: NSMutableDictionary,callback: @escaping ()->()){
         
         ApiUtil.share.getUserSubscribeList(params: params) {[weak self] (status, data, msg) in
-            
-            self?.orderList = OrderCModel.deserialize(from: data)?.data
 
-            let obj = Observable<[SectionModel<String, OrderCData>]>.create({ (observer) -> Disposable in
-                
-                if self?.orderList?.count != 0 {
-                    let section = [SectionModel(model: "", items: (self?.orderList)!)]
-                    observer.onNext(section)
-                }
-                
-                observer.onCompleted()
+            let datalist  = OrderCModel.deserialize(from: data)?.data
             
-                return Disposables.create()
-                
-            })
-            callback(obj)
+            let section = [SectionModel(model: "", items: datalist!)]
+            
+            self?.orderList.value = section
+            
+            callback()
+        
         }
     }
-    
-    
-    
 }
 
-
-struct OrderSection {
-    
-    var items: [Item]
-}
-
-extension OrderSection: SectionModelType {
-    typealias Item = OrderCData
-    
-    init(original: OrderSection, items: [OrderCData]) {
-        self = original
-        self.items = items
-    }
-}
 

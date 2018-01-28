@@ -233,7 +233,6 @@
 		E1F7225E2019D1F50092AC8C /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F7225D2019D1F50092AC8C /* close@2x.png */; };
 		E1F72261201A00A80092AC8C /* GrapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7225F201A00A80092AC8C /* GrapCell.swift */; };
 		E1F72262201A00A80092AC8C /* GrapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F72260201A00A80092AC8C /* GrapCell.xib */; };
-		E5312FC6201DA91E003A1043 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FC5201DA91E003A1043 /* CellViewModel.swift */; };
 		E5312FC9201DB515003A1043 /* orderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FC7201DB515003A1043 /* orderCell.swift */; };
 		E5312FCA201DB515003A1043 /* orderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5312FC8201DB515003A1043 /* orderCell.xib */; };
 		E5312FCD201DB842003A1043 /* orderTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FCB201DB842003A1043 /* orderTwoCell.swift */; };
@@ -527,7 +526,6 @@
 		E1F7225D2019D1F50092AC8C /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		E1F7225F201A00A80092AC8C /* GrapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapCell.swift; sourceTree = "<group>"; };
 		E1F72260201A00A80092AC8C /* GrapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrapCell.xib; sourceTree = "<group>"; };
-		E5312FC5201DA91E003A1043 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		E5312FC7201DB515003A1043 /* orderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderCell.swift; sourceTree = "<group>"; };
 		E5312FC8201DB515003A1043 /* orderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderCell.xib; sourceTree = "<group>"; };
 		E5312FCB201DB842003A1043 /* orderTwoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTwoCell.swift; sourceTree = "<group>"; };
@@ -1215,7 +1213,6 @@
 			children = (
 				E1F7225F201A00A80092AC8C /* GrapCell.swift */,
 				E1F72260201A00A80092AC8C /* GrapCell.xib */,
-				E5312FC5201DA91E003A1043 /* CellViewModel.swift */,
 				E5312FC7201DB515003A1043 /* orderCell.swift */,
 				E5312FC8201DB515003A1043 /* orderCell.xib */,
 				E5312FCB201DB842003A1043 /* orderTwoCell.swift */,
@@ -1867,7 +1864,6 @@
 				E1C03241200E15CF00B1A377 /* UserInfoModel.swift in Sources */,
 				E12BC0EB2017230700099ED4 /* CLBottomCommentViewDelegate.swift in Sources */,
 				E1ABEB252018538F00F7FF91 /* DetailTable.swift in Sources */,
-				E5312FC6201DA91E003A1043 /* CellViewModel.swift in Sources */,
 				E1F5E279200F356000FD18FD /* AccountLoginable.swift in Sources */,
 				E1C3E55F20158CAA00B13306 /* DSRefresh.swift in Sources */,
 				E1C0323B200DD86600B1A377 /* DImgTabber.swift in Sources */,

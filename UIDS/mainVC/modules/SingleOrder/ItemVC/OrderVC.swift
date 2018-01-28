@@ -16,6 +16,7 @@ import ReusableKit
 import RxDataSources
 import Differentiator
 import SwiftyJSON
+import ESPullToRefresh
 
 
 public enum ORDER_TYPE: Int {
@@ -55,10 +56,11 @@ class OrderVC: BaseNameVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.initUI()
         self.bindUI()
         
+        self.refreshUI()
     }
 
     
@@ -69,12 +71,82 @@ class OrderVC: BaseNameVC {
 
 }
 
+//MARK: - 刷新植入
+extension OrderVC {
+    
+    func refreshUI() {
+        
+        //上拉  下拉
+        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        var footer: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        
+        header = DS2RefreshHeader.init(frame: CGRect.zero)
+        footer = DS2RefreshFooter.init(frame: CGRect.zero)
+        
+        self.tableView?.es.addPullToRefresh(animator: header) { [weak self] in
+            self?.refreshEvent()
+        }
+        self.tableView?.es.addInfiniteScrolling(animator: footer) { [weak self] in
+            self?.loadMore()
+        }
+    }
+    
+    
+    
+    func getData() {
+        
+        if self.orderType == ORDER_TYPE.grab {
+    
+            viewModel.getGarp(params: NSMutableDictionary(), callback: { [weak self] in
+                self?.tableView.es.stopPullToRefresh()
+            })
+            
+        }else if self.orderType == ORDER_TYPE.oning {
+            
+            let params = NSMutableDictionary()
+            params.setSafeObject("1", forKey: "status" as NSCopying)
+            params.setSafeObject("1", forKey: "page" as NSCopying)
+            params.setSafeObject("20", forKey: "page_context" as NSCopying)
+            
+            viewModel.getOrderList(params: params, callback: { [weak self] in
+                self?.tableView.es.stopPullToRefresh()
+            })
+            
+
+        }else if self.orderType == ORDER_TYPE.over {
+            
+            let params = NSMutableDictionary()
+            params.setSafeObject("2,0", forKey: "status" as NSCopying)
+            params.setSafeObject("1", forKey: "page" as NSCopying)
+            params.setSafeObject("20", forKey: "page_context" as NSCopying)
+
+            viewModel.getOrderList(params: params, callback: { [weak self] in
+                self?.tableView.es.stopPullToRefresh()
+            })
+        }
+    }
+    
+    func refreshEvent() {
+        
+        self.getData()
+    
+    }
+    private func loadMore() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.tableView.es.noticeNoMoreData()
+        }
+    }
+    
+}
+
 
 extension OrderVC {
     
     // MARK:- 初始化视图
     fileprivate func initUI() {
-
+        
+        self.view.width = kScreenW
+        
         let tableView = BaseTableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
@@ -127,37 +199,9 @@ extension OrderVC {
             return cell
         })
         
-        if self.orderType == ORDER_TYPE.grab {
-            viewModel.getGarp(params: NSMutableDictionary()) {[weak self] (observAble) in
-                
-                observAble.bind(to: (self?.tableView.rx.items(dataSource: (self?.in_dataSource)!))!).disposed(by: (self?.rx.disposeBag)!)
-                
-            }
-        }else if self.orderType == ORDER_TYPE.oning {
-            
-            let params = NSMutableDictionary()
-            params.setSafeObject("1", forKey: "status" as NSCopying)
-            params.setSafeObject("1", forKey: "page" as NSCopying)
-            params.setSafeObject("20", forKey: "page_context" as NSCopying)
-            
-            viewModel.getOrderList(params: params) {[weak self] (observAble) in
-                
-                observAble.bind(to: (self?.tableView.rx.items(dataSource: (self?.in_dataSource)!))!).disposed(by: (self?.rx.disposeBag)!)
-                
-            }
-        }else if self.orderType == ORDER_TYPE.over {
-            
-            let params = NSMutableDictionary()
-            params.setSafeObject("2,0", forKey: "status" as NSCopying)
-            params.setSafeObject("1", forKey: "page" as NSCopying)
-            params.setSafeObject("20", forKey: "page_context" as NSCopying)
-            
-            viewModel.getOrderList(params: params) {[weak self] (observAble) in
-                
-                observAble.bind(to: (self?.tableView.rx.items(dataSource: (self?.in_dataSource)!))!).disposed(by: (self?.rx.disposeBag)!)
-                
-            }
-        }
+        viewModel.orderList.asObservable().bind(to: self.tableView.rx.items(dataSource: (self.in_dataSource)!)).disposed(by: rx.disposeBag)
+        
+        self.getData()
     }
 }
 
@@ -166,22 +210,23 @@ extension OrderVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let itemData = viewModel.orderList![indexPath.row]
-        
+        let itemData = viewModel.orderList.value[indexPath.section].items[indexPath.row]
+
         // 注册cell
         if self.orderType == ORDER_TYPE.grab {
-            
+
         }else if self.orderType == ORDER_TYPE.oning {
-            
+
             return 153 - 37
-            
+
         }else if self.orderType == ORDER_TYPE.over {
             return 73
         }
         let getStr = JSON.init(parseJSON: (itemData.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "")
         let size = getStr?.getSize(font: UIFont.systemFont(ofSize: 15), viewWidth: kScreenW - 30.0)
-        
+
         return 153 - 37 + (size?.height)!
+        
         
     }
     
