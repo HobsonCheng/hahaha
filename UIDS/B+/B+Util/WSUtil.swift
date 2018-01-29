@@ -61,6 +61,15 @@ class WSUtil: NSObject {
 //open api
 extension WSUtil {
     
+    func getCReust(modelInfo: [UInt8]?) {
+        let data = Data.init(bytes: modelInfo!)
+        var slogin = try?ProtosBody_RESULT(jsonUTF8Data: data)
+        print("dsdsd")
+    }
+    
+    func SLoginModel(modelInfo: [UInt8]?) {
+        
+    }
     
     open func getLoginBuff() -> Data{
         var cLogin = ProtosBody_Login()
@@ -98,11 +107,11 @@ extension WSUtil {
         default:
             break
         }
-    
-        let headData = [0x1,0x2,0x3,0x4]
-        let glData = [0x1]
-        var funtionData = (self.intToBytes(value: (functype?.rawValue)!))
-        var funtionLengthData = (self.intToBytes(value: (binary.count)))
+        
+        let headData = Data.init(bytes: [0x1,0x2,0x3,0x4])
+        let glData = Data.init(bytes: [0x1])
+        let funtionData = Data.init(bytes: (self.intToBytes(value: (functype?.rawValue)!)))
+        let funtionLengthData = Data.init(bytes: (self.intToBytes(value: (binary.count))))
         
         let sendData = headData+glData+funtionData+funtionLengthData+binary
         
@@ -122,9 +131,43 @@ extension WSUtil {
     func BytesToInt(bytes: [UInt8]) -> Int {
         
         var value: Int
-        var offset = 0
-        value = (((bytes[offset] & 0xFF)<<24)|((bytes[offset+1] & 0xFF)<<16)|((bytes[offset+2] & 0xFF)<<8)|(bytes[offset+3] & 0xFF))
+        let offset = 0
+        value = (Int(((bytes[offset] & 0xFF)<<24)|((bytes[offset+1] & 0xFF)<<16)|((bytes[offset+2] & 0xFF)<<8)|(bytes[offset+3] & 0xFF)))
         return value
+    }
+    
+    
+    func getMsg(evt: Data) {
+        
+        let bytes: [UInt8]? = [UInt8](evt)
+        //xxxx x xxxx xxxx ---
+        let start = 5
+        let modelData = 13
+        let funtionType = bytes?.distance(from: start, to: start+4)
+        let modelInfo = bytes?.suffix(from: modelData)
+        
+        switch funtionType {
+        case ProtosBody_notice_funtion.cregister.rawValue?:
+            
+            break
+        case ProtosBody_notice_funtion.sregister.rawValue?:
+            self.SLoginModel(modelInfo:modelInfo?.reversed())
+            break
+        case ProtosBody_notice_funtion.snotice.rawValue?:
+            
+            break
+        case ProtosBody_notice_funtion.cnotice.rawValue?:
+            
+            break
+        case ProtosBody_notice_funtion.scancel.rawValue?:
+            
+            break
+        case ProtosBody_notice_funtion.ccancel.rawValue?:
+            
+            break
+        default:
+            break
+        }
     }
 }
 
@@ -146,11 +189,13 @@ extension WSUtil: WebSocketDelegate {
     //接受到消息了
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("我收到了消息(string)\(text)")
+        
         delegate?.websocketDidReceiveMessage(socket: self, text: text)
     }
     //data数据
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("我收到了消息(data)\(data)")
+        self.getMsg(evt: data)
         delegate?.websocketDidReceiveData(socket: self, data: data as NSData)
     }
 
