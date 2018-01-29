@@ -61,6 +61,12 @@ class OrderVC: BaseNameVC {
         self.bindUI()
         
         self.refreshUI()
+        
+        if self.orderType == ORDER_TYPE.grab {
+            
+            self.initWS()
+            
+        }
     }
 
     
@@ -96,7 +102,8 @@ extension OrderVC {
     func getData() {
         
         if self.orderType == ORDER_TYPE.grab {
-    
+
+            
             viewModel.getGarp(params: NSMutableDictionary(), callback: { [weak self] in
                 self?.tableView.es.stopPullToRefresh()
             })
@@ -186,9 +193,14 @@ extension OrderVC {
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.cellData = item
                 
-                cell.changeEvent.asDriver().do(onNext: { data in
+                cell.changeEvent.asObservable().do(onNext: { [weak self] obj in
                     
-                }).asObservable().subscribe().disposed(by: self.rx.disposeBag)
+                    if obj.eventType != -1 {
+                        
+                        self?.tableView.es.startPullToRefresh()
+                    }
+                    
+                }).subscribe().disposed(by: self.rx.disposeBag)
                 
                 return cell
             }else if self.orderType == ORDER_TYPE.over {
@@ -238,6 +250,33 @@ extension OrderVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
+        
+    }
+}
+//webstock
+extension OrderVC: WSUtilDelegate{
+
+    func initWS(){
+        //WSUtil
+        let ws = WSUtil.share()
+        ws.delegate = self
+        ws.connectSever()
+    }
+    
+    
+    func websocketDidConnect(sock: WSUtil) {
+        
+    }
+    
+    func websocketDidDisconnect(socket: WSUtil, error: NSError?) {
+        
+    }
+    
+    func websocketDidReceiveMessage(socket: WSUtil, text: String) {
+        
+    }
+    
+    func websocketDidReceiveData(socket: WSUtil, data: NSData) {
         
     }
 }

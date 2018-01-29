@@ -12,10 +12,16 @@ import RxCocoa
 import RxSwift
 import NSObject_Rx
 
-struct EventData {
-    var eventType: Int
-    var cellObj: OrderCData
+class EventData {
+    
+    var eventType: Int? = -1
+    var cellObj: OrderCData? = nil
+    
+    init(){
+        
+    }
 }
+
 
 class orderCell: UITableViewCell {
 
@@ -31,8 +37,9 @@ class orderCell: UITableViewCell {
     
     @IBOutlet weak var addtime: UILabel!
     
-
-    var changeEvent = Variable<EventData>(EventData.init(eventType: 0, cellObj: OrderCData()))
+    
+    var changeEvent = Variable(EventData())
+    
 
     
     var cellData: OrderCData? {
@@ -63,16 +70,19 @@ class orderCell: UITableViewCell {
         self.cancelButton.layer.masksToBounds = true
         
         self.overButton.rx.tap.do(onNext: { [weak self] in
-            
+        
             let params = NSMutableDictionary()
             params.setValue(self?.cellData?.id ?? "", forKey: "order_id")
             
-            ApiUtil.share.confirmSubscribe(params: params, fininsh: { [weak self] (status, data, msg) in
+            ApiUtil.share.confirmSubscribe(params: params, fininsh: { (status, data, msg) in
                 
                 Util.msg(msg: "订单完成", 2)
                 
-                let eventData = EventData.init(eventType: 1, cellObj: (self?.cellData)!)
-                self?.changeEvent.value = eventData
+                let obj = EventData()
+                obj.eventType = 1
+                obj.cellObj = self?.cellData
+                
+                self?.changeEvent.value = obj
                 
             })
             
@@ -80,6 +90,8 @@ class orderCell: UITableViewCell {
         
         
         self.cancelButton.rx.tap.do(onNext: { [weak self] in
+            
+
             
             let params = NSMutableDictionary()
             params.setValue(self?.cellData?.id ?? "", forKey: "order_id")
@@ -89,8 +101,11 @@ class orderCell: UITableViewCell {
                 
                 Util.msg(msg: "订单已取消", 2)
                 
-                let eventData = EventData.init(eventType: 2, cellObj: (self?.cellData)!)
-                self?.changeEvent.value = eventData
+                let obj = EventData()
+                obj.eventType = 2
+                obj.cellObj = self?.cellData
+                
+                self?.changeEvent.value = obj
                 
             })
             
