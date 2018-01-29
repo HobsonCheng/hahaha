@@ -185,6 +185,11 @@ extension OrderVC {
                 let cell = tv.dequeue(Reusable.noingCell,for: indexPath)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.cellData = item
+                
+                cell.changeEvent.asDriver().do(onNext: { data in
+                    
+                }).asObservable().subscribe().disposed(by: self.rx.disposeBag)
+                
                 return cell
             }else if self.orderType == ORDER_TYPE.over {
                 let cell = tv.dequeue(Reusable.overCell, for: indexPath)

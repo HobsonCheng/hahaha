@@ -12,9 +12,13 @@ import RxCocoa
 import RxSwift
 import NSObject_Rx
 
-
+struct EventData {
+    var eventType: Int
+    var cellObj: OrderCData
+}
 
 class orderCell: UITableViewCell {
+
 
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -27,14 +31,9 @@ class orderCell: UITableViewCell {
     
     @IBOutlet weak var addtime: UILabel!
     
-    
-//    public struct EventData {
-//        let eventType = 0
-//        let cellObj = OrderCData()
-//    }
-//
-//    var changeEvent: Variable<EventData>
-//
+
+    var changeEvent = Variable<EventData>(EventData.init(eventType: 0, cellObj: OrderCData()))
+
     
     var cellData: OrderCData? {
         didSet {
@@ -72,8 +71,8 @@ class orderCell: UITableViewCell {
                 
                 Util.msg(msg: "订单完成", 2)
                 
-//                var eventData = EventData.init(eventType: 1, cellObj: (self?.cellData)!)
-//                self?.changeEvent.value = eventData
+                let eventData = EventData.init(eventType: 1, cellObj: (self?.cellData)!)
+                self?.changeEvent.value = eventData
                 
             })
             
@@ -90,8 +89,8 @@ class orderCell: UITableViewCell {
                 
                 Util.msg(msg: "订单已取消", 2)
                 
-//                var eventData = EventData.init(eventType: 2, cellObj: (self?.cellData)!)
-//                self?.changeEvent.value = eventData
+                let eventData = EventData.init(eventType: 2, cellObj: (self?.cellData)!)
+                self?.changeEvent.value = eventData
                 
             })
             
