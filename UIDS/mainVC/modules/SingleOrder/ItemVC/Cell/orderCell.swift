@@ -12,6 +12,8 @@ import RxCocoa
 import RxSwift
 import NSObject_Rx
 
+
+
 class orderCell: UITableViewCell {
 
     
@@ -25,6 +27,14 @@ class orderCell: UITableViewCell {
     
     @IBOutlet weak var addtime: UILabel!
     
+    
+//    public struct EventData {
+//        let eventType = 0
+//        let cellObj = OrderCData()
+//    }
+//
+//    var changeEvent: Variable<EventData>
+//
     
     var cellData: OrderCData? {
         didSet {
@@ -58,9 +68,12 @@ class orderCell: UITableViewCell {
             let params = NSMutableDictionary()
             params.setValue(self?.cellData?.id ?? "", forKey: "order_id")
             
-            ApiUtil.share.confirmSubscribe(params: params, fininsh: { (status, data, msg) in
+            ApiUtil.share.confirmSubscribe(params: params, fininsh: { [weak self] (status, data, msg) in
                 
                 Util.msg(msg: "订单完成", 2)
+                
+//                var eventData = EventData.init(eventType: 1, cellObj: (self?.cellData)!)
+//                self?.changeEvent.value = eventData
                 
             })
             
@@ -73,9 +86,12 @@ class orderCell: UITableViewCell {
             params.setValue(self?.cellData?.id ?? "", forKey: "order_id")
             params.setValue(self?.cellData?.pid ?? "", forKey: "form_pid")
             
-            ApiUtil.share.cancelOrderSubscribe(params: params, fininsh: { (status, data, msg) in
+            ApiUtil.share.cancelOrderSubscribe(params: params, fininsh: { [weak self] (status, data, msg) in
                 
                 Util.msg(msg: "订单已取消", 2)
+                
+//                var eventData = EventData.init(eventType: 2, cellObj: (self?.cellData)!)
+//                self?.changeEvent.value = eventData
                 
             })
             
