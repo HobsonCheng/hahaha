@@ -8,6 +8,26 @@
 
 import UIKit
 import Starscream
+import SwiftProtobuf
+
+class NoticObj {
+    
+    init() {}
+    
+    var id: Int!
+    var pid: Int!
+    var uid: Int!
+    var notifyId: Int!
+    var targetGroup: Int!
+    var target: Int!
+    var targetType: Int!
+    var read: Bool!
+    var content: String!
+    var addTime: String!
+    
+}
+
+
 
 protocol WSUtilDelegate {
     
@@ -19,6 +39,10 @@ protocol WSUtilDelegate {
     func websocketDidReceiveMessage(socket: WSUtil, text: String)
     /**websocket 接受二进制信息*/
     func  websocketDidReceiveData(socket: WSUtil, data: NSData)
+    
+    
+    /**返回 订单信息*/
+    func  callBackOrderStaus(order: NoticObj?,cancel: Bool)
     
 }
 
@@ -60,9 +84,31 @@ class WSUtil: NSObject {
 
 //open api
 extension WSUtil {
+
     
-    func SnoticeModel(buf: [UInt8], cancel: Bool) {
+    private func convertData<T: SwiftProtobuf.Message>(data: Data) -> T {
+        return try! T(serializedData: data)
+    }
+    
+    func SnoticeModel(buf: Data, cancel: Bool) {
+        let snoticeModel = try?ProtosBody_user_notice(serializedData: buf)
+        if snoticeModel == nil {
+            return
+        }
         
+        let getModel = NoticObj()
+        getModel.id = snoticeModel?.id.hashValue
+        getModel.pid = snoticeModel?.pid.hashValue
+        getModel.uid = snoticeModel?.uid.hashValue
+        getModel.notifyId = snoticeModel?.notifyID.hashValue
+        getModel.targetGroup = snoticeModel?.targetGroup.hashValue
+        getModel.target = snoticeModel?.target.hashValue
+        getModel.targetType = snoticeModel?.targetType.hashValue
+        getModel.read = snoticeModel?.read
+        getModel.content = snoticeModel?.content
+        getModel.addTime = snoticeModel?.addTime
+        
+        self.delegate?.callBackOrderStaus(order: getModel, cancel: cancel)
     }
     
     func getCReust(modelInfo: Int32)-> Data {
@@ -72,9 +118,9 @@ extension WSUtil {
         return try!cReust.serializedData(partial: true)
     }
     
-    func SLoginModel(modelInfo: [UInt8]?) {
-        let data = Data.init(bytes: modelInfo!)
-        var slogin = ProtosBody_RESULT.jsonUTF8Data(ProtosBody_RESULT)
+    func SLoginModel(modelInfo: Data) {
+        let slogin = try!ProtosBody_RESULT(serializedData: modelInfo)
+        print(slogin)
     }
     
     open func getLoginBuff() -> Data{
@@ -102,7 +148,7 @@ extension WSUtil {
             
             break
         case ProtosBody_notice_funtion.cnotice.rawValue?:
-            binary = self.getCReust(modelid: model)
+            binary = self.getCReust(modelInfo: model as! Int32)
             break
         case ProtosBody_notice_funtion.scancel.rawValue?:
             
@@ -145,31 +191,33 @@ extension WSUtil {
     
     func getMsg(evt: Data) {
         
-        let bytes: [UInt8]? = [UInt8](evt)
         //xxxx x xxxx xxxx ---
         let start = 5
         let modelData = 13
-        let funtionType = bytes?.distance(from: start, to: start+4)
-        let modelInfo = bytes?.suffix(from: modelData)
+        let funtionTypeData = NSData.init(data: evt).subdata(with: NSRange.init(location: start, length: 4))
+        let funtionType = self.BytesToInt(bytes: [UInt8](funtionTypeData))
         
+        let tmpdata = NSData.init(data: evt)
+        let modelInfo = tmpdata.subdata(with: NSRange.init(location: modelData, length: tmpdata.length - modelData))
+      
         switch funtionType {
-        case ProtosBody_notice_funtion.cregister.rawValue?:
+        case ProtosBody_notice_funtion.cregister.rawValue:
             
             break
-        case ProtosBody_notice_funtion.sregister.rawValue?:
-            self.SLoginModel(modelInfo:modelInfo?.reversed())
+        case ProtosBody_notice_funtion.sregister.rawValue:
+            self.SLoginModel(modelInfo:modelInfo)
             break
-        case ProtosBody_notice_funtion.snotice.rawValue?:
+        case ProtosBody_notice_funtion.snotice.rawValue:
+            self.SnoticeModel(buf: modelInfo, cancel: false)
+            break
+        case ProtosBody_notice_funtion.cnotice.rawValue:
             
             break
-        case ProtosBody_notice_funtion.cnotice.rawValue?:
-            self.SnoticeModel(buf: (modelInfo?.reversed())!, cancel: false)
+        case ProtosBody_notice_funtion.scancel.rawValue:
+            self.SnoticeModel(buf: modelInfo, cancel: true)
             break
-        case ProtosBody_notice_funtion.scancel.rawValue?:
+        case ProtosBody_notice_funtion.ccancel.rawValue:
             
-            break
-        case ProtosBody_notice_funtion.ccancel.rawValue?:
-            self.SnoticeModel(buf: (modelInfo?.reversed())!, cancel: false)
             break
         default:
             break

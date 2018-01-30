@@ -10,7 +10,7 @@ target 'UIDS' do
   pod 'DZNEmptyDataSet'
   pod 'ChameleonFramework'
   pod 'MagicalRecord'
-  pod 'iRate'
+  #pod 'iRate'
   pod 'Then'
   
   pod 'HandyJSON'

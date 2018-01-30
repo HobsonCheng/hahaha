@@ -11,7 +11,7 @@
 
 #import <ChameleonFramework/Chameleon.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-#import <iRate/iRate.h>
+//#import <iRate/iRate.h>
 #import <MagicalRecord/MagicalRecord.h>
 #import <PKRevealController/PKRevealController.h>
 #import <RETableViewManager/RETableViewManager.h>

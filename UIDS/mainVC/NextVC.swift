@@ -29,6 +29,8 @@ class NextVC: NaviBarVC {
 }
 
 extension NextVC: WSUtilDelegate {
+    func callBackOrderStaus(order: NoticObj?, cancel: Bool) {
+    }
     
     func websocketDidConnect(sock: WSUtil) {
         

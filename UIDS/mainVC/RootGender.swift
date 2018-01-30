@@ -12,7 +12,7 @@ import ESPullToRefresh
 
 extension RootVC {//扩展
 
-    //MARK: 生成组件信息
+    //MARK: 生成组件信息45
     func genderModelList() {
         
         self.startY = 1;

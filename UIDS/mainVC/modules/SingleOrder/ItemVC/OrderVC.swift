@@ -279,5 +279,35 @@ extension OrderVC: WSUtilDelegate{
     func websocketDidReceiveData(socket: WSUtil, data: NSData) {
         
     }
+    func callBackOrderStaus(order: NoticObj?, cancel: Bool) {
+        
+        var getobj: OrderCData?
+        var count = 0
+        for item in viewModel.orderList.value[0].items {
+            if item.notify_id == order?.id {
+                getobj = item
+                break
+            }
+            count = count+1
+        }
+        
+        let msg: String
+        if cancel {
+            msg = "订单：\((getobj?.classify_name)!) 被抢了"
+            
+            viewModel.orderList.value[0].items.remove(at: count)
+            
+        }else {
+            msg = "有新订单了，快去看看"
+            
+            let newOrderStr = order?.content
+            let newOrder = OrderCData.deserialize(from: newOrderStr)
+
+            viewModel.orderList.value[0].items.insert(newOrder!, at: 0)
+            
+        }
+        
+        Util.msg(msg: msg, 1)
+    }
 }
 
