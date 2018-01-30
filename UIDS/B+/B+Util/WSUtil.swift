@@ -61,14 +61,20 @@ class WSUtil: NSObject {
 //open api
 extension WSUtil {
     
-    func getCReust(modelInfo: [UInt8]?) {
-        let data = Data.init(bytes: modelInfo!)
-        var slogin = try?ProtosBody_RESULT(jsonUTF8Data: data)
-        print("dsdsd")
+    func SnoticeModel(buf: [UInt8], cancel: Bool) {
+        
+    }
+    
+    func getCReust(modelInfo: Int32)-> Data {
+        var cReust = ProtosBody_RESULT()
+        cReust.id = modelInfo
+        cReust.result = true
+        return try!cReust.serializedData(partial: true)
     }
     
     func SLoginModel(modelInfo: [UInt8]?) {
-        
+        let data = Data.init(bytes: modelInfo!)
+        var slogin = ProtosBody_RESULT.jsonUTF8Data(ProtosBody_RESULT)
     }
     
     open func getLoginBuff() -> Data{
@@ -96,7 +102,7 @@ extension WSUtil {
             
             break
         case ProtosBody_notice_funtion.cnotice.rawValue?:
-            
+            binary = self.getCReust(modelid: model)
             break
         case ProtosBody_notice_funtion.scancel.rawValue?:
             
@@ -157,13 +163,13 @@ extension WSUtil {
             
             break
         case ProtosBody_notice_funtion.cnotice.rawValue?:
-            
+            self.SnoticeModel(buf: (modelInfo?.reversed())!, cancel: false)
             break
         case ProtosBody_notice_funtion.scancel.rawValue?:
             
             break
         case ProtosBody_notice_funtion.ccancel.rawValue?:
-            
+            self.SnoticeModel(buf: (modelInfo?.reversed())!, cancel: false)
             break
         default:
             break
