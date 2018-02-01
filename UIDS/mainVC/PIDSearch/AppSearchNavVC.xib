@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppSearchNavVC" customModule="UIDS" customModuleProvider="target">
+            <connections>
+                <outlet property="noButton" destination="P76-R3-luh" id="66c-72-U24"/>
+                <outlet property="searchbar" destination="cvy-Da-hi8" id="4gn-Am-hNg"/>
+                <outlet property="tableview" destination="XFN-5Q-nWb" id="v4b-tx-1Qm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgApp.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HHs-JC-N84">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单位APP通用客户端" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4q-x6-nff">
+                    <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="uFc-Qe-HIP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <searchBar contentMode="redraw" placeholder="搜索想要的公司" translatesAutoresizingMaskIntoConstraints="NO" id="cvy-Da-hi8">
+                    <rect key="frame" x="0.0" y="66" width="375" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="LHv-79-SbH"/>
+                    </constraints>
+                    <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XFN-5Q-nWb">
+                    <rect key="frame" x="0.0" y="122" width="375" height="485"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P76-R3-luh">
+                    <rect key="frame" x="50" y="617" width="275" height="40"/>
+                    <color key="backgroundColor" red="0.13691836595535278" green="0.5967753529548645" blue="0.93732362985610962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5xy-It-AbN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="以上都不是，立即创建"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="HHs-JC-N84" secondAttribute="bottom" id="255-Ou-cFT"/>
+                <constraint firstItem="XFN-5Q-nWb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2ja-2Y-gGh"/>
+                <constraint firstItem="XFN-5Q-nWb" firstAttribute="top" secondItem="cvy-Da-hi8" secondAttribute="bottom" id="43a-w7-qU8"/>
+                <constraint firstItem="P76-R3-luh" firstAttribute="top" secondItem="XFN-5Q-nWb" secondAttribute="bottom" constant="10" id="Go3-Bp-EUX"/>
+                <constraint firstItem="HHs-JC-N84" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qxm-o4-TdW"/>
+                <constraint firstAttribute="trailing" secondItem="E4q-x6-nff" secondAttribute="trailing" id="Sah-Fm-jav"/>
+                <constraint firstItem="E4q-x6-nff" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wkl-0G-sFH"/>
+                <constraint firstItem="HHs-JC-N84" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wwk-2t-MF7"/>
+                <constraint firstAttribute="trailing" secondItem="P76-R3-luh" secondAttribute="trailing" constant="50" id="Ysf-TV-TE7"/>
+                <constraint firstAttribute="trailing" secondItem="XFN-5Q-nWb" secondAttribute="trailing" id="ZuC-a1-2oz"/>
+                <constraint firstItem="P76-R3-luh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="b8O-yd-2n7"/>
+                <constraint firstItem="cvy-Da-hi8" firstAttribute="top" secondItem="E4q-x6-nff" secondAttribute="bottom" id="cRf-0T-wUU"/>
+                <constraint firstItem="E4q-x6-nff" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="22" id="f8F-Q5-K3a"/>
+                <constraint firstItem="cvy-Da-hi8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fAn-n6-mUX"/>
+                <constraint firstAttribute="trailing" secondItem="cvy-Da-hi8" secondAttribute="trailing" id="fJa-9x-Mxx"/>
+                <constraint firstAttribute="bottom" secondItem="P76-R3-luh" secondAttribute="bottom" constant="10" id="lNf-U6-BcQ"/>
+                <constraint firstAttribute="trailing" secondItem="HHs-JC-N84" secondAttribute="trailing" id="zx0-qd-wjn"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="bgApp.jpg" width="833" height="1920"/>
+    </resources>
+</document>

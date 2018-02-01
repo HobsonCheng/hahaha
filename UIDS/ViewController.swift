@@ -28,8 +28,8 @@ class ViewController: UIViewController,EAIntroDelegate {
         //main rootView
         
         
-        let searchapp = AppSearchVC(name: "AppSearchVC");
-        VCController.push(searchapp!, with:nil)
+        let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
+        VCController.push(searchapp, with:nil)
         
 //        let mainvc = MainVC()
 //        VCController.push(mainvc!, with:nil)
