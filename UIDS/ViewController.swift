@@ -26,10 +26,15 @@ class ViewController: UIViewController,EAIntroDelegate {
         sgU.checkAndRateWithController(vc:self)
         
         //main rootView
-        let mainvc = MainVC()
-        VCController.push(mainvc!, with:nil)
         
-        self.startLaunPage()
+        
+        let searchapp = AppSearchVC(name: "AppSearchVC");
+        VCController.push(searchapp!, with:nil)
+        
+//        let mainvc = MainVC()
+//        VCController.push(mainvc!, with:nil)
+        
+//        self.startLaunPage()
     }
 
     override func didReceiveMemoryWarning() {
