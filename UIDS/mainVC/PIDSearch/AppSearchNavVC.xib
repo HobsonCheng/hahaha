@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgApp.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HHs-JC-N84">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbgbg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HHs-JC-N84">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单位APP通用客户端" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4q-x6-nff">
@@ -39,7 +39,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="LHv-79-SbH"/>
                     </constraints>
-                    <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                     <scopeButtonTitles>
                         <string>Title</string>
@@ -48,7 +48,7 @@
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XFN-5Q-nWb">
                     <rect key="frame" x="0.0" y="122" width="375" height="485"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P76-R3-luh">
                     <rect key="frame" x="50" y="617" width="275" height="40"/>
@@ -83,6 +83,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bgApp.jpg" width="833" height="1920"/>
+        <image name="bgbgbg.jpg" width="1080" height="1921"/>
     </resources>
 </document>

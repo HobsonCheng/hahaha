@@ -59,11 +59,20 @@ extension AppSearchNavVC {
     
         
         let searchField: UITextField = self.searchbar.value(forKey: "searchField") as! UITextField
-        searchField.backgroundColor = UIColor.clear
         searchField.layer.cornerRadius = 8
         searchField.layer.borderColor = UIColor(hexString: "#1e71eb", withAlpha: 1).cgColor
         searchField.layer.borderWidth = 1
         searchField.layer.masksToBounds = true
+        
+        
+        for subview in self.searchbar.subviews {
+            for grandSonView in subview.subviews{
+                if grandSonView.isKind(of: NSClassFromString("UISearchBarBackground")!) {
+                    grandSonView.alpha = 0.0
+                    break
+                }
+            }//for cacheViews
+        }//subviews
     }
 }
 
