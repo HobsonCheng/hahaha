@@ -16,6 +16,51 @@ class ApiUtil: NSObject {
 
     static let share = ApiUtil()
     
+    //MARK: - 搜索项目
+    func searchProject(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("project", forKey: "sn")
+        params.setValue("searchProject", forKey: "ac")
+        
+        BRequestHandler.shared.getHaveHostName(hostname: "http://121.42.154.36:12025/",APIString: "searchProject", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - appinfo
+    func getApp(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("project", forKey: "sn")
+        params.setValue("getApp", forKey: "ac")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - pagelist
+    func getPageList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("project", forKey: "sn")
+        params.setValue("getPageList", forKey: "ac")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    
     //MARK: - 注册
     func userRegist(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
         

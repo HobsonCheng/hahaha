@@ -16,11 +16,6 @@ class ViewController: UIViewController,EAIntroDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.view.backgroundColor = UIColor.white
-    
-        let tools = BRequestHandler.shared
-        if tools.getCurrentNetworkState() == 0 {
-            
-        }
         
         let sgU = Util.shared
         sgU.checkAndRateWithController(vc:self)
@@ -31,10 +26,6 @@ class ViewController: UIViewController,EAIntroDelegate {
         let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
         VCController.push(searchapp, with:nil)
         
-//        let mainvc = MainVC()
-//        VCController.push(mainvc!, with:nil)
-        
-//        self.startLaunPage()
     }
 
     override func didReceiveMemoryWarning() {

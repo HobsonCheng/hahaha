@@ -24,14 +24,12 @@ class AppInfoData: NSObject {
         self.initData()
     }
     
-    private func initData(){
+    func initData(){
+        
+        
         if !DownData.find_resourse_AppInfo() {
-            let path = Bundle.main.path(forResource: "UIAppInfo", ofType: "json")
-            let file = FileHandle.init(forReadingAtPath: path!)
-            let data = file?.readDataToEndOfFile()
-            let tmpData: NSMutableData? = NSMutableData()
-            tmpData?.append((data)!)
-            tmpData?.write(toFile: DownData.resoursePathAppInfo(), atomically: true)
+            
+            return
         };
         
         let file = FileHandle.init(forReadingAtPath: DownData.resoursePathAppInfo())

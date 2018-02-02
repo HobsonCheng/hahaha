@@ -24,15 +24,10 @@ class PageListInfo: NSObject {
         self.initData()
     }
     
-    private func initData(){
+    func initData(){
         
         if !DownData.find_resourse_PageListInfo() {
-            let path = Bundle.main.path(forResource: "UIPageList", ofType: "json")
-            let file = FileHandle.init(forReadingAtPath: path!)
-            let data = file?.readDataToEndOfFile()
-            let tmpData: NSMutableData? = NSMutableData()
-            tmpData?.append((data)!)
-            tmpData?.write(toFile: DownData.resoursePathPageListInfo(), atomically: true)
+            return
         };
         
         let file = FileHandle.init(forReadingAtPath: DownData.resoursePathPageListInfo())

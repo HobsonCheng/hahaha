@@ -149,7 +149,7 @@ final class Util: NSObject{
 //        view?.view.dodo.style.bar.locationTop = false
 
         
-        if (view?.isKind(of: NaviBarVC.classForCoder()))!{
+        if (view?.isKind(of: NSClassFromString("NaviBarVC")!))!{
             let navToP: NaviBarVC = view as! NaviBarVC
             navToP.view.dodo.topAnchor = navToP.naviBar().bottomAnchor
         }else {
@@ -202,6 +202,28 @@ final class Util: NSObject{
             callback()
         }
         
+    }
+    
+    /**
+     正则表达式获取目的值
+     - parameter pattern: 一个字符串类型的正则表达式
+     - parameter str: 需要比较判断的对象
+     - imports: 这里子串的获取先转话为NSString的[以后处理结果含NS的还是可以转换为NS前缀的方便]
+     - returns: 返回目的字符串结果值数组(目前将String转换为NSString获得子串方法较为容易)
+     - warning: 注意匹配到结果的话就会返回true，没有匹配到结果就会返回false
+     */
+    static func regexGetSub(pattern:String, str:String) -> [String] {
+        var subStr = [String]()
+        let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
+        let results = regex?.matches(in: str, options: NSRegularExpression.MatchingOptions.init(rawValue: 0), range: NSMakeRange(0, str.count))
+    
+        //解析出子串
+        for  rst in results! {
+            let nsStr = str as  NSString  //可以方便通过range获取子串
+            subStr.append(nsStr.substring(with: rst.range))
+            //str.substring(with: Range<String.Index>) //本应该用这个的，可以无法直接获得参数，必须自己手动获取starIndex 和 endIndex作为区间
+        }
+        return subStr
     }
 }
 

@@ -64,6 +64,11 @@ class BRequestHandler: NSObject {
         
         let appinfo = AppInfoData.shared.appModel
         
+        if appinfo == nil {
+            
+            return
+        }
+        
         let hostUrl = String.init(format: "http://rgpro.time2016.com/registProject?add_pid=%zd&key=801004222a98d5c3a2acb6aa72c49e9e", (appinfo?.app_id)!)
         
         let headerparams = self.getHTTPHeaders(parameters: nil)
@@ -158,6 +163,43 @@ extension BRequestHandler {
             }
         }
     }
+    
+    /**
+     GET请求
+     
+     - parameter APIString:  urlString
+     - parameter parameters: 参数
+     - parameter finished:   完成回调
+     */
+    func getHaveHostName(hostname: String,APIString: String, parameters: [String : Any]?, finished: @escaping NetworkFinished) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        let apiurl = hostname + APIString
+        
+        self.afManager.request(apiurl, parameters: parameters, headers: self.getHTTPHeaders(parameters: parameters)).responseJSON { (response) in
+            self.handle(response: response, finished: finished)
+        }
+    }
+    
+    func getAppHostNEW(app_id: Int,callback: CallBackHostName?) {
+        
+        let hostUrl = String.init(format: "http://rgpro.time2016.com/registProject?add_pid=%zd&key=801004222a98d5c3a2acb6aa72c49e9e", (app_id))
+        
+        let headerparams = self.getHTTPHeaders(parameters: nil)
+        
+        Alamofire.request(hostUrl, method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: headerparams).responseString { (response) in
+            
+            let result = String.init(data: response.data!, encoding: String.Encoding.utf8)
+            
+            self.appHostName = result
+            
+            if callback != nil {
+                callback?(self.appHostName)
+            }
+        }
+    }
+    
     
     /**
      GET请求

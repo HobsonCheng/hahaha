@@ -70,6 +70,9 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
         pageControl?.currentPageIndicatorTintColor = UIColor.red
         self.addSubview(pageControl!)
         
+        if contentData.List == nil {
+            return
+        }
         self.allList = contentData.List! as NSArray
         
         //分组数据
