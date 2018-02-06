@@ -22,7 +22,7 @@ class ApiUtil: NSObject {
         params.setValue("project", forKey: "sn")
         params.setValue("searchProject", forKey: "ac")
         
-        BRequestHandler.shared.getHaveHostName(hostname: "http://121.42.154.36:12025/",APIString: "searchProject", parameters: params as? [String : Any]) { (status, data, msg) in
+        BRequestHandler.shared.getHaveHostName(hostname: "https://search.uidashi.com/",APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
                 fininsh?(status,data,msg)

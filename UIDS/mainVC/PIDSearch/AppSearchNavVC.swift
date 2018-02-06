@@ -18,7 +18,7 @@ import Differentiator
 import SwiftyJSON
 import ESPullToRefresh
 import DZNEmptyDataSet
-
+import Font_Awesome_Swift
 
 
 private enum HistoryKey {
@@ -61,6 +61,7 @@ class AppSearchNavVC: NaviBarVC {
     @IBOutlet weak var tableview: UITableView!
 
     
+    @IBOutlet weak var searchTop: NSLayoutConstraint!
     // viewModel
     fileprivate var viewModel: SearchResultViewModel!
 
@@ -69,6 +70,11 @@ class AppSearchNavVC: NaviBarVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.naviBar().setLeftBarItem(nil)
+        self.naviBar().setTitle("欢迎登录您单位的app")
+        self.naviBar().setNaviBarBackgroundColor(UIColor.init(hex: 0x4b95ef, alpha: 1))
+        
+        self.searchTop.constant = self.naviBar().bottom
         
         self.page = 1
         
@@ -111,6 +117,11 @@ class AppSearchNavVC: NaviBarVC {
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.lightContent
     }
+    
+    
+    
+    @IBAction func gotoSyS(_ sender: Any) {
+    }
 }
 
 
@@ -119,17 +130,11 @@ extension AppSearchNavVC {
     
     func refreshUI() {
         
-        //上拉  下拉
-        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
-        var footer: ESRefreshProtocol & ESRefreshAnimatorProtocol
-        
-        header = DS2RefreshHeader.init(frame: CGRect.zero)
-        footer = DS2RefreshFooter.init(frame: CGRect.zero)
-        
-        self.tableview?.es.addPullToRefresh(animator: header) { [weak self] in
+        self.tableview.es.addPullToRefresh {
+            [weak self] in
             self?.refreshEvent()
         }
-        self.tableview?.es.addInfiniteScrolling(animator: footer) { [weak self] in
+        self.tableview.es.addInfiniteScrolling { [weak self] in
             self?.loadMore()
         }
     }
@@ -191,15 +196,15 @@ extension AppSearchNavVC {
         
         self.tableview.tableFooterView = UIView()
         
-    
+        self.view.backgroundColor = UIColor.init(hex: 0xf0f0f7, alpha: 1)
 
         let searchField: UITextField = self.searchbar.value(forKey: "searchField") as! UITextField
-        searchField.layer.cornerRadius = 8
-        searchField.layer.borderColor = UIColor(hexString: "#1e71eb", withAlpha: 1).cgColor
-        searchField.layer.borderWidth = 1
+        searchField.layer.cornerRadius = 1
         searchField.layer.masksToBounds = true
-    
-        
+//        searchField.backgroundColor = UIColor.init(hex: 0x59a8f1, alpha: 1)
+//        searchField.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
+//        searchField.textColor = UIColor.white
+     
         for subview in self.searchbar.subviews {
             for grandSonView in subview.subviews{
                 if grandSonView.isKind(of: NSClassFromString("UISearchBarBackground")!) {
@@ -282,17 +287,17 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
     
-        var text = "没有搜索到你的公司😭"
+        var text = "❓暂未找到您的单位APP，请联系您单位的网管或点击下方按钮，免费快速创建"
         if self.searchKey == nil || self.searchKey?.count == 0 {
-            text = "搜索一个公司试一下🙂"
+            text = "搜索一个公司试一下"
         }
     
-        let font = UIFont.systemFont(ofSize: 26)
-        let textColor = UIColor.black
+        let font = UIFont.systemFont(ofSize: 15)
+        let textColor = UIColor.init(hex: 0x606262, alpha: 1)
         
         let attributes = NSMutableDictionary()
         
-        attributes.setObject(textColor, forKey: NSForegroundColorAttributeName as NSCopying)
+        attributes.setObject(textColor!, forKey: NSForegroundColorAttributeName as NSCopying)
         attributes.setObject(font, forKey: NSFontAttributeName as NSCopying)
         
         return NSAttributedString.init(string: text, attributes: attributes  as? [String : Any])
@@ -300,7 +305,7 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
-        let text = "点击⤵️按钮，进行创建属于您的单位App\n😏😏😏"
+        let text = ""
         
         let textColor = UIColor.black
         let attributes = NSMutableDictionary()

@@ -151,7 +151,13 @@ final class Util: NSObject{
         
         if (view?.isKind(of: NSClassFromString("NaviBarVC")!))!{
             let navToP: NaviBarVC = view as! NaviBarVC
-            navToP.view.dodo.topAnchor = navToP.naviBar().bottomAnchor
+            if navToP.naviBar() != nil {
+                navToP.view.dodo.topAnchor = navToP.naviBar().bottomAnchor
+            }else {
+                //寻找 navi
+                let navBarView = VCController.getTopVC()?.view.viewWithTag(1000000000000)
+                view?.view.dodo.topAnchor = navBarView?.bottomAnchor
+            }
         }else {
             //寻找 navi
             let navBarView = VCController.getTopVC()?.view.viewWithTag(1000000000000)

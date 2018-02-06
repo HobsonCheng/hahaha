@@ -9,8 +9,11 @@
 import UIKit
 
 
-class ViewController: UIViewController,EAIntroDelegate {
+class ViewController: UIViewController,SwiftIntroViewDelegate{
 
+    
+    var introView: SwiftIntroView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,11 +24,7 @@ class ViewController: UIViewController,EAIntroDelegate {
         sgU.checkAndRateWithController(vc:self)
         
         //main rootView
-        
-        
-        let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
-        VCController.push(searchapp, with:nil)
-        
+        self.startLaunPage()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +35,7 @@ class ViewController: UIViewController,EAIntroDelegate {
     
     func startLaunPage(){
         
+        
         let userDefaults = UserDefaults.standard;
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String;
         //根据版本号来判断是否需要显示引导页，一般来说每更新一个版本引导页都会有相应的修改
@@ -45,47 +45,33 @@ class ViewController: UIViewController,EAIntroDelegate {
             userDefaults.set(true, forKey: "version_"+version)
             userDefaults.synchronize()
         }else{
+            let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
+            VCController.push(searchapp, with:nil)
             return
         }
         
         
-        //启动轮播图
+        introView = SwiftIntroView(frame: self.view.frame)
+        introView.delegate = self
+        introView.backgroundColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
+        self.view.addSubview(introView)
         
-        let launchList = [["title":"hello，bai 1","desc":"1","imgName":"title1","bg":"guiImage1"],
-                          ["title":"hello，bai 2","desc":"2","imgName":"title2","bg":"guiImage2"],
-                          ["title":"hello，bai 3","desc":"3","imgName":"title3","bg":"guiImage3"],
-                          ["title":"hello，bai 4","desc":"4","imgName":"title4","bg":"guiImage4"]
-        ]
-        
-        
-        let tmpList = NSMutableArray()
-        
-        for item in launchList {
-            let page = EAIntroPage()
-            page.title = item["title"]
-            page.desc = item["desc"]
-            page.titleIconView = UIImageView.init(image: UIImage.init(named: item["imgName"]!))
-            page.bgImage = UIImage.init(named: item["bg"]!)
-            tmpList.add(page)
+    }
+    
+    // SwiftIntroViewDelegate 方法
+    func doneButtonClick() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
+            VCController.push(searchapp, with:nil)
         }
+        UIView.animate(withDuration: 1, animations: {() -> Void in
+            self.introView.alpha = 0
 
-        let intro = EAIntroView.init(frame: self.view.bounds, andPages:tmpList as! [EAIntroPage])
-        intro?.skipButtonY = 80
-        intro?.pageControlY = 42
-        intro?.skipButtonAlignment = EAViewAlignment.center
-        intro?.delegate = self
-        
-        let mywindow = UIApplication.shared.delegate?.window
-        
-    
-        intro?.show(in: mywindow!, animateDuration: 0.3)
+        }) { (finished) -> Void in
+            self.introView.removeFromSuperview()
+        }
     }
     
     
-    //MARK: EAIntroView deleaget
-    func introDidFinish(_ introView: EAIntroView!, wasSkipped: Bool) {
-    
-        
-    }
 }
 

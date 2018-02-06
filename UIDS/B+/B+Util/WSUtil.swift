@@ -126,12 +126,15 @@ extension WSUtil {
     open func getLoginBuff() -> Data{
         var cLogin = ProtosBody_Login()
         let userinfo = UserUtil.share.appUserInfo
-        cLogin.pid = Int32.init(truncatingBitPattern: (userinfo?.pid)!)
-        cLogin.uid = Int32.init(truncatingBitPattern: (userinfo?.uid)!)
-        cLogin.token = (userinfo?.Authorization)!
-        
-        return try!cLogin.serializedData(partial: true)
-        
+        if userinfo != nil {
+            cLogin.pid = Int32.init(truncatingBitPattern: (userinfo?.pid)!)
+            cLogin.uid = Int32.init(truncatingBitPattern: (userinfo?.uid)!)
+            cLogin.token = (userinfo?.Authorization)!
+            
+            return try!cLogin.serializedData(partial: true)
+        }else {
+            return try!cLogin.serializedData(partial: false)
+        }
     }
     
     open func sendWSMsg(functype: ProtosBody_notice_funtion?,model: Any?) {

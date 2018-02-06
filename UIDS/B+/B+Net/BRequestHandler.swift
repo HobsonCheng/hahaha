@@ -33,7 +33,15 @@ private let shareHandler = BRequestHandler()
 
 class BRequestHandler: NSObject {
 
-    public var appHostName: String?
+    public var appHostName: String? {
+        didSet {
+            if appHostName?.hasPrefix("https") == true  {
+                
+            }else {
+                appHostName = "https://\(appHostName!)"
+            }
+        }
+    }
     
     fileprivate var afManager: SessionManager!
     
@@ -69,7 +77,7 @@ class BRequestHandler: NSObject {
             return
         }
         
-        let hostUrl = String.init(format: "http://rgpro.time2016.com/registProject?add_pid=%zd&key=801004222a98d5c3a2acb6aa72c49e9e", (appinfo?.app_id)!)
+        let hostUrl = String.init(format: "https://rgpro.uidashi.com/registProject?add_pid=%zd&key=801004222a98d5c3a2acb6aa72c49e9e", (appinfo?.app_id)!)
         
         let headerparams = self.getHTTPHeaders(parameters: nil)
         
@@ -184,7 +192,7 @@ extension BRequestHandler {
     
     func getAppHostNEW(app_id: Int,callback: CallBackHostName?) {
         
-        let hostUrl = String.init(format: "http://rgpro.time2016.com/registProject?add_pid=%zd&key=801004222a98d5c3a2acb6aa72c49e9e", (app_id))
+        let hostUrl = String.init(format: "https://rgpro.uidashi.com/registProject?add_pid=%zd&key=801004222a98d5c3a2acb6aa72c49e9e", (app_id))
         
         let headerparams = self.getHTTPHeaders(parameters: nil)
         
@@ -193,6 +201,7 @@ extension BRequestHandler {
             let result = String.init(data: response.data!, encoding: String.Encoding.utf8)
             
             self.appHostName = result
+            
             
             if callback != nil {
                 callback?(self.appHostName)

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppSearchNavVC" customModule="UIDS" customModuleProvider="target">
             <connections>
                 <outlet property="noButton" destination="P76-R3-luh" id="66c-72-U24"/>
+                <outlet property="searchTop" destination="7Co-Z8-uDy" id="hTA-M1-HJe"/>
                 <outlet property="searchbar" destination="cvy-Da-hi8" id="4gn-Am-hNg"/>
                 <outlet property="tableview" destination="XFN-5Q-nWb" id="v4b-tx-1Qm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,32 +23,44 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbgbg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HHs-JC-N84">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单位APP通用客户端" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4q-x6-nff">
-                    <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phh-Sf-Nb4">
+                    <rect key="frame" x="0.0" y="66" width="375" height="50"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="搜索想要的公司" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvy-Da-hi8">
+                            <rect key="frame" x="40" y="0.0" width="330" height="50"/>
+                            <color key="tintColor" red="0.29594528679999998" green="0.58416157960000004" blue="0.93583714959999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="barTintColor" red="0.29594528679999998" green="0.58416157960000004" blue="0.93583714959999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                        </searchBar>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DZ-0k-VLJ">
+                            <rect key="frame" x="10" y="10" width="25" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="65G-c0-LUp"/>
+                                <constraint firstAttribute="height" constant="30" id="SfV-UW-KqP"/>
+                            </constraints>
+                            <state key="normal" image="扫一扫.png"/>
+                            <connections>
+                                <action selector="gotoSyS:" destination="-1" eventType="touchUpInside" id="78X-QL-MUF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.29594528675079346" green="0.58416157960891724" blue="0.93583714962005615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="uFc-Qe-HIP"/>
+                        <constraint firstAttribute="height" constant="50" id="5AH-Vf-fQA"/>
+                        <constraint firstItem="cvy-Da-hi8" firstAttribute="leading" secondItem="1DZ-0k-VLJ" secondAttribute="trailing" constant="5" id="QH9-5A-RDV"/>
+                        <constraint firstAttribute="bottom" secondItem="cvy-Da-hi8" secondAttribute="bottom" id="a2c-3c-xAN"/>
+                        <constraint firstAttribute="trailing" secondItem="cvy-Da-hi8" secondAttribute="trailing" constant="5" id="bh9-zK-0sA"/>
+                        <constraint firstItem="1DZ-0k-VLJ" firstAttribute="centerY" secondItem="Phh-Sf-Nb4" secondAttribute="centerY" id="fmh-cE-pLO"/>
+                        <constraint firstItem="1DZ-0k-VLJ" firstAttribute="leading" secondItem="Phh-Sf-Nb4" secondAttribute="leading" constant="10" id="hVo-DK-xql"/>
+                        <constraint firstItem="cvy-Da-hi8" firstAttribute="top" secondItem="Phh-Sf-Nb4" secondAttribute="top" id="nEO-IC-V4S"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <searchBar contentMode="redraw" placeholder="搜索想要的公司" translatesAutoresizingMaskIntoConstraints="NO" id="cvy-Da-hi8">
-                    <rect key="frame" x="0.0" y="66" width="375" height="56"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="56" id="LHv-79-SbH"/>
-                    </constraints>
-                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                    <scopeButtonTitles>
-                        <string>Title</string>
-                        <string>Title</string>
-                    </scopeButtonTitles>
-                </searchBar>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XFN-5Q-nWb">
-                    <rect key="frame" x="0.0" y="122" width="375" height="485"/>
+                    <rect key="frame" x="0.0" y="116" width="375" height="491"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P76-R3-luh">
@@ -62,27 +75,21 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="HHs-JC-N84" secondAttribute="bottom" id="255-Ou-cFT"/>
                 <constraint firstItem="XFN-5Q-nWb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2ja-2Y-gGh"/>
-                <constraint firstItem="XFN-5Q-nWb" firstAttribute="top" secondItem="cvy-Da-hi8" secondAttribute="bottom" id="43a-w7-qU8"/>
+                <constraint firstItem="Phh-Sf-Nb4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="7Co-Z8-uDy"/>
+                <constraint firstItem="Phh-Sf-Nb4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8h1-rD-0xD"/>
                 <constraint firstItem="P76-R3-luh" firstAttribute="top" secondItem="XFN-5Q-nWb" secondAttribute="bottom" constant="10" id="Go3-Bp-EUX"/>
-                <constraint firstItem="HHs-JC-N84" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qxm-o4-TdW"/>
-                <constraint firstAttribute="trailing" secondItem="E4q-x6-nff" secondAttribute="trailing" id="Sah-Fm-jav"/>
-                <constraint firstItem="E4q-x6-nff" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wkl-0G-sFH"/>
-                <constraint firstItem="HHs-JC-N84" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wwk-2t-MF7"/>
+                <constraint firstItem="XFN-5Q-nWb" firstAttribute="top" secondItem="Phh-Sf-Nb4" secondAttribute="bottom" id="JBT-ES-Ngy"/>
                 <constraint firstAttribute="trailing" secondItem="P76-R3-luh" secondAttribute="trailing" constant="50" id="Ysf-TV-TE7"/>
                 <constraint firstAttribute="trailing" secondItem="XFN-5Q-nWb" secondAttribute="trailing" id="ZuC-a1-2oz"/>
                 <constraint firstItem="P76-R3-luh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="b8O-yd-2n7"/>
-                <constraint firstItem="cvy-Da-hi8" firstAttribute="top" secondItem="E4q-x6-nff" secondAttribute="bottom" id="cRf-0T-wUU"/>
-                <constraint firstItem="E4q-x6-nff" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="22" id="f8F-Q5-K3a"/>
-                <constraint firstItem="cvy-Da-hi8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fAn-n6-mUX"/>
-                <constraint firstAttribute="trailing" secondItem="cvy-Da-hi8" secondAttribute="trailing" id="fJa-9x-Mxx"/>
+                <constraint firstAttribute="trailing" secondItem="Phh-Sf-Nb4" secondAttribute="trailing" id="gm9-az-84M"/>
                 <constraint firstAttribute="bottom" secondItem="P76-R3-luh" secondAttribute="bottom" constant="10" id="lNf-U6-BcQ"/>
-                <constraint firstAttribute="trailing" secondItem="HHs-JC-N84" secondAttribute="trailing" id="zx0-qd-wjn"/>
             </constraints>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>
     <resources>
-        <image name="bgbgbg.jpg" width="1080" height="1921"/>
+        <image name="扫一扫.png" width="25" height="30"/>
     </resources>
 </document>

@@ -34,7 +34,6 @@ class OtherWebVC: NaviBarVC {
             tempWebView.allowsBackForwardNavigationGestures = true
             return tempWebView
     }()
-
     /*
      *懒加载UIProgressView进度条对象
      */

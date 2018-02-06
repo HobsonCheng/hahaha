@@ -65,6 +65,18 @@
     return nil;
 }
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) != nil){
+        // 创建NaviBar
+        _naviBarHead = [[NaviBar alloc] initWithFrame:CGRectZero];
+        
+        return self;
+    }
+    
+    return nil;
+}
+
 // 重载初始化函数
 - (void)viewDidLoad
 {

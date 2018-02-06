@@ -51,10 +51,6 @@
 #import "ScrollColorHeader.h"
 
 
-//Launch
-#import "EAIntroPage.h"
-#import "EAIntroView.h"
-
 //第三方库
 #import <WechatOpenSDK/WXApi.h>
 #import <Weibo_SDK/WeiboSDK.h>

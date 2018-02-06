@@ -14,36 +14,9 @@ class DImgTabber: ESTabBarItem {
     public init(contentView: ESTabBarItemContentView, title: String?, image: String?, selectedImage: String?, tag: Int = 0) {
         super.init()
         self.contentView = contentView
-        
-        let tmpimage = image?.replacingOccurrences(of: "?imageMogr2/thumbnail/50x50!", with: "").replacingOccurrences(of: "?imageMogr2/thumbnail/60x60!", with: "")
-        
-        let getImgName: String!
-        
-        if title != nil {
-            getImgName = String.init(format: "%@?imageMogr2/thumbnail/46x46!", tmpimage!)
-        }else{
-            getImgName = String.init(format: "%@?imageMogr2/thumbnail/140x140!", tmpimage!)
-        }
-        
-        
-        let iconname = String.init(format: "tabBar_icon_%zd@2x", tag)
-        
-        DownData.movingTabberIcon(big: false, downUrl: getImgName, iconName: iconname)
-        
-        
-        let tmpimageSel = selectedImage?.replacingOccurrences(of: "?imageMogr2/thumbnail/50x50!", with: "").replacingOccurrences(of: "?imageMogr2/thumbnail/60x60!", with: "")
-        
-        let getImgNameSel: String!
-        if title != nil {
-            getImgNameSel = String.init(format: "%@?imageMogr2/thumbnail/46x46!", tmpimageSel!)
-        }else{
-            getImgNameSel = String.init(format: "%@?imageMogr2/thumbnail/140x140!", tmpimageSel!)
-        }
-        
-        
-        let iconnameSel = String.init(format: "tabBar_icon_%zd_sel@2x", tag)
-        
-        DownData.movingTabberIcon(big: false, downUrl: getImgNameSel, iconName: iconnameSel)
+    
+        let iconname = String.init(format: "tabBar_icon_%zd", tag)
+        let iconnameSel = String.init(format: "tabBar_icon_%zd_sel", tag)
         
         
         self.title = title

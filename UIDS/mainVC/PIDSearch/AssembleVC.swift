@@ -12,23 +12,36 @@ class AssembleVC: BaseNameVC {
 
     
     
+    @IBOutlet weak var newtips: UILabel!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var sonTips: UILabel!
     @IBOutlet weak var mainTips: UILabel!
     @IBOutlet weak var appIcon: UIImageView!
     var pObj: Project?
-    
+    var tiplist: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        tiplist = ["目前您单位的APP在苹果iOS端使用的是通用版，在您单位APP的后台设置，即可升级为独立版。"
+            ,"单位APP将会成为您工作上的得力助手，领导满意，同事便利。"
+            ,"单位APP整合资源，将所有的办公应用汇总，触手可及。"
+            ,"单位APP可以完全独立部署在单位自己的服务器，数据更安全。"]
         
         self.appIcon.sd_setImage(with: URL(string: (pObj?.icon)!), completed: nil)
         self.appIcon.layer.cornerRadius = 6
         self.appIcon.layer.masksToBounds = true
         
+        
         var appname = pObj?.app_name.replacingOccurrences(of: "<em>", with: "")
         appname = appname!.replacingOccurrences(of: "</em>", with: "")
+        self.mainTips.text = appname
+        
+        self.showTip()
+        
         self.progressTip(num: 0.01, tip: "开启“\((appname)!)”的加载...")
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.getAppHostName()
@@ -52,11 +65,23 @@ class AssembleVC: BaseNameVC {
     
     //进度
     func progressTip(num: Float, tip: String) {
-        
         self.progress.setProgress(num, animated: true)
-        self.mainTips.text = tip
+    }
+    
+    func showTip() {
+        
+        let index = Int(arc4random()%3)+0
+        
+        let tmpTip = tiplist[index]
+        
+        self.newtips.text = tmpTip
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.showTip()
+        }
         
     }
+    
 }
 
 //启动downApp 流程

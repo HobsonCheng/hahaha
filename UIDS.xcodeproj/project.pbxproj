@@ -69,6 +69,13 @@
 		E153BBDF20243D3600C7F786 /* UILableUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BBDE20243D3600C7F786 /* UILableUtil.swift */; };
 		E153BBE2202468DA00C7F786 /* AssembleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BBE0202468DA00C7F786 /* AssembleVC.swift */; };
 		E153BBE3202468DA00C7F786 /* AssembleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E153BBE1202468DA00C7F786 /* AssembleVC.xib */; };
+		E153BBE5202980CA00C7F786 /* 背景.png in Resources */ = {isa = PBXBuildFile; fileRef = E153BBE4202980C900C7F786 /* 背景.png */; };
+		E153BBE72029813500C7F786 /* Icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = E153BBE62029813500C7F786 /* Icon-256.png */; };
+		E153BBE92029A16700C7F786 /* 扫一扫@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E153BBE82029A16700C7F786 /* 扫一扫@2x.png */; };
+		E153BBED2029C92100C7F786 /* ios商店图1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E153BBEA2029C91F00C7F786 /* ios商店图1.jpg */; };
+		E153BBEE2029C92100C7F786 /* ios商店图2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E153BBEB2029C92000C7F786 /* ios商店图2.jpg */; };
+		E153BBEF2029C92100C7F786 /* ios商店图3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E153BBEC2029C92000C7F786 /* ios商店图3.jpg */; };
+		E153BBF12029CA2900C7F786 /* SwiftIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BBF02029CA2900C7F786 /* SwiftIntroView.swift */; };
 		E1A21DE01FFF319300596BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A21DDF1FFF319300596BB7 /* AppDelegate.swift */; };
 		E1A21DE21FFF319300596BB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A21DE11FFF319300596BB7 /* ViewController.swift */; };
 		E1A21DE51FFF319300596BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A21DE31FFF319300596BB7 /* Main.storyboard */; };
@@ -110,9 +117,6 @@
 		E1C031BB2006236500B1A377 /* llplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C031B82006236400B1A377 /* llplaceholder.png */; };
 		E1C031BD200623A300B1A377 /* RootGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C031BC200623A300B1A377 /* RootGender.swift */; };
 		E1C031C020062CBC00B1A377 /* OneImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C031BF20062CBC00B1A377 /* OneImg.swift */; };
-		E1C031CA200704DF00B1A377 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C031C7200704DE00B1A377 /* EAIntroView.m */; };
-		E1C031CB200704DF00B1A377 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C031C8200704DE00B1A377 /* EAIntroPage.m */; };
-		E1C031CE200707A800B1A377 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C031CD200707A800B1A377 /* EARestrictedScrollView.m */; };
 		E1C031E820076DF400B1A377 /* SafeTabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C031E720076DF400B1A377 /* SafeTabber.swift */; };
 		E1C031EA2007805500B1A377 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C031E92007805500B1A377 /* Slider.swift */; };
 		E1C031EC2007807000B1A377 /* test_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C031EB2007807000B1A377 /* test_0.png */; };
@@ -352,6 +356,13 @@
 		E153BBDE20243D3600C7F786 /* UILableUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableUtil.swift; sourceTree = "<group>"; };
 		E153BBE0202468DA00C7F786 /* AssembleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembleVC.swift; sourceTree = "<group>"; };
 		E153BBE1202468DA00C7F786 /* AssembleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssembleVC.xib; sourceTree = "<group>"; };
+		E153BBE4202980C900C7F786 /* 背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景.png"; sourceTree = "<group>"; };
+		E153BBE62029813500C7F786 /* Icon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-256.png"; sourceTree = "<group>"; };
+		E153BBE82029A16700C7F786 /* 扫一扫@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "扫一扫@2x.png"; sourceTree = "<group>"; };
+		E153BBEA2029C91F00C7F786 /* ios商店图1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios商店图1.jpg"; sourceTree = "<group>"; };
+		E153BBEB2029C92000C7F786 /* ios商店图2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios商店图2.jpg"; sourceTree = "<group>"; };
+		E153BBEC2029C92000C7F786 /* ios商店图3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios商店图3.jpg"; sourceTree = "<group>"; };
+		E153BBF02029CA2900C7F786 /* SwiftIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftIntroView.swift; sourceTree = "<group>"; };
 		E1A21DDC1FFF319300596BB7 /* UIDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A21DDF1FFF319300596BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A21DE11FFF319300596BB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -395,12 +406,6 @@
 		E1C031B82006236400B1A377 /* llplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = llplaceholder.png; sourceTree = "<group>"; };
 		E1C031BC200623A300B1A377 /* RootGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootGender.swift; sourceTree = "<group>"; };
 		E1C031BF20062CBC00B1A377 /* OneImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneImg.swift; sourceTree = "<group>"; };
-		E1C031C6200704DD00B1A377 /* EAIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroPage.h; sourceTree = "<group>"; };
-		E1C031C7200704DE00B1A377 /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
-		E1C031C8200704DE00B1A377 /* EAIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroPage.m; sourceTree = "<group>"; };
-		E1C031C9200704DF00B1A377 /* EAIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroView.h; sourceTree = "<group>"; };
-		E1C031CC200707A800B1A377 /* EARestrictedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EARestrictedScrollView.h; sourceTree = "<group>"; };
-		E1C031CD200707A800B1A377 /* EARestrictedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EARestrictedScrollView.m; sourceTree = "<group>"; };
 		E1C031E720076DF400B1A377 /* SafeTabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeTabber.swift; sourceTree = "<group>"; };
 		E1C031E92007805500B1A377 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		E1C031EB2007807000B1A377 /* test_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_0.png; sourceTree = "<group>"; };
@@ -866,6 +871,12 @@
 		E1C031B52006235B00B1A377 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				E153BBEA2029C91F00C7F786 /* ios商店图1.jpg */,
+				E153BBEB2029C92000C7F786 /* ios商店图2.jpg */,
+				E153BBEC2029C92000C7F786 /* ios商店图3.jpg */,
+				E153BBE82029A16700C7F786 /* 扫一扫@2x.png */,
+				E153BBE62029813500C7F786 /* Icon-256.png */,
+				E153BBE4202980C900C7F786 /* 背景.png */,
 				E5A4F4A92023E10C00053D25 /* bgbgbg.jpg */,
 				E5A4F4A7202368A100053D25 /* bgApp.jpg */,
 				E1BD55DA201B3750009482EC /* empty_placeholder@2x.png */,
@@ -963,12 +974,7 @@
 		E1C031C5200704CA00B1A377 /* LaunchGuide */ = {
 			isa = PBXGroup;
 			children = (
-				E1C031C6200704DD00B1A377 /* EAIntroPage.h */,
-				E1C031C8200704DE00B1A377 /* EAIntroPage.m */,
-				E1C031C9200704DF00B1A377 /* EAIntroView.h */,
-				E1C031C7200704DE00B1A377 /* EAIntroView.m */,
-				E1C031CC200707A800B1A377 /* EARestrictedScrollView.h */,
-				E1C031CD200707A800B1A377 /* EARestrictedScrollView.m */,
+				E153BBF02029CA2900C7F786 /* SwiftIntroView.swift */,
 			);
 			path = LaunchGuide;
 			sourceTree = "<group>";
@@ -1545,11 +1551,13 @@
 				E1C031EE2007807600B1A377 /* test_1.png in Resources */,
 				E12BC14F20173E2500099ED4 /* comment_profile_mars@2x.png in Resources */,
 				E1C3E5762015E15000B13306 /* icon_shake_animation_1.png in Resources */,
+				E153BBED2029C92100C7F786 /* ios商店图1.jpg in Resources */,
 				E1ABEB21201846A300F7FF91 /* bottom_bar_edit_selected@2x.png in Resources */,
 				E5A4F4A8202368A100053D25 /* bgApp.jpg in Resources */,
 				E11B62B7201826E300CE5E1D /* newscontent_drag_return@2x.png in Resources */,
 				E1C3E5772015E15000B13306 /* icon_shake_animation_3.png in Resources */,
 				E1C03204200780B600B1A377 /* test_12.png in Resources */,
+				E153BBEF2029C92100C7F786 /* ios商店图3.jpg in Resources */,
 				E1E31B83200F3ADF00776701 /* registerAndLogin_code_textField@2x.png in Resources */,
 				E1C3E57D2015E15000B13306 /* icon_shake_animation_5.png in Resources */,
 				E11B628A2018204100CE5E1D /* www in Resources */,
@@ -1559,6 +1567,7 @@
 				E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */,
 				E5A4F4AA2023E10D00053D25 /* bgbgbg.jpg in Resources */,
 				E5312FCE201DB842003A1043 /* orderTwoCell.xib in Resources */,
+				E153BBEE2029C92100C7F786 /* ios商店图2.jpg in Resources */,
 				E12BC0F32017242D00099ED4 /* CLBottomCommentView.xib in Resources */,
 				E12BC15120173E2500099ED4 /* QR_code_icon@2x.png in Resources */,
 				E1A21DEA1FFF319300596BB7 /* LaunchScreen.storyboard in Resources */,
@@ -1580,6 +1589,7 @@
 				E1D2CF42201AD8EF00008B6D /* guiImage4.png in Resources */,
 				E1C0321B200C395000B1A377 /* ArticleListCell.xib in Resources */,
 				E1E31B85200F3B0D00776701 /* lastLoginTip@2x.png in Resources */,
+				E153BBE5202980CA00C7F786 /* 背景.png in Resources */,
 				E56C909B2010F8F7002339C6 /* wechatt.png in Resources */,
 				E1ABEB23201846F700F7FF91 /* bottom_bar_comment_selected@2x.png in Resources */,
 				E12BC14020173E2500099ED4 /* newscontent_drag_return@2x.png in Resources */,
@@ -1611,6 +1621,7 @@
 				E11B62B5201826D200CE5E1D /* newscontent_drag_arrow@2x.png in Resources */,
 				E1393763201996E100F32909 /* me_setting_setting@2x.png in Resources */,
 				E1D0B6B7201B02DD00332C79 /* loading_imgBlue_78x78@3x.png in Resources */,
+				E153BBE72029813500C7F786 /* Icon-256.png in Resources */,
 				E1D2CF3F201AD8EF00008B6D /* guiImage6.png in Resources */,
 				E11B628120175A5900CE5E1D /* favorite_undo@3x.png in Resources */,
 				E1E31B7A200F3ADF00776701 /* registerAndLogin_password_hide_textfield@2x.png in Resources */,
@@ -1621,6 +1632,7 @@
 				E1C031EC2007807000B1A377 /* test_0.png in Resources */,
 				E11B62A42018254B00CE5E1D /* JFSetFontView.xib in Resources */,
 				E1D0B6BB201B02FA00332C79 /* placeholder_instagram@2x.png in Resources */,
+				E153BBE92029A16700C7F786 /* 扫一扫@2x.png in Resources */,
 				E1F7225E2019D1F50092AC8C /* close@2x.png in Resources */,
 				E5312FCA201DB515003A1043 /* orderCell.xib in Resources */,
 				E5A4F4A62023638800053D25 /* AppSearchNavVC.xib in Resources */,
@@ -1808,6 +1820,7 @@
 				E1EDAB7520033D26004DD7B9 /* VCController.m in Sources */,
 				E5A4F4A52023638800053D25 /* AppSearchNavVC.swift in Sources */,
 				E1BD55D5201B0A5D009482EC /* MakeToCustomer.swift in Sources */,
+				E153BBF12029CA2900C7F786 /* SwiftIntroView.swift in Sources */,
 				E56C90AC2013793A002339C6 /* GroupListTopic.swift in Sources */,
 				E1EA2719201200AA00F31796 /* OpenVC.swift in Sources */,
 				E1EDAB7320033D26004DD7B9 /* VCAnimationClassic.m in Sources */,
@@ -1827,7 +1840,6 @@
 				E1C0321A200C395000B1A377 /* ArticleListCell.swift in Sources */,
 				E153BBDD20241E0A00C7F786 /* SearchModel.swift in Sources */,
 				E56C90B320138069002339C6 /* GroupModel.swift in Sources */,
-				E1C031CB200704DF00B1A377 /* EAIntroPage.m in Sources */,
 				E56C90C82013A641002339C6 /* TopicCell.swift in Sources */,
 				E594E07D2003ABB800BDF511 /* UIColor+Utility.m in Sources */,
 				E1ABEB27201853CD00F7FF91 /* DetailBottom.swift in Sources */,
@@ -1910,7 +1922,6 @@
 				E1F5E271200F28D800FD18FD /* String+GetSize.swift in Sources */,
 				E1C03227200C3E1B00B1A377 /* BaseModel.swift in Sources */,
 				E1C3E5632015D89600B13306 /* BaseModuleView.swift in Sources */,
-				E1C031CE200707A800B1A377 /* EARestrictedScrollView.m in Sources */,
 				E139374F201988B700F32909 /* SettingCellModel.swift in Sources */,
 				E1E31B8B200F43B900776701 /* NibLoadable.swift in Sources */,
 				E1C0319A2005C08100B1A377 /* ExampleBasicContentView.swift in Sources */,
@@ -1940,7 +1951,6 @@
 				E139374A2019768300F32909 /* WSUtil.swift in Sources */,
 				E1E31B93200F524500776701 /* HCAccountLoginResult.swift in Sources */,
 				E1A21DE01FFF319300596BB7 /* AppDelegate.swift in Sources */,
-				E1C031CA200704DF00B1A377 /* EAIntroView.m in Sources */,
 				E1C03232200CAF3600B1A377 /* ArticleList.swift in Sources */,
 				E1C0323F200E13F400B1A377 /* AritcleModel.swift in Sources */,
 			);
@@ -2066,7 +2076,6 @@
 			baseConfigurationReference = 40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73KJWP69HD;
@@ -2096,7 +2105,6 @@
 			baseConfigurationReference = C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73KJWP69HD;
