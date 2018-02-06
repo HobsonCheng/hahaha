@@ -166,7 +166,7 @@ extension BRequestHandler {
         
         self.getAppHostName { (hostname) in
             if self.appHostName != nil {
-                let apiname =  String(format: "http://%@/%@", self.appHostName!,apiName!)
+                let apiname =  String(format: "%@/%@", self.appHostName!,apiName!)
                 callback(apiname)
             }
         }
