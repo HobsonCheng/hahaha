@@ -31,6 +31,20 @@ class DownData: NSObject {
         return FileName
     }
     
+    static func resoursePathDesktop_Icon() -> String {
+        
+        let documentPaths = Bundle.main.bundlePath
+        let FileName = String.init(format: "%@", documentPaths)
+        
+        return FileName
+    }
+    static func resoursePathUCSetInfo()-> String{
+        let documentPaths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory,FileManager.SearchPathDomainMask.userDomainMask,true)
+        let FileName = String.init(format: "%@/%@", documentPaths[0],"UCSetInfo.json")
+        
+        return FileName
+    }
+    
     //数据位置
     static func find_resourse_AppInfo()-> Bool{
         
@@ -45,6 +59,16 @@ class DownData: NSObject {
         
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: self.resoursePathPageListInfo()){
+            return true
+        }
+        
+        return false
+    }
+    
+    static func find_resourse_UCSetInfo()-> Bool{
+        
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: self.resoursePathUCSetInfo()){
             return true
         }
         

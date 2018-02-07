@@ -54,7 +54,7 @@ class HCAccountLoginService {
     // 登录按钮是否可用
     func loginBtnEnable(account: String, password: String,codeStr: String) -> Observable<Bool> {
         
-        if InputValidator.isValidPhone(phoneNum: account) && InputValidator.isvalidationPassword(password: password) && !(codeStr.isEmpty){
+        if InputValidator.isvalidationPassword(password: password) && !(codeStr.isEmpty){
             return Observable.just(true)
         } else {
             return Observable.just(false)

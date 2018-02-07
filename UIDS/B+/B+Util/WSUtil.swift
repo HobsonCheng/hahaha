@@ -127,13 +127,13 @@ extension WSUtil {
         var cLogin = ProtosBody_Login()
         let userinfo = UserUtil.share.appUserInfo
         if userinfo != nil {
-            cLogin.pid = Int32.init(truncatingBitPattern: (userinfo?.pid)!)
-            cLogin.uid = Int32.init(truncatingBitPattern: (userinfo?.uid)!)
+            cLogin.pid = Int32.init(truncatingIfNeeded: (userinfo?.pid)!)
+            cLogin.uid = Int32.init(truncatingIfNeeded: (userinfo?.uid)!)
             cLogin.token = (userinfo?.Authorization)!
             
             return try!cLogin.serializedData(partial: true)
         }else {
-            return try!cLogin.serializedData(partial: false)
+            return Data()
         }
     }
     
@@ -187,7 +187,14 @@ extension WSUtil {
         
         var value: Int
         let offset = 0
-        value = (Int(((bytes[offset] & 0xFF)<<24)|((bytes[offset+1] & 0xFF)<<16)|((bytes[offset+2] & 0xFF)<<8)|(bytes[offset+3] & 0xFF)))
+        
+        let bytes1 = (bytes[offset] & 0xFF)<<24
+        let bytes2 = (bytes[offset+1] & 0xFF)<<16
+        let bytes3 = (bytes[offset+2] & 0xFF)<<8
+        let bytes4 = (bytes[offset+3] & 0xFF)
+        
+        value = Int(bytes1|bytes2|bytes3|bytes4)
+        
         return value
     }
     

@@ -146,6 +146,11 @@ extension AccountLoginVC: AccountLoginable {
             make.top.equalTo(loginBtnView.snp.bottom)
             make.bottom.equalToSuperview()
         }
+        
+        otherLoginView.isHidden = true
+        
+      
+        
     }
     
     

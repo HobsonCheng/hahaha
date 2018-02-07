@@ -40,9 +40,9 @@ extension UILabel {
         
         
         
-        str.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+        str.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
         
-        str.addAttribute(NSFontAttributeName, value: font, range: range)
+        str.addAttribute(NSAttributedStringKey.font, value: font, range: range)
         
         
         self.attributedText = str
@@ -83,9 +83,9 @@ extension UILabel {
             
             
             
-            str.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+            str.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
             
-            str.addAttribute(NSFontAttributeName, value: font, range: range)
+            str.addAttribute(NSAttributedStringKey.font, value: font, range: range)
             
         }
         

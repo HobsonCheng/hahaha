@@ -12,7 +12,7 @@ class InputValidator: NSObject {
     
     class func isValidPhone(phoneNum: String) -> Bool {
         
-        if (!phoneNum.isEmpty){
+        if (phoneNum.count == 11){
             
             return true
         }
@@ -33,6 +33,9 @@ class InputValidator: NSObject {
     }
     
     class func isvalidationPassword(password: String) -> Bool {
+        
+        
+        
         return password.count >= 5
     }
 }

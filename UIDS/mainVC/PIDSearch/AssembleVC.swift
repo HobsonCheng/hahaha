@@ -46,6 +46,8 @@ class AssembleVC: BaseNameVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.getAppHostName()
         }
+        
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +107,7 @@ extension AssembleVC {
         
         let params = NSMutableDictionary()
         params.setValue(pObj?.pid, forKey: "app_id")
-        params.setValue("pObj?.pid", forKey: "group_id")
+        params.setValue(pObj?.group_id, forKey: "group_id")
         
         ApiUtil.share.getApp(params: params) { [weak self] (status, data, msg) in
             
@@ -130,7 +132,7 @@ extension AssembleVC {
         
         let params = NSMutableDictionary()
         params.setValue(pObj?.pid, forKey: "app_id")
-        params.setValue("pObj?.pid", forKey: "group_id")
+        params.setValue(pObj?.group_id, forKey: "group_id")
         
         ApiUtil.share.getPageList(params: params) { [weak self] (status, data, msg) in
             
@@ -144,16 +146,55 @@ extension AssembleVC {
                 
                 PageListInfo.shared.initData()
                 
-                self?.downicons()
+                self?.desktopIcon(isover: false)
             }
             
         }
         
     }
+    
+    
+    func desktopIcon(isover: Bool) {
+        
+        self.downUCSetJson()
+        
+        return
+    }
+    
+    
+    func downUCSetJson() {
+        
+        self.progressTip(num: 0.4, tip: "第三步完成")
+        
+        let params = NSMutableDictionary()
+        params.setValue(pObj?.pid, forKey: "pid")
+        
+        ApiUtil.share.allRestriction(params: params) { [weak self] (status, data, msg) in
+            
+            //迁移写入指定文件
+            if data != nil {
+                
+                let dataObj = data?.data(using: String.Encoding.utf8)
+                let tmpData: NSMutableData? = NSMutableData()
+                tmpData?.append((dataObj)!)
+                tmpData?.write(toFile: DownData.resoursePathUCSetInfo(), atomically: true)
+                AllRestrictionHandler.share.init_ucSetConfig()
+                self?.downicons()
+            }
+            
+        }
+    }
+    
+    
     func downicons() {
         
-        self.progressTip(num: 0.6, tip: "第三步完成")
+        let iconname = "pid1"
         
+        UIApplication.shared.setAlternateIconName(iconname) { (err:Error?) in
+            print("set icon error：\(String(describing: err))")
+        }
+        
+        self.progressTip(num: 0.6, tip: "第四步完成")
         
         //分析
         let appinfo = AppInfoData.shared.appModel
@@ -198,7 +239,7 @@ extension AssembleVC {
                 
                 let getImgName: String!
                 
-                getImgName = String.init(format: "%@?imageMogr2/thumbnail/140x140!", tmpimage!)
+                getImgName = String.init(format: "%@?imageMogr2/thumbnail/46x46!", tmpimage!)
                 
                 
                 let iconname = String.init(format: "tabBar_icon_%zd@2x", count)
@@ -236,8 +277,7 @@ extension AssembleVC {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     
                     let mainvc = MainVC()
-                    VCController.popThenPush(mainvc!, with: VCAnimationBottom.defaultAnimation())
-
+                    VCController.popThenPush(mainvc!, with: VCAnimationClassic.defaultAnimation())
                 }
                 
             }

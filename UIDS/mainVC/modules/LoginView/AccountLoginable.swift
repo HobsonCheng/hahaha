@@ -171,14 +171,15 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.borderStyle = .none
             $0.leftViewMode = .always
             $0.leftView = self.accountLeftView()
-            $0.placeholder = Metric.accountPlaceholder
+            $0.placeholder = "请输入用户名"
+            
         }
         
         // 输入内容 校验
         let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
-            return input.count == 11
+            return input.count > 0
         }
         
         fieldObservable.map { (valid: Bool) -> UIColor in

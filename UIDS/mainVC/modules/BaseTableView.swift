@@ -32,10 +32,10 @@ extension BaseTableView: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         
         let attributes = NSMutableDictionary()
         
-        attributes.setObject(textColor!, forKey: NSForegroundColorAttributeName as NSCopying)
-        attributes.setObject(font, forKey: NSFontAttributeName as NSCopying)
+        attributes.setObject(textColor!, forKey: NSAttributedStringKey.foregroundColor as NSCopying)
+        attributes.setObject(font, forKey: NSAttributedStringKey.font as NSCopying)
         
-        return NSAttributedString.init(string: text, attributes: attributes  as? [String : Any])
+        return NSAttributedString.init(string: text, attributes: attributes  as? [NSAttributedStringKey : Any])
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
@@ -48,11 +48,10 @@ extension BaseTableView: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         paragraph.alignment = NSTextAlignment.center
         paragraph.lineSpacing = 2.0
         
-        attributes.setObject(textColor!, forKey: NSForegroundColorAttributeName as NSCopying)
-        attributes.setObject(paragraph, forKey: NSParagraphStyleAttributeName as NSCopying)
+        attributes.setObject(textColor!, forKey: NSAttributedStringKey.foregroundColor as NSCopying)
+        attributes.setObject(paragraph, forKey: NSAttributedStringKey.paragraphStyle as NSCopying)
         
-        
-        return NSMutableAttributedString.init(string: text, attributes: attributes as? [String : Any])
+        return NSMutableAttributedString.init(string: text, attributes: attributes as? [NSAttributedStringKey : Any])
         
     }
     

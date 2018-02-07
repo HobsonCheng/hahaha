@@ -16,7 +16,7 @@ extension String {
         
         let size = CGSize(width: UIScreen.main.bounds.width, height: CGFloat(MAXFLOAT))
       
-        return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)], context: nil).size
+        return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size
     }
     
     // MARK:- 获取字符串大小
@@ -24,7 +24,7 @@ extension String {
         let str = self as NSString
         
         let size = CGSize(width: UIScreen.main.bounds.width, height: CGFloat(MAXFLOAT))
-        return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil).size
+        return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil).size
     }
     //MARK:-获取字符串大小
     func getSize(font: UIFont,viewWidth: CGFloat) -> CGSize {
@@ -33,7 +33,7 @@ extension String {
         
         let size = CGSize(width: viewWidth, height: CGFloat(MAXFLOAT))
         
-        return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil).size
+        return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil).size
         
     }
     

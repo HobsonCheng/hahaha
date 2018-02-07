@@ -123,14 +123,14 @@ class JFPhotoDetailCell: UICollectionViewCell {
     /**
      图秀详情界面单击事件，隐藏除去图片外的所有UI
      */
-    func didOneTappedPhotoDetailView(_ tap: UITapGestureRecognizer) {
+    @objc func didOneTappedPhotoDetailView(_ tap: UITapGestureRecognizer) {
         delegate?.didOneTappedPhotoDetailView(scrollView)
     }
     
     /**
      图秀详情界面双击事件，缩放
      */
-    func didDoubleTappedPhotoDetailView(_ tap: UITapGestureRecognizer) {
+    @objc func didDoubleTappedPhotoDetailView(_ tap: UITapGestureRecognizer) {
         let touchPoint = tap.location(in: self)
         delegate?.didDoubleTappedPhotoDetailView(scrollView, touchPoint: touchPoint)
     }
@@ -138,7 +138,7 @@ class JFPhotoDetailCell: UICollectionViewCell {
     /**
      图秀详情长按事件
      */
-    func didLongPressPhotoDetailView(_ longPress: UILongPressGestureRecognizer) {
+    @objc func didLongPressPhotoDetailView(_ longPress: UILongPressGestureRecognizer) {
         if longPress.state == .began {
             // 长按手势会触发2次 所以，你懂得
             delegate?.didLongPressPhotoDetailView(scrollView, currentImage: picImageView.image)

@@ -58,11 +58,11 @@ extension GroupTopicSendVC {
         
     }
     
-    func closeVC()  {
+    @objc func closeVC()  {
         VCController.pop(with: VCAnimationBottom.defaultAnimation())
     }
     
-    func sendTxt() {
+    @objc func sendTxt() {
         
         if self.titleTextF?.text?.count == 0 {
             

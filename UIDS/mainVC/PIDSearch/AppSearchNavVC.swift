@@ -20,7 +20,6 @@ import ESPullToRefresh
 import DZNEmptyDataSet
 import Font_Awesome_Swift
 
-
 private enum HistoryKey {
     
     static let HistoryKey_Phone = "HistoryKey_Phone"
@@ -68,8 +67,23 @@ class AppSearchNavVC: NaviBarVC {
     var historylist: [Project]!
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let name = UIApplication.shared.alternateIconName {
+            
+            UIApplication.shared.setAlternateIconName(nil) { (err:Error?) in
+                print("set icon error：\(String(describing: err))")
+            }
+            print("the alternate icon's name is \(name)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.runtimeReplaceAlert()
+        
         self.naviBar().setLeftBarItem(nil)
         self.naviBar().setTitle("欢迎登录您单位的app")
         self.naviBar().setNaviBarBackgroundColor(UIColor.init(hex: 0x4b95ef, alpha: 1))
@@ -119,8 +133,50 @@ class AppSearchNavVC: NaviBarVC {
     }
     
     
-    
+    //MARK: - 扫码
     @IBAction func gotoSyS(_ sender: Any) {
+        
+        LBXPermissions.authorizeCameraWith { (granted) in
+            
+            if granted
+            {
+                //设置扫码区域参数
+                var style = LBXScanViewStyle()
+                
+                style.centerUpOffset = 60;
+                style.xScanRetangleOffset = 30;
+                
+                if UIScreen.main.bounds.size.height <= 480
+                {
+                    //3.5inch 显示的扫码缩小
+                    style.centerUpOffset = 40;
+                    style.xScanRetangleOffset = 20;
+                }
+                
+                
+                style.color_NotRecoginitonArea = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 0.4)
+                
+                
+                style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle.Inner;
+                style.photoframeLineW = 2.0;
+                style.photoframeAngleW = 16;
+                style.photoframeAngleH = 16;
+                
+                style.isNeedShowRetangle = false;
+                
+                style.anmiationStyle = LBXScanViewAnimationStyle.NetGrid;
+                style.animationImage = UIImage(named: "qrcode_scan_full_net.png")
+                
+                
+                let scan = LBXScanViewController.init(name: "LBXScanViewController")
+                scan?.scanStyle = style
+                VCController.push(scan!, with: VCAnimationBottom.defaultAnimation())
+            }
+            else
+            {
+                LBXPermissions.jumpToSystemPrivacySetting()
+            }
+        }
     }
 }
 
@@ -275,12 +331,36 @@ extension AppSearchNavVC: UITableViewDelegate {
         let assemble = AssembleVC(nibName: "AssembleVC", bundle: nil)
         assemble.pObj = itemData
         VCController.push(assemble, with: VCAnimationClassic.defaultAnimation())
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }
+    
+    
+    //更换icon runtime alter
+    func runtimeReplaceAlert() {
+        
+
+        let presentM = class_getInstanceMethod(self.classForCoder, #selector(present));
+        let presentSwizzlingM = class_getInstanceMethod(self.classForCoder, #selector(ox_presentViewController(viewControllerToPresent:animated:completion:)));
+        // 交换方法实现
+        method_exchangeImplementations(presentM!, presentSwizzlingM!);
+    }
+    
+    @objc func ox_presentViewController(viewControllerToPresent: UIViewController,animated:  Bool,completion: (() -> Void)?){
+        
+        if viewControllerToPresent.isKind(of: UIAlertController.classForCoder()) {
+            // 换图标时的提示框的title和message都是nil，由此可特殊处理
+            let alertController: UIAlertController! = viewControllerToPresent as! UIAlertController
+            if alertController.title == nil && alertController.message == nil {
+                return
+            }
+        }
+        
+        self.ox_presentViewController(viewControllerToPresent: viewControllerToPresent, animated: animated, completion: completion)
+    }
+    
 }
 
 extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
@@ -297,10 +377,10 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         
         let attributes = NSMutableDictionary()
         
-        attributes.setObject(textColor!, forKey: NSForegroundColorAttributeName as NSCopying)
-        attributes.setObject(font, forKey: NSFontAttributeName as NSCopying)
+        attributes.setObject(textColor!, forKey: NSAttributedStringKey.foregroundColor as NSCopying)
+        attributes.setObject(font, forKey: NSAttributedStringKey.font as NSCopying)
         
-        return NSAttributedString.init(string: text, attributes: attributes  as? [String : Any])
+        return NSAttributedString.init(string: text, attributes: attributes  as? [NSAttributedStringKey : Any])
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
@@ -314,11 +394,11 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         paragraph.alignment = NSTextAlignment.center
         paragraph.lineSpacing = 2.0
         
-        attributes.setObject(textColor, forKey: NSForegroundColorAttributeName as NSCopying)
-        attributes.setObject(paragraph, forKey: NSParagraphStyleAttributeName as NSCopying)
+        attributes.setObject(textColor, forKey: NSAttributedStringKey.foregroundColor as NSCopying)
+        attributes.setObject(paragraph, forKey: NSAttributedStringKey.paragraphStyle as NSCopying)
         
         
-        return NSMutableAttributedString.init(string: text, attributes: attributes as? [String : Any])
+        return NSMutableAttributedString.init(string: text, attributes: attributes as? [NSAttributedStringKey : Any])
         
     }
     

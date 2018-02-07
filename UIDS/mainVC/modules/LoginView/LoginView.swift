@@ -18,7 +18,11 @@ class LoginView: NaviBarVC {
         $0.pagerController.scrollView?.backgroundColor = kThemeGainsboroColor
         
         // 设置滚动条 属性
-        $0.tabBarHeight = Metric.pagerBarHeight
+        if AllRestrictionHandler.share.ucSetCofig.project_set?.auth_code_login == 1 {
+            $0.tabBarHeight = Metric.pagerBarHeight
+        }else {
+            $0.tabBarHeight = 0
+        }
         $0.tabBar.backgroundColor = kThemeWhiteColor
         $0.tabBar.layout.cellWidth = kScreenW * 0.5
         $0.tabBar.layout.progressWidth = Metric.leftTitle.getSize(font: Metric.pagerBarFontSize).width + MetricGlobal.margin * 2
@@ -31,7 +35,7 @@ class LoginView: NaviBarVC {
         $0.tabBar.layout.selectedTextFont = Metric.pagerBarFontSize
     }
     
-    let titles: [String] = [Metric.leftTitle, Metric.rightTitle]
+    var titles: [String] = [Metric.leftTitle, Metric.rightTitle]
     var vcs: [BaseNameVC] = []
     
     

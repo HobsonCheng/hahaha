@@ -103,7 +103,7 @@ final class Util: NSObject{
                 
                 let temp = Int(arc4random()%10000)+1
                 
-                codeUrl = String.init(format: "http://%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codedata?.code_key)!)
+                codeUrl = String.init(format: "%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codedata?.code_key)!)
                 
                 callback(codeUrl,codedata?.code_key)
             }
@@ -112,7 +112,7 @@ final class Util: NSObject{
     static func getCodeUrl(codeKey: String) -> String {
         let temp = Int(arc4random()%10000)+1
         
-        let codeUrl = String.init(format: "http://%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codeKey))
+        let codeUrl = String.init(format: "%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codeKey))
         
         return codeUrl
     }
@@ -231,6 +231,15 @@ final class Util: NSObject{
         }
         return subStr
     }
+    
+    static func strToByte(str: String) -> [Character]{
+        var bytes: [Character] = [Character]()
+        for ch in str.characters {
+            bytes.append(ch)
+        }
+        return bytes
+    }
+    
 }
 
 

@@ -45,6 +45,21 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - set config
+    func allRestriction(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("uc", forKey: "sn")
+        params.setValue("allRestriction", forKey: "ac")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    
     //MARK: - pagelist
     func getPageList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
         

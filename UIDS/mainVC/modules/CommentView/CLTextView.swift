@@ -81,21 +81,21 @@ class CLTextView: UIView, UITextViewDelegate {
         self.dismissCommentTextView()
     }
     
-    func tapAction(sender: UITapGestureRecognizer) {
+    @objc func tapAction(sender: UITapGestureRecognizer) {
         self.commentTextView.resignFirstResponder()
         self.dismissCommentTextView()
     }
-    func swipeAction(sender: UISwipeGestureRecognizer) {
+    @objc func swipeAction(sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.down {
             self.commentTextView.resignFirstResponder()
             self.dismissCommentTextView()
         }
     }
     
-    func keyboardhidShown(aNotification: Notification) {
+    @objc func keyboardhidShown(aNotification: Notification) {
         self.dismissCommentTextView()
     }
-    func keyboardWasShown(aNotification: Notification)  {
+    @objc func keyboardWasShown(aNotification: Notification)  {
         
         let info = aNotification.userInfo
         let  keyBoardBounds = (info![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -108,7 +108,7 @@ class CLTextView: UIView, UITextViewDelegate {
     }
     
     
-    func dismissCommentTextView()  {
+    @objc func dismissCommentTextView()  {
         self.removeFromSuperview()
         NotificationCenter.default.removeObserver(self)
     }

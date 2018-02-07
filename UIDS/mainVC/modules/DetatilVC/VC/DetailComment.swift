@@ -46,7 +46,7 @@ extension NewsDetailVC: JFCommentCellDelegate {
     /**
      点击更多评论按钮
      */
-    func didTappedmoreCommentButton(_ button: UIButton) -> Void {
+    @objc func didTappedmoreCommentButton(_ button: UIButton) -> Void {
         
         let commentVc = CommentListVC(name: "commentVc")
         commentVc?.pageData = self.pageData

@@ -138,7 +138,7 @@ extension OtherWebVC: WKUIDelegate,WKNavigationDelegate {
     /*
      *返回按钮执行事件
      */
-    func selectedToBack()
+    @objc func selectedToBack()
     {
         if (self.wkWebview.canGoBack == true)
         {
@@ -153,7 +153,7 @@ extension OtherWebVC: WKUIDelegate,WKNavigationDelegate {
     /*
      *关闭按钮执行事件
      */
-    func selectedToClose()
+    @objc func selectedToClose()
     {
         VCController.pop(with: VCAnimationClassic.defaultAnimation())
     }

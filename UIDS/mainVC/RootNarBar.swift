@@ -67,7 +67,7 @@ extension RootVC {
 //MARK: - action
 extension RootVC {
     
-    func touchAddGroup() {
+    @objc func touchAddGroup() {
         
         let alert = LSXAlertInputView.init(title: "创建群组", placeholderText: "请输入创建群组名", withKeybordType: LSXKeyboardType.default) {(contents) in
             let params = NSMutableDictionary()
@@ -81,7 +81,7 @@ extension RootVC {
         alert?.show()
     }
     
-    func touchAddTopice() {
+    @objc func touchAddTopice() {
         
         let topiceSend = GroupTopicSendVC.init(name: "GroupTopicSendVC")
         topiceSend?.pageData = self.pageData

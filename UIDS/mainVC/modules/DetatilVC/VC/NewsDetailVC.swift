@@ -56,7 +56,7 @@ class NewsDetailVC: NaviBarVC {
     /// 相关连接模型
     var otherLinks = [String]()// MARK: - 懒加载
     
-    /// 评论模型
+    ///@objc @objc  评论模型
     var commentList = [ReplyData]()
     
     // cell标识符
@@ -104,7 +104,7 @@ class NewsDetailVC: NaviBarVC {
     /**
      长按保存广告图
      */
-    func saveAdImage(_ longPress: UILongPressGestureRecognizer) {
+    @objc func saveAdImage(_ longPress: UILongPressGestureRecognizer) {
         if longPress.state == .began {
             isShareArticle = false
         }

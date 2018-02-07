@@ -178,7 +178,7 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
     }
     
     //MARK: - 点击启动器
-    func touchItem(bt: UIButton) {
+    @objc func touchItem(bt: UIButton) {
         
         let itemobj: PageInfo = self.allList?.object(at: bt.tag) as! PageInfo
     

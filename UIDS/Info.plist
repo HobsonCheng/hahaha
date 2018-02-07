@@ -7,9 +7,36 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
-	<dict/>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>pid1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>pid1</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+			</dict>
+			<key>pid2</key>
+			<dict>
+				<key>UIPrerenderedIcon</key>
+				<true/>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>pid2</string>
+				</array>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Icon-60</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

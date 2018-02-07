@@ -65,7 +65,25 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
             $0.borderStyle = .none
             $0.leftViewMode = .always
             $0.leftView = self.OtherLeftView(type: type, titleStr: titleStr)
-            $0.placeholder = String.init(format: "请输入%@", titleStr!)
+            
+            if type == 1 {
+                if AllRestrictionHandler.share.ucSetCofig.project_set?.regist_type == 2 {//条件注册
+                    
+                    let bytes = Util.strToByte(str: (AllRestrictionHandler.share.ucSetCofig.project_set?.regist_condition)!)
+                    
+                    if (bytes[0] == "1") && (bytes[1] == "1") {
+                        $0.placeholder = "请输入手机号/邮箱号"
+                    }else if bytes[0] == "1" {
+                        $0.placeholder = "请输入手机号"
+                    }else if bytes[1] == "1" {
+                        $0.placeholder = "请输入邮箱号"
+                    }
+                }else {
+                    $0.placeholder = String.init(format: "请输入%@", titleStr!)
+                }
+            }else {
+                $0.placeholder = String.init(format: "请输入%@", titleStr!)
+            }
             if type == 2 {//密码
                 $0.isSecureTextEntry = true
             }
@@ -75,7 +93,25 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
         let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
-            return !input.isEmpty
+            if type == 1 {
+                if AllRestrictionHandler.share.ucSetCofig.project_set?.regist_type == 2 {//条件注册
+                    let bytes = Util.strToByte(str: (AllRestrictionHandler.share.ucSetCofig.project_set?.regist_condition)!)
+                    
+                    if (bytes[0] == "1") && (bytes[1] == "1") {
+                        return InputValidator.isValidPhone(phoneNum: input) || InputValidator.isValidEmail(email: input)
+                    }else if bytes[0] == "1" {
+                        return InputValidator.isValidPhone(phoneNum: input)
+                    }else if bytes[1] == "1" {
+                        return InputValidator.isValidEmail(email: input)
+                    }
+                    
+                    return !input.isEmpty
+                }else {
+                    return !input.isEmpty
+                }
+            }else {
+                return InputValidator.isvalidationPassword(password: input)
+            }
         }
 
         fieldObservable.map { (valid: Bool) -> UIColor in

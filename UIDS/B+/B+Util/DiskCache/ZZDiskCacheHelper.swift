@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias $ = ZZDiskCacheHelper
+typealias `$` = ZZDiskCacheHelper
 
 public struct ZZDiskCacheHelper {
     

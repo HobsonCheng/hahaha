@@ -15,11 +15,16 @@ import TYPagerController
 extension LoginView {
 
     func initEnableMudule() {
-        //注册 入口
-        let loginRegister = NaviBarItem.init(textItem: "注册", target: self, action: #selector(LoginView.gotoReg))
-        loginRegister?.frame = CGRect.init(x: 0, y: 0, width: 50, height: 44)
         
-        self.naviBar().setRightBarItem(loginRegister!)
+        if AllRestrictionHandler.share.ucSetCofig.project_set?.regist_type == 1 {
+            
+        }else {
+            //注册 入口
+            let loginRegister = NaviBarItem.init(textItem: "注册", target: self, action: #selector(LoginView.gotoReg))
+            loginRegister?.frame = CGRect.init(x: 0, y: 0, width: 50, height: 44)
+            
+            self.naviBar().setRightBarItem(loginRegister!)
+        }
     }
     
     //MARK: 分页
@@ -70,7 +75,13 @@ extension LoginView {
 extension LoginView: TYTabPagerControllerDelegate, TYTabPagerControllerDataSource {
     
     func numberOfControllersInTabPagerController() -> Int {
-        return self.titles.count
+        
+        if AllRestrictionHandler.share.ucSetCofig.project_set?.auth_code_login == 1 {
+            return self.titles.count
+        }else {
+            self.titles = [Metric.leftTitle]
+            return self.titles.count
+        }
     }
     
     func tabPagerController(_ tabPagerController: TYTabPagerController, controllerFor index: Int, prefetching: Bool) -> UIViewController {

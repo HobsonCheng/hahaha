@@ -83,12 +83,15 @@ class SwiftIntroView: UIView, UIScrollViewDelegate {
         doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         doneButton.backgroundColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 0.5)
         //增加点击事件并交给代理去完成
-        doneButton.addTarget(self.delegate, action: "doneButtonClick", for: UIControlEvents.touchUpInside)
+        doneButton.rx.tap.do(onNext: {
+            self.delegate?.doneButtonClick()
+        }).asObservable().subscribe().disposed(by: rx.disposeBag)
         self.addSubview(doneButton)
     }
     
     //实现 UIScrollViewDelegate 方法
-    @nonobjc func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageWidth = self.frame.width
         let pageFraction = self.scrollView.contentOffset.x / pageWidth
         self.pageControl.currentPage = Int(roundf(Float(pageFraction)))
