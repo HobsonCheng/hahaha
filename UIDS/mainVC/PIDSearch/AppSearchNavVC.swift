@@ -82,8 +82,6 @@ class AppSearchNavVC: NaviBarVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.runtimeReplaceAlert()
-        
         self.naviBar().setLeftBarItem(nil)
         self.naviBar().setTitle("欢迎登录您单位的app")
         self.naviBar().setNaviBarBackgroundColor(UIColor.init(hex: 0x4b95ef, alpha: 1))
@@ -335,30 +333,6 @@ extension AppSearchNavVC: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
-    }
-    
-    
-    //更换icon runtime alter
-    func runtimeReplaceAlert() {
-        
-
-        let presentM = class_getInstanceMethod(self.classForCoder, #selector(present));
-        let presentSwizzlingM = class_getInstanceMethod(self.classForCoder, #selector(ox_presentViewController(viewControllerToPresent:animated:completion:)));
-        // 交换方法实现
-        method_exchangeImplementations(presentM!, presentSwizzlingM!);
-    }
-    
-    @objc func ox_presentViewController(viewControllerToPresent: UIViewController,animated:  Bool,completion: (() -> Void)?){
-        
-        if viewControllerToPresent.isKind(of: UIAlertController.classForCoder()) {
-            // 换图标时的提示框的title和message都是nil，由此可特殊处理
-            let alertController: UIAlertController! = viewControllerToPresent as! UIAlertController
-            if alertController.title == nil && alertController.message == nil {
-                return
-            }
-        }
-        
-        self.ox_presentViewController(viewControllerToPresent: viewControllerToPresent, animated: animated, completion: completion)
     }
     
 }

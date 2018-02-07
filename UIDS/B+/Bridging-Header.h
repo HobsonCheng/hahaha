@@ -61,6 +61,7 @@
 
 #import "UploadImageTool.h"
 #import "WebViewJavascriptBridge.h"
+#import "UIViewController+Present.h"
 
 //宏参数
 

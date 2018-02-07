@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgImg.png" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-CB-A51">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgImgTmp.png" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-CB-A51">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRs-jA-L9w">
@@ -116,7 +116,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bgImg.png" width="750" height="1334"/>
+        <image name="bgImgTmp.png" width="750" height="1334"/>
         <image name="goBackIcon.png" width="44" height="44"/>
     </resources>
 </document>
