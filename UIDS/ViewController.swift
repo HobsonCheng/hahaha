@@ -45,8 +45,20 @@ class ViewController: UIViewController,SwiftIntroViewDelegate{
             userDefaults.set(true, forKey: "version_"+version)
             userDefaults.synchronize()
         }else{
-            let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
-            VCController.push(searchapp, with:nil)
+            
+            if Util.get_defult(key: KEY_ISNEED_GOTOAPP) != nil && (Util.get_defult(key: KEY_ISNEED_GOTOAPP)) as! String == "1" {//主动进入pid
+                
+                let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
+                VCController.push(searchapp, with:nil)
+                
+                let mainvc = MainVC()
+                VCController.push(mainvc!, with: nil)
+            }else {
+                
+                let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
+                VCController.push(searchapp, with:nil)
+            }
+            
             return
         }
         

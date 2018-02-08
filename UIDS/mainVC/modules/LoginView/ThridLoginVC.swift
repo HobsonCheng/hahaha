@@ -54,7 +54,7 @@ extension ThridLoginVC: AccountLoginable{
         
         weak var tmpimgCodeView: UITextField?
         tmpimgCodeView = UITextField()
-        let extractedExpr = initImgCodeView { [weak self] (codekey) in
+        let extractedExpr = initImgCodeView(type: "login") { [weak self] (codekey) in
             let regServise = PhoneService(input: (accountField, tmpimgCodeView!,smsCodeField, loginBtn, phoneCodeBt), codekey: codekey!)
             
             regServise.loginBtnEnable.drive(onNext: { (beel) in
@@ -74,7 +74,7 @@ extension ThridLoginVC: AccountLoginable{
                 let auth_code = params.object(forKey: "auth_code")
                 
                 
-                Util.getSMSCode(phone: phone as! String, codekey: codekey!, auth_code: auth_code as! String, callback: { (code) in
+                Util.getSMSCode(type: "phone_login",phone: phone as! String, codekey: codekey!, auth_code: auth_code as! String, callback: { (code) in
 
                     if code != nil {
                         phoneCodeBt.startTime()

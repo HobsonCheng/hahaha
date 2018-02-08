@@ -109,8 +109,10 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
                 }else {
                     return !input.isEmpty
                 }
-            }else {
+            }else if type == 2 {
                 return InputValidator.isvalidationPassword(password: input)
+            }else {
+                return !input.isEmpty
             }
         }
 

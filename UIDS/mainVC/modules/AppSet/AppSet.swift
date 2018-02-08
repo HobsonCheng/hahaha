@@ -48,7 +48,7 @@ class AppSet: NaviBarVC {
         
         self.setNaviDefulat()
         
-        self.naviBar().setTitle(self.pageData?.name)
+        self.naviBar().setTitle("设置中心")
         
         self.initEnableMudule()
         self.initUI()

@@ -257,15 +257,6 @@
 		E5312FCA201DB515003A1043 /* orderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5312FC8201DB515003A1043 /* orderCell.xib */; };
 		E5312FCD201DB842003A1043 /* orderTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FCB201DB842003A1043 /* orderTwoCell.swift */; };
 		E5312FCE201DB842003A1043 /* orderTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5312FCC201DB842003A1043 /* orderTwoCell.xib */; };
-		E56C90992010F8F7002339C6 /* BQLShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90872010F8F7002339C6 /* BQLShareModel.swift */; };
-		E56C909A2010F8F7002339C6 /* qqz.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C90892010F8F7002339C6 /* qqz.png */; };
-		E56C909B2010F8F7002339C6 /* wechatt.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908A2010F8F7002339C6 /* wechatt.png */; };
-		E56C909C2010F8F7002339C6 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908B2010F8F7002339C6 /* weibo.png */; };
-		E56C909D2010F8F7002339C6 /* wechatf.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908C2010F8F7002339C6 /* wechatf.png */; };
-		E56C909E2010F8F7002339C6 /* qqf.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C908D2010F8F7002339C6 /* qqf.png */; };
-		E56C90A12010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E56C90962010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle */; };
-		E56C90A22010F8F7002339C6 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56C90972010F8F7002339C6 /* TencentOpenAPI.framework */; };
-		E56C90A32010F8F7002339C6 /* BQLAuthEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90982010F8F7002339C6 /* BQLAuthEngine.swift */; };
 		E56C90AC2013793A002339C6 /* GroupListTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90AB2013793A002339C6 /* GroupListTopic.swift */; };
 		E56C90B020137AE8002339C6 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90AE20137AE8002339C6 /* GroupCell.swift */; };
 		E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56C90AF20137AE8002339C6 /* GroupCell.xib */; };
@@ -572,15 +563,6 @@
 		E5312FC8201DB515003A1043 /* orderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderCell.xib; sourceTree = "<group>"; };
 		E5312FCB201DB842003A1043 /* orderTwoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTwoCell.swift; sourceTree = "<group>"; };
 		E5312FCC201DB842003A1043 /* orderTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderTwoCell.xib; sourceTree = "<group>"; };
-		E56C90872010F8F7002339C6 /* BQLShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BQLShareModel.swift; sourceTree = "<group>"; };
-		E56C90892010F8F7002339C6 /* qqz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qqz.png; sourceTree = "<group>"; };
-		E56C908A2010F8F7002339C6 /* wechatt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechatt.png; sourceTree = "<group>"; };
-		E56C908B2010F8F7002339C6 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
-		E56C908C2010F8F7002339C6 /* wechatf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechatf.png; sourceTree = "<group>"; };
-		E56C908D2010F8F7002339C6 /* qqf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qqf.png; sourceTree = "<group>"; };
-		E56C90962010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
-		E56C90972010F8F7002339C6 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
-		E56C90982010F8F7002339C6 /* BQLAuthEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BQLAuthEngine.swift; sourceTree = "<group>"; };
 		E56C90AB2013793A002339C6 /* GroupListTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListTopic.swift; sourceTree = "<group>"; };
 		E56C90AE20137AE8002339C6 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E56C90AF20137AE8002339C6 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
@@ -642,7 +624,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E16763A7202AD41300947323 /* AVFoundation.framework in Frameworks */,
-				E56C90A22010F8F7002339C6 /* TencentOpenAPI.framework in Frameworks */,
 				F5BE3CBAD0F39EF485E36BCE /* Pods_UIDS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1219,7 +1200,6 @@
 				E5E59AC32014CE4E0040D30D /*  LSXInputAlertView */,
 				E5E59ABE2014CE4E0040D30D /* SDAutoLayout */,
 				E1EA270D2011C5FB00F31796 /* DiskCache */,
-				E56C90862010F8F7002339C6 /* BQLAuthEngine_Swift */,
 				E1C031C5200704CA00B1A377 /* LaunchGuide */,
 				E594E07E2003AEE200BDF511 /* AppInfo.h */,
 				E594E07F2003AEE200BDF511 /* AppInfo.m */,
@@ -1345,46 +1325,6 @@
 				E1F7225D2019D1F50092AC8C /* close@2x.png */,
 			);
 			path = resou;
-			sourceTree = "<group>";
-		};
-		E56C90862010F8F7002339C6 /* BQLAuthEngine_Swift */ = {
-			isa = PBXGroup;
-			children = (
-				E56C90872010F8F7002339C6 /* BQLShareModel.swift */,
-				E56C90882010F8F7002339C6 /* images */,
-				E56C908E2010F8F7002339C6 /* SDK */,
-				E56C90982010F8F7002339C6 /* BQLAuthEngine.swift */,
-			);
-			path = BQLAuthEngine_Swift;
-			sourceTree = "<group>";
-		};
-		E56C90882010F8F7002339C6 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				E56C90892010F8F7002339C6 /* qqz.png */,
-				E56C908A2010F8F7002339C6 /* wechatt.png */,
-				E56C908B2010F8F7002339C6 /* weibo.png */,
-				E56C908C2010F8F7002339C6 /* wechatf.png */,
-				E56C908D2010F8F7002339C6 /* qqf.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		E56C908E2010F8F7002339C6 /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-				E56C90952010F8F7002339C6 /* QQ */,
-			);
-			path = SDK;
-			sourceTree = "<group>";
-		};
-		E56C90952010F8F7002339C6 /* QQ */ = {
-			isa = PBXGroup;
-			children = (
-				E56C90962010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle */,
-				E56C90972010F8F7002339C6 /* TencentOpenAPI.framework */,
-			);
-			path = QQ;
 			sourceTree = "<group>";
 		};
 		E56C90A42010FB38002339C6 /* GroupGender */ = {
@@ -1616,7 +1556,6 @@
 				E1E31B83200F3ADF00776701 /* registerAndLogin_code_textField@2x.png in Resources */,
 				E1C3E57D2015E15000B13306 /* icon_shake_animation_5.png in Resources */,
 				E11B628A2018204100CE5E1D /* www in Resources */,
-				E56C909A2010F8F7002339C6 /* qqz.png in Resources */,
 				E56C90C92013A641002339C6 /* TopicCell.xib in Resources */,
 				E1C3E57F2015E15000B13306 /* icon_shake_animation_7.png in Resources */,
 				E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */,
@@ -1645,7 +1584,6 @@
 				E1C0321B200C395000B1A377 /* ArticleListCell.xib in Resources */,
 				E1E31B85200F3B0D00776701 /* lastLoginTip@2x.png in Resources */,
 				E153BBE5202980CA00C7F786 /* bgImgTmp.png in Resources */,
-				E56C909B2010F8F7002339C6 /* wechatt.png in Resources */,
 				E1ABEB23201846F700F7FF91 /* bottom_bar_comment_selected@2x.png in Resources */,
 				E12BC14020173E2500099ED4 /* newscontent_drag_return@2x.png in Resources */,
 				E12BC14520173E2500099ED4 /* share_platform_sina@2x.png in Resources */,
@@ -1655,20 +1593,16 @@
 				E1C3E57A2015E15000B13306 /* icon_shake_animation_4.png in Resources */,
 				E1C3E5742015E15000B13306 /* icon_pull_animation_2.png in Resources */,
 				E11B62AA2018254B00CE5E1D /* JFDetailOtherCell.xib in Resources */,
-				E56C909C2010F8F7002339C6 /* weibo.png in Resources */,
 				E1C031FC2007809D00B1A377 /* test_8.png in Resources */,
 				E1E31B7D200F3ADF00776701 /* registerAndLogin_qq_button@2x.png in Resources */,
-				E56C909E2010F8F7002339C6 /* qqf.png in Resources */,
 				E16763AA202ADFF300947323 /* pid1@2x.png in Resources */,
 				E1C031F22007808200B1A377 /* test_3.png in Resources */,
 				E1D0B6BA201B02FA00332C79 /* placeholder_instagram.png in Resources */,
-				E56C90A12010F8F7002339C6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E139375F201996BC00F32909 /* scan_scan@2x.png in Resources */,
 				E11B62AD2018254B00CE5E1D /* JFDetailOtherNoneCell.xib in Resources */,
 				E1C031FE200780A300B1A377 /* test_9.png in Resources */,
 				E1C03200200780A900B1A377 /* test_10.png in Resources */,
 				E11B628320175A5900CE5E1D /* editButton@3x.png in Resources */,
-				E56C909D2010F8F7002339C6 /* wechatf.png in Resources */,
 				E1ABEB1F20182D6A00F7FF91 /* default－portrait@2x.png in Resources */,
 				E1C031FA2007809800B1A377 /* test_7.png in Resources */,
 				E1E31B9920107E1500776701 /* uidashi.ttf in Resources */,
@@ -1902,7 +1836,6 @@
 				E1ABEB27201853CD00F7FF91 /* DetailBottom.swift in Sources */,
 				E11B62942018214A00CE5E1D /* NewsDetailVC.swift in Sources */,
 				E1EDAB5E200319A5004DD7B9 /* Util.swift in Sources */,
-				E56C90A32010F8F7002339C6 /* BQLAuthEngine.swift in Sources */,
 				E1C031E820076DF400B1A377 /* SafeTabber.swift in Sources */,
 				E1C031A820061E2800B1A377 /* SwipImgAreaView.swift in Sources */,
 				E1ABEB322018555500F7FF91 /* NewsPhotoBrowserVC.swift in Sources */,
@@ -1931,7 +1864,6 @@
 				E1EDAB7420033D26004DD7B9 /* BaseNameVC.m in Sources */,
 				E153BC28202ABDB900C7F786 /* LBXScanView.swift in Sources */,
 				E1EA27132011C5FB00F31796 /* ZZDiskCacheHelper.swift in Sources */,
-				E56C90992010F8F7002339C6 /* BQLShareModel.swift in Sources */,
 				E11B62A72018254B00CE5E1D /* JFDetailOtherNoneCell.swift in Sources */,
 				E1F5E275200F340500FD18FD /* AccountLoginVC.swift in Sources */,
 				E1C70DB1201B446600030CB6 /* OrderCModel.swift in Sources */,

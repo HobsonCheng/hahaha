@@ -65,8 +65,7 @@ class AppSearchNavVC: NaviBarVC {
     fileprivate var viewModel: SearchResultViewModel!
 
     var historylist: [Project]!
-    
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -77,6 +76,8 @@ class AppSearchNavVC: NaviBarVC {
             }
             print("the alternate icon's name is \(name)")
         }
+        
+        Util.save_defult(key: KEY_ISNEED_GOTOAPP, value: "0")
     }
     
     override func viewDidLoad() {
@@ -118,6 +119,7 @@ class AppSearchNavVC: NaviBarVC {
         //历史数据
         
         self.showHistoy()
+    
         
     }
 

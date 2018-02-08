@@ -11,7 +11,24 @@ import UIKit
 import SVProgressHUD
 
 
-
+struct MyRegex {
+    let regex: NSRegularExpression?
+    
+    init(_ pattern: String) {
+        regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+    }
+    
+    func match(input: String) -> Bool {
+        if let matches = regex?.matches(in: input,
+                                                options: [],
+                                                range: NSMakeRange(0, (input as NSString).length)) {
+            return matches.count > 0
+        }
+        else {
+            return false
+        }
+    }
+}
 
 
 private let singleUtil = Util()
@@ -92,7 +109,7 @@ final class Util: NSObject{
     
     
     //MARK: 获取验证码
-    static func getImgCode(callback: @escaping (_ Url: String?,_ codekey: String?)->()) {
+    static func getImgCode(type: String,callback: @escaping (_ Url: String?,_ codekey: String?)->()) {
         
         var codeUrl: String?
         
@@ -103,26 +120,26 @@ final class Util: NSObject{
                 
                 let temp = Int(arc4random()%10000)+1
                 
-                codeUrl = String.init(format: "%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codedata?.code_key)!)
+                codeUrl = String.init(format: "%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=%@&code_key=%@",BRequestHandler.shared.appHostName!,temp,type,(codedata?.code_key)!)
                 
                 callback(codeUrl,codedata?.code_key)
             }
         }
     }
-    static func getCodeUrl(codeKey: String) -> String {
+    static func getCodeUrl(type: String,codeKey: String) -> String {
         let temp = Int(arc4random()%10000)+1
         
-        let codeUrl = String.init(format: "%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=login&code_key=%@",BRequestHandler.shared.appHostName!,temp,(codeKey))
+        let codeUrl = String.init(format: "%@/authCode?%zd&sn=uc&ac=getAuthCode&auth_type=%@&code_key=%@",BRequestHandler.shared.appHostName!,temp,type,(codeKey))
         
         return codeUrl
     }
     
-    static func getSMSCode(phone: String,codekey: String,auth_code: String,callback: @escaping (_ code: String?) -> ()) {
+    static func getSMSCode(type: String,phone: String,codekey: String,auth_code: String,callback: @escaping (_ code: String?) -> ()) {
         
         let params = NSMutableDictionary()
         params.setValue("getPhoneEmailAuthCode", forKey: "ac")
         params.setValue("uc", forKey: "sn")
-        params.setValue("phone_login", forKey: "auth_type")
+        params.setValue(type, forKey: "auth_type")
         params.setValue(codekey, forKey: "code_key")
         params.setValue(phone, forKey: "phone_Email_num")
         params.setValue(auth_code, forKey: "auth_code")
@@ -231,13 +248,59 @@ final class Util: NSObject{
         }
         return subStr
     }
-    
     static func strToByte(str: String) -> [Character]{
         var bytes: [Character] = [Character]()
         for ch in str.characters {
             bytes.append(ch)
         }
         return bytes
+    }
+    
+    //MARK: - 检测是否包含数字
+    static func checkHaveNumber(str: String) -> Bool {
+        
+        let pattern = "[0-9]+"
+        let matcher = MyRegex(pattern)
+        if matcher.match(input: str) {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    //MARK: - 检测大写字母 包含
+    static func checkHaveCapital(str: String) -> Bool {
+        
+        let pattern = "[A-Z]+"
+        let matcher = MyRegex(pattern)
+        if matcher.match(input: str) {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    //MARK: - 检测小写字母 包含
+    static func checkHaveMinuscule(str: String) -> Bool {
+        let pattern = "[a-z]+"
+        let matcher = MyRegex(pattern)
+        if matcher.match(input: str) {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    //MARK: -  检测是否包含特殊符号
+    static func checkHaveSymbol(str: String) -> Bool {
+        let pattern = "[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]+"
+        let matcher = MyRegex(pattern)
+        if matcher.match(input: str) {
+            return true
+        }
+        else{
+            return false
+        }
     }
     
 }

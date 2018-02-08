@@ -52,10 +52,10 @@
 
 
 //第三方库
-#import <WechatOpenSDK/WXApi.h>
-#import <Weibo_SDK/WeiboSDK.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
+//#import <WechatOpenSDK/WXApi.h>
+//#import <Weibo_SDK/WeiboSDK.h>
+//#import <TencentOpenAPI/QQApiInterface.h>
+//#import <TencentOpenAPI/TencentOAuth.h>
 #import "LSXAlertInputView.h"
 #import <Qiniu/QiniuSDK.h>
 
@@ -69,5 +69,8 @@
 
 //七牛 host
 #define  QINIU_HOST_NAME    @"http://omzvdb61q.bkt.clouddn.com/"
+
+#define  KEY_ISNEED_GOTOAPP    @"KEY_ISNEED_GOTOAPP"
+
 
 #endif /* Bridging_Header_h */

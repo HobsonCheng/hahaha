@@ -20,7 +20,9 @@ class UserUtil: NSObject {
     
     override init() {
         super.init()
-        self.getUserInfo()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.getUserInfo()
+        }
     }
     
     //MARK: 是否登录

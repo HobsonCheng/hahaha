@@ -52,15 +52,18 @@ extension AccountLoginVC: AccountLoginable {
         // 创建 协议组件
         let accountField = initAccountField { }
         let passwordField = initPasswordField { }
-        let imgCodeView = initImgCodeView() { (codekey) in
+        let imgCodeView = initImgCodeView(type: "login") { (codekey) in
             getCodeKey = codekey
         }
+        //加入 短信验证或者邮箱验证入
+        let (smsCodeField,phoneCodeBt) = initSMSCode { }
+        
         let (loginBtnView, loginBtn) = initLoginBtnView(showFP: true) { event in print(event.title ?? "") }
         let otherLoginView = initOtherLoginView { event in print(event.title ?? "") }
         
         // 创建 视图模型
-        let accountLoginView = HCAccountLoginViewModel(input: (accountField, passwordField, loginBtn, imgCodeView), service: HCAccountLoginService.shareInstance)
-
+        let accountLoginView = HCAccountLoginViewModel(input: (accountField, passwordField, loginBtn, imgCodeView, phoneCodeBt), service: HCAccountLoginService.shareInstance)
+        
         accountLoginView.accountUseable.drive(accountField.rx.validationResult).disposed(by: rx.disposeBag)
         accountLoginView.passwordUseable.drive(passwordField.rx.validationResult).disposed(by: rx.disposeBag)
         
@@ -69,8 +72,30 @@ extension AccountLoginVC: AccountLoginable {
             loginBtn.isEnabled = beel
             
         }).disposed(by: rx.disposeBag)
+        
+        //回去验证码
+        accountLoginView.smsBtnEnable.drive(onNext: { (params) in
+            if params.object(forKey: "phone_Email_num") != nil {
+                let phone = params.object(forKey: "phone_Email_num")
+                let auth_code = params.object(forKey: "auth_code")
+                
+                Util.getSMSCode(type: "login",phone: phone as! String, codekey: getCodeKey!, auth_code: auth_code as! String, callback: { (code) in
+                    
+                    if code != nil {
+                        phoneCodeBt.startTime()
+                    }else{
+                        phoneCodeBt.isUserInteractionEnabled = true
+                        phoneCodeBt.setTitle("获取失败请重试", for: UIControlState.normal)
+                    }
+                })
+            }
+            
+            
+        }).disposed(by: rx.disposeBag)
+        
+        
         accountLoginView.loginResult.drive(onNext: { (result) in
-           
+            
             result.paramsObj.setValue(getCodeKey, forKey: "code_key")
             ApiUtil.share.userLogin(params: result.paramsObj, fininsh: { (status, data, msg) in
                 
@@ -82,8 +107,9 @@ extension AccountLoginVC: AccountLoginable {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     
                     VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())
+                    VCController.pop(with: VCAnimationBottom.defaultAnimation())
                 };
-
+                
             })
             
         }).disposed(by: rx.disposeBag)
@@ -95,6 +121,7 @@ extension AccountLoginVC: AccountLoginable {
         scrollView.addSubview(loginBtnView)
         scrollView.addSubview(otherLoginView)
         scrollView.addSubview(imgCodeView)
+        scrollView.addSubview(smsCodeField)
         // 布局
         scrollView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
@@ -120,12 +147,29 @@ extension AccountLoginVC: AccountLoginable {
             make.height.equalTo(Metric.fieldHeight)
             
         }
-        
-        
-        passwordField.snp.makeConstraints { (make) in
+        smsCodeField.snp.makeConstraints { (make) in
+            
             make.left.equalTo(imgCodeView.snp.left)
             make.right.equalTo(imgCodeView.snp.right)
             make.top.equalTo(imgCodeView.snp.bottom).offset(MetricGlobal.margin * 1)
+            
+            //单纯验证码
+            let  auth_code_type = AllRestrictionHandler.share.ucSetCofig.project_set?.login_auth_code_type
+        
+            if auth_code_type == 0 {//图片验证码
+                 make.height.equalTo(0)
+            }else if auth_code_type == 1 {
+            
+                 make.height.equalTo(Metric.fieldHeight)
+            }
+            
+        }
+        
+        
+        passwordField.snp.makeConstraints { (make) in
+            make.left.equalTo(smsCodeField.snp.left)
+            make.right.equalTo(smsCodeField.snp.right)
+            make.top.equalTo(smsCodeField.snp.bottom).offset(MetricGlobal.margin * 1)
             make.height.equalTo(Metric.fieldHeight)
         }
         

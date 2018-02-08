@@ -14,6 +14,8 @@ class MainVC: BaseNameVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Util.save_defult(key: KEY_ISNEED_GOTOAPP, value: "1")
+        
         self.initTabber();
         if UserUtil.isValid() {
             

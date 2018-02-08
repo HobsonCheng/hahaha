@@ -24,6 +24,8 @@ class AssembleVC: BaseNameVC {
         super.viewDidLoad()
         
         
+        UserUtil.share.removerUser()
+        
         tiplist = ["目前您单位的APP在苹果iOS端使用的是通用版，在您单位APP的后台设置，即可升级为独立版。"
             ,"单位APP将会成为您工作上的得力助手，领导满意，同事便利。"
             ,"单位APP整合资源，将所有的办公应用汇总，触手可及。"

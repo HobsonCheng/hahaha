@@ -59,7 +59,8 @@ class OpenVC: NSObject {
         case PAGE_TYPE_login:
             
             if UserUtil.isValid() {
-                Util.msg(msg: "个人中心未开发", 1)
+                let appset = AppSet.init(name: "AppSet")
+                VCController.push(appset!, with: VCAnimationClassic.defaultAnimation())
             }else {
                 let nextv = LoginView.init(name: "LoginView")
                 VCController.push(nextv!, with: VCAnimationBottom.defaultAnimation());

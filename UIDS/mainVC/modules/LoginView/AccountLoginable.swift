@@ -177,9 +177,8 @@ extension AccountLoginable where Self : BaseNameVC{
         
         // 输入内容 校验
         let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
-            guard let input  = input else { return false }
-            print("\(input)")
-            return input.count > 0
+
+            return true
         }
         
         fieldObservable.map { (valid: Bool) -> UIColor in
@@ -188,7 +187,7 @@ extension AccountLoginable where Self : BaseNameVC{
             }.subscribe(onNext: { (color) in
                 field.layer.borderColor = color.cgColor
             }).disposed(by: rx.disposeBag)
-        
+
         return field
     }
     
@@ -211,7 +210,7 @@ extension AccountLoginable where Self : BaseNameVC{
         let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
-            return InputValidator.isvalidationPassword(password: input)
+            return !(input.isEmpty)
         }
         
         fieldObservable.map { (valid: Bool) -> UIColor in
@@ -280,7 +279,7 @@ extension AccountLoginable where Self : BaseNameVC{
     }
     
     //MARK: - 图片验证码入口
-    func initImgCodeView(onNext: @escaping (_ codekey: String?)->Void) -> UITextField {
+    func initImgCodeView(type: String,onNext: @escaping (_ codekey: String?)->Void) -> UITextField {
         
         let field = UITextField().then {
             $0.layer.masksToBounds = true
@@ -291,7 +290,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.leftViewMode = .always
             $0.leftView = self.ImgCodeViewLeft()
             $0.rightViewMode = .always
-            $0.rightView = self.ImgCodeViewRight(callback: { (codekey) in
+            $0.rightView = self.ImgCodeViewRight(type: type,callback: { (codekey) in
                 onNext(codekey)
             })
             $0.placeholder = Metric.imgCodePlaceholder
@@ -341,7 +340,7 @@ extension AccountLoginable where Self : BaseNameVC{
         
     }
     
-    private func ImgCodeViewRight(callback: @escaping (_ codekey: String?) -> ()) -> UIView {
+    private func ImgCodeViewRight(type: String,callback: @escaping (_ codekey: String?) -> ()) -> UIView {
         
         
         let rightView = UIView().then {
@@ -354,7 +353,7 @@ extension AccountLoginable where Self : BaseNameVC{
         
         var mycodeKey: String?
         
-        Util.getImgCode { (codeUrl,codekey) in
+        Util.getImgCode(type: type) { (codeUrl,codekey) in
             mycodeKey = codekey
             tipBtn.sd_setImage(with: URL.init(string: codeUrl!), for: UIControlState.normal, completed: nil)
             callback(codekey)
@@ -362,9 +361,9 @@ extension AccountLoginable where Self : BaseNameVC{
         
         tipBtn.rx.tap.do(onNext: {
             if((mycodeKey) != nil){
-                tipBtn.sd_setImage(with: URL.init(string: Util.getCodeUrl(codeKey: mycodeKey!)), for: UIControlState.normal, completed: nil)
+                tipBtn.sd_setImage(with: URL.init(string: Util.getCodeUrl(type: type,codeKey: mycodeKey!)), for: UIControlState.normal, completed: nil)
             }else{
-                Util.getImgCode { (codeUrl,codekey) in
+                Util.getImgCode(type: type) { (codeUrl,codekey) in
                     tipBtn.sd_setImage(with: URL.init(string: codeUrl!), for: UIControlState.normal, completed: nil)
                     callback(codekey)
                 }
@@ -404,7 +403,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.leftView = self.SMSCodeLeft()
             $0.rightViewMode = .always
             $0.rightView = rightview
-            $0.placeholder = Metric.passswordPlaceholder
+            $0.placeholder = Metric.imgCodePlaceholder
         }
         
         // 输入内容 校验

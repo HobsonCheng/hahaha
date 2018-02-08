@@ -17,7 +17,7 @@ class RegVCService {
     let loginResult: Driver<Bool>
     
     
-    init(input: (userName: UITextField,pwd: UITextField,pwd2: UITextField, nickName: UITextField,codeNum: UITextField, regButton: UIButton), codekey: String) {
+    init(input: (userName: UITextField,pwd: UITextField,pwd2: UITextField, nickName: UITextField,codeNum: UITextField, regButton: UIButton,smsInput: UITextField), codekey: String) {
        
         let accountDriver = input.userName.rx.text.orEmpty.asDriver()
         let passwordDriver = input.pwd.rx.text.orEmpty.asDriver()
@@ -26,13 +26,15 @@ class RegVCService {
         let codeDriver = input.codeNum.rx.text.orEmpty.asDriver()
         let regButtonDriver = input.regButton.rx.tap.asDriver()
         
-        let accountAndPassword = Driver.combineLatest(accountDriver, passwordDriver, password2Driver,nickNameDriver,codeDriver) {
+        let smsInputDriver = input.smsInput.rx.text.orEmpty.asDriver()
+        
+        let accountAndPassword = Driver.combineLatest(accountDriver, passwordDriver, password2Driver,nickNameDriver,codeDriver,smsInputDriver) {
             
-            return ($0, $1, $2, $3, $4)
+            return ($0, $1, $2, $3, $4, $5)
         }
         
         
-        loginBtnEnable = accountAndPassword.flatMap({ (user,pwd,pwd2,nick,code) in
+        loginBtnEnable = accountAndPassword.flatMap({ (user,pwd,pwd2,nick,code,smscode) in
         
             //处理逻辑
             if user.isEmpty || pwd.isEmpty || pwd2.isEmpty || nick.isEmpty || code.isEmpty {
@@ -45,13 +47,17 @@ class RegVCService {
             return Observable.just(true).asDriver(onErrorJustReturn: false)
         })
         
-        loginResult = regButtonDriver.withLatestFrom(accountAndPassword).flatMapLatest({ (user,pwd,pwd2,nick,code) in
+        loginResult = regButtonDriver.withLatestFrom(accountAndPassword).flatMapLatest({ (user,pwd,pwd2,nick,code,smscode) in
             
             let params = NSMutableDictionary()
             params.setValue(user, forKey: "username")
             params.setValue(pwd, forKey: "password")
             params.setValue(nick, forKey: "zh_name")
-            params.setValue(code, forKey: "auth_code")
+            if smscode != nil && smscode.count > 0 {
+                params.setValue(smscode, forKey: "auth_code")
+            }else {
+                params.setValue(code, forKey: "auth_code")
+            }
             params.setValue(codekey, forKey: "code_key")
             
             ApiUtil.share.userRegist(params: params, fininsh: { (status, data, msg) in
