@@ -76,7 +76,7 @@
 
 - (void)setVCName:(NSString *)name{
     
-    _vcName = name
+    _vcName = name;
 }
 
 
