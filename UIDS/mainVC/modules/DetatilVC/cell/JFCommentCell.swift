@@ -25,8 +25,8 @@ class JFCommentCell: UITableViewCell {
     var commentModel: ReplyData? {
         didSet {
             guard commentModel != nil else { return }
-            avatarImageView.sd_setImage(with: URL.init(string: "commentModel.userpic!"), placeholderImage: UIImage(named: "default－portrait.png"), options: SDWebImageOptions.allowInvalidSSLCertificates, completed:nil)
-            usernameLabel.text = commentModel?.user_info.nick_name
+            avatarImageView.sd_setImage(with: URL.init(string:commentModel?.user_info.head_portrait ?? "commentModel.userpic!"), placeholderImage: UIImage(named: "default－portrait.png"), options: SDWebImageOptions.allowInvalidSSLCertificates, completed:nil)
+            usernameLabel.text = commentModel?.user_info.zh_name
             timeLabel.text = commentModel?.add_time
             contentLabel.text = commentModel?.content
             starButton.setTitle("\(10)", for: UIControlState())

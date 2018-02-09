@@ -31,8 +31,8 @@ extension NewsDetailVC: JFNewsBottomBarDelegate, CLBottomCommentViewDelegate {
             
             let params = NSMutableDictionary()
             params.setValue(textView.commentTextView.text, forKey: "content")
-            params.setValue(objData.id, forKey: "invitation_id")
-            params.setValue(objData.group_id, forKey: "group_id")
+            params.setValue(objData.id, forKey: "group_invitation_id")
+            params.setValue(objData.group_pid, forKey: "group_pid")
             
             ApiUtil.share.addReply(params: params) {[weak self] (status, data, msg) in
                 

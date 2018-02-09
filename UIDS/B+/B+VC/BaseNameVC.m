@@ -74,6 +74,11 @@
 }
 
 
+- (void)setVCName:(NSString *)name{
+    
+    _vcName = name
+}
+
 
 // 获取LoadBlockView
 - (LoadBlockView *)blockView

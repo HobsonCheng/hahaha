@@ -14,10 +14,11 @@ class ExampleBasicContentView: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        textColor = UIColor.init(red: 113/255.0, green: 104/255.0, blue: 104/255.0, alpha: 1.0)
-        highlightTextColor = UIColor.init(hexString: "#4b95ee")
-        iconColor = UIColor.init(red: 113/255.0, green: 104/255.0, blue: 104/255.0, alpha: 0.5)
-        highlightIconColor = UIColor.init(hexString: "#4b95ee")
+//        textColor = UIColor.init(red: 113/255.0, green: 104/255.0, blue: 104/255.0, alpha: 1.0)
+//        highlightTextColor = UIColor.init(hexString: "#4b95ee")
+//       
+//        imageView.tintColor = UIColor.clear
+        
     }
     
     public required init?(coder aDecoder: NSCoder) {

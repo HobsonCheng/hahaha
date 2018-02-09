@@ -10,8 +10,7 @@ import UIKit
 
 typealias ReloadOver = () -> ()
 
-class ArticleList: BaseModuleView {
-
+class ArticleList: BaseModuleView {    
     var articleList: [TopicData]?
     var reloadOver: ReloadOver?
     //MARK: 创建页面
@@ -20,12 +19,11 @@ class ArticleList: BaseModuleView {
         self.reloadOver = callback
 
         let params = NSMutableDictionary()
-        params.setValue("1", forKey: "page")
-        params.setValue("10", forKey: "page_context")
-        params.setValue("51", forKey: "group_id")
+        params.setValue(self.pageData.page_key, forKey: "page")
+        params.setValue(self.model_code, forKey: "code")
         
-        ApiUtil.share.getInvitationList(params: params) { [weak self] (status, result, tipString) in
-            self?.articleList = AritcleModel.deserialize(from: result)?.data
+        ApiUtil.share.getArticleByModel(params: params) { [weak self] (status, result, tipString) in
+            self?.articleList = AritcleModel.deserialize(from: result)?.data ?? [TopicData]()
             self?.genderlist()
         }
 

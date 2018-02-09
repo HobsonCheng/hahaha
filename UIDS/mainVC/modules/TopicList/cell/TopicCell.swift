@@ -50,7 +50,8 @@ class TopicCell: UITableViewCell {
     func showData() {
         if self.cellObj != nil {
             
-            self.username.text = self.cellObj?.user_info.nick_name
+            self.icon.sd_setImage(with: URL.init(string: self.cellObj?.user_info.head_portrait ?? "https://;;"), for: UIControlState.normal, completed: nil)
+            self.username.text = self.cellObj?.user_info.zh_name
             self.addtime.text = self.cellObj?.add_time
             self.title.text = String.init(format: "来自：%@", (self.cellObj?.source)!)
             self.content.text = self.cellObj?.title
@@ -87,7 +88,7 @@ class TopicCell: UITableViewCell {
             let top = 5
             
             let speedView = UIImageView.init()
-            
+            speedView.contentMode = UIViewContentMode.scaleToFill
             speedView.sd_setImage(with: URL.init(string: item))
             speedView.frame = CGRect.init(x: startX, y: startY+top, width: W, height: H)
             speedView.backgroundColor = UIColor.clear

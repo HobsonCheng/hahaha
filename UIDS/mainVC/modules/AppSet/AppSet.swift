@@ -19,6 +19,8 @@ import RxDataSources
 private enum Reusable {
     
     static let settingCell = ReusableCell<SettingCell>()
+    static let mycell = ReusableCell<MyCell>(identifier: nil, nibName: "MyCell")
+    static let myIconCell = ReusableCell<myIconCell>(identifier: nil, nibName: "myIconCell")
 }
 
 // MARK:- 常量
@@ -26,11 +28,14 @@ fileprivate struct MetricAppSet {
     
     static let cellHeight: CGFloat = 49.0
     static let sectionHeight: CGFloat = 10.0
+    static let cellMyHeight: CGFloat = 70.0
 }
 
 
 class AppSet: NaviBarVC {
 
+    var isUserInfo: Bool = false
+    
     var pageData: PageInfo?
     
     // viewModel
@@ -48,7 +53,12 @@ class AppSet: NaviBarVC {
         
         self.setNaviDefulat()
         
-        self.naviBar().setTitle("设置中心")
+        if isUserInfo {
+            self.naviBar().setTitle("个人信息")
+        }else {
+            self.naviBar().setTitle("设置中心")
+        }
+        
         
         self.initEnableMudule()
         self.initUI()
@@ -97,6 +107,8 @@ extension AppSet {
         
         // 注册cell
         tableView.register(Reusable.settingCell)
+        tableView.register(Reusable.mycell)
+        tableView.register(Reusable.myIconCell)
     }
     
     // MARK:- 绑定视图
@@ -109,6 +121,22 @@ extension AppSet {
                 placeCell.backgroundColor = kThemeGainsboroColor
                 return placeCell
             }
+            if self.isUserInfo {
+                if indexPath.section == 0 && indexPath.row == 1 {
+                    let cell = tv.dequeue(Reusable.myIconCell, for:indexPath)
+                    
+                    return cell
+                }
+            }else {
+                if UserUtil.isValid() {//植入用户信息入口
+                    if indexPath.section == 0 {
+                        let cell = tv.dequeue(Reusable.mycell, for:indexPath)
+                        
+                        return cell
+                    }
+                }
+            }
+            
             let cell = tv.dequeue(Reusable.settingCell, for: indexPath)
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -117,7 +145,13 @@ extension AppSet {
             return cell
         })
         
-        vmOutput = viewModel.transform(input: SettingViewModel.SettingInput(type: .setting))
+        if isUserInfo {
+            vmOutput = viewModel.transform(input: SettingViewModel.SettingInput(type: .mine))
+            
+        }else {
+            vmOutput = viewModel.transform(input: SettingViewModel.SettingInput(type: .setting))
+            
+        }
         
         vmOutput?.sections.asDriver().drive(tableView.rx.items(dataSource: dataSource)).disposed(by: rx.disposeBag)
     }
@@ -132,15 +166,59 @@ extension AppSet: UITableViewDelegate {
         if indexPath.row == 0 {
             return MetricAppSet.sectionHeight
         }
+        if isUserInfo {
+            if indexPath.section == 0 && indexPath.row == 1 {
+                return MetricAppSet.cellMyHeight
+            }
+        }else {
+            if UserUtil.isValid() {//植入用户信息入口
+                if indexPath.section == 0 {
+                    return MetricAppSet.cellMyHeight
+                }
+            }
+        }
+        
         return MetricAppSet.cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     
-        
-        if indexPath.section == 5 {
-            self.outApp()
+        if isUserInfo {
+            
+            if indexPath.section == 0 && indexPath.row == 1 {
+                let changeicon = ChangeIconVC.init(name: "ChangeIconVC")
+                VCController.push(changeicon!, with: VCAnimationClassic.defaultAnimation())
+            }else if indexPath.row == 2 {
+                let alert = LSXAlertInputView.init(title: "设置名字", placeholderText: "请输入新的名字", withKeybordType: LSXKeyboardType.default) {(contents) in
+                    //更新用户信息
+                    let userinfo = UserUtil.share.appUserInfo
+                    let params = NSMutableDictionary()
+                    params.setValue(userinfo?.head_portrait, forKey: "head_portrait")
+                    params.setValue(contents, forKey: "zh_name")
+                    ApiUtil.share.updateInfo(params: params, fininsh: { (status, data, msg) in
+                        UserUtil.share.saveUser(userInfo: data)
+                        Util.msg(msg: "更改成功", 2)
+                    })
+                }
+                alert?.show()
+            }
+            
+        }else {
+            if UserUtil.isValid() {
+                if indexPath.section == 0 {
+                    let info = AppSet.init(name: "ChangeInfoVC")
+                    info?.isUserInfo = true
+                    VCController.push(info!, with: VCAnimationClassic.defaultAnimation())
+                }
+                if indexPath.section == 6 {
+                    self.outApp()
+                }
+            }else {
+                if indexPath.section == 5 {
+                    self.outApp()
+                }
+            }
         }
     }
 }
@@ -157,9 +235,7 @@ extension AppSet {
     func outApp() {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            let alertController = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-            let takePhotoAction = UIAlertAction(title: "退出当前账号？", style: .destructive, handler: nil)
-            alertController.addAction(takePhotoAction)
+            let alertController = UIAlertController.init(title: nil, message: "退出当前账号？", preferredStyle: .actionSheet)
             let selectFromAlbumAction = UIAlertAction(title: "确定", style: .default, handler: { [weak self] (touch) in
                  UserUtil.share.removerUser()
                 self?.vmOutput = self?.viewModel.transform(input: SettingViewModel.SettingInput(type: .setting))

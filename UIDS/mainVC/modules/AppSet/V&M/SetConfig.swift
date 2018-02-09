@@ -18,54 +18,40 @@ extension SetConfig {
     // MARK:- 我的
     class func loadMineModels() -> [[SettingCellModel]] {
         
-        let model1_1 = SettingCellModel(leftIcon: "comment_profile_mars.png",
-                                          title: "编辑我",
+        let userinfo = UserUtil.share.appUserInfo
+        
+        let model1_1 = SettingCellModel(leftIcon: nil,
+                                          title: "头像",
                                           description: nil,
                                           dotIcon: nil,
                                           rightIcon: "meRecord",
-                                          isHiddenBottomLine: true,
+                                          isHiddenBottomLine: false,
                                           cellType: .rightRecordButton)
         
-        
-        let model3_1 = SettingCellModel(leftIcon: "scan_scan.png",
-                                          title: "扫一扫",
-                                          description: nil,
-                                          dotIcon: nil,
-                                          rightIcon: "cell_arrow.pnf")
-        
-        let model4_1 = SettingCellModel(leftIcon: "me_setting_feedback.png",
-                                          title: "帮助与反馈",
-                                          description: nil,
-                                          dotIcon: nil,
-                                          rightIcon: "cell_arrow.png")
-        let model4_2 = SettingCellModel(leftIcon: "me_setting_setting.png",
-                                          title: "设置",
-                                          description: nil,
-                                          dotIcon: "noread_icon.png",
-                                          rightIcon: "cell_arrow.png",
-                                          isHiddenBottomLine: true)
-        
+        let model1_2 = SettingCellModel(leftIcon: nil,
+                                        title: "名字",
+                                        description: userinfo?.zh_name,
+                                        dotIcon: nil,
+                                        rightIcon: "cell_arrow.png",
+                                        isHiddenBottomLine: true,
+                                        cellType: .rightTextLab)
         
         var models = [[SettingCellModel]]()
         
         // 充当 SectionHeader 数据模型
         let placeModel = SettingCellModel()
         
-        models.append([placeModel, model1_1])
-        models.append([placeModel])
-        models.append([placeModel, model3_1])
-        models.append([placeModel, model4_1, model4_2])
+        models.append([placeModel, model1_1,model1_2])
         
-        
-        
+
         return models
     }
     
     // MARK:- 设置
     class func loadSettingModels() -> [[SettingCellModel]] {
         
-        let model1_1 = SettingCellModel(leftIcon: nil,
-                                          title: "账号与安全",
+        let model1_1 = SettingCellModel(leftIcon: "scan_scan.png",
+                                          title: "扫一扫",
                                           description: nil,
                                           dotIcon: nil,
                                           rightIcon: "cell_arrow.png",
@@ -82,9 +68,9 @@ extension SetConfig {
                                           description: nil,
                                           dotIcon: nil,
                                           rightIcon: "cell_arrow.png",
-                                          isHiddenBottomLine: true)
-        let model2_3 = SettingCellModel(leftIcon: nil,
-                                        title: "通用",
+                                          isHiddenBottomLine: false)
+        let model2_3 = SettingCellModel(leftIcon: "me_setting_feedback.png",
+                                        title: "帮助与反馈",
                                         description: nil,
                                         dotIcon: nil,
                                         rightIcon: "cell_arrow.png",
@@ -133,6 +119,20 @@ extension SetConfig {
         
         // 充当 SectionHeader 数据模型
         let placeModel = SettingCellModel()
+        
+        
+        if UserUtil.isValid() {//植入用户信息入口
+            
+            let model0_1 = SettingCellModel(leftIcon: nil,
+                                            title: "我的",
+                                            description: nil,
+                                            dotIcon: nil,
+                                            rightIcon: "cell_arrow.png",
+                                            isHiddenBottomLine: true)
+            models.append([placeModel, model0_1])
+            
+        }
+        
         
         models.append([placeModel, model1_1])
         models.append([placeModel, model2_1, model2_2,model2_3])

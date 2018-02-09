@@ -102,6 +102,7 @@ extension GroupTopicSendVC {
         params.setValue(self.titleTextF?.text, forKey: "summarize")
         params.setValue(self.contentTxt?.text, forKey: "content")
         params.setValue(self.attechment_value, forKey: "attachment_value")
+        params.setValue(groupData.pid, forKey: "group_pid")
         
         self.startLoadBlock(nil, withHint: "发布中...")
         ApiUtil.share.addInvitation(params: params) { [weak self] (status, data, msg) in

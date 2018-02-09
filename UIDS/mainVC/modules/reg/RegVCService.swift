@@ -36,10 +36,18 @@ class RegVCService {
         
         loginBtnEnable = accountAndPassword.flatMap({ (user,pwd,pwd2,nick,code,smscode) in
         
-            //处理逻辑
-            if user.isEmpty || pwd.isEmpty || pwd2.isEmpty || nick.isEmpty || code.isEmpty {
-                return Observable.just(false).asDriver(onErrorJustReturn: false)
+            if AllRestrictionHandler.share.ucSetCofig.project_set?.regist_auth_code_type == 1 {
+                //处理逻辑
+                if user.isEmpty || pwd.isEmpty || pwd2.isEmpty || nick.isEmpty || code.isEmpty {
+                    return Observable.just(false).asDriver(onErrorJustReturn: false)
+                }
+            }else{
+                //处理逻辑
+                if user.isEmpty || pwd.isEmpty || pwd2.isEmpty || nick.isEmpty{
+                    return Observable.just(false).asDriver(onErrorJustReturn: false)
+                }
             }
+
             if pwd != pwd2 {
                 return Observable.just(false).asDriver(onErrorJustReturn: false)
             }
@@ -53,7 +61,7 @@ class RegVCService {
             params.setValue(user, forKey: "username")
             params.setValue(pwd, forKey: "password")
             params.setValue(nick, forKey: "zh_name")
-            if smscode != nil && smscode.count > 0 {
+            if !(smscode.isEmpty) && smscode.count > 0 {
                 params.setValue(smscode, forKey: "auth_code")
             }else {
                 params.setValue(code, forKey: "auth_code")

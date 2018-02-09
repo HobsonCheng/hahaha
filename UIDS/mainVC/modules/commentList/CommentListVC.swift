@@ -93,10 +93,10 @@ class CommentListVC: NaviBarVC {
         let params = NSMutableDictionary()
         params.setValue(pageIndex, forKey: "page")
         params.setValue("100", forKey: "page_context")
-        params.setValue(objData.id, forKey: "invitation_id")
-        params.setValue(objData.group_id, forKey: "group_id")
+        params.setValue(objData.id, forKey: "group_invitation_id")
+        params.setValue(objData.group_pid, forKey: "group_pid")
         
-        ApiUtil.share.getReplyList(params: params) {[weak self] (status, data, msg) in
+        ApiUtil.share.getRepliesByInvitation(params: params) {[weak self] (status, data, msg) in
             let list = ReplyListModel.deserialize(from: data)?.data
             
             self?.tableView.es.stopLoadingMore()

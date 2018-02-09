@@ -19,7 +19,6 @@
 
 
 @property (nonatomic, assign) BOOL canRightPan;		// 是否可以右滑
-
 @property (nonatomic, assign) NSInteger tagInt;     //页面唯一标示
 
 // 初始化函数
@@ -34,7 +33,7 @@
  */
 - (NSString *)getVCName;
 
-
+- (void)setVCName:(NSString *)name;
 
 /**
  *  获取BaseNameVC的LoadblockView

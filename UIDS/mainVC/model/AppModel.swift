@@ -43,6 +43,10 @@ class AppInfoData: NSObject {
 
 
 
+class AppVersion: BaseModel {
+    var data: Int!
+}
+
 class AppModel: BaseModel {
     var data: AppData?
 }

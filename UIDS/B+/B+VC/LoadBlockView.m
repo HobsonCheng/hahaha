@@ -173,8 +173,8 @@
         
         // 设置动画图片
         NSMutableArray *arrayImages = [[NSMutableArray alloc] init];
-        for (int i=0; i<=15; i++) {
-            NSString *name = [NSString stringWithFormat:@"test_%zd.png",i];
+        for (int i=0; i<=7; i++) {
+            NSString *name = [NSString stringWithFormat:@"icon_shake_animation_%zd.png",(i+1)];
             [arrayImages addObject:[UIImage imageNamed:name]];
         }
         [_imageViewLoad setAnimationImages:arrayImages];

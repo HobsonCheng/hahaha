@@ -57,7 +57,7 @@ enum NaviBarTitleViewTags {
 {
     if((self = [super initWithFrame:frameInit]) != nil)
     {
-        self.tag = 1000000000000;
+        self.tag = 999;
         // 初始化View(nil)
         _viewLeft = nil;
         _viewRight = nil;

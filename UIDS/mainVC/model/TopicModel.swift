@@ -71,7 +71,7 @@ class TopicData: BaseData {
     var vote : String!
     var x_coord : Float!
     var y_coord : Float!
-    
+    var group_pid : Int!
 }
 
 

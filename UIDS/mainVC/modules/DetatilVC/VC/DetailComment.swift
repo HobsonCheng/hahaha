@@ -21,10 +21,13 @@ extension NewsDetailVC: JFCommentCellDelegate {
         let params = NSMutableDictionary()
         params.setValue("1", forKey: "page")
         params.setValue("100", forKey: "page_context")
-        params.setValue(objData.id, forKey: "invitation_id")
-        params.setValue(objData.group_id, forKey: "group_id")
+        params.setValue(objData.id, forKey: "group_invitation_id")
+        params.setValue(objData.group_pid, forKey: "group_pid")
+//        params.setValue(objData.group_pid, forKey: "parent_pid")
+//        params.setValue(objData.group_pid, forKey: "parent_id")
         
-        ApiUtil.share.getReplyList(params: params) {[weak self] (status, data, msg) in
+        
+        ApiUtil.share.getRepliesByInvitation(params: params) {[weak self] (status, data, msg) in
             let list = ReplyListModel.deserialize(from: data)?.data
             self?.commentList = list!
             self?.tableView.reloadData()

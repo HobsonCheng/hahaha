@@ -172,12 +172,12 @@ final class Util: NSObject{
                 navToP.view.dodo.topAnchor = navToP.naviBar().bottomAnchor
             }else {
                 //寻找 navi
-                let navBarView = VCController.getTopVC()?.view.viewWithTag(1000000000000)
+                let navBarView = VCController.getTopVC()?.view.viewWithTag(999)
                 view?.view.dodo.topAnchor = navBarView?.bottomAnchor
             }
         }else {
             //寻找 navi
-            let navBarView = VCController.getTopVC()?.view.viewWithTag(1000000000000)
+            let navBarView = VCController.getTopVC()?.view.viewWithTag(999)
             view?.view.dodo.topAnchor = navBarView?.bottomAnchor
         }
         

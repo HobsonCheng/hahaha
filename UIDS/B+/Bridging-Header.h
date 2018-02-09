@@ -72,5 +72,7 @@
 
 #define  KEY_ISNEED_GOTOAPP    @"KEY_ISNEED_GOTOAPP"
 
+#define  KEY_APP_VERSION   @"KEY_APP_VERSION"
+
 
 #endif /* Bridging_Header_h */

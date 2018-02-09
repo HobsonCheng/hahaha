@@ -42,7 +42,7 @@ class OtherWebVC: NaviBarVC {
             () -> UIProgressView in
             var rect:CGRect = CGRect.init(x: 0, y: self.naviBar().bottom, width: kScreenW, height: 2.0)
             let tempProgressView = UIProgressView.init(frame: rect)
-            tempProgressView.tintColor = Util.getNavBgColor()
+            tempProgressView.tintColor = UIColor.red
             tempProgressView.backgroundColor = UIColor.gray
             return tempProgressView
     }()

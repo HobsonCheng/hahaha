@@ -131,11 +131,11 @@ class NewsDetailVC: NaviBarVC {
             
             guard let dict = data as! [String : AnyObject]! else {return}
             
-            let index = Int(dict["index"] as! NSNumber)
-            let x = CGFloat(dict["x"] as! NSNumber)
-            let y = CGFloat(dict["y"] as! NSNumber) - self.tableView.contentOffset.y
-            let width = CGFloat(dict["width"] as! NSNumber)
-            let height = CGFloat(dict["height"] as! NSNumber)
+            let index = Int(truncating: dict["index"] as! NSNumber)
+            let x = CGFloat(truncating: dict["x"] as! NSNumber)
+            let y = CGFloat(truncating: dict["y"] as! NSNumber) - self.tableView.contentOffset.y
+            let width = CGFloat(truncating: dict["width"] as! NSNumber)
+            let height = CGFloat(truncating: dict["height"] as! NSNumber)
             let url = dict["url"] as! String
             
             let bgView = UIView(frame: CGRect.init(x: 0, y: 0, width: kScreenW, height: kScreenH))
@@ -218,9 +218,8 @@ class NewsDetailVC: NaviBarVC {
         let objData = self.pageData?.anyObj as! TopicData
         
         let params = NSMutableDictionary()
-        params.setValue(objData.group_id, forKey: "group_id")
-        params.setValue(objData.id, forKey: "invitation_id")
-        params.setValue(objData.last_version, forKey: "invitation_version_id")
+        params.setValue(objData.id, forKey: "group_invitation_id")
+        params.setValue(objData.group_pid, forKey: "group_pid")
         
         self.startLoadEmpty(nil)
         
@@ -233,7 +232,7 @@ class NewsDetailVC: NaviBarVC {
                 self?.model = model
                 self?.tableView.reloadData()
                 
-            }else if B_ResponseStatus.failure == status {
+            }else if B_ResponseStatus.success != status {
                 self?.stopLoadEmpty()
             }
             

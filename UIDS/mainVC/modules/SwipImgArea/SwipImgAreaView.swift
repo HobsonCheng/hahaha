@@ -27,6 +27,8 @@ public typealias LLdidSelectItemAtIndexClosure = (NSInteger) -> Void
 
 class SwipImgAreaView: BaseModuleView, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate  {
 
+    var sliderlist: [Pic]?
+    
     // MARK: 控制参数
     // 是否自动滚动，默认true
     open var autoScroll: Bool? = true {
@@ -302,7 +304,6 @@ class SwipImgAreaView: BaseModuleView, UICollectionViewDelegate, UICollectionVie
         // setupMainView
         setupMainView()
     }
-    
     // MARK: 初始化
     open class func llCycleScrollViewWithFrame(_ frame: CGRect, imageURLPaths: Array<String>? = [], titles:Array<String>? = [], didSelectItemAtIndex: LLdidSelectItemAtIndexClosure? = nil) -> SwipImgAreaView {
         let llcycleScrollView: SwipImgAreaView = SwipImgAreaView.init(frame: frame)

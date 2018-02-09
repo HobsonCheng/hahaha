@@ -54,6 +54,7 @@ class TopicList: BaseModuleView {
         params.setValue("20", forKey: "page_context")
         params.setValue(self.groupItem?.name, forKey: "name")
         params.setValue(self.groupItem?.id, forKey: "group_id")
+        params.setValue(self.groupItem?.pid, forKey: "group_pid")
         ApiUtil.share.getInvitationList(params: params) { [weak self] (status, data, msg) in
             let tmpList: [TopicData]! = TopicModel.deserialize(from: data)?.data
 

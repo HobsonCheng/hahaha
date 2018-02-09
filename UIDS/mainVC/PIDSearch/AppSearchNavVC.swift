@@ -20,10 +20,10 @@ import ESPullToRefresh
 import DZNEmptyDataSet
 import Font_Awesome_Swift
 
-private enum HistoryKey {
+enum HistoryKey {
     
     static let HistoryKey_Phone = "HistoryKey_Phone"
-    
+    static let HistoryKey_Phone_item = "HistoryKey_Phone_item"
 }
 
 // MARK:- 复用
@@ -82,7 +82,7 @@ class AppSearchNavVC: NaviBarVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setVCName("AppSearchNavVC_home")
         self.naviBar().setLeftBarItem(nil)
         self.naviBar().setTitle("欢迎登录您单位的app")
         self.naviBar().setNaviBarBackgroundColor(UIColor.init(hex: 0x4b95ef, alpha: 1))

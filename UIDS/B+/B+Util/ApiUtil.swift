@@ -87,6 +87,9 @@ class ApiUtil: NSObject {
             
             if B_ResponseStatus.success == status {
                 fininsh?(status,data,msg)
+                
+                ApiUtil.share.getInfo(params: NSMutableDictionary(), fininsh: nil)
+                
             }else {
                 Util.msg(msg: msg!, 3)
             }
@@ -103,6 +106,9 @@ class ApiUtil: NSObject {
             
             if B_ResponseStatus.success == status {
                 fininsh?(status,data,msg)
+                
+                ApiUtil.share.getInfo(params: NSMutableDictionary(), fininsh: nil)
+
             }else {
                 Util.msg(msg: msg!, 3)
             }
@@ -254,8 +260,8 @@ class ApiUtil: NSObject {
         }
     }
     //MARK: - 获取评论列表
-    func getReplyList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-        params.setValue("getReplyList", forKey: "ac")
+    func getRepliesByInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getRepliesByInvitation", forKey: "ac")
         params.setValue("cms", forKey: "sn")
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
@@ -403,6 +409,74 @@ class ApiUtil: NSObject {
                 fininsh?(status,data,msg)
             }else {
                 
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 更新用户信息
+    func updateInfo(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+     
+        params.setValue("updateInfo", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 幻灯片数据源
+    func getSlideByModel(params: NSMutableDictionary,fininsh: ApiUtilFinished?){
+        params.setValue("SwipImgArea", forKey: "model")
+        params.setValue("getSlideByModel", forKey: "ac")
+        params.setValue("project", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 新闻列表挂在
+    func getArticleByModel(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("ArticleList", forKey: "model")
+        params.setValue("getArticleByModel", forKey: "ac")
+        params.setValue("project", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 获取app 版本
+    func getProjectVersion(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("getProjectVersion", forKey: "ac")
+        params.setValue("project", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                fininsh?(status,data,msg)
                 Util.msg(msg: msg!, 3)
             }
         }

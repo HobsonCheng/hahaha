@@ -31,7 +31,7 @@ class AssembleVC: BaseNameVC {
             ,"单位APP整合资源，将所有的办公应用汇总，触手可及。"
             ,"单位APP可以完全独立部署在单位自己的服务器，数据更安全。"]
         
-        self.appIcon.sd_setImage(with: URL(string: (pObj?.icon)!), completed: nil)
+        self.appIcon.sd_setImage(with: URL(string: (pObj?.icon ?? "1")!), completed: nil)
         self.appIcon.layer.cornerRadius = 6
         self.appIcon.layer.masksToBounds = true
         
@@ -128,6 +128,15 @@ extension AssembleVC {
         }
     }
     func getPageList() {
+        
+        
+        ApiUtil.share.getProjectVersion(params: NSMutableDictionary()) { (status, data, msg) in
+            
+            let appversion_new: Int! = AppVersion.deserialize(from: data)?.data
+            
+            Util.save_defult(key: KEY_APP_VERSION, value: "\((appversion_new)!)")
+            
+        }
         
         
         self.progressTip(num: 0.3, tip: "第二步完成")
@@ -279,7 +288,7 @@ extension AssembleVC {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     
                     let mainvc = MainVC()
-                    VCController.popThenPush(mainvc!, with: VCAnimationClassic.defaultAnimation())
+                    VCController.pop(toHomeVCThenPush: mainvc!, with: VCAnimationClassic.defaultAnimation())
                 }
                 
             }

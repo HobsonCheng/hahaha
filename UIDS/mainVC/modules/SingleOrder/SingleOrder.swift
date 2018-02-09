@@ -20,10 +20,7 @@ fileprivate struct MetricSg {
 
 class SingleOrder: BaseModuleView {
 
-    
-    var pageData: PageInfo?
-    
-    
+
     var pageVC = TYTabPagerController().then {
         
         $0.pagerController.scrollView?.backgroundColor = kThemeGainsboroColor

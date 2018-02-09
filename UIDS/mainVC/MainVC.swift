@@ -24,6 +24,9 @@ class MainVC: BaseNameVC {
         if (OpenVC.share.pageList != nil) {
             
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.updataApp()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,3 +125,52 @@ class MainVC: BaseNameVC {
     }
 
 }
+//MARK: - 检测 更新
+extension MainVC {
+
+    fileprivate func updataApp(){
+    
+        ApiUtil.share.getProjectVersion(params: NSMutableDictionary()) { (status, data, msg) in
+            
+            let appversion_new: Int! = AppVersion.deserialize(from: data)?.data
+            
+            var appversion: Int! = 0
+            
+            if Util.get_defult(key: KEY_APP_VERSION) != nil {
+                appversion = Int(Util.get_defult(key: KEY_APP_VERSION) as! String)
+            }
+            
+            
+            if appversion_new > appversion {//版本号老了
+                
+                ZZDiskCacheHelper.getObj(HistoryKey.HistoryKey_Phone) {(obj) in
+                    
+                    if obj != nil {
+                        let tmpobj: String = obj as! String
+                        
+                        let getObj = ProjectList.deserialize(from: tmpobj) ?? ProjectList(data: [Project]())
+                        
+                        //处理路基 发现新版本
+                        if getObj.data.first != nil {
+                            
+                            Util.msg(msg: "数据更新了", 1)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                let loading = AssembleVC.init(nibName: "AssembleVC", bundle: nil)
+                                loading.pObj = getObj.data.first
+                                VCController.push(loading, with: VCAnimationClassic.defaultAnimation())
+                            }
+                            
+                        }
+                    }
+                }
+                
+            }
+        
+        }
+        
+    }
+    
+    
+}
+
+

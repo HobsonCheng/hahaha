@@ -41,10 +41,10 @@ extension RootVC {//扩展
                 self.genderSlifer(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "SwipImgArea" :
-                self.genderSwipImg(list: NSArray(), startY: &self.startY!)
+                self.genderSwipImg(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
                 break
             case "ArticleList" :
-                self.genderArticleList(model_id: tmpList[0], startY: &self.startY!)
+                self.genderArticleList(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
                 break
             case "PersonalCenter" :
                 self.genderPersonalCenter(model_id: tmpList[0], startY: &self.startY!)
@@ -82,29 +82,23 @@ extension RootVC {//扩展
         
     }
 
-    func genderSwipImg(list: NSArray,startY: UnsafeMutablePointer<CGFloat>){
+    func genderSwipImg(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>){
     
-        
         // 网络图，本地图混合
-        let imagesURLStrings = [
-            "http://www.g-photography.net/file_picture/3/3587/4.jpg",
-            "http://img2.zjolcdn.com/pic/0/13/66/56/13665652_914292.jpg",
-            "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
-            "http://img3.redocn.com/tupian/20150806/weimeisheyingtupian_4779232.jpg",
-            ];
+        let imagesURLStrings = [String]();
         // 图片配文字
-        let titles = ["bai1",
-                      "bai2",
-                      "bai3"
-        ];
-        
+        let titles = [String]();
         
         // Demo--点击回调
-        let bannerDemo = SwipImgAreaView.llCycleScrollViewWithFrame(CGRect.init(x: 0, y:startY.pointee, width: self.view.width, height: 200), imageURLPaths: imagesURLStrings, titles:titles, didSelectItemAtIndex: { index in
-            print("当前点击图片的位置为:\(index)")
-        })
+        let bannerDemo = SwipImgAreaView.llCycleScrollViewWithFrame(CGRect.init(x: 0, y:startY.pointee, width: self.view.width, height: 200), imageURLPaths: imagesURLStrings, titles:titles, didSelectItemAtIndex: nil)
         
         bannerDemo.lldidSelectItemAtIndex = { index in
+            let item = bannerDemo.sliderlist![index]
+            
+            let otherweb = OtherWebVC.init(name: "webview")
+            otherweb?.urlString = item.open_url ?? "http://m.baidu.com"
+            VCController.push(otherweb!, with: VCAnimationClassic.defaultAnimation())
+
             
         }
         bannerDemo.customPageControlStyle = .fill
@@ -120,6 +114,28 @@ extension RootVC {//扩展
         self.mainView!.addSubview(bannerDemo)
         
         startY.pointee = bannerDemo.bottom + 10
+        
+        
+        let params = NSMutableDictionary()
+        params.setValue(code, forKey: "code")
+        params.setValue(self.pageData?.page_key, forKey: "page")
+        
+        ApiUtil.share.getSlideByModel(params: params) { (status, data, msg) in
+            
+            let list = SliderModel.deserialize(from: data)?.data.pics ?? [Pic]()
+            
+            for item in list {
+                bannerDemo.imagePaths.append(item.pic)
+                bannerDemo.titles.append(item.descriptionField ?? "")
+            }
+    
+            if bannerDemo.reloadViewData() {
+                
+            }
+            
+            bannerDemo.sliderlist = list
+            
+        }
     }
     
     func genderOneImg(model_id: String,startY: UnsafeMutablePointer<CGFloat>){
@@ -167,10 +183,12 @@ extension RootVC {//扩展
         
         startY.pointee = sliderView.bottom + 10
     }
-    func genderArticleList(model_id: String,startY: UnsafeMutablePointer<CGFloat>){
+    func genderArticleList(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>){
         
         let aritclalist = ArticleList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
         
+        aritclalist.pageData = self.pageData
+        aritclalist.model_code = code
         aritclalist.genderView { [weak self] in
             self?.reloadMainScroll()
         }
