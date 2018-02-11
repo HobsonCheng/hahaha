@@ -28,7 +28,6 @@ target 'UIDS' do
   pod 'PKRevealController'
   pod 'RETableViewManager'
   pod 'Font-Awesome-Swift'
-  pod 'ESTabBarController-swift'
   pod 'ESPullToRefresh'
   pod 'IQKeyboardManagerSwift'#键盘
   pod 'SnapKit'

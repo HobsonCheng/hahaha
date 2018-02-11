@@ -481,5 +481,22 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - 获取数据绑定 启动器数据
+    func getInitiatorByModel(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("getInitiatorByModel", forKey: "ac")
+        params.setValue("project", forKey: "sn")
+        params.setValue("Slider", forKey: "model")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }
 

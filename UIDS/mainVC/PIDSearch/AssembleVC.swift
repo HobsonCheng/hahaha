@@ -275,8 +275,7 @@ extension AssembleVC {
             
         }
         
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4 ) { [weak self] in
     
             self?.progressTip(num: 0.8, tip: "第四步完成")
             

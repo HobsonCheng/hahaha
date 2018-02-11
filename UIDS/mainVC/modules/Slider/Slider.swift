@@ -50,8 +50,28 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
     var bgScroll: UIScrollView?
     var pageControl: UIPageControl?
     var allList: NSArray?
+    
+    //获取数据信息
+    fileprivate func getInitiatorByModel(){
+        
+        let params = NSMutableDictionary()
+        params.setValue(self.pageData.page_key, forKey: "page")
+        params.setValue(self.model_code, forKey: "code")
+        
+        ApiUtil.share.getInitiatorByModel(params: params) { (status, data, msg) in
+            
+            
+            
+            
+        }
+        
+    }
+    
+    
     //MARK: 初始化页面信息
     public func genderInit(contentData: SliderContentMode,row: NSInteger,rank: NSInteger){
+        
+        self.getInitiatorByModel()
         
         self.backgroundColor = UIColor.white
         

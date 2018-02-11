@@ -38,7 +38,7 @@ extension RootVC {//扩展
                 self.genderOneImg(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "Slider" :
-                self.genderSlifer(model_id: tmpList[0], startY: &self.startY!)
+                self.genderSlifer(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
                 break
             case "SwipImgArea" :
                 self.genderSwipImg(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
@@ -60,6 +60,9 @@ extension RootVC {//扩展
                 break
             case "SingleOrder":
                 self.genderSingleOrder(model_id: tmpList[0], startY: &self.startY!)
+                break
+            case "NavibarModule":
+                self.genderNavibarModule(model_id: tmpList[0], startY: &self.startY!)
                 break
             default: break
                 
@@ -159,7 +162,7 @@ extension RootVC {//扩展
         startY.pointee = oneImg.bottom + 10
     }
     
-    func genderSlifer(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+    func genderSlifer(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         let objContent = self.findConfigData(name: "Slider_content",model_id: model_id)
         
@@ -170,7 +173,8 @@ extension RootVC {//扩展
         let sliderLayout: SliderLayoutMode? = SliderLayoutMode.deserialize(from: objLayout)
         
         let sliderView = Slider.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 100))
-        
+        sliderView.pageData = self.pageData
+        sliderView.model_code = code
         if sliderLayout?.shapeObj != nil {
             sliderView.genderInit(contentData: sliderContent!, row: Int((sliderLayout?.shapeObj?.row)!)!, rank: Int((sliderLayout?.shapeObj?.line)!)!)
         }else {
@@ -293,6 +297,12 @@ extension RootVC {//扩展
         
     }
     
+    //需要解析css 暂时搁置
+    func genderNavibarModule(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+        
+        
+        
+    }
     
     private func reloadMainScroll(){
         

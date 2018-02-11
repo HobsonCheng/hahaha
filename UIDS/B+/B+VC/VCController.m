@@ -456,6 +456,13 @@ static VCController *globalVCController = nil;
 // 压入节点
 + (void)pushVC:(BaseNameVC *)baseNameVC WithAnimation:(id <VCAnimation>)animation
 {
+    
+    
+    NSString *getname = [baseNameVC getVCName];
+    NSString *gettopname = [[VCController getTopVC] getVCName];
+    if ([getname isEqualToString:gettopname]) {
+        return;
+    }
     // 加载View
     if ([baseNameVC isViewLoaded] == NO)
     {
