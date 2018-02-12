@@ -47,7 +47,7 @@ class GroupCell: UITableViewCell {
             self.icon.layer.borderWidth = 0.5
             self.groupName.text = self.cellObj?.name
             self.creatTime.text = String.init(format: "创建时间：%@", (self.cellObj?.add_time)!)
-            self.topicNum.text = String.init(format: "帖子%zd", (self.cellObj?.invitation_num)!)
+            self.topicNum.text = String.init(format: "帖子%zd", (self.cellObj?.invitation_num ?? 0)!)
             
         }
     }

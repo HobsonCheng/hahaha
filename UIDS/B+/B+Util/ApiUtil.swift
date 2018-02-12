@@ -182,9 +182,10 @@ class ApiUtil: NSObject {
         }
     }
     //MARK: - 话题列表
-    func getGroupList(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
-        params.setValue("getGroupList", forKey: "ac")
-        params.setValue("cms", forKey: "sn")
+    func getGroupByModel(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("getGroupByModel", forKey: "ac")
+        params.setValue("project", forKey: "sn")
+        params.setValue("GroupListTopic", forKey: "model")
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             

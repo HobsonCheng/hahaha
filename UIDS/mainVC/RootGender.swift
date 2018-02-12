@@ -53,7 +53,7 @@ extension RootVC {//扩展
                 self.genderMakeToCustomer(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "GroupListTopic" :
-                self.genderGroupListTopic(model_id: tmpList[0], startY: &self.startY!)
+                self.genderGroupListTopic(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
                 break
             case "TopicList" :
                 self.genderTopicList(model_id: tmpList[0], startY: &self.startY!)
@@ -233,12 +233,14 @@ extension RootVC {//扩展
         startY.pointee = maketoCustomer.bottom + 10
     }
     
-    func genderGroupListTopic(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+    func genderGroupListTopic(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         //遇到话题列表的组件  自动添加右上角 按钮
         self.gender_extension_Right_navbar(type: NAV_BAR_TYPE.NAV_BAR_TYPE_ADD_GROUP)
         
         let groupListTopic = GroupListTopic.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        groupListTopic.pageData = self.pageData
+        groupListTopic.model_code = code
         self.refreshCallback = groupListTopic.refreshCB
         groupListTopic.refreshES = self.esCallBack
         

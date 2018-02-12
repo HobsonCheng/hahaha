@@ -48,8 +48,10 @@ class GroupListTopic: BaseModuleView {
         let params = NSMutableDictionary()
         params.setValue(self.page, forKey: "page")
         params.setValue("20", forKey: "page_context")
+        params.setValue(self.model_code, forKey: "code")
+        params.setValue(self.pageData.page_key, forKey: "page")
         
-        ApiUtil.share.getGroupList(params: params) { [weak self] (status, data, msg) in
+        ApiUtil.share.getGroupByModel(params: params) { [weak self] (status, data, msg) in
             
             let tmpList: [GroupData]! = GroupModel.deserialize(from: data)?.data
             if tmpList != nil {
