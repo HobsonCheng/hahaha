@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E105FE482043AC5A001D78AD /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE472043AC5A001D78AD /* ShopList.swift */; };
+		E105FE4C2043AE67001D78AD /* ShopItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE4A2043AE67001D78AD /* ShopItemCell.swift */; };
+		E105FE4D2043AE67001D78AD /* ShopItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E105FE4B2043AE67001D78AD /* ShopItemCell.xib */; };
 		E11B627F20175A5900CE5E1D /* favorite_done@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E11B627720175A5800CE5E1D /* favorite_done@3x.png */; };
 		E11B628020175A5900CE5E1D /* editButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E11B627820175A5800CE5E1D /* editButton@2x.png */; };
 		E11B628120175A5900CE5E1D /* favorite_undo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E11B627920175A5800CE5E1D /* favorite_undo@3x.png */; };
@@ -284,6 +287,9 @@
 		40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIDS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.release.xcconfig"; sourceTree = "<group>"; };
+		E105FE472043AC5A001D78AD /* ShopList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
+		E105FE4A2043AE67001D78AD /* ShopItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemCell.swift; sourceTree = "<group>"; };
+		E105FE4B2043AE67001D78AD /* ShopItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopItemCell.xib; sourceTree = "<group>"; };
 		E11B627720175A5800CE5E1D /* favorite_done@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite_done@3x.png"; sourceTree = "<group>"; };
 		E11B627820175A5800CE5E1D /* editButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editButton@2x.png"; sourceTree = "<group>"; };
 		E11B627920175A5800CE5E1D /* favorite_undo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite_undo@3x.png"; sourceTree = "<group>"; };
@@ -625,6 +631,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E105FE462043AC2A001D78AD /* ShopList */ = {
+			isa = PBXGroup;
+			children = (
+				E105FE492043AD20001D78AD /* cell */,
+				E105FE472043AC5A001D78AD /* ShopList.swift */,
+			);
+			path = ShopList;
+			sourceTree = "<group>";
+		};
+		E105FE492043AD20001D78AD /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				E105FE4A2043AE67001D78AD /* ShopItemCell.swift */,
+				E105FE4B2043AE67001D78AD /* ShopItemCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		E11B62872018203700CE5E1D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -850,6 +874,7 @@
 				E1BD55D8201B352C009482EC /* BaseTableView.swift */,
 				E1C3E5622015D89600B13306 /* BaseModuleView.swift */,
 				E16AB09D202D531C00FF075C /* ChangeIconVC.swift */,
+				E105FE462043AC2A001D78AD /* ShopList */,
 				E1646C6E202FDE3700DE8883 /* NavibarModule */,
 				E1C03215200C366700B1A377 /* PersonalCenter */,
 				E16AB08D202D3E8400FF075C /* commentList */,
@@ -1571,6 +1596,7 @@
 				E12BC14220173E2500099ED4 /* icon_star@2x.png in Resources */,
 				E11B62B5201826D200CE5E1D /* newscontent_drag_arrow@2x.png in Resources */,
 				E1393763201996E100F32909 /* me_setting_setting@2x.png in Resources */,
+				E105FE4D2043AE67001D78AD /* ShopItemCell.xib in Resources */,
 				E1D0B6B7201B02DD00332C79 /* loading_imgBlue_78x78@3x.png in Resources */,
 				E153BBE72029813500C7F786 /* Icon256.png in Resources */,
 				E1D2CF3F201AD8EF00008B6D /* guiImage6.png in Resources */,
@@ -1755,6 +1781,7 @@
 				E1C3E55B2015718B00B13306 /* RootNarBar.swift in Sources */,
 				E1C03230200CA05C00B1A377 /* ConfigModel.swift in Sources */,
 				E1884C79202FFCFD00512321 /* MainTabBarItem.swift in Sources */,
+				E105FE482043AC5A001D78AD /* ShopList.swift in Sources */,
 				E594E0592003ABA200BDF511 /* ScrollColorHeader.m in Sources */,
 				E1E31B8D200F463A00776701 /* RegVC.swift in Sources */,
 				E5E59ACA2014CE4E0040D30D /* LSXAlertInputView.m in Sources */,
@@ -1841,6 +1868,7 @@
 				E1C3E5612015C88F00B13306 /* TopicModel.swift in Sources */,
 				E1C7AA682016D54E00E67D33 /* TokenModel.swift in Sources */,
 				E1EDAB7620033D26004DD7B9 /* LoadEmptyView.m in Sources */,
+				E105FE4C2043AE67001D78AD /* ShopItemCell.swift in Sources */,
 				E594E0752003ABB800BDF511 /* UIImageView+GIFDecode.m in Sources */,
 				E1E31B8F200F4EC700776701 /* InputValidator.swift in Sources */,
 				E594E0802003AEE200BDF511 /* AppInfo.m in Sources */,

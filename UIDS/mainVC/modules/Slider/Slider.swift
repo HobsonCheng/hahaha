@@ -70,6 +70,8 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
     //MARK: 初始化页面信息
     public func genderInit(contentData: SliderContentMode,row: NSInteger,rank: NSInteger){
     
+        self.allList = [Any]()
+        
         self.viewRow = row
         self.viewRank = rank
         
@@ -95,9 +97,7 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
         if contentData.List == nil {
             return
         }
-        self.allList = [Any]()
         self.allList = self.allList + contentData.List! as [Any]
-        
         self.changeSlider()
     }
     

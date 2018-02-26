@@ -122,7 +122,6 @@ class MainTabberVC: UITabBarController,MainTabBarDelegate {
     //MARK: - MainTabBarDelegate
     func didChooseItem(itemIndex: Int) {
         self.selectedIndex = itemIndex
-        
     }
     
     

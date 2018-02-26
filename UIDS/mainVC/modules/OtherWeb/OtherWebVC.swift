@@ -11,7 +11,15 @@ import WebKit
 
 class OtherWebVC: NaviBarVC {
 
-    var urlString:String?
+    var urlString:String?{//set url 做安全处理
+        didSet{
+            if (urlString?.hasPrefix("http"))! || (urlString?.hasPrefix("https"))! {
+                
+            }else {
+                urlString = "https://\(urlString!)"
+            }
+        }
+    }
 
     
     fileprivate var leftBarButton:NaviBarItem?
@@ -72,7 +80,7 @@ class OtherWebVC: NaviBarVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setNaviDefulat()
         self.naviBar().setLeftBarItem(nil)
     }
     
@@ -98,7 +106,7 @@ extension OtherWebVC: WKUIDelegate,WKNavigationDelegate {
         self.leftBarButton?.setBackgroundImage(UIImage.init(named: "goBackIcon.png"), for: eNaviBarItemStateNormal)
         
         
-        self.leftBarButtonSecond = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 44), target: self, action: #selector(OtherWebVC.selectedToClose))
+        self.leftBarButtonSecond = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 25, height: 25), target: self, action: #selector(OtherWebVC.selectedToClose))
         self.leftBarButtonSecond?.setBackgroundImage(UIImage.init(named: "close.png"), for: eNaviBarItemStateNormal)
 
         let items = NSArray.init(objects: self.leftBarButton!)
