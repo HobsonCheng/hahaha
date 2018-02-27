@@ -214,11 +214,25 @@ extension AppSet: UITableViewDelegate {
                 if indexPath.section == 6 {
                     self.outApp()
                 }
+                
+                //意见反馈
+                if indexPath.section == 2 && indexPath.row == 3{
+                    let feedvc = FeedbackVC(name: "FeedbackVC")
+                    VCController.push(feedvc!, with: VCAnimationClassic.defaultAnimation())
+                }
             }else {
                 if indexPath.section == 5 {
                     self.outApp()
                 }
+                
+                //意见反馈
+                if indexPath.section == 1 && indexPath.row == 3{
+                    let feedvc = FeedbackVC(name: "FeedbackVC")
+                    VCController.push(feedvc!, with: VCAnimationClassic.defaultAnimation())
+                }
             }
+            
+            
         }
     }
 }

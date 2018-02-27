@@ -62,7 +62,9 @@ extension SetConfig {
                                           title: "新消息通知",
                                           description: nil,
                                           dotIcon: nil,
-                                          rightIcon: "cell_arrow.png")
+                                          rightIcon: "cell_arrow.png",
+                                          isHiddenBottomLine: false,
+                                          cellType: .rightSwitch(isOn: true))
         let model2_2 = SettingCellModel(leftIcon: nil,
                                           title: "隐私",
                                           description: nil,

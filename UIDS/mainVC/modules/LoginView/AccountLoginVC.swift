@@ -106,7 +106,7 @@ extension AccountLoginVC: AccountLoginable {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     
-                    VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())
+//                    VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())
                     VCController.pop(with: VCAnimationBottom.defaultAnimation())
                 };
                 

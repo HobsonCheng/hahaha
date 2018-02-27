@@ -499,5 +499,24 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - 意见反馈
+    func cms_addOpinion(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("addOpinion", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+    
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }
 

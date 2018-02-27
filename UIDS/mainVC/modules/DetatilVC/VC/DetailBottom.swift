@@ -71,8 +71,8 @@ extension NewsDetailVC: JFNewsBottomBarDelegate, CLBottomCommentViewDelegate {
     // 松手后触发
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
-        if (scrollView.contentOffset.y + kScreenH) > scrollView.contentSize.height {
-            if (scrollView.contentOffset.y + kScreenH) - scrollView.contentSize.height >= 50 {
+        if (scrollView.contentOffset.y + self.tableView.height) > scrollView.contentSize.height {
+            if (scrollView.contentOffset.y + self.tableView.height) - scrollView.contentSize.height >= 50 {
                 
                 UIGraphicsBeginImageContext(CGSize.init(width: kScreenW, height: kScreenH))
                 UIApplication.shared.keyWindow?.layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -110,8 +110,8 @@ extension NewsDetailVC: JFNewsBottomBarDelegate, CLBottomCommentViewDelegate {
             
         }
         
-        if (scrollView.contentOffset.y + kScreenH) > scrollView.contentSize.height {
-            if (scrollView.contentOffset.y + kScreenH) - scrollView.contentSize.height >= 50 {
+        if (scrollView.contentOffset.y + self.tableView.height) > scrollView.contentSize.height {
+            if (scrollView.contentOffset.y + self.tableView.height) - scrollView.contentSize.height >= 50 {
                 closeDetailView.isSelected = true
             } else {
                 closeDetailView.isSelected = false
