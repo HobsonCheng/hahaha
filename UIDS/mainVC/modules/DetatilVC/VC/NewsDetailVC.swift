@@ -133,16 +133,17 @@ class NewsDetailVC: NaviBarVC {
     
     // 删帖
     @objc private func deleteNewsClick(){
-//        let params = NSMutableDictionary()
-//        params.setValue(model?.id, forKey: "group_invitation_id")
-//        params.setValue(model?.group_pid, forKey: "group_pid")
-//        ApiUtil.share.cms_DeleteNews(params: params) {[weak self] (status, data, msg) in
-//            if B_ResponseStatus.success == status{
-//                self?.refreshList()
-//            }else{
-//                Util.msg(msg: msg!, 3)
-//            }
-//        }
+        let params = NSMutableDictionary()
+        params.setValue(model?.id, forKey: "group_invitation_id")
+        params.setValue(model?.group_pid, forKey: "group_pid")
+        ApiUtil.share.cms_DeleteNews(params: params) {[weak self] (status, data, msg) in
+            if B_ResponseStatus.success == status{
+                self?.refreshList()
+                VCController.pop(with: VCAnimationBottom.defaultAnimation())
+            }else{
+                Util.msg(msg: msg!, 3)
+            }
+        }
     }
     
     /**

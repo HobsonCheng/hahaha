@@ -112,6 +112,7 @@ extension GroupTopicSendVC {
             Util.msg(msg: "发布成功", 2)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self?.reloadPreviousList()
                 VCController.pop(with: VCAnimationBottom.defaultAnimation())
             }
             
@@ -121,6 +122,17 @@ extension GroupTopicSendVC {
             self?.stopLoadBlock()
         }
         
+    }
+    //刷新前一个页面的数据
+    func reloadPreviousList() {
+        let preVC = VCController.getPreviousWith(self) as! RootVC
+        let subViews = preVC.mainView?.subviews
+        for view in subViews!{
+            if view is TopicList{
+                let list = view as! TopicList
+                _ = list.reloadViewData()
+            }
+        }
     }
     
 }
