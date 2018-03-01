@@ -518,5 +518,42 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - 点赞
+    func cms_zan(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("praiseInvitation", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 删帖
+    func cms_DeleteNews(params: NSMutableDictionary,fininsh: ApiUtilFinished?){
+        params.setValue("delInvitation", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }
 

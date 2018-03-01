@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31687A442046F97000D4F6AE /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31687A432046F97000D4F6AE /* ShareView.swift */; };
+		31687A462046F98C00D4F6AE /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31687A452046F98C00D4F6AE /* ShareView.xib */; };
 		E105FE482043AC5A001D78AD /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE472043AC5A001D78AD /* ShopList.swift */; };
 		E105FE4C2043AE67001D78AD /* ShopItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE4A2043AE67001D78AD /* ShopItemCell.swift */; };
 		E105FE4D2043AE67001D78AD /* ShopItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E105FE4B2043AE67001D78AD /* ShopItemCell.xib */; };
@@ -285,6 +287,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31687A432046F97000D4F6AE /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		31687A452046F98C00D4F6AE /* ShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
 		40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIDS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.release.xcconfig"; sourceTree = "<group>"; };
@@ -615,6 +619,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31687A1C20467D9300D4F6AE /* ShareView */ = {
+			isa = PBXGroup;
+			children = (
+				31687A432046F97000D4F6AE /* ShareView.swift */,
+				31687A452046F98C00D4F6AE /* ShareView.xib */,
+			);
+			path = ShareView;
+			sourceTree = "<group>";
+		};
 		95C2F0CD76E3AD6C4FCCBD23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -884,6 +897,7 @@
 				E1BD55D8201B352C009482EC /* BaseTableView.swift */,
 				E1C3E5622015D89600B13306 /* BaseModuleView.swift */,
 				E16AB09D202D531C00FF075C /* ChangeIconVC.swift */,
+				31687A1C20467D9300D4F6AE /* ShareView */,
 				E105FE4E20440EC0001D78AD /* Feedback */,
 				E105FE462043AC2A001D78AD /* ShopList */,
 				E1646C6E202FDE3700DE8883 /* NavibarModule */,
@@ -1597,6 +1611,7 @@
 				E1E31B7D200F3ADF00776701 /* registerAndLogin_qq_button@2x.png in Resources */,
 				E16763AA202ADFF300947323 /* pid1@2x.png in Resources */,
 				E1D0B6BA201B02FA00332C79 /* placeholder_instagram.png in Resources */,
+				31687A462046F98C00D4F6AE /* ShareView.xib in Resources */,
 				E139375F201996BC00F32909 /* scan_scan@2x.png in Resources */,
 				E11B62AD2018254B00CE5E1D /* JFDetailOtherNoneCell.xib in Resources */,
 				E11B628320175A5900CE5E1D /* editButton@3x.png in Resources */,
@@ -1927,6 +1942,7 @@
 				E12BC0EB2017230700099ED4 /* CLBottomCommentViewDelegate.swift in Sources */,
 				E1CE1A9420232EF20028F20B /* SearchResultViewModel.swift in Sources */,
 				E1ABEB252018538F00F7FF91 /* DetailTable.swift in Sources */,
+				31687A442046F97000D4F6AE /* ShareView.swift in Sources */,
 				E1F5E279200F356000FD18FD /* AccountLoginable.swift in Sources */,
 				E1C3E55F20158CAA00B13306 /* DSRefresh.swift in Sources */,
 				E1C0321D200C3A5D00B1A377 /* RootTable.swift in Sources */,

@@ -36,11 +36,19 @@ class NewsDetailVC: NaviBarVC {
             // 更新收藏状态
 //            bottomBarView.collectionButton.isSelected = model!.havefava == "1"
             
+            // 更新点赞状态
+            bottomBarView.praiseButton.isSelected = model?.praised == 1
+            
             // 相关链接
 //            if let links = model?.otherLinks {
 //                otherLinks = links
 //            }
-            
+
+            // 是否添加删帖按钮
+            if model?.can_delete == 1{
+                let rightItem = NaviBarItem(textItem: "删帖", target: self, action: #selector(deleteNewsClick))
+                self.naviBar().setRightBarItem(rightItem)
+            }
         }
     }
     
@@ -49,6 +57,11 @@ class NewsDetailVC: NaviBarVC {
     
     // 临时广告图片
     let adImageView = UIImageView(frame: CGRect(x: 12, y: 0, width: kScreenW - 24, height: 160))
+    
+    // 转发弹层
+    lazy var shareView : ShareView? = {
+       return Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?.last as! ShareView
+    }()
     
     /// 是否已经加载过webView
     var isLoaded = false
@@ -99,6 +112,37 @@ class NewsDetailVC: NaviBarVC {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         IQKeyboardManager.sharedManager().enableAutoToolbar = true
+    }
+    
+    //  重写goBack刷新列表页
+    override func goBack(_ sender: Any!) {
+        refreshList()
+        super.goBack(sender)
+    }
+    // 刷新列表页
+    private func refreshList(){
+        let preVC = VCController.getPreviousWith(self) as! RootVC
+        let subViews = preVC.mainView?.subviews
+        for view in subViews!{
+            if view is TopicList{
+                let list = view as! TopicList
+                _ = list.reloadViewData()
+            }
+        }
+    }
+    
+    // 删帖
+    @objc private func deleteNewsClick(){
+//        let params = NSMutableDictionary()
+//        params.setValue(model?.id, forKey: "group_invitation_id")
+//        params.setValue(model?.group_pid, forKey: "group_pid")
+//        ApiUtil.share.cms_DeleteNews(params: params) {[weak self] (status, data, msg) in
+//            if B_ResponseStatus.success == status{
+//                self?.refreshList()
+//            }else{
+//                Util.msg(msg: msg!, 3)
+//            }
+//        }
     }
     
     /**

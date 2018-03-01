@@ -50,6 +50,7 @@ class TopicData: BaseData {
     var pay_type : Int!
     var pid : Int!
     var praise_num : Int!
+    var praised: Int!
     var pro_id : Int!
     var read_num : Int!
     var remarks : String!
@@ -93,6 +94,7 @@ class DetailData: BaseData {
     var best : Int!
     var block_id : Int!
     var build_uid : Int!
+    var can_delete : Int!
     var can_out : Int!
     var can_replay : Int!
     var can_reply : Int!
@@ -103,6 +105,7 @@ class DetailData: BaseData {
     var country_id : Int!
     var group_id : Int!
     var group_invitation_id : Int!
+    var group_pid: Int!
     var id : Int!
     var identify : Int!
     var index_id : String!
@@ -118,6 +121,7 @@ class DetailData: BaseData {
     var pay_type : Int!
     var pid : Int!
     var praise_num : Int!
+    var praised: Int!
     var pro_id : Int!
     var read_num : Int!
     var remarks : String!
@@ -132,6 +136,7 @@ class DetailData: BaseData {
     var task : String!
     var title : String!
     var topic_id : Int!
+    var topic_pid : Int!
     var update_time : String!
     var use_signature : Int!
     var user_authority : Int!

@@ -49,7 +49,24 @@ extension NewsDetailVC: JFNewsBottomBarDelegate, CLBottomCommentViewDelegate {
     }
     
     func didTappedShareButton(_ button: UIButton) {
-        
+        self.shareView?.show()
+    }
+    
+    func didTappedPraiseButton(_ button: UIButton) {
+        //切换按钮状态
+        button.isSelected = button.isSelected == true ? false : true
+        //发送请求记录按钮状态
+        let params = NSMutableDictionary()
+        params.setValue(model?.group_pid, forKey: "group_pid")
+        params.setValue(model?.id, forKey: "group_invitation_id")
+        params.setValue(button.isSelected, forKey: "praise")
+        ApiUtil.share.cms_zan(params: params) { (status, data, msg) in
+            if B_ResponseStatus.success == status{
+
+            }else{
+                Util.msg(msg: msg!, 3)
+            }
+        }
     }
     
     func didTappedCommentButton(_ button: UIButton) {

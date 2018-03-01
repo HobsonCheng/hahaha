@@ -12,7 +12,12 @@ import Font_Awesome_Swift
 class TopicCell: UITableViewCell {
 
     
-    var cellObj: TopicData?
+    var cellObj: TopicData?{
+        didSet{
+            //更新点赞按钮状态
+            self.zan.isSelected = cellObj?.praised == 1
+        }
+    }
     var cellButton: UIButton?
     
     @IBOutlet weak var imgViewHeight: NSLayoutConstraint!
@@ -39,6 +44,8 @@ class TopicCell: UITableViewCell {
         self.forward.setFAIcon(icon: FAType.FAMailForward, iconSize: 14, forState: UIControlState.normal)
         self.comment.setFAIcon(icon: FAType.FAComment, iconSize: 14, forState: UIControlState.normal)
         self.zan.setFAIcon(icon: FAType.FAThumbsOUp, iconSize: 14, forState: UIControlState.normal)
+        self.zan.setFAIcon(icon: FAType.FAThumbsUp, forState: UIControlState.selected)
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -139,7 +146,8 @@ class TopicCell: UITableViewCell {
         
         
         cellButton?.snp.makeConstraints({ (make) in
-            make.top.left.right.bottom.equalToSuperview()
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(self.forward.snp.top)
         })
     }
     
@@ -147,15 +155,29 @@ class TopicCell: UITableViewCell {
     //MARK: - action
     
     @IBAction func forwardAction(_ sender: Any) {
+        let shareView = Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?.last as! ShareView
+        shareView.show()
     }
     
     @IBAction func commentAction(_ sender: Any) {
-        
-        
-    }
-    @IBAction func zanAction(_ sender: Any) {
-        
-        
+        touchcell()
     }
     
+    @IBAction func zanAction(_ sender: UIButton) {
+        //切换按钮状态
+        sender.isSelected = sender.isSelected == true ? false : true
+        //发送请求记录按钮状态
+        let params = NSMutableDictionary()
+        params.setValue(cellObj?.group_pid, forKey: "group_pid")
+        params.setValue(cellObj?.id, forKey: "group_invitation_id")
+        params.setValue(sender.isSelected, forKey: "praise")
+        ApiUtil.share.cms_zan(params: params) { (status, data, msg) in
+            if B_ResponseStatus.success == status{
+                
+            }else{
+                Util.msg(msg: msg!, 3)
+            }
+        }
+     
+    }
 }
