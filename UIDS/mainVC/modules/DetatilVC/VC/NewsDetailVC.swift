@@ -114,15 +114,21 @@ class NewsDetailVC: NaviBarVC {
         IQKeyboardManager.sharedManager().enableAutoToolbar = true
     }
     
+    //MARK :- 返回刷新
+    // 手势返回时调用该方法
+    override func doGoBack() {
+        let reFreshVC = VCController.getTopVC() as! RootVC
+        refreshList(willRefreshVC: reFreshVC)
+    }
     //  重写goBack刷新列表页
     override func goBack(_ sender: Any!) {
-        refreshList()
+        let reFreshVC = VCController.getPreviousWith(self) as! RootVC
+        refreshList(willRefreshVC: reFreshVC)
         super.goBack(sender)
     }
     // 刷新列表页
-    private func refreshList(){
-        let preVC = VCController.getPreviousWith(self) as! RootVC
-        let subViews = preVC.mainView?.subviews
+    private func refreshList(willRefreshVC : RootVC){
+        let subViews = willRefreshVC.mainView?.subviews
         for view in subViews!{
             if view is TopicList{
                 let list = view as! TopicList
@@ -138,8 +144,8 @@ class NewsDetailVC: NaviBarVC {
         params.setValue(model?.group_pid, forKey: "group_pid")
         ApiUtil.share.cms_DeleteNews(params: params) {[weak self] (status, data, msg) in
             if B_ResponseStatus.success == status{
-                self?.refreshList()
-                VCController.pop(with: VCAnimationBottom.defaultAnimation())
+                //请求成功，返回并刷新
+                self?.goBack(nil)
             }else{
                 Util.msg(msg: msg!, 3)
             }

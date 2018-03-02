@@ -164,16 +164,18 @@ class TopicCell: UITableViewCell {
     }
     
     @IBAction func zanAction(_ sender: UIButton) {
-        //切换按钮状态
-        sender.isSelected = sender.isSelected == true ? false : true
+        let isSelected = sender.isSelected == true ? false : true
         //发送请求记录按钮状态
         let params = NSMutableDictionary()
         params.setValue(cellObj?.group_pid, forKey: "group_pid")
         params.setValue(cellObj?.id, forKey: "group_invitation_id")
-        params.setValue(sender.isSelected, forKey: "praise")
+        params.setValue(isSelected, forKey: "praise")
         ApiUtil.share.cms_zan(params: params) { (status, data, msg) in
             if B_ResponseStatus.success == status{
-                
+                //请求成功，切换按钮状态
+                DispatchQueue.main.async(execute: {
+                    sender.isSelected = isSelected
+                })
             }else{
                 Util.msg(msg: msg!, 3)
             }
