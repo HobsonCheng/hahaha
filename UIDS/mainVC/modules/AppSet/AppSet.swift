@@ -216,9 +216,14 @@ extension AppSet: UITableViewDelegate {
                 }
                 
                 //意见反馈
-                if indexPath.section == 2 && indexPath.row == 3{
+                if indexPath.section == 2 && indexPath.row == 4{
                     let feedvc = FeedbackVC(name: "FeedbackVC")
                     VCController.push(feedvc!, with: VCAnimationClassic.defaultAnimation())
+                }
+                //消息通知
+                if indexPath.section == 2 && indexPath.row == 2{
+                    let messageVC = NotifyListVC(name: "NotifyListVC")
+                    VCController.push(messageVC!, with: VCAnimationClassic.defaultAnimation())
                 }
             }else {
                 if indexPath.section == 5 {
@@ -229,6 +234,11 @@ extension AppSet: UITableViewDelegate {
                 if indexPath.section == 1 && indexPath.row == 3{
                     let feedvc = FeedbackVC(name: "FeedbackVC")
                     VCController.push(feedvc!, with: VCAnimationClassic.defaultAnimation())
+                }
+                //消息通知
+                if indexPath.section == 1 && indexPath.row == 2{
+                    let messageVC = NotifyListVC(name: "NotifyListVC")
+                    VCController.push(messageVC!, with: VCAnimationClassic.defaultAnimation())
                 }
             }
             

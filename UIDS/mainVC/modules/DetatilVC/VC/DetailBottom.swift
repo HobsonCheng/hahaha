@@ -61,9 +61,10 @@ extension NewsDetailVC: JFNewsBottomBarDelegate, CLBottomCommentViewDelegate {
         params.setValue(isSelected, forKey: "praise")
         ApiUtil.share.cms_zan(params: params) { (status, data, msg) in
             if B_ResponseStatus.success == status{
-                //请求成功，切换按钮状态
+                //请求成功，切换按钮状态，刷新前一页面列表
                 DispatchQueue.main.async(execute: {
                     button.isSelected = isSelected
+                    self.refreshPreList()
                 })
             }else{
                 Util.msg(msg: msg!, 3)

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		31687A442046F97000D4F6AE /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31687A432046F97000D4F6AE /* ShareView.swift */; };
 		31687A462046F98C00D4F6AE /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31687A452046F98C00D4F6AE /* ShareView.xib */; };
+		31CD10AD204A907C00466808 /* NotifyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AC204A907C00466808 /* NotifyListVC.swift */; };
+		31CD10B1204A90BF00466808 /* NotifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AF204A90BF00466808 /* NotifyCell.swift */; };
+		31CD10B2204A90BF00466808 /* NotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31CD10B0204A90BF00466808 /* NotifyCell.xib */; };
+		31CD10B4204A93C300466808 /* NotifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10B3204A93C300466808 /* NotifyModel.swift */; };
 		E105FE482043AC5A001D78AD /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE472043AC5A001D78AD /* ShopList.swift */; };
 		E105FE4C2043AE67001D78AD /* ShopItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE4A2043AE67001D78AD /* ShopItemCell.swift */; };
 		E105FE4D2043AE67001D78AD /* ShopItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E105FE4B2043AE67001D78AD /* ShopItemCell.xib */; };
@@ -289,6 +293,10 @@
 /* Begin PBXFileReference section */
 		31687A432046F97000D4F6AE /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		31687A452046F98C00D4F6AE /* ShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
+		31CD10AC204A907C00466808 /* NotifyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyListVC.swift; sourceTree = "<group>"; };
+		31CD10AF204A90BF00466808 /* NotifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyCell.swift; sourceTree = "<group>"; };
+		31CD10B0204A90BF00466808 /* NotifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifyCell.xib; sourceTree = "<group>"; };
+		31CD10B3204A93C300466808 /* NotifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyModel.swift; sourceTree = "<group>"; };
 		40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIDS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.release.xcconfig"; sourceTree = "<group>"; };
@@ -628,6 +636,24 @@
 			path = ShareView;
 			sourceTree = "<group>";
 		};
+		31CD10AB204A904D00466808 /* NotifyListVC */ = {
+			isa = PBXGroup;
+			children = (
+				31CD10AE204A908A00466808 /* Cell */,
+				31CD10AC204A907C00466808 /* NotifyListVC.swift */,
+			);
+			path = NotifyListVC;
+			sourceTree = "<group>";
+		};
+		31CD10AE204A908A00466808 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				31CD10AF204A90BF00466808 /* NotifyCell.swift */,
+				31CD10B0204A90BF00466808 /* NotifyCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		95C2F0CD76E3AD6C4FCCBD23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -897,6 +923,7 @@
 				E1BD55D8201B352C009482EC /* BaseTableView.swift */,
 				E1C3E5622015D89600B13306 /* BaseModuleView.swift */,
 				E16AB09D202D531C00FF075C /* ChangeIconVC.swift */,
+				31CD10AB204A904D00466808 /* NotifyListVC */,
 				31687A1C20467D9300D4F6AE /* ShareView */,
 				E105FE4E20440EC0001D78AD /* Feedback */,
 				E105FE462043AC2A001D78AD /* ShopList */,
@@ -1089,6 +1116,7 @@
 				E1E12B36202B03BA00849962 /* AllRestrictionHandler.swift */,
 				E16AB09F202D88F800FF075C /* SliderModel.swift */,
 				E1884C7C2031317600512321 /* InitiatorModel.swift */,
+				31CD10B3204A93C300466808 /* NotifyModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1522,7 +1550,7 @@
 				TargetAttributes = {
 					E1A21DDB1FFF319300596BB7 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 73KJWP69HD;
+						DevelopmentTeam = JL9U2ZHT4Q;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -1591,6 +1619,7 @@
 				E1ABEB1E20182D6A00F7FF91 /* default－portrait.png in Resources */,
 				E1D2CF44201AD8EF00008B6D /* guiImage3.png in Resources */,
 				E1C3E57C2015E15000B13306 /* icon_shake_animation_6.png in Resources */,
+				31CD10B2204A90BF00466808 /* NotifyCell.xib in Resources */,
 				E11B627F20175A5900CE5E1D /* favorite_done@3x.png in Resources */,
 				E1D2CF41201AD8EF00008B6D /* guiImage5.png in Resources */,
 				E12BC13220173E2500099ED4 /* newscontent_drag_arrow@2x.png in Resources */,
@@ -1819,6 +1848,7 @@
 				E5A4F4A52023638800053D25 /* AppSearchNavVC.swift in Sources */,
 				E1BD55D5201B0A5D009482EC /* MakeToCustomer.swift in Sources */,
 				E153BBF12029CA2900C7F786 /* SwiftIntroView.swift in Sources */,
+				31CD10AD204A907C00466808 /* NotifyListVC.swift in Sources */,
 				E16AB0A0202D88F800FF075C /* SliderModel.swift in Sources */,
 				E56C90AC2013793A002339C6 /* GroupListTopic.swift in Sources */,
 				E1EA2719201200AA00F31796 /* OpenVC.swift in Sources */,
@@ -1877,6 +1907,7 @@
 				E1EA27132011C5FB00F31796 /* ZZDiskCacheHelper.swift in Sources */,
 				E11B62A72018254B00CE5E1D /* JFDetailOtherNoneCell.swift in Sources */,
 				E1F5E275200F340500FD18FD /* AccountLoginVC.swift in Sources */,
+				31CD10B1204A90BF00466808 /* NotifyCell.swift in Sources */,
 				E1884C7D2031317600512321 /* InitiatorModel.swift in Sources */,
 				E1C70DB1201B446600030CB6 /* OrderCModel.swift in Sources */,
 				E594E0732003ABB800BDF511 /* UIButton+Addition.m in Sources */,
@@ -1935,6 +1966,7 @@
 				E11B62912018210800CE5E1D /* WebViewJavascriptBridge.m in Sources */,
 				E13937482019739400F32909 /* notice.pb.swift in Sources */,
 				E1CE1AA6202335C70028F20B /* SearchVCell.swift in Sources */,
+				31CD10B4204A93C300466808 /* NotifyModel.swift in Sources */,
 				E153BBDF20243D3600C7F786 /* UILableUtil.swift in Sources */,
 				E1C031AA20061E6B00B1A377 /* SwipImgAreaPageControl.swift in Sources */,
 				E1E31B97201045B400776701 /* CodeMode.swift in Sources */,
@@ -2088,7 +2120,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 73KJWP69HD;
+				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/QQ",
@@ -2101,7 +2133,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2117,7 +2149,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 73KJWP69HD;
+				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/QQ",
@@ -2130,7 +2162,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
