@@ -36,7 +36,7 @@ class AssembleVC: BaseNameVC {
         self.appIcon.layer.masksToBounds = true
         
         
-        var appname = pObj?.app_name.replacingOccurrences(of: "<em>", with: "")
+        var appname = pObj?.name.replacingOccurrences(of: "<em>", with: "")
         appname = appname!.replacingOccurrences(of: "</em>", with: "")
         self.mainTips.text = appname
         
@@ -95,7 +95,7 @@ extension AssembleVC {
     
     func getAppHostName() {
        
-        BRequestHandler.shared.getAppHostNEW(app_id: (pObj?.pid)!) { [weak self] (hostname) in
+        BRequestHandler.shared.getAppHostNEW(app_id: (pObj?.app_group_info[0].app_id)!) { [weak self] (hostname) in
             //得到hostname
             BRequestHandler.shared.appHostName = hostname
         
@@ -108,8 +108,8 @@ extension AssembleVC {
         self.progressTip(num: 0.1, tip: "第一步完成")
         
         let params = NSMutableDictionary()
-        params.setValue(pObj?.pid, forKey: "app_id")
-        params.setValue(pObj?.group_id, forKey: "group_id")
+        params.setValue(pObj?.app_group_info[0].app_id, forKey: "app_id")
+        params.setValue(pObj?.app_group_info[0].group_id, forKey: "group_id")
         
         ApiUtil.share.getApp(params: params) { [weak self] (status, data, msg) in
             
@@ -142,8 +142,8 @@ extension AssembleVC {
         self.progressTip(num: 0.3, tip: "第二步完成")
         
         let params = NSMutableDictionary()
-        params.setValue(pObj?.pid, forKey: "app_id")
-        params.setValue(pObj?.group_id, forKey: "group_id")
+        params.setValue(pObj?.app_group_info[0].app_id, forKey: "app_id")
+        params.setValue(pObj?.app_group_info[0].group_id, forKey: "group_id")
         
         ApiUtil.share.getPageList(params: params) { [weak self] (status, data, msg) in
             
@@ -178,7 +178,7 @@ extension AssembleVC {
         self.progressTip(num: 0.4, tip: "第三步完成")
         
         let params = NSMutableDictionary()
-        params.setValue(pObj?.pid, forKey: "pid")
+        params.setValue(pObj?.app_group_info[0].app_id, forKey: "pid")
         
         ApiUtil.share.allRestriction(params: params) { [weak self] (status, data, msg) in
             

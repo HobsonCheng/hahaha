@@ -18,7 +18,8 @@ class NotifyListVC: NaviBarVC,UITableViewDelegate,UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.white
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.rowHeight = 80
         return tableView
     }()
     

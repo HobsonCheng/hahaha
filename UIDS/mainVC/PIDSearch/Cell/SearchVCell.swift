@@ -16,7 +16,7 @@ class SearchVCell: UITableViewCell {
     @IBOutlet weak var appName: UILabel!
     
     @IBOutlet weak var addItem: UILabel!
-    @IBOutlet weak var mailName: UILabel!
+    @IBOutlet weak var registerName: UILabel!
     @IBOutlet weak var bossName: UILabel!
     
     @IBOutlet weak var iconImg: UIImageView!
@@ -28,7 +28,7 @@ class SearchVCell: UITableViewCell {
         didSet {
             if objData != nil {
                 
-                var pnameStr = objData?.app_name
+                var pnameStr = objData?.name
             
                 let reg = "(?<=<em>).*?(?=</em>)"
                 
@@ -54,8 +54,8 @@ class SearchVCell: UITableViewCell {
                 
                 bossName.diverseStringOriginalStr(original: (bossName.text)!, conversionStrArr: (list as NSArray), withFont: UIFont.systemFont(ofSize: 15), withColor: UIColor(hexString: "#51b0ff"))
                 
-                phoneNum.text = "注册者手机号：\((objData?.pname_code)!)"
-                mailName.text = "公司邮箱："
+                phoneNum.text = "注册者手机号：\((objData?.register_phone)!)"
+                registerName.text = "注册者姓名：\((objData?.register_name)!)"
                 addItem.text = "注册时间：\((objData?.add_time)!)"
                 
                 iconImg.sd_setImage(with: URL(string: (objData?.icon)!), completed: nil)

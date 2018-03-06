@@ -37,7 +37,7 @@ class MainVC: BaseNameVC {
     //TODO: 初始化tabber
     func  initTabber() {
     
-        let tabBarController = MainTabberVC()
+        let tabBarController = MainTabbarVC()
         self.addChildViewController(tabBarController);
         self.view.addSubview(tabBarController.view);
     

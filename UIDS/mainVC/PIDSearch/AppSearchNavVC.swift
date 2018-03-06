@@ -423,7 +423,7 @@ extension AppSearchNavVC {
                     var count = 0
                     for item in getObj.data {
                         
-                        if item.pid == parj.pid {
+                        if item.app_group_info[0].app_id == parj.app_group_info[0].app_id {
                             getObj.data.remove(at: count)
                             break
                         }
