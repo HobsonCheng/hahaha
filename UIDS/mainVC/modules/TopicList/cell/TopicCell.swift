@@ -14,8 +14,7 @@ class TopicCell: UITableViewCell {
     
     var cellObj: TopicData?{
         didSet{
-            //更新点赞按钮状态
-            self.zan.isSelected = cellObj?.praised == 1
+           showData()
         }
     }
     var cellButton: UIButton?
@@ -54,7 +53,7 @@ class TopicCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func showData() {
+    private func showData() {
         if self.cellObj != nil {
             
             self.icon.sd_setImage(with: URL.init(string: self.cellObj?.user_info.head_portrait ?? "https://;;"), for: UIControlState.normal, completed: nil)
@@ -66,7 +65,8 @@ class TopicCell: UITableViewCell {
             if self.cellObj?.attachment_value.count != 0 {
                 self.genderImgs()
             }
-            
+            //更新点赞按钮状态
+            self.zan.isSelected = cellObj?.praised == 1
             self.addNewButton()
         }
     }

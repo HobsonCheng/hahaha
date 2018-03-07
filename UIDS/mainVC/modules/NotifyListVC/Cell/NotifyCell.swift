@@ -23,14 +23,20 @@ class NotifyCell: UITableViewCell {
             self.nameLabel.text = sender_name
             if let name = action_name{
                 switch name{
-                    case "点赞":
-                        self.messageLabel.text = (cellData?.sender_name)! + "给您的"+(cellData?.target_name)!+"点赞"
-                    case "发帖":
-                        self.messageLabel.text = (cellData?.sender_name)! + "发表了新帖"
-                    case "评论帖子":
-                        self.messageLabel.text = (cellData?.sender_name)! + "评论了您的"+(cellData?.target_name)!
-                    default:
-                        self.messageLabel.text = (cellData?.sender_name)! + "有新的消息"
+                case "点赞":
+                    self.messageLabel.text = (cellData?.sender_name)! + "给您的"+(cellData?.target_name)!+"点赞"
+                case "发帖":
+                    self.messageLabel.text = (cellData?.sender_name)! + "发表了新帖"
+                case "评论帖子":
+                    self.messageLabel.text = (cellData?.sender_name)! + "评论了您的" + (cellData?.target_name)!
+                case "新预约":
+                    self.messageLabel.text = (cellData?.sender_name)! + "有新的" + (cellData?.action_object_name)!
+                case "完成订单":
+                    self.messageLabel.text = (cellData?.sender_name)! + "完成了" + (cellData?.action_object_name)!
+                case "被抢":
+                    self.messageLabel.text = (cellData?.sender_name)! + "抢走了" + (cellData?.target_name)! + "的" + (cellData?.action_object_name)!
+                default:
+                    self.messageLabel.text = (cellData?.sender_name)! + "有新的消息"
                 }
             }
 

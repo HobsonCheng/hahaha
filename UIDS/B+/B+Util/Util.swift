@@ -250,7 +250,7 @@ final class Util: NSObject{
     }
     static func strToByte(str: String) -> [Character]{
         var bytes: [Character] = [Character]()
-        for ch in str.characters {
+        for ch in str {
             bytes.append(ch)
         }
         return bytes

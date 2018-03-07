@@ -62,7 +62,7 @@ class JFProfileHeaderView: UIView {
         let screenSize:CGSize = self.menuView.frame.size
         
         let hMargin:CGFloat = (screenSize.width - (CGFloat(col) * width)) / CGFloat((col+1))
-        let vMargin:CGFloat = hMargin
+        let vMargin:CGFloat = 10
         
         var row:Int = 0
         
@@ -79,6 +79,8 @@ class JFProfileHeaderView: UIView {
             self.button?.layer.cornerRadius = 30
             self.button?.layer.masksToBounds = true
             self.button?.backgroundColor = UIColor.init(hexString: item.color)
+            self.button?.addTarget(self , action: #selector(touchMenuBtn(btn:)), for: UIControlEvents.touchUpInside)
+            
             
             if i != 0 {
                 if i%col == 0 {
@@ -102,7 +104,30 @@ class JFProfileHeaderView: UIView {
         
         self.delegate?.reloadViewSize()
         
+        
     }
     
-
+}
+extension JFProfileHeaderView{
+    @objc func touchMenuBtn(btn:UIButton){
+        let text = (btn.titleLabel?.text)!
+        switch text {
+        case "关注":
+            let params = NSMutableDictionary()
+            let userInfo = UserUtil.share.appUserInfo
+            params.setValue(userInfo?.uid, forKey: "user_id")
+            params.setValue(20, forKey: "page_context")
+            params.setValue(0, forKey: "feed_type")
+            params.setValue(1,forKey: "page")
+            ApiUtil.share.getMessagePool(params: params, finish: { (status, data, msg) in
+                
+            })
+        case "粉丝":
+            print("点击了粉丝")
+        case "好友":
+            print("点击了好友")
+        default:
+            print("点击了其他")
+        }
+    }
 }

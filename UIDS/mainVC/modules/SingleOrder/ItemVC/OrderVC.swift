@@ -123,7 +123,7 @@ extension OrderVC {
         }else if self.orderType == ORDER_TYPE.over {
             
             let params = NSMutableDictionary()
-            params.setSafeObject("2,0", forKey: "status" as NSCopying)
+            params.setSafeObject("2", forKey: "status" as NSCopying)
             params.setSafeObject("1", forKey: "page" as NSCopying)
             params.setSafeObject("20", forKey: "page_context" as NSCopying)
 
@@ -301,10 +301,10 @@ extension OrderVC: WSUtilDelegate{
             msg = "有新订单了，快去看看"
             
             let newOrderStr = order?.content
-            let newOrder = OrderCData.deserialize(from: newOrderStr)
-
-            viewModel.orderList.value[0].items.insert(newOrder!, at: 0)
             
+            if let newOrder = OrderCData.deserialize(from: newOrderStr){
+                viewModel.orderList.value[0].items.insert(newOrder, at: 0)
+            }
         }
         
         Util.msg(msg: msg, 1)

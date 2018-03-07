@@ -48,6 +48,7 @@ extension RootVC {//扩展
                 break
             case "PersonalCenter" :
                 self.genderPersonalCenter(model_id: tmpList[0], startY: &self.startY!)
+                self.genderMessagePool(startY: &self.startY!)
                 break
             case "MakeToCustomer" :
                 self.genderMakeToCustomer(model_id: tmpList[0], startY: &self.startY!)
@@ -216,6 +217,22 @@ extension RootVC {//扩展
         self.mainView?.addSubview(personalCenter)
         
         startY.pointee = personalCenter.bottom + 10
+    }
+    func genderMessagePool(startY: UnsafeMutablePointer<CGFloat>){
+        let messagePool = MessagePool.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        messagePool.tag = Int(startY.pointee)
+        
+        
+        self.refreshCallback = messagePool.refreshCB
+        messagePool.refreshES = self.esCallBack
+        
+        messagePool.genderList { [weak self] in
+            self?.reloadMainScroll()
+        }
+        
+        self.mainView?.addSubview(messagePool)
+        
+        startY.pointee = messagePool.bottom + 10
     }
     
     func genderMakeToCustomer(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {

@@ -100,6 +100,7 @@ class MainTabbarVC: UITabBarController,MainTabBarDelegate {
         
         for item in self.tarbarConfigArr{
             let viewcontroller = RootVC.init(name: "RootVC_tabber")
+            viewcontroller?.isHomePage = true
             viewcontroller?.pageData = item.pageinfo
             nvcArray.append(viewcontroller!)
         }

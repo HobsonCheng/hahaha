@@ -1,20 +1,21 @@
 //
-//  TopicList.swift
+//  MessagePool.swift
 //  UIDS
 //
-//  Created by bai on 2018/1/21.
+//  Created by Hobson on 2018/3/7.
 //  Copyright © 2018年 one2much. All rights reserved.
 //
 
 import UIKit
+import ReusableKit
 
-class TopicList: BaseModuleView {
+private enum Reusable {
+    private static let topicCell = ReusableCell<TopicCell>(nibName: "TopicCell")
+}
 
-    
-    var groupItem: GroupData?
-   
+class MessagePool: BaseModuleView {
     private var page: Int?
-    var groupList: [TopicData]?
+    var messagePoolData: [MessagePoolData]?
     var reloadOver: ReloadOver?
     
     override init(frame: CGRect) {
@@ -29,11 +30,10 @@ class TopicList: BaseModuleView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func reloadViewData()-> Bool {
-        
         self.page = 1
         self.request()
-        
         return true
     }
     
@@ -50,50 +50,52 @@ class TopicList: BaseModuleView {
     
     private func request(){
         let params = NSMutableDictionary()
-        params.setValue(self.page, forKey: "page")
-        params.setValue("20", forKey: "page_context")
-        params.setValue(self.groupItem?.name, forKey: "name")
-        params.setValue(self.groupItem?.id, forKey: "group_id")
-        params.setValue(self.groupItem?.pid, forKey: "group_pid")
-        ApiUtil.share.getInvitationList(params: params) { [weak self] (status, data, msg) in
-            let tmpList: [TopicData]! = TopicModel.deserialize(from: data)?.data
-
-            if self?.page == 1 {
-                self?.height = 0
-                self?.removeAllSubviews()
-                self?.groupList = tmpList
-            }else {
-                self?.groupList = (self?.groupList)! + tmpList
+        let userInfo = UserUtil.share.appUserInfo
+        params.setValue(userInfo?.uid, forKey: "user_id")
+        params.setValue(20, forKey: "page_context")
+        params.setValue(0, forKey: "feed_type")
+        params.setValue(1,forKey: "page")
+        ApiUtil.share.getMessagePool(params: params, finish: { (status, data, msg) in
+            let tmpList:[MessagePoolData]? = (MessagePoolModel.deserialize(from: data)?.data)
+            guard let list = tmpList else{
+                return
             }
-
-            self?.refreshES?()
-
-            self?.genderlist(moveList: tmpList!)
-        }
+            if self.page == 1 {
+                self.height = 0
+                self.removeAllSubviews()
+                self.messagePoolData = list
+            }else{
+                self.messagePoolData = (self.messagePoolData)! + list
+            }
+            self.refreshES?()
+            self.genderlist(moveList: list)
+        })
+        
     }
     
     private func genderCellView(itemObj: TopicData) -> TopicCell {
         
         let cell: TopicCell? = TopicCell.loadFromXib_Swift() as? TopicCell
-        cell?.cellObj = itemObj
         cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 125)
         
         let size = itemObj.summarize.getSize(font: (cell?.content.font)!, viewWidth: (cell?.content.width)!)
         
         cell?.height = 115 + size.height
-    
+        
         if itemObj.attachment_value.count != 0 {
             cell?.height = (cell?.height)! + (cell?.imgViewHeight.constant)!
         }
-        
         return cell!
     }
     
-    private func genderlist(moveList: [TopicData]!){
+    private func genderlist(moveList: [MessagePoolData]!){
         
         for item in moveList!{
-            
-            let cell = self.genderCellView(itemObj: item)
+            guard let itemObj = item.object else{
+                return
+            }
+            let cell = self.genderCellView(itemObj: itemObj)
+            cell.cellObj = item.object
             cell.top = self.height + 0.5
             self.addSubview(cell)
             self.height = cell.bottom
@@ -101,5 +103,6 @@ class TopicList: BaseModuleView {
         
         self.reloadOver?()
     }
+    
 
 }

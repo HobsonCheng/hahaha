@@ -43,7 +43,6 @@ extension RootVC {
                 
                 let navibarLayout = item.1.rawValue
                 self.navibar_layout(dic: navibarLayout as! NSDictionary)
-                print("sdsadd")
                 
                 
             }else if ((configName?.range(of: "module_NaviBarView_NaviBar_content")) != nil){

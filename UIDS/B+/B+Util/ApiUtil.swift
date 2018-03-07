@@ -591,5 +591,23 @@ class ApiUtil: NSObject {
             }
         }
     }
+    //MARK: - 获取信息流
+    func getMessagePool(params:NSMutableDictionary,finish: ApiUtilFinished?){
+        params.setValue("getMessagePool", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }
 
