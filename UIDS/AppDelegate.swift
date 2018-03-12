@@ -8,19 +8,40 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-
+import JMessage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
+    //植入jmessage
+    let JMAPPKEY = "6eb7290c25e206798d329b37"
+    
+    // MARK: - private func
+    private func _setupJMessage() {
+        JMessage.add(self, with: nil)
+        //        JMessage.setLogOFF()
+        JMessage.setDebugMode()
+        
+        // iOS 8 以前 categories 必须为nil
+        JMessage.register(
+            forRemoteNotificationTypes: UIRemoteNotificationType.badge.rawValue |
+                UIRemoteNotificationType.sound.rawValue |
+                UIRemoteNotificationType.alert.rawValue,
+            categories: nil)
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
 //        BQLAuthEngine.single.registerApp()
         IQKeyboardManager.sharedManager().enable = true
+        
+        JMessage.setupJMessage(launchOptions, appKey: JMAPPKEY, channel: nil, apsForProduction: true, category: nil, messageRoaming: true)
+        _setupJMessage()
+        
         
         
         return true
@@ -31,13 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        JMessage.registerDeviceToken(deviceToken)
+    }
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+       resetBadge(application)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        resetBadge(application)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -76,6 +100,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         return true
     }
+    private func resetBadge(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+        application.cancelAllLocalNotifications()
+        JMessage.resetBadge()
+    }
+}
 
+
+
+//MARK: - JMessage Delegate
+extension AppDelegate: JMessageDelegate {
+    func onDBMigrateStart() {
+        MBProgressHUD_JChat.showMessage(message: "数据库升级中", toView: nil)
+    }
+    
+    func onDBMigrateFinishedWithError(_ error: Error!) {
+        MBProgressHUD_JChat.hide(forView: nil, animated: true)
+        MBProgressHUD_JChat.show(text: "数据库升级完成", view: nil)
+    }
+    
+    func onReceive(_ event: JMSGNotificationEvent!) {
+        switch event.eventType {
+        case .receiveFriendInvitation, .acceptedFriendInvitation, .declinedFriendInvitation:
+            cacheInvitation(event: event)
+        case .loginKicked, .serverAlterPassword, .userLoginStatusUnexpected:
+            _logout()
+        case .deletedFriend, .receiveServerFriendUpdate:
+            NotificationCenter.default.post(name: Notification.Name(rawValue: kUpdateFriendList), object: nil)
+        default:
+            break
+        }
+    }
+    
+    private func cacheInvitation(event: JMSGNotificationEvent) {
+        let friendEvent =  event as! JMSGFriendNotificationEvent
+        let user = friendEvent.getFromUser()
+        let reason = friendEvent.getReason()
+        
+        if UserDefaults.standard.object(forKey: kUnreadInvitationCount) != nil {
+            let count = UserDefaults.standard.object(forKey: kUnreadInvitationCount) as! Int
+            UserDefaults.standard.set(count + 1, forKey: kUnreadInvitationCount)
+        } else {
+            UserDefaults.standard.set(1, forKey: kUnreadInvitationCount)
+        }
+        NotificationCenter.default.post(name: Notification.Name(rawValue: kUpdateVerification), object: nil)
+    }
+    
+    func _logout() {
+        
+    }
 }
 

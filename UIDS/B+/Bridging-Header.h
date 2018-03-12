@@ -62,6 +62,14 @@
 #import "UploadImageTool.h"
 #import "WebViewJavascriptBridge.h"
 #import "UIViewController+Present.h"
+#import <JMessage/JMessage.h>
+#import <YHPhotoKit/YHPhotoKit.h>
+#import <YHPopupView/YHPopupView.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "KILabel.h"
+#import "DLSlideView.h"
+#import "DLTabedSlideView.h"
+#import <Reachability/Reachability.h>
 
 //宏参数
 

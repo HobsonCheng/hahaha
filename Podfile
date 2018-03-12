@@ -59,6 +59,13 @@ target 'UIDS' do
   #webscoket
   pod 'Starscream'
   
+  #IM JPUSH
+  pod 'JMessage'
+  pod 'YHPopupView'
+  pod 'YHPhotoKit'
+  pod 'MBProgressHUD'
+  pod 'MJRefresh'
+  
 end
 
 
