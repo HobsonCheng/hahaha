@@ -217,7 +217,7 @@ final class Util: NSObject{
     static func svpStop(ok: Bool,callback: @escaping ()-> ()){
         
         if ok {
-            SVProgressHUD.showSuccess(withStatus: "ok")
+            SVProgressHUD.showSuccess(withStatus: "成功")
         }else {
             SVProgressHUD.showError(withStatus: "失败")
         }

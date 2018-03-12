@@ -32,6 +32,8 @@ struct OrderCData: HandyJSON {
     var value : String!
     var form_user: OrderUser!
     var order_status: Int!
+    var head_portrait : String!
+    var user_name : String!
 
 }
 
@@ -48,5 +50,5 @@ class OrderUser: BaseData {
     var pid : Int!
     var signature : String!
     var uid : Int!
-
+    var zh_name : String!
 }

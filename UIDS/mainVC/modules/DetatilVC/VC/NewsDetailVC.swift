@@ -125,7 +125,8 @@ class NewsDetailVC: NaviBarVC {
             for view in subViews!{
                 if view is TopicList{
                     let list = view as! TopicList
-                    _ = list.reloadViewData()
+                    list.isReload = true
+                    list.reloadViewData()
                 }
             }
         }

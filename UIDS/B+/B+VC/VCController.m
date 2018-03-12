@@ -460,9 +460,9 @@ static VCController *globalVCController = nil;
     
     NSString *getname = [baseNameVC getVCName];
     NSString *gettopname = [[VCController getTopVC] getVCName];
-    if ([getname isEqualToString:gettopname]) {
-        return;
-    }
+//    if ([getname isEqualToString:gettopname]) {
+//        return;
+//    }
     // 加载View
     if ([baseNameVC isViewLoaded] == NO)
     {

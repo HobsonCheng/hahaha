@@ -296,7 +296,7 @@ class ApiUtil: NSObject {
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.uid, forKey: "user_id")
         
-        
+
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
@@ -304,6 +304,25 @@ class ApiUtil: NSObject {
                 UserUtil.share.saveUser(userInfo: data)
             
                 fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 获取其他用户的信息
+    func getRelationInfo(user_id:Int,app_id : Int,finish:ApiUtilFinished?){
+        let params = NSMutableDictionary()
+        params.setValue("getInfo", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        params.setValue(user_id, forKey: "user_id")
+        params.setValue(app_id, forKey: "user_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+//                UserUtil.share.saveUser(userInfo: data)
+                
+                finish?(status,data,msg)
             }else {
                 Util.msg(msg: msg!, 3)
             }
@@ -408,6 +427,21 @@ class ApiUtil: NSObject {
             if B_ResponseStatus.success == status {
                 
                 fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 取消自己发布的订单
+    func cancelSubscribe(params: NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("subscribe", forKey: "sn")
+        params.setValue("cancelSubscribe", forKey: "ac")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
             }else {
                 
                 Util.msg(msg: msg!, 3)
@@ -599,6 +633,148 @@ class ApiUtil: NSObject {
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.pid, forKey: "do_pid")
         
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK:- 其他人的信息流
+    func getOthersMessagePool(params:NSMutableDictionary,finish:ApiUtilFinished?){
+            params.setValue("getMessagePool", forKey: "ac")
+            params.setValue("pc", forKey: "sn")
+
+            let user = UserUtil.share.appUserInfo
+            params.setValue(user?.pid, forKey: "do_pid")
+            BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+                
+                if B_ResponseStatus.success == status {
+                    
+                    finish?(status,data,msg)
+                }else {
+                    Util.msg(msg: msg!, 3)
+                }
+            }
+    }
+    //MARK: - 添加好友
+    func addFriend(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("addFriend", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    
+    //MARK: - 删除好友
+    func deleteFriend(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("deleteFriend", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    // MARK:- 添加关注
+    func addFollower(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("addFollower", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    // MARK:- 取消关注
+    func deleteFollower(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("deleteFollower", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    // MARK: - 好友列表
+    func getFriendList(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getFriendList", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+//        let group_id = AppInfoData.shared.appModel?.group_id
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        params.setValue(user?.uid, forKey: "user_id")
+//        params.setValue(group_id, forKey: "group_id")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    // MARK: - 获取粉丝列表
+    func getFunsList(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getFanList", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        params.setValue(user?.uid, forKey: "user_id")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    // MARK: - 关注列表
+    func getFollowerList(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getFollowerList", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+//        let group_id = AppInfoData.shared.appModel?.group_id
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        params.setValue(user?.uid, forKey: "user_id")
+//        params.setValue(group_id, forKey: "group_id")
         BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {

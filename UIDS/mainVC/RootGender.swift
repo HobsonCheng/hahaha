@@ -23,6 +23,10 @@ extension RootVC {//扩展
             //这个逻辑应该不需要存在
             if self.pageData?.page_type == PAGE_TYPE_TopicList {
                 model_str = "[\"module_TopicList_nodel\"]"
+            }else if self.pageData?.page_type == PAGE_TYPE_PersonInfo{
+                model_str = "[\"module_PersonalCenter_nodel\"]"
+            }else if self.pageData?.page_type == PAGE_TYPE_CustomerOrderList{
+                model_str = "[\"module_SingleOrder_nodel\"]"
             }
         }
         
@@ -83,7 +87,7 @@ extension RootVC {//扩展
         
         self.reloadMainScroll()
         
-        
+    
     }
 
     func genderSwipImg(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>){
@@ -188,6 +192,7 @@ extension RootVC {//扩展
         
         startY.pointee = sliderView.bottom + 10
     }
+    //MARK: 生成文章列表
     func genderArticleList(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>){
         
         let aritclalist = ArticleList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
@@ -204,25 +209,32 @@ extension RootVC {//扩展
         
         startY.pointee = aritclalist.bottom + 10
     }
-    
+    //MARK: 生成个人中心
     func genderPersonalCenter(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         let personalCenter = PersonalCenter.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
-        personalCenter.tag = Int(startY.pointee)
-        
         personalCenter.reloadCell = {[weak self] in
             self?.reloadMainScroll()
         }
+        personalCenter.tag = Int(startY.pointee)
+        if let itemObj = self.pageData?.anyObj{
+            personalCenter.itemObj = itemObj as? UserInfoData
+        }
+        personalCenter.setHeaderInfo()
+        personalCenter.refreshES = self.esCallBack
         
         self.mainView?.addSubview(personalCenter)
         
         startY.pointee = personalCenter.bottom + 10
     }
+    //MARK: 生成信息流
     func genderMessagePool(startY: UnsafeMutablePointer<CGFloat>){
         let messagePool = MessagePool.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
         messagePool.tag = Int(startY.pointee)
-        
-        
+        if let itemObj = self.pageData?.anyObj{
+            messagePool.itemObj = itemObj as? UserInfoData
+        }
+
         self.refreshCallback = messagePool.refreshCB
         messagePool.refreshES = self.esCallBack
         
@@ -234,7 +246,7 @@ extension RootVC {//扩展
         
         startY.pointee = messagePool.bottom + 10
     }
-    
+    //MARK: 生成获客订单
     func genderMakeToCustomer(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         let obj = self.findConfigData(name: "maketocustomer_content",model_id: model_id)
@@ -249,7 +261,7 @@ extension RootVC {//扩展
         
         startY.pointee = maketoCustomer.bottom + 10
     }
-    
+    //MARK:  生成话题组列表
     func genderGroupListTopic(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         //遇到话题列表的组件  自动添加右上角 按钮
@@ -272,6 +284,7 @@ extension RootVC {//扩展
         startY.pointee = groupListTopic.bottom + 10
     }
     
+    //MARK: 生成话题列表
     func genderTopicList(model_id: String,startY: UnsafeMutablePointer<CGFloat>)  {
         
         //遇到话题列表的组件  自动添加右上角 按钮
@@ -296,7 +309,7 @@ extension RootVC {//扩展
         
     }
     
-    
+    //MARK: 生成获客抢单
     func genderSingleOrder(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
     
 
@@ -345,10 +358,10 @@ extension RootVC {//扩展
         }
         
         
-        if (self.startY! + 50) > (self.mainView?.height)! {
-            self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 50);
+        if (self.startY! + 30) > (self.mainView?.height)! {
+            self.mainView?.contentSize = CGSize.init(width: 0, height: self.startY! + 30);
         }else {
-            self.mainView?.contentSize = CGSize.init(width: 0, height: (self.mainView?.height)! + 50);
+            self.mainView?.contentSize = CGSize.init(width: 0, height: (self.mainView?.height)! + 30);
         }
         
         

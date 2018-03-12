@@ -17,6 +17,8 @@ class NotifyData: BaseData{
     var sender_name : String!
     var action_name : String!
     var action_object_name : String!
+    var sender: Int!
+    var target: Int!
 }
 class UnreadModel:BaseModel{
     var data : Int!

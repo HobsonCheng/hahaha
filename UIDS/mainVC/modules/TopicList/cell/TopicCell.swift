@@ -10,8 +10,7 @@ import UIKit
 import Font_Awesome_Swift
 
 class TopicCell: UITableViewCell {
-
-    
+    // model
     var cellObj: TopicData?{
         didSet{
            showData()
@@ -44,6 +43,9 @@ class TopicCell: UITableViewCell {
         self.comment.setFAIcon(icon: FAType.FAComment, iconSize: 14, forState: UIControlState.normal)
         self.zan.setFAIcon(icon: FAType.FAThumbsOUp, iconSize: 14, forState: UIControlState.normal)
         self.zan.setFAIcon(icon: FAType.FAThumbsUp, forState: UIControlState.selected)
+        
+        //点击头像前往个人中心
+        setGotoPersonCenter()
 
     }
 
@@ -55,8 +57,10 @@ class TopicCell: UITableViewCell {
 
     private func showData() {
         if self.cellObj != nil {
+            if let url = URL.init(string: self.cellObj?.user_info.head_portrait ?? "https://;;") {
+                self.icon.sd_setImage(with: url, for: UIControlState.normal, completed: nil)
+            }
             
-            self.icon.sd_setImage(with: URL.init(string: self.cellObj?.user_info.head_portrait ?? "https://;;"), for: UIControlState.normal, completed: nil)
             self.username.text = self.cellObj?.user_info.zh_name
             self.addtime.text = self.cellObj?.add_time
             self.title.text = String.init(format: "来自：%@", (self.cellObj?.source)!)
@@ -124,6 +128,17 @@ class TopicCell: UITableViewCell {
         
     }
     
+    //MARK:- 点击头像前往个人中心
+    func setGotoPersonCenter(){
+        self.icon.rx.tap.do(onNext: {
+            let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+            getPage?.anyObj = self.cellObj?.user_info
+            if (getPage != nil) {
+                OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+            }
+        }).subscribe().disposed(by: rx.disposeBag)
+    }
+    
     private func touchcell(){
         
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_news, actionType: "content")
@@ -146,8 +161,9 @@ class TopicCell: UITableViewCell {
         
         
         cellButton?.snp.makeConstraints({ (make) in
-            make.top.left.right.equalToSuperview()
+            make.top.right.equalToSuperview()
             make.bottom.equalTo(self.forward.snp.top)
+            make.left.equalTo(self.icon.right)
         })
     }
     

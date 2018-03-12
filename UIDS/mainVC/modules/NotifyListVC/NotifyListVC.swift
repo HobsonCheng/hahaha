@@ -9,16 +9,20 @@
 
 import UIKit
 import SwiftyJSON
+import ESPullToRefresh
+
 class NotifyListVC: NaviBarVC,UITableViewDelegate,UITableViewDataSource {
     //传递给cell的数据源
     var notifyData:[NotifyData]?
-    
+    var page = 0
     lazy var table: UITableView = {
-        let tableView = UITableView(frame: CGRect(x: 0, y: self.naviBar().bottom, width: kScreenW, height: kScreenH - self.naviBar().bottom), style: UITableViewStyle.plain)
+        let tableView = BaseTableView(frame: CGRect(x: 0, y: self.naviBar().bottom, width: kScreenW, height: kScreenH - self.naviBar().bottom), style: .plain)
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = UIColor.white
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.tableFooterView = UIView()
+        tableView.config()
         tableView.rowHeight = 80
         return tableView
     }()
@@ -27,7 +31,18 @@ class NotifyListVC: NaviBarVC,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         genderUI()
+        
+        self.page = 1
         getData()
+        
+        self.table.es.addPullToRefresh {[weak self] in
+            self?.page = 1
+            self?.getData()
+        }
+        self.table.es.addInfiniteScrolling {[weak self] in
+            self?.page = (self?.page)! + 1
+            self?.getData()
+        }
         //注册cell
         self.table.register(UINib.init(nibName: "NotifyCell", bundle: nil), forCellReuseIdentifier: "Notify")
         
@@ -39,11 +54,22 @@ class NotifyListVC: NaviBarVC,UITableViewDelegate,UITableViewDataSource {
     //Mark:- 获取数据
     func getData(){
         let params = NSMutableDictionary()
-        params.setValue(1, forKey: "page")
+        params.setValue(self.page, forKey: "page")
         params.setValue(20, forKey: "page_context")
         ApiUtil.share.getNotification(params: params) { [weak self](status, data, msg) in
-            self?.notifyData = NotifyModel.deserialize(from: data)?.data
+            if NotifyModel.deserialize(from: data)?.data.count == 0{
+//                self?.table.es.stopLoadingMore()
+                self?.table.es.noticeNoMoreData()
+                return
+            }
+            if self?.page == 1{
+                self?.notifyData = NotifyModel.deserialize(from: data)?.data
+            }else{
+                self?.notifyData = (self?.notifyData)! + (NotifyModel.deserialize(from: data)?.data)!
+            }
             self?.table.reloadData()
+            self?.table.es.stopLoadingMore()
+            self?.table.es.stopPullToRefresh()
         }
     }
     // Mark:- 获取未读数量

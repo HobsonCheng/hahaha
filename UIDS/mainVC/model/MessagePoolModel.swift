@@ -12,7 +12,7 @@ class MessagePoolModel: BaseModel {
     var data : [MessagePoolData]!
 }
 class MessagePoolData : BaseData{
-    var pid : Int!
-    var feed_type : Int!
-    var object : TopicData!
+    var pid : Int?
+    var feed_type : Int?
+    var object : Dictionary<String,Any>?
 }

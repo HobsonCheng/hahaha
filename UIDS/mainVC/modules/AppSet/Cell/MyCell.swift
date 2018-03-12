@@ -22,7 +22,10 @@ class MyCell: UITableViewCell {
         let userinfo = UserUtil.share.appUserInfo
         
         if userinfo != nil {
-            usericon.sd_setImage(with: URL.init(string: (userinfo?.head_portrait ?? "https://")!), completed: nil)
+            if userinfo?.head_portrait != ""{
+                usericon.sd_setImage(with: URL.init(string: (userinfo?.head_portrait ?? "https://")!), completed: nil)
+            }
+            
             
             username.text = userinfo?.zh_name
             userid.text = "UI大师号：\((userinfo?.uid)!)"

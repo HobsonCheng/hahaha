@@ -45,6 +45,8 @@ class UserInfoData: BaseData {
     var fan_num : Int!
     var follow_num : Int!
     var friend_num : Int!
+    var follow_status : Int!
+    var is_friend : Int!
     
     var state_last_update : String!
     var trade_id : Int!
@@ -56,7 +58,9 @@ class UserInfoData: BaseData {
     var Authorization: String!
     
 }
-
+class UserListModel:BaseModel{
+    var data: [UserInfoData]?
+}
 class Relation: BaseData {
     
     var add_time : String!

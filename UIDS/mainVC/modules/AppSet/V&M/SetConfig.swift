@@ -68,7 +68,7 @@ extension SetConfig {
         let model2_2 = SettingCellModel(leftIcon: nil,
                                         title: "消息列表",
                                         description: nil,
-                                        dotIcon: "noread_icon.png",
+                                        dotIcon: "nil",
                                         rightIcon: "cell_arrow.png",
                                         isHiddenBottomLine: false)
         let model2_3 = SettingCellModel(leftIcon: nil,

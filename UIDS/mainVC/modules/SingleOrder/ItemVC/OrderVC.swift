@@ -29,8 +29,8 @@ public enum ORDER_TYPE: Int {
 private enum Reusable {
     
     static let grapCell = ReusableCell<GrapCell>(nibName: "GrapCell")
-    static let noingCell = ReusableCell<orderCell>(nibName: "orderCell")
-    static let overCell = ReusableCell<orderTwoCell>(nibName: "orderTwoCell")
+    static let noingCell = ReusableCell<OrderCell>(nibName: "OrderCell")
+    static let overCell = ReusableCell<OrderTwoCell>(nibName: "OrderTwoCell")
 }
 
 // MARK:- 常量
@@ -291,9 +291,12 @@ extension OrderVC: WSUtilDelegate{
             count = count+1
         }
         
-        let msg: String
+        var msg: String = ""
         if cancel {
-            msg = "订单：\((getobj?.classify_name)!) 被抢了"
+            if let order = getobj?.classify_name{
+                msg = "订单：\(order) 被抢了"
+            }
+            
             
             viewModel.orderList.value[0].items.remove(at: count)
             
