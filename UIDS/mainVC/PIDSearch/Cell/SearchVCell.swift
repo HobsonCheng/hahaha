@@ -32,6 +32,9 @@ class SearchVCell: UITableViewCell {
             
                 let reg = "(?<=<em>).*?(?=</em>)"
                 
+                if pnameStr == nil {
+                    return
+                }
                 let list = Util.regexGetSub(pattern: reg, str: pnameStr!)
                 
                 

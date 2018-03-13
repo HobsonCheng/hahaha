@@ -27,6 +27,10 @@ class MainVC: BaseNameVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             self?.updataApp()
         }
+        
+        
+        MsgUtil.shared.showUtil()
+        
     }
 
     override func didReceiveMemoryWarning() {
