@@ -257,6 +257,8 @@
 		E1A711C1205679AA0094545A /* JCFPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A711BA205679AA0094545A /* JCFPSLabel.swift */; };
 		E1A711C2205679AA0094545A /* JCVideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A711BB205679AA0094545A /* JCVideoManager.swift */; };
 		E1A711C3205679AA0094545A /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A711BC205679AA0094545A /* Log.swift */; };
+		E1A711C52057670D0094545A /* MsgUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A711C42057670D0094545A /* MsgUtil.swift */; };
+		E1A711C720576F1D0094545A /* 2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A711C620576F1D0094545A /* 2@3x.png */; };
 		E1ABEB1820182D2300F7FF91 /* JFCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABEB1620182D2200F7FF91 /* JFCommentCell.swift */; };
 		E1ABEB1920182D2300F7FF91 /* JFCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1ABEB1720182D2200F7FF91 /* JFCommentCell.xib */; };
 		E1ABEB1D20182D6A00F7FF91 /* default－portrait@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1ABEB1A20182D6900F7FF91 /* default－portrait@3x.png */; };
@@ -700,6 +702,8 @@
 		E1A711BA205679AA0094545A /* JCFPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCFPSLabel.swift; sourceTree = "<group>"; };
 		E1A711BB205679AA0094545A /* JCVideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCVideoManager.swift; sourceTree = "<group>"; };
 		E1A711BC205679AA0094545A /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		E1A711C42057670D0094545A /* MsgUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgUtil.swift; sourceTree = "<group>"; };
+		E1A711C620576F1D0094545A /* 2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@3x.png"; sourceTree = "<group>"; };
 		E1ABEB1620182D2200F7FF91 /* JFCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFCommentCell.swift; sourceTree = "<group>"; };
 		E1ABEB1720182D2200F7FF91 /* JFCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JFCommentCell.xib; sourceTree = "<group>"; };
 		E1ABEB1A20182D6900F7FF91 /* default－portrait@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default－portrait@3x.png"; sourceTree = "<group>"; };
@@ -1166,6 +1170,7 @@
 			children = (
 				E1A710CC205676210094545A /* Utilites */,
 				E1A71013205675630094545A /* ChatModule */,
+				E1A711C42057670D0094545A /* MsgUtil.swift */,
 			);
 			path = IM;
 			sourceTree = "<group>";
@@ -1609,6 +1614,7 @@
 		E1C031B52006235B00B1A377 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				E1A711C620576F1D0094545A /* 2@3x.png */,
 				E16763A8202ADFF200947323 /* pid1@2x.png */,
 				E16763A9202ADFF300947323 /* pid1@3x.png */,
 				E153BBEA2029C91F00C7F786 /* ios商店图1.jpg */,
@@ -2220,6 +2226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A711C720576F1D0094545A /* 2@3x.png in Resources */,
 				E11B62AE2018254B00CE5E1D /* JFNewsBottomBar.xib in Resources */,
 				E1BD55DB201B3750009482EC /* empty_placeholder@2x.png in Resources */,
 				E12BC14D20173E2500099ED4 /* share_platform_wechattimeline@2x.png in Resources */,
@@ -2741,6 +2748,7 @@
 				E1A7112F205676210094545A /* DLSlideView.m in Sources */,
 				E1A711BE205679AA0094545A /* JCAppManager.swift in Sources */,
 				E1C031AA20061E6B00B1A377 /* SwipImgAreaPageControl.swift in Sources */,
+				E1A711C52057670D0094545A /* MsgUtil.swift in Sources */,
 				E1E31B97201045B400776701 /* CodeMode.swift in Sources */,
 				E1C03241200E15CF00B1A377 /* UserInfoModel.swift in Sources */,
 				E12BC0EB2017230700099ED4 /* CLBottomCommentViewDelegate.swift in Sources */,
