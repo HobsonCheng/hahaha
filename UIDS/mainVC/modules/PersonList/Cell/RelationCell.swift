@@ -64,7 +64,6 @@ class RelationCell: UITableViewCell {
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     func didTappedFollowButton(type: String) {
         if type == "添加关注"{

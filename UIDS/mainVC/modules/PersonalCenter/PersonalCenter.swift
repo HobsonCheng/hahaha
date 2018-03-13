@@ -13,24 +13,13 @@ class PersonalCenter: BaseModuleView {
     var reloadCell: ReloadOver?
     var header: JFProfileHeaderView?
     var isOwner: Bool = true
-    var itemObj: UserInfoData?{
-        didSet{
-            let userInfo = UserUtil.share.appUserInfo
-            if itemObj == nil{
-                isOwner = true
-                itemObj = userInfo
-            }else if itemObj?.uid == userInfo?.uid{
-                isOwner = true
-            }else{
-                isOwner = false
-            }
-            self.setHeaderInfo()
-        }
-    }
+    var itemObj: UserInfoData?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.genderView()
+        
+//        self.layer.masksToBounds = tru
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,88 +27,88 @@ class PersonalCenter: BaseModuleView {
     }
     
     private func genderView(){
-        self.removeAllSubviews()
         header = (Bundle.main.loadNibNamed("JFProfileHeaderView", owner: nil, options: nil)?.last as! JFProfileHeaderView)
         header?.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height:  200)
         header?.initView()
         header?.delegate = self
-        setHeaderInfo()
+        self.addSubview(header!)
+        //        setHeaderInfo()
     }
     
     
-    func setHeaderInfo() {
-        if isOwner{        //自己的个人中心
-            let params = NSMutableDictionary()
-            ApiUtil.share.getInfo(params: params, fininsh: { [weak self](status, data, msg) in
-                let userInfo = UserUtil.share.appUserInfo
-                self?.header?.nameLabel.text = userInfo?.nick_name
-                self?.header?.avatarButton.sd_setImage(with: URL.init(string: (userInfo?.head_portrait ?? "")), for: .normal, completed: nil)
-                self?.header?.nameLabel.text = userInfo?.zh_name
-                if userInfo?.relations.count == 0 {
-                    
-                }else {
-                    if let relations = userInfo?.relations{
-                        self?.header?.list = relations
-                        DispatchQueue.main.async {
-                            self?.header?.showMenu()
-                        }
-                    }
-                    
+    func setHeaderInfo() {    //自己的个人中心
+        self.isOwner = true
+        let params = NSMutableDictionary()
+        ApiUtil.share.getInfo(params: params, fininsh: { [weak self](status, data, msg) in
+            let userInfo = UserUtil.share.appUserInfo
+            self?.header?.nameLabel.text = userInfo?.nick_name
+            self?.header?.avatarButton.sd_setImage(with: URL.init(string: (userInfo?.head_portrait ?? "")), for: .normal, completed: nil)
+            self?.header?.nameLabel.text = userInfo?.zh_name
+            if userInfo?.relations.count == 0 {
+                
+            }else {
+                if let relations = userInfo?.relations{
+                    self?.header?.list = relations
+                    self?.header?.showMenu()
                 }
+                
+            }
+            DispatchQueue.main.async {
                 self?.refreshES!()
-            })
-            self.addSubview(header!)
-        }else{//别人的个人中心
-            ApiUtil.share.getRelationInfo(user_id: (itemObj?.uid ?? 0),app_id :itemObj?.pid ?? 0, finish: { (status, data, msg) in
-                let info = UserInfoModel.deserialize(from: data)?.data
-                DispatchQueue.main.async { [weak self] in
-                    self?.header?.nameLabel.text = info?.zh_name
-                    self?.header?.avatarButton.sd_setImage(with: URL.init(string: info?.head_portrait ?? ""), for: .normal, completed: nil)
+            }
+        })
+    }
+    func  setOthersHeaderInfo() {//别人的个人中心
+        self.isOwner = false
+        ApiUtil.share.getRelationInfo(user_id: (itemObj?.uid ?? 0),app_id :itemObj?.pid ?? 0, finish: { (status, data, msg) in
+            let info = UserInfoModel.deserialize(from: data)?.data
+            self.header?.nameLabel.text = info?.zh_name
+            self.header?.avatarButton.sd_setImage(with: URL.init(string: info?.head_portrait ?? ""), for: .normal, completed: nil)
+                var relationList =  [Relation]()
+                let r1 = Relation()
+                if info?.follow_status != 0 {
+                    r1.relation_name = "取消关注"
                     
-                    var relationList =  [Relation]()
-                    let r1 = Relation()
-                    if info?.follow_status != 0 {
-                        r1.relation_name = "取消关注"
-                        
-                        r1.relation_type = 996
-                    }else{
-                        r1.relation_name = "添加关注"
-                        r1.relation_type = 998
-                    }
-                    r1.color = info?.relations[0].color
-                    let r2 = Relation()
-                    if info?.is_friend == 1{
-                        r2.relation_name = "删除好友"
-                        r2.relation_type = 886
-                        
-                    }else{
-                        r2.relation_name = "添加好友"
-                        r2.relation_type = 889
-                    }
-                    relationList.append(r1)
-                    relationList.append(r2)
-                    self?.header?.list = relationList
-                    DispatchQueue.main.async {
-                        self?.header?.menuView.removeAllSubviews()
-                        self?.header?.showMenu()
-                    }
-                    self?.refreshES!()
+                    r1.relation_type = 996
+                }else{
+                    r1.relation_name = "添加关注"
+                    r1.relation_type = 998
                 }
-            })
-            self.addSubview(header!)
-        }
-        
+                r1.color = info?.relations[0].color
+                let r2 = Relation()
+                if info?.is_friend == 1{
+                    r2.relation_name = "删除好友"
+                    r2.relation_type = 886
+                    
+                }else{
+                    r2.relation_name = "添加好友"
+                    r2.relation_type = 889
+                }
+                relationList.append(r1)
+                relationList.append(r2)
+            self.header?.list = relationList
+            DispatchQueue.main.async { [weak self] in
+                self?.header?.showMenu()
+                self?.refreshES!()
+            }
+            self.header?.avatarButton.isUserInteractionEnabled = false
+
+            
+        })
     }
     //MARK :- 下拉刷新调用
     override func reloadViewData() -> Bool {
-        
-        self.setHeaderInfo()
+        if isOwner{
+            self.setHeaderInfo()
+        }else{
+            self.setOthersHeaderInfo()
+        }
         return false
     }
 }
 
 extension PersonalCenter: JFProfileHeaderViewDelegate{
-
+    
     
     func didTappedAvatarButton() {
         

@@ -23,7 +23,7 @@ class NotifyListVC: NaviBarVC,UITableViewDelegate,UITableViewDataSource {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.config()
-        tableView.rowHeight = 80
+//        tableView.rowHeight = 80
         return tableView
     }()
     

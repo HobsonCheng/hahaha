@@ -26,6 +26,9 @@
                             <constraint firstAttribute="width" constant="50" id="yHF-JA-TIw"/>
                         </constraints>
                         <state key="normal" backgroundImage="comment_profile_default.png"/>
+                        <connections>
+                            <action selector="goPersonCenter:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vI1-Zt-rzj"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqW-5T-75B">
                         <rect key="frame" x="65" y="41" width="35" height="20"/>
@@ -110,7 +113,7 @@
                 <outlet property="iconButton" destination="Rs9-qH-445" id="FhC-FE-88A"/>
                 <outlet property="userName" destination="S7G-iL-eFv" id="wQ3-BS-s7A"/>
             </connections>
-            <point key="canvasLocation" x="-141" y="-33"/>
+            <point key="canvasLocation" x="-290" y="-38"/>
         </tableViewCell>
     </objects>
     <resources>

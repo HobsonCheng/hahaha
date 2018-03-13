@@ -147,6 +147,13 @@ extension RelationsVC {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+        getPage?.anyObj = self.userList?[indexPath.row]
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
+    }
 }
 
 

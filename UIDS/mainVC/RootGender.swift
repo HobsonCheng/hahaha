@@ -211,19 +211,20 @@ extension RootVC {//扩展
     }
     //MARK: 生成个人中心
     func genderPersonalCenter(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
-        
         let personalCenter = PersonalCenter.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        self.mainView?.addSubview(personalCenter)
         personalCenter.reloadCell = {[weak self] in
             self?.reloadMainScroll()
         }
-        personalCenter.tag = Int(startY.pointee)
-        if let itemObj = self.pageData?.anyObj{
-            personalCenter.itemObj = itemObj as? UserInfoData
+        if let item = self.pageData?.anyObj as? UserInfoData{
+            personalCenter.itemObj = item
+            personalCenter.setOthersHeaderInfo()
+        }else{
+            personalCenter.setHeaderInfo()
         }
-        personalCenter.setHeaderInfo()
+        personalCenter.tag = Int(startY.pointee)
         personalCenter.refreshES = self.esCallBack
         
-        self.mainView?.addSubview(personalCenter)
         
         startY.pointee = personalCenter.bottom + 10
     }

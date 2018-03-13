@@ -110,4 +110,11 @@ class GrapCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func goPersonCenter(_ sender: UIButton) {
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+        getPage?.anyObj = self.cellData?.form_user
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
+    }
 }

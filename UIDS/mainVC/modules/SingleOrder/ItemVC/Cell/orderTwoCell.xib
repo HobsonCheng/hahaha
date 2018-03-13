@@ -26,6 +26,9 @@
                             <constraint firstAttribute="width" constant="50" id="yCU-KS-Smn"/>
                         </constraints>
                         <state key="normal" backgroundImage="comment_profile_default.png"/>
+                        <connections>
+                            <action selector="gotoPersonalCenter:" destination="3hm-Um-xiy" eventType="touchUpInside" id="Btz-5d-3kC"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI大师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rM-zX-Ek3">
                         <rect key="frame" x="65" y="15" width="48.5" height="20"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310E0C2820577591004446C5 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E0C2720577591004446C5 /* HeaderItemView.swift */; };
 		314B710E205039AE00B455CB /* MessagePoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314B710D205039AE00B455CB /* MessagePoolModel.swift */; };
 		314B7111205039F500B455CB /* MessagePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314B7110205039F500B455CB /* MessagePool.swift */; };
 		31687A442046F97000D4F6AE /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31687A432046F97000D4F6AE /* ShareView.swift */; };
@@ -296,6 +297,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		310E0C2720577591004446C5 /* HeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
 		314B710D205039AE00B455CB /* MessagePoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePoolModel.swift; sourceTree = "<group>"; };
 		314B7110205039F500B455CB /* MessagePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePool.swift; sourceTree = "<group>"; };
 		31687A432046F97000D4F6AE /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
@@ -810,6 +812,7 @@
 			children = (
 				E12D91C8201874FA00CFB9E9 /* JFProfileHeaderView.swift */,
 				E12D91C9201874FA00CFB9E9 /* JFProfileHeaderView.xib */,
+				310E0C2720577591004446C5 /* HeaderItemView.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1983,6 +1986,7 @@
 				E594E0792003ABB800BDF511 /* NSMutableDictionary+Utility.m in Sources */,
 				E1EABAC420119E4E00CBE71A /* ApiUtil.swift in Sources */,
 				E1F5E277200F343200FD18FD /* ThridLoginVC.swift in Sources */,
+				310E0C2820577591004446C5 /* HeaderItemView.swift in Sources */,
 				E1BD55D7201B0C41009482EC /* FromModel.swift in Sources */,
 				E1EDAB7220033D26004DD7B9 /* NaviBarVC.m in Sources */,
 				E1E31B89200F439A00776701 /* HCOtherLoginModeView.swift in Sources */,

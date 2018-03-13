@@ -48,7 +48,10 @@ class SingleOrder: BaseModuleView {
         self.buildMenu()
         
     }
-
+    override func reloadViewData() -> Bool {
+        self.pageVC.reloadData()
+        return false
+    }
 }
 
 
