@@ -32,7 +32,7 @@ class PersonalCenter: BaseModuleView {
         header?.initView()
         header?.delegate = self
         self.addSubview(header!)
-        //        setHeaderInfo()
+        self.autoresizesSubviews = false
     }
     
     

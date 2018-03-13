@@ -16,6 +16,7 @@
 		319C74092053BADE00EF0935 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319C74082053BADE00EF0935 /* OrderCell.xib */; };
 		319C740C2053BB4100EF0935 /* RelationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319C740A2053BB4100EF0935 /* RelationCell.swift */; };
 		319C740F2053BF3800EF0935 /* RelationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319C740E2053BF3800EF0935 /* RelationCell.xib */; };
+		31AB14CD2057C7A2008062C0 /* UIDSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB14CC2057C7A2008062C0 /* UIDSFont.swift */; };
 		31CD10AD204A907C00466808 /* NotifyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AC204A907C00466808 /* NotifyListVC.swift */; };
 		31CD10B1204A90BF00466808 /* NotifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AF204A90BF00466808 /* NotifyCell.swift */; };
 		31CD10B2204A90BF00466808 /* NotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31CD10B0204A90BF00466808 /* NotifyCell.xib */; };
@@ -306,6 +307,8 @@
 		319C74082053BADE00EF0935 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		319C740A2053BB4100EF0935 /* RelationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationCell.swift; sourceTree = "<group>"; };
 		319C740E2053BF3800EF0935 /* RelationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelationCell.xib; sourceTree = "<group>"; };
+		31AB14C82057C0C5008062C0 /* UIDS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UIDS.ttf; sourceTree = "<group>"; };
+		31AB14CC2057C7A2008062C0 /* UIDSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDSFont.swift; sourceTree = "<group>"; };
 		31CD10AC204A907C00466808 /* NotifyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyListVC.swift; sourceTree = "<group>"; };
 		31CD10AF204A90BF00466808 /* NotifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyCell.swift; sourceTree = "<group>"; };
 		31CD10B0204A90BF00466808 /* NotifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifyCell.xib; sourceTree = "<group>"; };
@@ -672,6 +675,14 @@
 				31F694FB2055B25700877419 /* RelationsVC.swift */,
 			);
 			path = PersonList;
+			sourceTree = "<group>";
+		};
+		31AB14C92057C4DC008062C0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				31AB14CC2057C7A2008062C0 /* UIDSFont.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		31CD10AB204A904D00466808 /* NotifyListVC */ = {
@@ -1131,6 +1142,7 @@
 		E1C0321E200C3B2B00B1A377 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				31AB14C82057C0C5008062C0 /* UIDS.ttf */,
 				E1E31B9820107E1400776701 /* uidashi.ttf */,
 			);
 			path = data;
@@ -1292,6 +1304,7 @@
 		E1EDAB5C20031980004DD7B9 /* B+Util */ = {
 			isa = PBXGroup;
 			children = (
+				31AB14C92057C4DC008062C0 /* Fonts */,
 				E11B628C2018210700CE5E1D /* WebViewJavascriptBridge */,
 				E1C7AA692016EE0000E67D33 /* UploadImageTool */,
 				E5E59AC32014CE4E0040D30D /*  LSXInputAlertView */,
@@ -1975,6 +1988,7 @@
 				E594E0752003ABB800BDF511 /* UIImageView+GIFDecode.m in Sources */,
 				E1E31B8F200F4EC700776701 /* InputValidator.swift in Sources */,
 				E594E0802003AEE200BDF511 /* AppInfo.m in Sources */,
+				31AB14CD2057C7A2008062C0 /* UIDSFont.swift in Sources */,
 				E594E05C2003ABA200BDF511 /* NaviBarItem.m in Sources */,
 				E1EDAB7B2005B001004DD7B9 /* RootVC.swift in Sources */,
 				E1C031EA2007805500B1A377 /* Slider.swift in Sources */,
