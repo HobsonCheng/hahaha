@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 import NSObject_Rx
 
-class orderTwoCell: UITableViewCell {
+class OrderTwoCell: UITableViewCell {
 
 
     @IBOutlet weak var eventbt: UIButton!

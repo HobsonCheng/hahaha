@@ -23,7 +23,7 @@ class EventData {
 }
 
 
-class orderCell: UITableViewCell {
+class OrderCell: UITableViewCell {
 
 
     
