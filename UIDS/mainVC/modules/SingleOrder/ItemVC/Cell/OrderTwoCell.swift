@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 import NSObject_Rx
 
-class orderTwoCell: UITableViewCell {
+class OrderTwoCell: UITableViewCell {
 
 
     @IBOutlet weak var eventbt: UIButton!
@@ -29,11 +29,8 @@ class orderTwoCell: UITableViewCell {
                 
                 fromName.text = cellData?.classify_name
                 addtime.text = cellData?.order_time
-                if cellData?.order_user != nil {
-                    userName.text = cellData?.order_user.nick_name
-                }else {
-                    userName.text = cellData?.form_user.nick_name
-                }
+                iconButton.sd_setImage(with: URL.init(string: cellData?.form_user.head_portrait ?? ""), for: .normal, completed: nil)
+                userName.text = cellData?.form_user.zh_name
                 
                 if cellData?.order_status == 2 {
                     eventbt.setTitle("已完成", for: UIControlState.normal)
@@ -49,7 +46,7 @@ class orderTwoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
       
-        self.iconButton.layer.cornerRadius = 25
+        self.iconButton.layer.cornerRadius = 20
         self.iconButton.layer.masksToBounds = true
         
         self.eventbt.layer.cornerRadius = 6
@@ -62,4 +59,11 @@ class orderTwoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func gotoPersonalCenter(_ sender: Any) {
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+        getPage?.anyObj = self.cellData?.form_user
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
+    }
 }

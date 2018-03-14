@@ -23,7 +23,7 @@ class EventData {
 }
 
 
-class orderCell: UITableViewCell {
+class OrderCell: UITableViewCell {
 
 
     
@@ -47,12 +47,9 @@ class orderCell: UITableViewCell {
             if cellData != nil {
                 content.text = ""
                 fromName.text = cellData?.classify_name
-                addtime.text = cellData?.order_time
-                if cellData?.order_user != nil {
-                    userName.text = cellData?.order_user.nick_name
-                }else {
-                    userName.text = cellData?.form_user.nick_name
-                }
+                addtime.text = cellData?.add_time
+                iconButton.sd_setImage(with: URL.init(string: cellData?.form_user.head_portrait ?? ""), for: UIControlState.normal, completed: nil)
+                userName.text = cellData?.form_user.zh_name
                 
             }
         }
@@ -60,7 +57,7 @@ class orderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.iconButton.layer.cornerRadius = 25
+        self.iconButton.layer.cornerRadius = 20
         self.iconButton.layer.masksToBounds = true
         
         self.overButton.layer.cornerRadius = 6
@@ -118,4 +115,11 @@ class orderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func gotoPersonalCenter(_ sender: Any) {
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+        getPage?.anyObj = self.cellData?.form_user
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
+    }
 }
