@@ -7,7 +7,11 @@
 //
 
 import UIKit
+import JMessage
 
+class AppKeyModel: BaseModel {
+    var data: String!
+}
 
 private let MsgUtilShared = MsgUtil()
 
@@ -20,12 +24,46 @@ class MsgUtil: NSObject {
     func showUtil() {
       
         let suspen = BSuspensionView(frame: .zero)
+        suspen.leanType = BSuspensionViewLeanType.Horizontal
         suspen.initBt(frame: .zero, delegate: self)
-        
+        suspen.frame = CGRect(x: kScreenW - 50, y: kScreenH - 150, width: 50, height: 50)
         let appwindow = UIApplication.shared.delegate?.window
         appwindow??.addSubview(suspen)
     
+        MsgUtil.msg_IMInit()
     }
+    
+    
+    // MARK: - private func
+    static func _setupJMessage() {
+        
+        JMessage.setDebugMode()
+        
+        // iOS 8 以前 categories 必须为nil
+        JMessage.register(
+            forRemoteNotificationTypes: UIRemoteNotificationType.badge.rawValue |
+                UIRemoteNotificationType.sound.rawValue |
+                UIRemoteNotificationType.alert.rawValue,
+            categories: nil)
+    }
+    
+    static func msg_IMInit(){
+        
+        
+        ApiUtil.share.getProjectAppKey(params: NSMutableDictionary()) { (status, data, msg) in
+            
+            
+            let dataKey = AppKeyModel.deserialize(from: data)?.data
+            
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            JMessage.setupJMessage(appdelegate.app_launchOptions, appKey: dataKey, channel: nil, apsForProduction: true, category: nil, messageRoaming: true)
+            _setupJMessage()
+            
+        }
+    
+    }
+    
 }
 
 
@@ -33,6 +71,9 @@ extension MsgUtil:BSuspensionViewDelegate{
     
     
     func suspensionViewClick(view: BSuspensionView) {
+        
+        
+        
         
     }
 
@@ -87,8 +128,7 @@ class BSuspensionView: UIButton {
             
             self.alpha = 1
         }else if (p.state == UIGestureRecognizerState.changed){
-            
-            
+            self.center = CGPoint(x: panPoint.x, y: panPoint.y)
         }else if (p.state == UIGestureRecognizerState.ended || p.state == UIGestureRecognizerState.cancelled) {
             
             self.alpha = 0.8
@@ -110,7 +150,7 @@ class BSuspensionView: UIButton {
                 minSpace = Float(min(Float(min(Float(min(top, left)), bottom)), right))
             }
             
-            let newCenter: CGPoint!
+            var newCenter: CGPoint! = CGPoint(x: 0, y: 0)
             let targetY:CGFloat!
             
             //校正Y
@@ -134,7 +174,7 @@ class BSuspensionView: UIButton {
             }
             
             UIView.animate(withDuration: 0.25, animations: {
-                //[ZYSuspensionManager windowForKey:self.md5Key].center = newCenter;
+                self.center = newCenter
             })
         }
     }

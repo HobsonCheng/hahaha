@@ -14,10 +14,11 @@ import Reachability
 class JCConversationListViewController: NaviBarVC {
     
     var datas: [JMSGConversation] = []
-
+    var systemDatas: [String] = []
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        request_groups()
         _init()
     }
     
@@ -205,26 +206,52 @@ class JCConversationListViewController: NaviBarVC {
 
 extension JCConversationListViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if self.systemDatas.count > 0 {
+            return 2
+        }else {
+            return 1
+        }
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return showNetworkTips ? datas.count + 1 : datas.count
+        if self.systemDatas.count > 0  && section == 0{
+            return systemDatas.count
+        }else {
+            return showNetworkTips ? datas.count + 1 : datas.count
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if showNetworkTips && indexPath.row == 0 {
-            errorTips.selectionStyle = .none
-            return errorTips
+        if self.systemDatas.count > 0  && indexPath.section == 0{
+            return tableView.dequeueReusableCell(withIdentifier: "JCConversationCell", for: indexPath)
+        }else {
+            if showNetworkTips && indexPath.row == 0 {
+                errorTips.selectionStyle = .none
+                return errorTips
+            }
+            return tableView.dequeueReusableCell(withIdentifier: "JCConversationCell", for: indexPath)
+
         }
-        return tableView.dequeueReusableCell(withIdentifier: "JCConversationCell", for: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? JCConversationCell else {
             return
         }
-        cell.bindConversation(datas[showNetworkTips ? indexPath.row - 1 : indexPath.row])
+        
+        if self.systemDatas.count > 0  && indexPath.section == 0{
+            cell.bindGroupConversation(self.systemDatas[indexPath.row])
+        }else {
+           cell.bindConversation(datas[showNetworkTips ? indexPath.row - 1 : indexPath.row])
+        }
+        
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.systemDatas.count > 0  && indexPath.section == 0{
+            return 65
+        }
         if showNetworkTips && indexPath.row == 0 {
             return 40
         }
@@ -233,17 +260,33 @@ extension JCConversationListViewController: UITableViewDelegate, UITableViewData
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if showNetworkTips && indexPath.row == 0 {
-            return 
+        if self.systemDatas.count > 0  && indexPath.section == 0{
+            
+            Util.svploading(str: "申请加入中...")
+            
+            ApiUtil.share.applyGroup(params: NSMutableDictionary(), finish: { (status, data, msg) in
+                Util.svpStop(ok: true, callback: {
+                    
+                })
+                
+                
+            })
+            
+
+            
+        }else {
+            if showNetworkTips && indexPath.row == 0 {
+                return
+            }
+            let conversation = datas[showNetworkTips ? indexPath.row - 1 : indexPath.row]
+            conversation.clearUnreadCount()
+            guard let cell = tableView.cellForRow(at: indexPath) as? JCConversationCell else {
+                return
+            }
+            cell.bindConversation(conversation)
+            let vc = JCChatViewController(conversation: conversation)
+            navigationController?.pushViewController(vc, animated: true)
         }
-        let conversation = datas[showNetworkTips ? indexPath.row - 1 : indexPath.row]
-        conversation.clearUnreadCount()
-        guard let cell = tableView.cellForRow(at: indexPath) as? JCConversationCell else {
-            return
-        }
-        cell.bindConversation(conversation)
-        let vc = JCChatViewController(conversation: conversation)
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -416,4 +459,17 @@ extension JCConversationListViewController {
             titleTipsView.isHidden = false
         }
     }
+}
+
+extension JCConversationListViewController {
+    
+    fileprivate func request_groups(){
+        
+        ApiUtil.share.getGroups(params: NSMutableDictionary()) { [weak self] (status, data, msg) in
+            self?.systemDatas = []
+            self?.tableview.reloadData()
+        }
+        
+    }
+    
 }

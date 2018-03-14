@@ -785,5 +785,51 @@ class ApiUtil: NSObject {
             }
         }
     }
+    // MARK: - im 用户
+    func getUser(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getUser", forKey: "ac")
+        params.setValue("jiguang", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            finish?(status,data,msg)
+        }
+    }
+    // MARK: - im 群列表
+    func getGroups(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getGroups", forKey: "ac")
+        params.setValue("jiguang", forKey: "sn")
+        
+        params.setValue("1", forKey: "page")
+        params.setValue("100", forKey: "page_context")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            finish?(status,data,msg)
+        }
+    }
+    // MARK: - im 申请进群
+    func applyGroup(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("applyGroup", forKey: "ac")
+        params.setValue("jiguang", forKey: "sn")
+        
+        params.setValue("1", forKey: "page")
+        params.setValue("100", forKey: "page_context")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            finish?(status,data,msg)
+        }
+    }
+    // MARK: - im 项目key
+    func getProjectAppKey(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getProjectAppKey", forKey: "ac")
+        params.setValue("jiguang", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            finish?(status,data,msg)
+        }
+    }
 }
 

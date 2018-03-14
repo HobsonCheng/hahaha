@@ -58,7 +58,22 @@ class JCConversationCell: JCTableViewCell {
         redPoin.textAlignment = .center
         return redPoin
     }()
-    
+    //MARK: - public func
+    open func bindGroupConversation(_ conversation: String) {
+        statueView.isHidden = true
+        redPoin.isHidden = true
+        
+        let fromData = DateFormatter()
+        formatter.dateFormat = "yyyy-mm-dd hh:mm:ss"
+        let date = formatter.date(from: "Jan 27, 2010, 10:00 AM PST")
+
+        dateLabel.text = date.conversationDate()
+        
+        
+        msgLabel.text = "sdsds"
+        
+        backgroundColor = .white
+    }
     //MARK: - public func
     open func bindConversation(_ conversation: JMSGConversation) {
         statueView.isHidden = true

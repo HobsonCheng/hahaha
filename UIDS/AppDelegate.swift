@@ -15,34 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    
-    //植入jmessage
-    let JMAPPKEY = "6eb7290c25e206798d329b37"
-    
-    // MARK: - private func
-    private func _setupJMessage() {
-        JMessage.add(self, with: nil)
-        //        JMessage.setLogOFF()
-        JMessage.setDebugMode()
-        
-        // iOS 8 以前 categories 必须为nil
-        JMessage.register(
-            forRemoteNotificationTypes: UIRemoteNotificationType.badge.rawValue |
-                UIRemoteNotificationType.sound.rawValue |
-                UIRemoteNotificationType.alert.rawValue,
-            categories: nil)
-    }
+    var app_launchOptions: [UIApplicationLaunchOptionsKey: Any]?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        app_launchOptions = launchOptions
 //        BQLAuthEngine.single.registerApp()
         IQKeyboardManager.sharedManager().enable = true
-        
-        JMessage.setupJMessage(launchOptions, appKey: JMAPPKEY, channel: nil, apsForProduction: true, category: nil, messageRoaming: true)
-        _setupJMessage()
-        
-        
         
         return true
     }
