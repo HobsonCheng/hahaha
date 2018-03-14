@@ -132,7 +132,7 @@
                         <rect key="frame" x="15" y="130.5" width="361" height="60"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="5t3-UY-zeO"/>
+                            <constraint firstAttribute="height" priority="999" constant="60" id="5t3-UY-zeO"/>
                         </constraints>
                     </view>
                 </subviews>

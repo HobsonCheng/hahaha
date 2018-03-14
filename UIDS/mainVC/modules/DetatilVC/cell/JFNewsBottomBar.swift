@@ -28,9 +28,9 @@ class JFNewsBottomBar : UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.praiseButton.setFAIcon(icon: .FAThumbsOUp, forState: UIControlState.normal)
-        self.praiseButton.setFAIcon(icon: .FAThumbsUp, forState: UIControlState.selected)
-        self.shareButton.setFAIcon(icon: .FAMailForward, forState: UIControlState.normal)
+        self.shareButton.setYJIcon(icon: .forward, iconSize: 16, forState: UIControlState.normal)
+        self.praiseButton.setYJIcon(icon: .praise2, iconSize: 16, forState: UIControlState.normal)
+        self.praiseButton.setYJIcon(icon: .praised0, iconSize:16,forState: UIControlState.selected)
     }
     
     

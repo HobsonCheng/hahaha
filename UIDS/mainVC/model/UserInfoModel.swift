@@ -25,7 +25,7 @@ class UserInfoData: BaseData {
     var pid : Int!
     var signature : String!
     var uid : Int!
-
+    var appkey : String!
     var add_time : String!
     var header : String!
     var status : Int!

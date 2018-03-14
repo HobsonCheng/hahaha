@@ -11,9 +11,9 @@ import SwiftyJSON
 import RxCocoa
 import RxSwift
 import NSObject_Rx
-
+import SVProgressHUD
 class GrapCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var eventbt: UIButton!
@@ -48,7 +48,7 @@ class GrapCell: UITableViewCell {
         // Initialization code
         
         
-        self.iconButton.layer.cornerRadius = 25
+        self.iconButton.layer.cornerRadius = 20
         self.iconButton.layer.masksToBounds = true
         
         self.eventbt.layer.cornerRadius = 6
@@ -66,15 +66,25 @@ class GrapCell: UITableViewCell {
                 dispose?.dispose()
                 self.eventbt.setTitle("取消订单", for: .normal)
                 dispose = self.eventbt.rx.tap.do(onNext : { [weak self] in
-                    let params = NSMutableDictionary()
-                    params.setObject(self?.cellData?.id ?? "", forKey: "form_id" as NSCopying)
-                    params.setObject(self?.cellData?.pid ?? "", forKey: "form_pid" as NSCopying)
-                    ApiUtil.share.cancelSubscribe(params: params, finish: { (status, data, msg) in
-                        Util.msg(msg: "取消订单成功",2)
+                    let vc = UIAlertController(title: "确定取消订单？", message: nil, preferredStyle: .alert)
+                    let action = UIAlertAction.init(title: "确定", style: .destructive, handler: { (action) in
+                        let params = NSMutableDictionary()
+                        params.setObject(self?.cellData?.id ?? "", forKey: "form_id" as NSCopying)
+                        params.setObject(self?.cellData?.pid ?? "", forKey: "form_pid" as NSCopying)
+                        ApiUtil.share.cancelSubscribe(params: params, finish: { (status, data, msg) in
+                            SVProgressHUD.showSuccess(withStatus: "已取消")
+                            SVProgressHUD.dismiss(withDelay: 1)
+                            
+                        })
+                        if let messagePool = self?.superview as? MessagePool{
+                            _ = messagePool.reloadViewData()
+                            messagePool.reloadOver!()
+                        }
                     })
-                    if let messagePool = self?.superview as? MessagePool{
-                                _ = messagePool.reloadViewData()
-                    }
+                    let action2 = UIAlertAction.init(title: "点错了", style: .cancel, handler: nil)
+                    vc.addAction(action)
+                    vc.addAction(action2)
+                    VCController.getTopVC()?.present(vc, animated: true, completion: nil)
                 }).subscribe()
             }else{
                 dispose?.dispose()
@@ -112,7 +122,7 @@ class GrapCell: UITableViewCell {
     
     @IBAction func goPersonCenter(_ sender: UIButton) {
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
-        getPage?.anyObj = self.cellData?.form_user
+        getPage?.anyObj = self.cellData as AnyObject
         if (getPage != nil) {
             OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
         }

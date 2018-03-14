@@ -119,14 +119,14 @@ class NewsDetailVC: NaviBarVC {
     func refreshPreList(){
         let preVC = VCController.getPreviousWith(self)
         //如果前面的VC不是MainVC，遍历查看是否有TopicList，有就刷新
-        if !(preVC is MainVC) {
+        if (preVC is RootVC) {
             let refreshVC = preVC as? RootVC
             let subViews = refreshVC?.mainView?.subviews
             for view in subViews!{
                 if view is TopicList{
                     let list = view as! TopicList
                     list.isReload = true
-                    list.reloadViewData()
+                    _ = list.reloadViewData()
                 }
             }
         }

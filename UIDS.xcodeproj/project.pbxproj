@@ -17,6 +17,7 @@
 		319C740C2053BB4100EF0935 /* RelationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319C740A2053BB4100EF0935 /* RelationCell.swift */; };
 		319C740F2053BF3800EF0935 /* RelationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319C740E2053BF3800EF0935 /* RelationCell.xib */; };
 		31AB14CD2057C7A2008062C0 /* UIDSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB14CC2057C7A2008062C0 /* UIDSFont.swift */; };
+		31AB15062058231D008062C0 /* UIDS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31AB14C82057C0C5008062C0 /* UIDS.ttf */; };
 		31CD10AD204A907C00466808 /* NotifyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AC204A907C00466808 /* NotifyListVC.swift */; };
 		31CD10B1204A90BF00466808 /* NotifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AF204A90BF00466808 /* NotifyCell.swift */; };
 		31CD10B2204A90BF00466808 /* NotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31CD10B0204A90BF00466808 /* NotifyCell.xib */; };
@@ -1634,6 +1635,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AB15062058231D008062C0 /* UIDS.ttf in Resources */,
 				E11B62AE2018254B00CE5E1D /* JFNewsBottomBar.xib in Resources */,
 				E1BD55DB201B3750009482EC /* empty_placeholder@2x.png in Resources */,
 				E12BC14D20173E2500099ED4 /* share_platform_wechattimeline@2x.png in Resources */,

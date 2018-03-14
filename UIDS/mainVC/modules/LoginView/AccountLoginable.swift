@@ -234,7 +234,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.textAlignment = .center
             $0.font = Metric.fontSize
             $0.textColor = kThemeTitielColor
-            $0.setFAIcon(icon: .FAUserO, iconSize: 18)
+            $0.setYJIcon(icon: .account, iconSize: 18)
         }
         
         
@@ -262,7 +262,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.contentMode = .scaleAspectFit
             $0.isUserInteractionEnabled = false
             $0.setTitleColor(kThemeTitielColor!, for: UIControlState.normal)
-            $0.setFAIcon(icon: FAType.FALock, iconSize: 18, forState: UIControlState.normal)
+            $0.setYJIcon(icon: .password, iconSize: 18, forState: UIControlState.normal)
         }
         
         // 添加
@@ -316,14 +316,16 @@ extension AccountLoginable where Self : BaseNameVC{
     private func ImgCodeViewLeft() -> UIView {
         
         let leftView = UIView().then {
-            $0.frame = CGRect(x: 0, y: 0, width: 40, height: 44)
+            $0.frame = CGRect(x: 0, y: 0, width: 42, height: 44)
         }
         
         let tipBtn = UIButton().then {
             $0.contentMode = .scaleAspectFit
             $0.isUserInteractionEnabled = false
             $0.setTitleColor(kThemeTitielColor!, for: UIControlState.normal)
-            $0.setFAIcon(icon: FAType.FAFileCodeO, iconSize: 18, forState: UIControlState.normal)
+            $0.contentMode = .center
+            $0.layer.masksToBounds = true
+            $0.setYJIcon(icon: .authCode, iconSize: 15, forState: UIControlState.normal)
         }
         
         // 添加

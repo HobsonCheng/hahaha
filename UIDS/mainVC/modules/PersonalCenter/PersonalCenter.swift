@@ -14,12 +14,11 @@ class PersonalCenter: BaseModuleView {
     var header: JFProfileHeaderView?
     var isOwner: Bool = true
     var itemObj: UserInfoData?
-    
+    var otherInfo : UserInfoData?
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.genderView()
         
-//        self.layer.masksToBounds = tru
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,37 +61,46 @@ class PersonalCenter: BaseModuleView {
         self.isOwner = false
         ApiUtil.share.getRelationInfo(user_id: (itemObj?.uid ?? 0),app_id :itemObj?.pid ?? 0, finish: { (status, data, msg) in
             let info = UserInfoModel.deserialize(from: data)?.data
+            self.otherInfo = info
+            let ownInfo = UserUtil.share.appUserInfo
             self.header?.nameLabel.text = info?.zh_name
             self.header?.avatarButton.sd_setImage(with: URL.init(string: info?.head_portrait ?? ""), for: .normal, completed: nil)
-                var relationList =  [Relation]()
-                let r1 = Relation()
-                if info?.follow_status != 0 {
-                    r1.relation_name = "取消关注"
-                    
-                    r1.relation_type = 996
-                }else{
-                    r1.relation_name = "添加关注"
-                    r1.relation_type = 998
-                }
-                r1.color = info?.relations[0].color
-                let r2 = Relation()
-                if info?.is_friend == 1{
-                    r2.relation_name = "删除好友"
-                    r2.relation_type = 886
-                    
-                }else{
-                    r2.relation_name = "添加好友"
-                    r2.relation_type = 889
-                }
-                relationList.append(r1)
-                relationList.append(r2)
+            var relationList =  [Relation]()
+            let r1 = Relation()
+            if info?.follow_status != 0 {
+                r1.relation_name = "取消关注"
+                
+                r1.relation_type = 996
+            }else{
+                r1.relation_name = "添加关注"
+                r1.relation_type = 998
+            }
+//            if ownInfo?.appkey != nil,info?.appkey != nil{
+                let r3 = Relation()
+                r3.relation_name = "私聊"
+                r3.relation_type = 666
+                relationList.append(r3)
+//            }
+            r1.color = "#579cdf"
+            let r2 = Relation()
+            if info?.is_friend == 1{
+                r2.relation_name = "删除好友"
+                r2.relation_type = 886
+                
+            }else{
+                r2.relation_name = "添加好友"
+                r2.relation_type = 889
+            }
+            r2.color = "#579cdf"
+            relationList.append(r1)
+            relationList.append(r2)
             self.header?.list = relationList
             DispatchQueue.main.async { [weak self] in
                 self?.header?.showMenu()
                 self?.refreshES!()
             }
             self.header?.avatarButton.isUserInteractionEnabled = false
-
+            
             
         })
     }
@@ -106,12 +114,28 @@ class PersonalCenter: BaseModuleView {
         return false
     }
 }
-
+// MARK: - 个人中心，按钮点击的代理
 extension PersonalCenter: JFProfileHeaderViewDelegate{
-    
-    
+    //好友列表
+    func didTappedFriendsButton() {
+        let vc = RelationsVC()
+        vc?.relationType = RelationshipType.friend
+        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
+    }
+    //关注列表
+    func didTappedFollowerButton() {
+        let vc = RelationsVC()
+        vc?.relationType = RelationshipType.follow
+        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
+    }
+    //粉丝列表
+    func didTappedFunsButton() {
+        let vc = RelationsVC()
+        vc?.relationType = RelationshipType.funs
+        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
+    }
+    //点击了头像
     func didTappedAvatarButton() {
-        
         if UserUtil.isValid() {
             let gotoSet = AppSet.init(name: "SetView")
             VCController.push(gotoSet!, with: VCAnimationClassic.defaultAnimation())
@@ -119,22 +143,18 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
             
             let gotoLogin = LoginView.init(name: "LoginView")
             VCController.push(gotoLogin!, with: VCAnimationClassic.defaultAnimation())
-            
         }
-        
     }
     
-    func didTappedCollectionButton() {
+
+    //点击了私聊
+    func didTappedChatButton() {
+        let appkey = otherInfo?.appkey
+        let userName = otherInfo?.username
         
     }
-    
-    func didTappedCommentButton() {
-        
-    }
-    
-    func didTappedInfoButton() {
-        
-    }
+
+    //点击了添加好友
     func didTappedAddFriendButton(type:String) {
         if type == "添加好友"{
             let dic = NSMutableDictionary()
@@ -158,7 +178,7 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
         }
         
     }
-    
+    //点击了添加关注
     func didTappedAddFollowButton(type : String) {
         if type == "关注"{
             let dic = NSMutableDictionary()
@@ -180,21 +200,7 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
             }
         }
     }
-    func didTappedFriendsButton() {
-        let vc = RelationsVC()
-        vc?.relationType = RelationshipType.friend
-        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
-    }
-    func didTappedFollowerButton() {
-        let vc = RelationsVC()
-        vc?.relationType = RelationshipType.follow
-        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
-    }
-    func didTappedFunsButton() {
-        let vc = RelationsVC()
-        vc?.relationType = RelationshipType.funs
-        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
-    }
+    
     func reloadViewSize() {
         self.height = (self.header?.bottom)!
         self.reloadCell!()

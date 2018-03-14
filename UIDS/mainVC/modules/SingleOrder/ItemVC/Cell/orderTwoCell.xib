@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yc0-Ku-BR9">
-                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <rect key="frame" x="10" y="10" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="lW4-OZ-zk2"/>
-                            <constraint firstAttribute="width" constant="50" id="yCU-KS-Smn"/>
+                            <constraint firstAttribute="height" constant="40" id="lW4-OZ-zk2"/>
+                            <constraint firstAttribute="width" constant="40" id="yCU-KS-Smn"/>
                         </constraints>
                         <state key="normal" backgroundImage="comment_profile_default.png"/>
                         <connections>
@@ -31,25 +31,25 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI大师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rM-zX-Ek3">
-                        <rect key="frame" x="65" y="15" width="48.5" height="20"/>
+                        <rect key="frame" x="55" y="15" width="42.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="wXD-pk-VJs"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPV-aD-PA3">
-                        <rect key="frame" x="65" y="40" width="35" height="20"/>
+                        <rect key="frame" x="55" y="40" width="33" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Sjc-4s-Zbq"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.55679994820000001" green="0.55689889189999997" blue="0.55679368969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI大师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZJ-Rg-XFQ">
-                        <rect key="frame" x="105" y="40" width="45.5" height="20"/>
+                        <rect key="frame" x="93" y="40" width="45.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="i9d-69-z0X"/>
                         </constraints>

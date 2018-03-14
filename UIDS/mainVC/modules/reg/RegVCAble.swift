@@ -138,11 +138,11 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
             $0.font = Metric.fontSize
             $0.textColor = kThemeTitielColor
             if type == 1 {//用户名
-                $0.setFAIcon(icon: .FAUserO, iconSize: 18)
+                $0.setYJIcon(icon: .account, iconSize: 18)
             }else if type == 2 {//密码
-                $0.setFAIcon(icon: FAType.FALock, iconSize: 18)
+                $0.setYJIcon(icon: .password, iconSize: 18)
             }else if type == 3 {//昵称
-                $0.setFAIcon(icon: FAType.FAUserSecret, iconSize: 18)
+                $0.setYJIcon(icon: .person, iconSize: 20)
             }
         }
         

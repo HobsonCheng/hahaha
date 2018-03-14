@@ -261,6 +261,9 @@ extension BRequestHandler {
                 finished(.success, json.description, nil)
             } else if json["code"].intValue == 0203 {
                 //自动进入登录
+                if (VCController.getTopVC()?.isKind(of: LoginView.self))! {
+                    return
+                }
                 let gotoLogin = LoginView.init(name: "LoginView")
                 VCController.push(gotoLogin!, with: VCAnimationBottom.defaultAnimation())
                 

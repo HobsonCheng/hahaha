@@ -35,8 +35,6 @@ extension RootVC {
         case  .NAV_BAR_TYPE_ADD_TOPOC:
             self.genderAdd_topoc()
             break
-        default:
-            break
         }
     }
     
@@ -44,7 +42,7 @@ extension RootVC {
         
         let right = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchAddGroup))
         right?.tag = NAV_BAR_TYPE.NAV_BAR_TYPE_ADD_GROUP.rawValue
-        right?.button.setFAIcon(icon: FAType.FAPlus, iconSize: 20, forState: UIControlState.normal)
+        right?.button.setYJIcon(icon: .add, iconSize: 20, forState: UIControlState.normal)
  
         let tmpRights = NSMutableArray.init(array: self.naviBar().rightBarItems)
         tmpRights.add(right as Any)
@@ -55,7 +53,7 @@ extension RootVC {
         
         let right = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(RootVC.touchAddTopice))
         right?.tag = NAV_BAR_TYPE.NAV_BAR_TYPE_ADD_TOPOC.rawValue
-        right?.button.setFAIcon(icon: FAType.FAPencil, iconSize: 20, forState: UIControlState.normal)
+        right?.button.setYJIcon(icon: .publish, iconSize: 20, forState: UIControlState.normal)
         
         let tmpRights = NSMutableArray.init(array: self.naviBar().rightBarItems)
         tmpRights.add(right as Any)

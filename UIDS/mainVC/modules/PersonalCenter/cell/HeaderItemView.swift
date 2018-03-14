@@ -1,6 +1,6 @@
 //
 //  HeaderItemView.swift
-//  UIDS
+//  YJ
 //
 //  Created by Hobson on 2018/3/13.
 //  Copyright © 2018年 one2much. All rights reserved.
@@ -10,7 +10,7 @@ import UIKit
 import Font_Awesome_Swift
 
 protocol HeaderItemProtocol {
-    func didClickItemButton(type:HeaderItemTyep)
+    func didClickItemButton(sender:HeaderItemView)
 }
 class HeaderItemView: UIView {
     
@@ -27,10 +27,11 @@ class HeaderItemView: UIView {
                 self.lable?.text = "添加关注"
             case HeaderItemTyep.deleteFollower:
                 self.lable?.text = "取消关注"
-            default:
-                self.lable?.text = " "
+            case .chat:
+                self.lable?.text = "私聊"
+            default :
+                self.lable?.text = "其他"
             }
-            
         }
     }
     var relation : Relation?
@@ -41,10 +42,10 @@ class HeaderItemView: UIView {
     func setUI(type:HeaderItemTyep,relation:Relation){
         self.type = type
         self.button = UIButton().then({
-            $0.setFAIcon(icon: FAType.FAAddressCard, forState: .normal)
+            $0.setYJIcon(icon: .cart, forState: .normal)
             $0.backgroundColor = UIColor.init(hexString: relation.color)
             $0.rx.tap.do(onNext: {
-                self.delegate?.didClickItemButton(type: self.type!)
+                self.delegate?.didClickItemButton(sender: self)
             }).asObservable().subscribe().disposed(by: rx.disposeBag)
             $0.width = 60
             $0.left = 15
@@ -63,15 +64,21 @@ class HeaderItemView: UIView {
         })
         switch (self.type!){
         case .follower:
-            self.button?.setFAIcon(icon: .FAExchange,iconSize: 18,forState: .normal)
+            self.button?.setYJIcon(icon: .follow, iconSize: 25, forState: .normal)
         case .funs:
-            self.button?.setFAIcon(icon: .FAUsers, iconSize: 18, forState: .normal)
+            self.button?.setYJIcon(icon: .funs, iconSize: 25, forState: .normal)
         case .huoKe:
-            self.button?.setFAIcon(icon: .FAPodcast, iconSize: 18, forState: .normal)
+            self.button?.setYJIcon(icon: .users, iconSize: 25, forState: .normal)
         case .oder:
-            self.button?.setFAIcon(icon: .FAWpforms, iconSize: 18, forState: .normal)
+            self.button?.setYJIcon(icon: .eGrab0Order, iconSize: 25, forState: .normal)
+        case .deletFriend,.addFriend:
+            self.button?.setYJIcon(icon: .funs2, iconSize: 25, forState: .normal)
+        case .addFollower,.deleteFollower:
+            self.button?.setYJIcon(icon: .follow4, iconSize: 25, forState: .normal)
+        case .chat:
+            self.button?.setYJIcon(icon: .comment2, iconSize: 25, forState: .normal)
         default:
-            self.button?.setFAIcon(icon: FAType.FAAddressCard, forState: .normal)
+            self.button?.setYJIcon(icon: .cart, iconSize: 25, forState: .normal)
         }
         self.addSubview(self.button!)
         self.addSubview(self.lable!)

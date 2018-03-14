@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class RelationCell: UITableViewCell {
 
     @IBOutlet weak var actionBtn: UIButton!
@@ -70,18 +70,18 @@ class RelationCell: UITableViewCell {
             let dic = NSMutableDictionary()
             dic.setValue(itemData?.uid, forKey: "follow_uid")
             dic.setValue(itemData?.pid, forKey: "follow_pid")
-            ApiUtil.share.addFollower(params: dic) { (status, data, msg) in
+            ApiUtil.share.addFollower(params: dic) { [weak self](status, data, msg) in
                 if status == B_ResponseStatus.success{
-                    Util.msg(msg: "已添加关注", 1)
+                    self?.showMessage(success: true,message:"添加成功")
                 }
             }
         }else{
             let dic = NSMutableDictionary()
             dic.setValue(itemData?.uid, forKey: "follow_uid")
             dic.setValue(itemData?.pid, forKey: "follow_pid")
-            ApiUtil.share.deleteFollower(params: dic) { (status, data, msg) in
+            ApiUtil.share.deleteFollower(params: dic) {[weak self] (status, data, msg) in
                 if status == B_ResponseStatus.success{
-                    Util.msg(msg: "已取消关注", 1)
+                    self?.showMessage(success: false, message: "已取消关注")
                 }
             }
         }
@@ -94,20 +94,29 @@ class RelationCell: UITableViewCell {
             dic.setValue("",forKey: "answer")
             dic.setValue(itemData?.uid, forKey: "friend_uid")
             dic.setValue(itemData?.pid, forKey: "friend_pid")
-            ApiUtil.share.addFriend(params: dic) { (status, data, msg) in
+            ApiUtil.share.addFriend(params: dic) { [weak self](status, data, msg) in
                 if status == B_ResponseStatus.success{
-                    Util.msg(msg: "添加成功", 1)
+                    self?.showMessage(success: true,message:"添加成功")
                 }
             }
         }else{
             let dic = NSMutableDictionary()
             dic.setValue(itemData?.uid, forKey: "friend_uid")
             dic.setValue(itemData?.pid, forKey: "friend_pid")
-            ApiUtil.share.deleteFriend(params: dic) { (status, data, msg) in
+            ApiUtil.share.deleteFriend(params: dic) {[weak self] (status, data, msg) in
                 if status == B_ResponseStatus.success{
-                    Util.msg(msg: "已删除", 1)
+                    self?.showMessage(success: false, message: "已删除好友")
                 }
             }
         }
+    }
+    func showMessage(success:Bool,message:String)  {
+        if success{
+            SVProgressHUD.showSuccess(withStatus: message)
+        }else{
+            SVProgressHUD.showError(withStatus: message)
+        }
+        SVProgressHUD.dismiss(withDelay: 1)
+        SVProgressHUD.setDefaultMaskType(.black)
     }
 }

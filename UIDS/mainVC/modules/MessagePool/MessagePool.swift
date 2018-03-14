@@ -38,6 +38,7 @@ class MessagePool: BaseModuleView {
             self?.page = (self?.page)! + 1
             self?.request()
         }
+        self.autoresizesSubviews = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,7 +85,9 @@ class MessagePool: BaseModuleView {
                     self.removeAllSubviews()
                     self.messagePoolData = list
                 }else{
-                    self.messagePoolData = (self.messagePoolData)! + list
+                    if let temp = self.messagePoolData{
+                       self.messagePoolData =  temp + list
+                    }
                 }
                 self.refreshES?()
                 DispatchQueue.main.async {
@@ -129,6 +132,7 @@ class MessagePool: BaseModuleView {
         let cell: TopicCell? = TopicCell.loadFromXib_Swift() as? TopicCell
         cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 125)
         cell?.icon.isUserInteractionEnabled = false
+        cell?.cellObj = itemObj
         let size = itemObj.summarize.getSize(font: (cell?.content.font)!, viewWidth: (cell?.content.width)!)
         
         cell?.height = 115 + size.height
@@ -143,16 +147,14 @@ class MessagePool: BaseModuleView {
         
         for item in moveList!{
             guard let itemObj = item.object else{
-                return
+                continue
             }
             let cell : UITableViewCell?
             
             switch item.feed_type ?? 0{
             case 11:
                 let itemData = TopicData.deserialize(from: itemObj)
-            cell = genderTopicCell(itemObj: itemData!)
-                let topicCell = cell as! TopicCell
-                topicCell.cellObj = itemData
+                cell = genderTopicCell(itemObj: itemData!)
             case 15:
                 let itemObj = OrderCData.deserialize(from: itemObj)
                 cell = genderOrderCell( itemData: itemObj!)

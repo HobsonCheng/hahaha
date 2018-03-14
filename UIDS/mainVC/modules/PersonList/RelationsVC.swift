@@ -131,7 +131,7 @@ extension RelationsVC {
         case .follow:
             cell.actionBtn.setTitle("取消关注", for: .normal)
         case .friend:
-            cell.actionBtn.removeFromSuperview()
+            cell.actionBtn.setTitle("删除好友", for: .normal)
         case .funs:
             cell.actionBtn.setTitle("添加关注", for: .normal)
         }

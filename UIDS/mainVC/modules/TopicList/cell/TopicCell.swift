@@ -39,14 +39,14 @@ class TopicCell: UITableViewCell {
         self.icon.layer.cornerRadius = 20
         self.icon.layer.masksToBounds = true
         
-        self.forward.setFAIcon(icon: FAType.FAMailForward, iconSize: 14, forState: UIControlState.normal)
-        self.comment.setFAIcon(icon: FAType.FAComment, iconSize: 14, forState: UIControlState.normal)
-        self.zan.setFAIcon(icon: FAType.FAThumbsOUp, iconSize: 14, forState: UIControlState.normal)
-        self.zan.setFAIcon(icon: FAType.FAThumbsUp, forState: UIControlState.selected)
+        self.forward.setYJIcon(icon: .forward, iconSize: 16, forState: UIControlState.normal)
+        self.comment.setYJIcon(icon: .comment, iconSize: 16, forState: UIControlState.normal)
+        self.zan.setYJIcon(icon: .praise2, iconSize: 16, forState: UIControlState.normal)
+        self.zan.setYJIcon(icon: .praised0, iconSize:16,forState: UIControlState.selected)
         
         //点击头像前往个人中心
         setGotoPersonCenter()
-
+        self.autoresizesSubviews = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

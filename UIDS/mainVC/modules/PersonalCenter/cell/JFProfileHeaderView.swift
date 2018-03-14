@@ -13,12 +13,10 @@ import RxSwift
 protocol JFProfileHeaderViewDelegate {
     
     func didTappedAvatarButton()
-    func didTappedCollectionButton()
-    func didTappedCommentButton()
+    func didTappedChatButton()
     func didTappedFollowerButton()
     func didTappedFunsButton()
     func didTappedFriendsButton()
-    func didTappedInfoButton()
     func didTappedAddFriendButton(type:String)
     func didTappedAddFollowButton(type:String)
     func reloadViewSize()
@@ -33,6 +31,7 @@ enum HeaderItemTyep:Int {
     case deletFriend = 886
     case addFollower = 998
     case deleteFollower = 996
+    case chat = 666
 }
 class JFProfileHeaderView: UIView {
     
@@ -122,8 +121,8 @@ class JFProfileHeaderView: UIView {
 }
 extension JFProfileHeaderView:HeaderItemProtocol{
     
-    func didClickItemButton(type:HeaderItemTyep){
-        switch type {
+    func didClickItemButton(sender: HeaderItemView){
+        switch sender.type! {
         case .follower:
             self.delegate?.didTappedFollowerButton()
         case .funs:
@@ -136,18 +135,19 @@ extension JFProfileHeaderView:HeaderItemProtocol{
             self.delegate?.didTappedFriendsButton()
         case .addFriend:
             self.delegate?.didTappedAddFriendButton(type: "添加好友")
-            self.itemViews[1].type = .deletFriend
+            sender.type = .deletFriend
         case .deletFriend:
             self.delegate?.didTappedAddFriendButton(type: "删除好友")
-            self.itemViews[1].type = .addFriend
+            sender.type = .addFriend
         case .addFollower:
             self.delegate?.didTappedAddFollowButton(type: "关注")
-            self.itemViews[0].type = .deleteFollower
+            sender.type = .deleteFollower
         case .deleteFollower:
             self.delegate?.didTappedAddFollowButton(type: "取消关注")
-            self.itemViews[0].type = .addFollower
+            sender.type = .addFollower
+        case .chat:
+            self.delegate?.didTappedChatButton()
         }
-        
     }
     //跳转
     private func gotoPage(pageType:String,actionType:String){
