@@ -408,13 +408,13 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
 }
 extension AppSearchNavVC:UISearchBarDelegate{
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let mask = UIButton()
-        mask.frame = self.view.frame
-        mask.backgroundColor = UIColor.init(hex: 333, alpha: 0.3)
-        self.view.addSubview(mask)
-//        mask.
-    }
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        let mask = UIButton()
+//        mask.frame = self.view.frame
+//        mask.backgroundColor = UIColor.init(hex: 333, alpha: 0.3)
+//        self.view.addSubview(mask)
+////        mask.
+//    }
 }
 //历史数据  读存
 extension AppSearchNavVC {
