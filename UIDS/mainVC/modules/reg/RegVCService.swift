@@ -75,7 +75,7 @@ class RegVCService {
                 
                 UserUtil.share.saveUser(userInfo: data)
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
                     
                     VCController.pop(with: VCAnimationClassic.defaultAnimation())
                 };

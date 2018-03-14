@@ -23,17 +23,28 @@ struct ProjectList: HandyJSON {
 }
 
 struct Project: HandyJSON {
-    
-    var app_name: String!
+    /** app名 */
+    var name: String!
+    /** app添加时间 */
     var add_time : String!
+    /** app icon */
     var icon : String!
-    var industry_id : Int!
-    var intro_info : String!
-    var pid : Int!
+    /** 公司名 */
     var pname : String!
-    var pname_code : Int!
-    var group_id: Int!
+    /** app组信息 */
+    var app_group_info : [appGroupInfo]!
+    var register_name: String!
+    var register_phone: String!
     
 }
-
+class appGroupInfo: BaseData {
+    /** app id */
+    var app_id: Int?
+    /** 组 id */
+    var group_id: Int?
+    /** 组类别 */
+    var group_type: Int?
+    /** app名字 */
+    var app_name: String?
+}
 

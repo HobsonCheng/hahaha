@@ -8,18 +8,33 @@
 
 import UIKit
 import Font_Awesome_Swift
-
+import Then
+import RxSwift
 protocol JFProfileHeaderViewDelegate {
     
     func didTappedAvatarButton()
-    func didTappedCollectionButton()
-    func didTappedCommentButton()
-    func didTappedInfoButton()
+    func didTappedChatButton()
+    func didTappedFollowerButton()
+    func didTappedFunsButton()
+    func didTappedFriendsButton()
+    func didTappedAddFriendButton(type:String)
+    func didTappedAddFollowButton(type:String)
     func reloadViewSize()
 }
-
+enum HeaderItemTyep:Int {
+    case follower = 10
+    case funs = 11
+    case huoKe = 17
+    case oder = 18
+    case friend = 12
+    case addFriend = 889
+    case deletFriend = 886
+    case addFollower = 998
+    case deleteFollower = 996
+    case chat = 666
+}
 class JFProfileHeaderView: UIView {
-
+    
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -28,81 +43,119 @@ class JFProfileHeaderView: UIView {
     
     @IBOutlet weak var menuView: UIView!
     // 声明属性
-    var button :UIButton?
+    var buttons = [UIButton]()
+    var itemViews =  [HeaderItemView]()
+    var labels =  [UILabel]()
     var image :UIImage?
-    
-    func initView() {
-        self.backgroundColor = Util.getNavBgColor()
-    }
-
+    var list = [Relation]()
     var delegate: JFProfileHeaderViewDelegate?
+    
     
     @IBAction func didTappedAvatarButton() {
         delegate?.didTappedAvatarButton()
     }
     
+    func initView() {
+        self.backgroundColor = Util.getNavBgColor()
+    }
     
-    func showMenu(list: [Relation]) {
-
+    
+    func showMenu() {
+        if list.count == 0 {
+            return
+        }
+        self.height = 0
         self.menuView.removeAllSubviews()
-        
+        self.menuView.width = kScreenW
         var col = 5
         let nums = list.count
         
         if nums <= 5 {
             col = nums
         }
-
+        
         // 设置格子的高和宽
         self.image = UIImage(named: "comment_profile_mars.png")
-        let heigth:CGFloat = 60
-        let width:CGFloat = 60
+        let heigth:CGFloat = 90
+        let width:CGFloat = 90
         
-        // 设置格子的间距
-        let screenSize:CGSize = self.menuView.frame.size
         
-        let hMargin:CGFloat = (screenSize.width - (CGFloat(col) * width)) / CGFloat((col+1))
-        let vMargin:CGFloat = hMargin
+        let hMargin:CGFloat = (kScreenW - (CGFloat(col) * width)) / CGFloat((col+1))
+        let vMargin:CGFloat = 10
         
         var row:Int = 0
         
-        var getHeight: CGFloat? = 0.0
+//        var getHeight: CGFloat! = 0.0
         
         for i in 0..<nums {
             
             let item = list[i]
-            
-            self.button = UIButton()
-//            self.button!.setFAIcon(icon: FAType.FAAddressCard, iconSize: 20, forState: UIControlState.normal)
-            self.button?.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-            self.button?.setTitle(item.relation_name, for: UIControlState.normal)
-            self.button?.layer.cornerRadius = 30
-            self.button?.layer.masksToBounds = true
-            self.button?.backgroundColor = UIColor.init(hexString: item.color)
-            
             if i != 0 {
                 if i%col == 0 {
                     row = row + 1
                 }
             }
-
-
+            
             let x:CGFloat = hMargin + (width + hMargin) * CGFloat(i%col)
             let y:CGFloat = vMargin + (heigth + vMargin) * CGFloat(row)
             
-            self.button!.frame = CGRect.init(x: x, y: y, width: width, height: heigth)
-            self.menuView.addSubview(self.button!)
             
-            getHeight = (self.button?.bottom)! + 10
+            let itemview = HeaderItemView().then({
+                $0.frame = CGRect.init(x: x, y: y, width: width, height: heigth)
+                $0.delegate = self
+                $0.setUI(type: HeaderItemTyep(rawValue: item.relation_type!)!, relation: item)
+            })
+            
+            self.itemViews.append(itemview)
+            
+            self.menuView.addSubview(itemview)
+            self.menuView.height = itemview.bottom + 10
         }
-        
-        self.autyHeight.constant = getHeight!
-        
-        self.height = getHeight! + 135
-        
+//        self.autyHeight.constant = getHeight!
+        self.height = self.menuView.bottom
+    
         self.delegate?.reloadViewSize()
         
+        
+    }
+}
+extension JFProfileHeaderView:HeaderItemProtocol{
+    
+    func didClickItemButton(sender: HeaderItemView){
+        switch sender.type! {
+        case .follower:
+            self.delegate?.didTappedFollowerButton()
+        case .funs:
+            self.delegate?.didTappedFunsButton()
+        case .huoKe:
+            self.gotoPage(pageType: PAGE_TYPE_CustomerOrderList, actionType: "")
+        case .oder:
+            self.gotoPage(pageType: PAGE_TYPE_CustomerOrderList, actionType: "")
+        case .friend:
+            self.delegate?.didTappedFriendsButton()
+        case .addFriend:
+            self.delegate?.didTappedAddFriendButton(type: "添加好友")
+            sender.type = .deletFriend
+        case .deletFriend:
+            self.delegate?.didTappedAddFriendButton(type: "删除好友")
+            sender.type = .addFriend
+        case .addFollower:
+            self.delegate?.didTappedAddFollowButton(type: "关注")
+            sender.type = .deleteFollower
+        case .deleteFollower:
+            self.delegate?.didTappedAddFollowButton(type: "取消关注")
+            sender.type = .addFollower
+        case .chat:
+            self.delegate?.didTappedChatButton()
+        }
+    }
+    //跳转
+    private func gotoPage(pageType:String,actionType:String){
+        let getPage = OpenVC.share.getPageKey(pageType: pageType, actionType: actionType)
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
     }
     
-
 }
+

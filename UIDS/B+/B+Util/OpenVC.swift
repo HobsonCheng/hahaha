@@ -16,6 +16,11 @@ let PAGE_TYPE_TopicList = "TopicList"
 let PAGE_TYPE_navLeft = "navLeft"
 let PAGE_TYPE_navRight = "navRight"
 let PAGE_TYPE_AppSet = "AppSet"
+let PAGE_TYPE_PersonInfo = "PersonInfo"
+let PAGE_TYPE_PerSonList = "PerSonList"
+let PAGE_TYPE_CustomerOrderList = "CustomerOrderList"
+let PAGE_TYPE_CustomerList = "CustomerList"
+
 
 class OpenVC: NSObject {
 
@@ -36,6 +41,15 @@ class OpenVC: NSObject {
             if item.element.action_type == actionType && item.element.page_type == pageType {
                 tmpPageInfo = item.element
                 break
+            }
+            //迭代子元素，查找页面信息
+            if let items = item.element.child{
+                for it in items{
+                   if it.action_type == actionType && it.page_type == pageType{
+                        tmpPageInfo = it
+                        break
+                    }
+                }
             }
         }
         

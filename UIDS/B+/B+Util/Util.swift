@@ -217,7 +217,7 @@ final class Util: NSObject{
     static func svpStop(ok: Bool,callback: @escaping ()-> ()){
         
         if ok {
-            SVProgressHUD.showSuccess(withStatus: "ok")
+            SVProgressHUD.showSuccess(withStatus: "成功")
         }else {
             SVProgressHUD.showError(withStatus: "失败")
         }
@@ -250,7 +250,7 @@ final class Util: NSObject{
     }
     static func strToByte(str: String) -> [Character]{
         var bytes: [Character] = [Character]()
-        for ch in str.characters {
+        for ch in str {
             bytes.append(ch)
         }
         return bytes

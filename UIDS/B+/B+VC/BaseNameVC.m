@@ -31,7 +31,7 @@
         // 根据时间生成随机VCName
         NSDate *curDate = [[NSDate alloc] init];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        NSLocale * gregorianLocale = [[NSLocale alloc] initWithLocaleIdentifier:NSGregorianCalendar];
+        NSLocale * gregorianLocale = [[NSLocale alloc] initWithLocaleIdentifier:NSCalendarIdentifierGregorian];
         [dateFormatter setLocale:gregorianLocale];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
         NSString *curDateText = [dateFormatter stringFromDate:curDate];

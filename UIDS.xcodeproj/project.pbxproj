@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310E0C2820577591004446C5 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E0C2720577591004446C5 /* HeaderItemView.swift */; };
+		314B710E205039AE00B455CB /* MessagePoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314B710D205039AE00B455CB /* MessagePoolModel.swift */; };
+		314B7111205039F500B455CB /* MessagePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314B7110205039F500B455CB /* MessagePool.swift */; };
+		315EADBE2059326E005F7E02 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 315EADB82059326E005F7E02 /* OrderCell.xib */; };
+		315EADBF2059326E005F7E02 /* OrderTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 315EADB92059326E005F7E02 /* OrderTwoCell.xib */; };
+		315EADC02059326E005F7E02 /* OrderTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EADBA2059326E005F7E02 /* OrderTwoCell.swift */; };
+		315EADC12059326E005F7E02 /* GrapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 315EADBB2059326E005F7E02 /* GrapCell.xib */; };
+		315EADC22059326E005F7E02 /* GrapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EADBC2059326E005F7E02 /* GrapCell.swift */; };
+		315EADC32059326E005F7E02 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EADBD2059326E005F7E02 /* OrderCell.swift */; };
+		31687A442046F97000D4F6AE /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31687A432046F97000D4F6AE /* ShareView.swift */; };
+		31687A462046F98C00D4F6AE /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31687A452046F98C00D4F6AE /* ShareView.xib */; };
+		319C740C2053BB4100EF0935 /* RelationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319C740A2053BB4100EF0935 /* RelationCell.swift */; };
+		319C740F2053BF3800EF0935 /* RelationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319C740E2053BF3800EF0935 /* RelationCell.xib */; };
+		31AB14CD2057C7A2008062C0 /* UIDSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB14CC2057C7A2008062C0 /* UIDSFont.swift */; };
+		31AB15062058231D008062C0 /* UIDS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31AB14C82057C0C5008062C0 /* UIDS.ttf */; };
+		31CD10AD204A907C00466808 /* NotifyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AC204A907C00466808 /* NotifyListVC.swift */; };
+		31CD10B1204A90BF00466808 /* NotifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10AF204A90BF00466808 /* NotifyCell.swift */; };
+		31CD10B2204A90BF00466808 /* NotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31CD10B0204A90BF00466808 /* NotifyCell.xib */; };
+		31CD10B4204A93C300466808 /* NotifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CD10B3204A93C300466808 /* NotifyModel.swift */; };
+		31F694FC2055B25700877419 /* RelationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F694FB2055B25700877419 /* RelationsVC.swift */; };
 		E105FE482043AC5A001D78AD /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE472043AC5A001D78AD /* ShopList.swift */; };
 		E105FE4C2043AE67001D78AD /* ShopItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105FE4A2043AE67001D78AD /* ShopItemCell.swift */; };
 		E105FE4D2043AE67001D78AD /* ShopItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E105FE4B2043AE67001D78AD /* ShopItemCell.xib */; };
@@ -98,7 +118,7 @@
 		E16AB09C202D4CD400FF075C /* myIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16AB09A202D4CD400FF075C /* myIconCell.xib */; };
 		E16AB09E202D531C00FF075C /* ChangeIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AB09D202D531C00FF075C /* ChangeIconVC.swift */; };
 		E16AB0A0202D88F800FF075C /* SliderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AB09F202D88F800FF075C /* SliderModel.swift */; };
-		E1884C75202FFCB000512321 /* MainTabberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1884C74202FFCB000512321 /* MainTabberVC.swift */; };
+		E1884C75202FFCB000512321 /* MainTabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1884C74202FFCB000512321 /* MainTabbarVC.swift */; };
 		E1884C77202FFCDA00512321 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1884C76202FFCDA00512321 /* MainTabBarView.swift */; };
 		E1884C79202FFCFD00512321 /* MainTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1884C78202FFCFD00512321 /* MainTabBarItem.swift */; };
 		E1884C7B202FFEC800512321 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1884C7A202FFEC700512321 /* MainVC.swift */; };
@@ -396,12 +416,6 @@
 		E1F722502019C9440092AC8C /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7224F2019C9440092AC8C /* OrderVC.swift */; };
 		E1F722592019D0390092AC8C /* OtherWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F722582019D0390092AC8C /* OtherWebVC.swift */; };
 		E1F7225E2019D1F50092AC8C /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F7225D2019D1F50092AC8C /* close@2x.png */; };
-		E1F72261201A00A80092AC8C /* GrapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7225F201A00A80092AC8C /* GrapCell.swift */; };
-		E1F72262201A00A80092AC8C /* GrapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F72260201A00A80092AC8C /* GrapCell.xib */; };
-		E5312FC9201DB515003A1043 /* orderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FC7201DB515003A1043 /* orderCell.swift */; };
-		E5312FCA201DB515003A1043 /* orderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5312FC8201DB515003A1043 /* orderCell.xib */; };
-		E5312FCD201DB842003A1043 /* orderTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5312FCB201DB842003A1043 /* orderTwoCell.swift */; };
-		E5312FCE201DB842003A1043 /* orderTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5312FCC201DB842003A1043 /* orderTwoCell.xib */; };
 		E56C90AC2013793A002339C6 /* GroupListTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90AB2013793A002339C6 /* GroupListTopic.swift */; };
 		E56C90B020137AE8002339C6 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C90AE20137AE8002339C6 /* GroupCell.swift */; };
 		E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56C90AF20137AE8002339C6 /* GroupCell.xib */; };
@@ -436,6 +450,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		310E0C2720577591004446C5 /* HeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
+		314B710D205039AE00B455CB /* MessagePoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePoolModel.swift; sourceTree = "<group>"; };
+		314B7110205039F500B455CB /* MessagePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePool.swift; sourceTree = "<group>"; };
+		315EADB82059326E005F7E02 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		315EADB92059326E005F7E02 /* OrderTwoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTwoCell.xib; sourceTree = "<group>"; };
+		315EADBA2059326E005F7E02 /* OrderTwoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTwoCell.swift; sourceTree = "<group>"; };
+		315EADBB2059326E005F7E02 /* GrapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrapCell.xib; sourceTree = "<group>"; };
+		315EADBC2059326E005F7E02 /* GrapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrapCell.swift; sourceTree = "<group>"; };
+		315EADBD2059326E005F7E02 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		31687A432046F97000D4F6AE /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		31687A452046F98C00D4F6AE /* ShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
+		319C740A2053BB4100EF0935 /* RelationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationCell.swift; sourceTree = "<group>"; };
+		319C740E2053BF3800EF0935 /* RelationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelationCell.xib; sourceTree = "<group>"; };
+		31AB14C82057C0C5008062C0 /* UIDS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UIDS.ttf; sourceTree = "<group>"; };
+		31AB14CC2057C7A2008062C0 /* UIDSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDSFont.swift; sourceTree = "<group>"; };
+		31CD10AC204A907C00466808 /* NotifyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyListVC.swift; sourceTree = "<group>"; };
+		31CD10AF204A90BF00466808 /* NotifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyCell.swift; sourceTree = "<group>"; };
+		31CD10B0204A90BF00466808 /* NotifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifyCell.xib; sourceTree = "<group>"; };
+		31CD10B3204A93C300466808 /* NotifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyModel.swift; sourceTree = "<group>"; };
+		31F694FB2055B25700877419 /* RelationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationsVC.swift; sourceTree = "<group>"; };
 		40A5AF17359BE7B50D6E8B26 /* Pods-UIDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIDS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F2C6A95BE461D02F16B861 /* Pods-UIDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIDS/Pods-UIDS.release.xcconfig"; sourceTree = "<group>"; };
@@ -531,7 +565,7 @@
 		E16AB09A202D4CD400FF075C /* myIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myIconCell.xib; sourceTree = "<group>"; };
 		E16AB09D202D531C00FF075C /* ChangeIconVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIconVC.swift; sourceTree = "<group>"; };
 		E16AB09F202D88F800FF075C /* SliderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderModel.swift; sourceTree = "<group>"; };
-		E1884C74202FFCB000512321 /* MainTabberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabberVC.swift; sourceTree = "<group>"; };
+		E1884C74202FFCB000512321 /* MainTabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarVC.swift; sourceTree = "<group>"; };
 		E1884C76202FFCDA00512321 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		E1884C78202FFCFD00512321 /* MainTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarItem.swift; sourceTree = "<group>"; };
 		E1884C7A202FFEC700512321 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -855,12 +889,6 @@
 		E1F7224F2019C9440092AC8C /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 		E1F722582019D0390092AC8C /* OtherWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherWebVC.swift; sourceTree = "<group>"; };
 		E1F7225D2019D1F50092AC8C /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
-		E1F7225F201A00A80092AC8C /* GrapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapCell.swift; sourceTree = "<group>"; };
-		E1F72260201A00A80092AC8C /* GrapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrapCell.xib; sourceTree = "<group>"; };
-		E5312FC7201DB515003A1043 /* orderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderCell.swift; sourceTree = "<group>"; };
-		E5312FC8201DB515003A1043 /* orderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderCell.xib; sourceTree = "<group>"; };
-		E5312FCB201DB842003A1043 /* orderTwoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTwoCell.swift; sourceTree = "<group>"; };
-		E5312FCC201DB842003A1043 /* orderTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderTwoCell.xib; sourceTree = "<group>"; };
 		E56C90AB2013793A002339C6 /* GroupListTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListTopic.swift; sourceTree = "<group>"; };
 		E56C90AE20137AE8002339C6 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E56C90AF20137AE8002339C6 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
@@ -927,6 +955,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		314B710F205039F500B455CB /* MessagePool */ = {
+			isa = PBXGroup;
+			children = (
+				314B7110205039F500B455CB /* MessagePool.swift */,
+			);
+			path = MessagePool;
+			sourceTree = "<group>";
+		};
+		315EADB72059326E005F7E02 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				315EADB82059326E005F7E02 /* OrderCell.xib */,
+				315EADB92059326E005F7E02 /* OrderTwoCell.xib */,
+				315EADBA2059326E005F7E02 /* OrderTwoCell.swift */,
+				315EADBB2059326E005F7E02 /* GrapCell.xib */,
+				315EADBC2059326E005F7E02 /* GrapCell.swift */,
+				315EADBD2059326E005F7E02 /* OrderCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		31687A1C20467D9300D4F6AE /* ShareView */ = {
+			isa = PBXGroup;
+			children = (
+				31687A432046F97000D4F6AE /* ShareView.swift */,
+				31687A452046F98C00D4F6AE /* ShareView.xib */,
+			);
+			path = ShareView;
+			sourceTree = "<group>";
+		};
+		319C73FF2053B7F900EF0935 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				319C740A2053BB4100EF0935 /* RelationCell.swift */,
+				319C740E2053BF3800EF0935 /* RelationCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		31A2A7322052F3CD00994D3E /* PersonList */ = {
+			isa = PBXGroup;
+			children = (
+				319C73FF2053B7F900EF0935 /* Cell */,
+				31F694FB2055B25700877419 /* RelationsVC.swift */,
+			);
+			path = PersonList;
+			sourceTree = "<group>";
+		};
+		31AB14C92057C4DC008062C0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				31AB14CC2057C7A2008062C0 /* UIDSFont.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		31CD10AB204A904D00466808 /* NotifyListVC */ = {
+			isa = PBXGroup;
+			children = (
+				31CD10AE204A908A00466808 /* Cell */,
+				31CD10AC204A907C00466808 /* NotifyListVC.swift */,
+			);
+			path = NotifyListVC;
+			sourceTree = "<group>";
+		};
+		31CD10AE204A908A00466808 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				31CD10AF204A90BF00466808 /* NotifyCell.swift */,
+				31CD10B0204A90BF00466808 /* NotifyCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		95C2F0CD76E3AD6C4FCCBD23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1047,6 +1149,7 @@
 			children = (
 				E12D91C8201874FA00CFB9E9 /* JFProfileHeaderView.swift */,
 				E12D91C9201874FA00CFB9E9 /* JFProfileHeaderView.xib */,
+				310E0C2720577591004446C5 /* HeaderItemView.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1571,6 +1674,10 @@
 				E1BD55D8201B352C009482EC /* BaseTableView.swift */,
 				E1C3E5622015D89600B13306 /* BaseModuleView.swift */,
 				E16AB09D202D531C00FF075C /* ChangeIconVC.swift */,
+				31A2A7322052F3CD00994D3E /* PersonList */,
+				314B710F205039F500B455CB /* MessagePool */,
+				31CD10AB204A904D00466808 /* NotifyListVC */,
+				31687A1C20467D9300D4F6AE /* ShareView */,
 				E105FE4E20440EC0001D78AD /* Feedback */,
 				E105FE462043AC2A001D78AD /* ShopList */,
 				E1646C6E202FDE3700DE8883 /* NavibarModule */,
@@ -1737,6 +1844,7 @@
 		E1C0321E200C3B2B00B1A377 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				31AB14C82057C0C5008062C0 /* UIDS.ttf */,
 				E1E31B9820107E1400776701 /* uidashi.ttf */,
 			);
 			path = data;
@@ -1745,6 +1853,7 @@
 		E1C03223200C3B4300B1A377 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				314B710D205039AE00B455CB /* MessagePoolModel.swift */,
 				E1C03226200C3E1B00B1A377 /* BaseModel.swift */,
 				E1C03224200C3CFB00B1A377 /* AppModel.swift */,
 				E1C0322D200C5AF500B1A377 /* PageInfo.swift */,
@@ -1763,6 +1872,7 @@
 				E1E12B36202B03BA00849962 /* AllRestrictionHandler.swift */,
 				E16AB09F202D88F800FF075C /* SliderModel.swift */,
 				E1884C7C2031317600512321 /* InitiatorModel.swift */,
+				31CD10B3204A93C300466808 /* NotifyModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1860,7 +1970,7 @@
 				E1C031BC200623A300B1A377 /* RootGender.swift */,
 				E1C0321C200C3A5D00B1A377 /* RootTable.swift */,
 				E1C3E55A2015718B00B13306 /* RootNarBar.swift */,
-				E1884C74202FFCB000512321 /* MainTabberVC.swift */,
+				E1884C74202FFCB000512321 /* MainTabbarVC.swift */,
 				E1884C76202FFCDA00512321 /* MainTabBarView.swift */,
 				E1884C78202FFCFD00512321 /* MainTabBarItem.swift */,
 				E1884C7A202FFEC700512321 /* MainVC.swift */,
@@ -1896,6 +2006,7 @@
 		E1EDAB5C20031980004DD7B9 /* B+Util */ = {
 			isa = PBXGroup;
 			children = (
+				31AB14C92057C4DC008062C0 /* Fonts */,
 				E11B628C2018210700CE5E1D /* WebViewJavascriptBridge */,
 				E1C7AA692016EE0000E67D33 /* UploadImageTool */,
 				E5E59AC32014CE4E0040D30D /*  LSXInputAlertView */,
@@ -1973,7 +2084,6 @@
 			isa = PBXGroup;
 			children = (
 				E1F7224E2019C9170092AC8C /* ItemVC */,
-				E1F7224C2019C0A10092AC8C /* SingleOrder.swift */,
 			);
 			path = SingleOrder;
 			sourceTree = "<group>";
@@ -1981,9 +2091,10 @@
 		E1F7224E2019C9170092AC8C /* ItemVC */ = {
 			isa = PBXGroup;
 			children = (
-				E1F722562019CE1A0092AC8C /* Cell */,
+				315EADB72059326E005F7E02 /* Cell */,
 				E1F722552019CE1A0092AC8C /* V&M */,
 				E1F7224F2019C9440092AC8C /* OrderVC.swift */,
+				E1F7224C2019C0A10092AC8C /* SingleOrder.swift */,
 			);
 			path = ItemVC;
 			sourceTree = "<group>";
@@ -1994,19 +2105,6 @@
 				E1C70DAA201B3B9100030CB6 /* OrderViewModel.swift */,
 			);
 			path = "V&M";
-			sourceTree = "<group>";
-		};
-		E1F722562019CE1A0092AC8C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				E1F7225F201A00A80092AC8C /* GrapCell.swift */,
-				E1F72260201A00A80092AC8C /* GrapCell.xib */,
-				E5312FC7201DB515003A1043 /* orderCell.swift */,
-				E5312FC8201DB515003A1043 /* orderCell.xib */,
-				E5312FCB201DB842003A1043 /* orderTwoCell.swift */,
-				E5312FCC201DB842003A1043 /* orderTwoCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		E1F722572019D0240092AC8C /* OtherWeb */ = {
@@ -2197,7 +2295,7 @@
 				TargetAttributes = {
 					E1A21DDB1FFF319300596BB7 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 73KJWP69HD;
+						DevelopmentTeam = JL9U2ZHT4Q;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -2227,6 +2325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A711C720576F1D0094545A /* 2@3x.png in Resources */,
+				31AB15062058231D008062C0 /* UIDS.ttf in Resources */,
 				E11B62AE2018254B00CE5E1D /* JFNewsBottomBar.xib in Resources */,
 				E1BD55DB201B3750009482EC /* empty_placeholder@2x.png in Resources */,
 				E12BC14D20173E2500099ED4 /* share_platform_wechattimeline@2x.png in Resources */,
@@ -2248,26 +2347,28 @@
 				E153BBEF2029C92100C7F786 /* ios商店图3.jpg in Resources */,
 				E1E31B83200F3ADF00776701 /* registerAndLogin_code_textField@2x.png in Resources */,
 				E16AB09C202D4CD400FF075C /* myIconCell.xib in Resources */,
+				315EADBF2059326E005F7E02 /* OrderTwoCell.xib in Resources */,
 				E1C3E57D2015E15000B13306 /* icon_shake_animation_5.png in Resources */,
 				E11B628A2018204100CE5E1D /* www in Resources */,
 				E56C90C92013A641002339C6 /* TopicCell.xib in Resources */,
 				E1C3E57F2015E15000B13306 /* icon_shake_animation_7.png in Resources */,
 				E56C90B120137AE8002339C6 /* GroupCell.xib in Resources */,
-				E5312FCE201DB842003A1043 /* orderTwoCell.xib in Resources */,
 				E153BBEE2029C92100C7F786 /* ios商店图2.jpg in Resources */,
 				E12BC0F32017242D00099ED4 /* CLBottomCommentView.xib in Resources */,
 				E12BC15120173E2500099ED4 /* QR_code_icon@2x.png in Resources */,
 				E1A21DEA1FFF319300596BB7 /* LaunchScreen.storyboard in Resources */,
 				E1EDAB9B2005B236004DD7B9 /* ToolsAnimation.plist in Resources */,
-				E1F72262201A00A80092AC8C /* GrapCell.xib in Resources */,
+				319C740F2053BF3800EF0935 /* RelationCell.xib in Resources */,
 				E1A21DE71FFF319300596BB7 /* Assets.xcassets in Resources */,
 				E1E31B81200F3ADF00776701 /* registerAndLogin_weibo_button@2x.png in Resources */,
 				E11B628020175A5900CE5E1D /* editButton@2x.png in Resources */,
+				315EADBE2059326E005F7E02 /* OrderCell.xib in Resources */,
 				E1C031BB2006236500B1A377 /* llplaceholder.png in Resources */,
 				E1A21DE51FFF319300596BB7 /* Main.storyboard in Resources */,
 				E1ABEB1E20182D6A00F7FF91 /* default－portrait.png in Resources */,
 				E1D2CF44201AD8EF00008B6D /* guiImage3.png in Resources */,
 				E1C3E57C2015E15000B13306 /* icon_shake_animation_6.png in Resources */,
+				31CD10B2204A90BF00466808 /* NotifyCell.xib in Resources */,
 				E11B627F20175A5900CE5E1D /* favorite_done@3x.png in Resources */,
 				E1D2CF41201AD8EF00008B6D /* guiImage5.png in Resources */,
 				E12BC13220173E2500099ED4 /* newscontent_drag_arrow@2x.png in Resources */,
@@ -2289,6 +2390,7 @@
 				E1E31B7D200F3ADF00776701 /* registerAndLogin_qq_button@2x.png in Resources */,
 				E16763AA202ADFF300947323 /* pid1@2x.png in Resources */,
 				E1D0B6BA201B02FA00332C79 /* placeholder_instagram.png in Resources */,
+				31687A462046F98C00D4F6AE /* ShareView.xib in Resources */,
 				E139375F201996BC00F32909 /* scan_scan@2x.png in Resources */,
 				E1A7118F205677C30094545A /* defaultTheme.bundle in Resources */,
 				E11B62AD2018254B00CE5E1D /* JFDetailOtherNoneCell.xib in Resources */,
@@ -2315,7 +2417,6 @@
 				E1D0B6BB201B02FA00332C79 /* placeholder_instagram@2x.png in Resources */,
 				E153BBE92029A16700C7F786 /* 扫一扫@2x.png in Resources */,
 				E1F7225E2019D1F50092AC8C /* close@2x.png in Resources */,
-				E5312FCA201DB515003A1043 /* orderCell.xib in Resources */,
 				E5A4F4A62023638800053D25 /* AppSearchNavVC.xib in Resources */,
 				E1CE1AA7202335C70028F20B /* SearchVCell.xib in Resources */,
 				E12BC0EF201723FB00099ED4 /* CLTextView.xib in Resources */,
@@ -2333,6 +2434,7 @@
 				E1ABEB1D20182D6A00F7FF91 /* default－portrait@3x.png in Resources */,
 				E1C3E5782015E15000B13306 /* icon_pull_animation_4.png in Resources */,
 				E11B62B02018254B00CE5E1D /* JFStarAndShareCell.xib in Resources */,
+				315EADC12059326E005F7E02 /* GrapCell.xib in Resources */,
 				E1E31B88200F439A00776701 /* HCOtherLoginModeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2479,6 +2581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				314B710E205039AE00B455CB /* MessagePoolModel.swift in Sources */,
 				E1ABEB34201855A600F7FF91 /* JFInsetPhotoModel.swift in Sources */,
 				E1A71170205676B80094545A /* JCPhotoBar.swift in Sources */,
 				E105FE50204414CD001D78AD /* FeedbackVC.swift in Sources */,
@@ -2495,7 +2598,6 @@
 				E1A71177205676B90094545A /* JCMineAvatorCell.swift in Sources */,
 				E12D91CA201874FA00CFB9E9 /* JFProfileHeaderView.swift in Sources */,
 				E1A711A7205678570094545A /* JMSGConversation+.swift in Sources */,
-				E5312FC9201DB515003A1043 /* orderCell.swift in Sources */,
 				E1A711A9205678570094545A /* JMSGOptionalContent+.swift in Sources */,
 				E1A7113A205676220094545A /* SAIInputBar+Resource.swift in Sources */,
 				E1ABEB2B2018540400F7FF91 /* DetailWeb.swift in Sources */,
@@ -2505,6 +2607,7 @@
 				E1A71147205676220094545A /* JCAudioPlayerHelper.swift in Sources */,
 				E1A710C1205675640094545A /* JCEmoticonPage.swift in Sources */,
 				E1A71079205675630094545A /* JCCEmoticonLarge.swift in Sources */,
+				314B7111205039F500B455CB /* MessagePool.swift in Sources */,
 				E11B62A62018254B00CE5E1D /* JFStarAndShareCell.swift in Sources */,
 				E153BBE2202468DA00C7F786 /* AssembleVC.swift in Sources */,
 				E1A710B3205675630094545A /* JCGroupMembersViewController.swift in Sources */,
@@ -2521,6 +2624,7 @@
 				E1A71077205675630094545A /* JCCEmoticon.swift in Sources */,
 				E1A71098205675630094545A /* JCBusinessCardContentView.swift in Sources */,
 				E1C70DAB201B3B9100030CB6 /* OrderViewModel.swift in Sources */,
+				315EADC32059326E005F7E02 /* OrderCell.swift in Sources */,
 				E1C031A620061DF500B1A377 /* SwipImgAreaCell.swift in Sources */,
 				E1A71090205675630094545A /* JCMessageCardView.swift in Sources */,
 				E1A711C3205679AA0094545A /* Log.swift in Sources */,
@@ -2534,6 +2638,7 @@
 				E1A71185205677750094545A /* JCDoubleButtonCell.swift in Sources */,
 				E1A711A8205678570094545A /* JMSGMessage+.swift in Sources */,
 				E153BBF12029CA2900C7F786 /* SwiftIntroView.swift in Sources */,
+				31CD10AD204A907C00466808 /* NotifyListVC.swift in Sources */,
 				E16AB0A0202D88F800FF075C /* SliderModel.swift in Sources */,
 				E56C90AC2013793A002339C6 /* GroupListTopic.swift in Sources */,
 				E1A711C0205679AA0094545A /* JCFileManager.swift in Sources */,
@@ -2554,6 +2659,7 @@
 				E1A710AE205675630094545A /* JCChatViewController.swift in Sources */,
 				E1A710A2205675630094545A /* JCMessageTimeLineContent.swift in Sources */,
 				E5E59ACB2014CE4E0040D30D /* LSXPlacehoderTextView.m in Sources */,
+				315EADC02059326E005F7E02 /* OrderTwoCell.swift in Sources */,
 				E1ABEB3B2018630500F7FF91 /* ReplyModel.swift in Sources */,
 				E1EABAC220118F1F00CBE71A /* RegVCService.swift in Sources */,
 				E1884C77202FFCDA00512321 /* MainTabBarView.swift in Sources */,
@@ -2583,6 +2689,7 @@
 				E594E07D2003ABB800BDF511 /* UIColor+Utility.m in Sources */,
 				E1A71181205677740094545A /* JCSearchController.swift in Sources */,
 				E1ABEB27201853CD00F7FF91 /* DetailBottom.swift in Sources */,
+				319C740C2053BB4100EF0935 /* RelationCell.swift in Sources */,
 				E11B62942018214A00CE5E1D /* NewsDetailVC.swift in Sources */,
 				E1A7113B205676220094545A /* SAIInputBar.swift in Sources */,
 				E1A711A6205678570094545A /* ExJMessage.swift in Sources */,
@@ -2595,7 +2702,6 @@
 				E594E07C2003ABB800BDF511 /* NSBundle+Module.m in Sources */,
 				E594E0772003ABB800BDF511 /* NSString+Utility.m in Sources */,
 				E11B62AC2018254B00CE5E1D /* JFCloseDetailView.swift in Sources */,
-				E1F72261201A00A80092AC8C /* GrapCell.swift in Sources */,
 				E139375720198D0900F32909 /* ViewModelType.swift in Sources */,
 				E1A71087205675630094545A /* JCChatViewData.swift in Sources */,
 				E1A710C4205675640094545A /* JCEmoticonTabItemView.swift in Sources */,
@@ -2647,6 +2753,7 @@
 				E1F5E275200F340500FD18FD /* AccountLoginVC.swift in Sources */,
 				E1A71176205676B90094545A /* JCMyInfoCell.swift in Sources */,
 				E1A710BA205675640094545A /* UnreadListViewController.swift in Sources */,
+				31CD10B1204A90BF00466808 /* NotifyCell.swift in Sources */,
 				E1884C7D2031317600512321 /* InitiatorModel.swift in Sources */,
 				E1C70DB1201B446600030CB6 /* OrderCModel.swift in Sources */,
 				E594E0732003ABB800BDF511 /* UIButton+Addition.m in Sources */,
@@ -2661,13 +2768,13 @@
 				E1A7107A205675630094545A /* JCDraft.swift in Sources */,
 				E56C90B020137AE8002339C6 /* GroupCell.swift in Sources */,
 				E11B62A52018254B00CE5E1D /* JFNewsBottomBar.swift in Sources */,
+				315EADC22059326E005F7E02 /* GrapCell.swift in Sources */,
 				E1C03229200C40D700B1A377 /* RootData.swift in Sources */,
 				E1A710A5205675630094545A /* JCMessageVideoContentView.swift in Sources */,
 				E1C031B22006217C00B1A377 /* UIViewEXT.swift in Sources */,
 				E11B62A82018254B00CE5E1D /* JFShareItemCell.swift in Sources */,
 				E1A7108A205675630094545A /* JCChatViewLayoutAttributesInfo.swift in Sources */,
 				E1A7112D205676210094545A /* DLLRUCache.m in Sources */,
-				E5312FCD201DB842003A1043 /* orderTwoCell.swift in Sources */,
 				E139375920198DBD00F32909 /* SetConfig.swift in Sources */,
 				E1A71182205677740094545A /* JCContacterCell.swift in Sources */,
 				E1A711B1205678570094545A /* UISearchBar+JChat.swift in Sources */,
@@ -2687,6 +2794,7 @@
 				E1A711AB205678570094545A /* Date+JChat.swift in Sources */,
 				E594E0802003AEE200BDF511 /* AppInfo.m in Sources */,
 				E1A7108E205675630094545A /* JCGroupSettingCell.swift in Sources */,
+				31AB14CD2057C7A2008062C0 /* UIDSFont.swift in Sources */,
 				E594E05C2003ABA200BDF511 /* NaviBarItem.m in Sources */,
 				E1EDAB7B2005B001004DD7B9 /* RootVC.swift in Sources */,
 				E1A71093205675630094545A /* JCSelectMemberCell.swift in Sources */,
@@ -2704,6 +2812,7 @@
 				E1EABAC420119E4E00CBE71A /* ApiUtil.swift in Sources */,
 				E1F5E277200F343200FD18FD /* ThridLoginVC.swift in Sources */,
 				E1A7107B205675630094545A /* JCMessage.swift in Sources */,
+				310E0C2820577591004446C5 /* HeaderItemView.swift in Sources */,
 				E1BD55D7201B0C41009482EC /* FromModel.swift in Sources */,
 				E1EDAB7220033D26004DD7B9 /* NaviBarVC.m in Sources */,
 				E1E31B89200F439A00776701 /* HCOtherLoginModeView.swift in Sources */,
@@ -2742,6 +2851,7 @@
 				E1A71094205675630094545A /* JCSingleSettingCell.swift in Sources */,
 				E13937482019739400F32909 /* notice.pb.swift in Sources */,
 				E1CE1AA6202335C70028F20B /* SearchVCell.swift in Sources */,
+				31CD10B4204A93C300466808 /* NotifyModel.swift in Sources */,
 				E153BBDF20243D3600C7F786 /* UILableUtil.swift in Sources */,
 				E1A71132205676210094545A /* DLTabedSlideView.m in Sources */,
 				E1A711BF205679AA0094545A /* JCConstants.swift in Sources */,
@@ -2756,6 +2866,7 @@
 				E1CE1A9420232EF20028F20B /* SearchResultViewModel.swift in Sources */,
 				E1ABEB252018538F00F7FF91 /* DetailTable.swift in Sources */,
 				E1A7109F205675630094545A /* JCMessageNoticeContentView.swift in Sources */,
+				31687A442046F97000D4F6AE /* ShareView.swift in Sources */,
 				E1F5E279200F356000FD18FD /* AccountLoginable.swift in Sources */,
 				E1A71078205675630094545A /* JCCEmoticonGroup.swift in Sources */,
 				E1C3E55F20158CAA00B13306 /* DSRefresh.swift in Sources */,
@@ -2775,6 +2886,7 @@
 				E1EDAB7120033D26004DD7B9 /* LoadBlockView.m in Sources */,
 				E1A710BF205675640094545A /* JCEmoticonInputViewLayout.swift in Sources */,
 				E1A71135205676210094545A /* JCMessageImageCollectionViewCell.swift in Sources */,
+				31F694FC2055B25700877419 /* RelationsVC.swift in Sources */,
 				E1C7AA6F2016EE3D00E67D33 /* UploadImageTool.m in Sources */,
 				E13937522019890B00F32909 /* SettingCell.swift in Sources */,
 				E1A711AE205678570094545A /* String+JChat.swift in Sources */,
@@ -2920,7 +3032,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 73KJWP69HD;
+				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/QQ",
@@ -2933,7 +3045,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2949,7 +3061,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 73KJWP69HD;
+				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/QQ",
@@ -2962,7 +3074,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/UIDS/B+/B+Util/BQLAuthEngine_Swift/SDK/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.c.UIDS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="777" height="147"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="777" height="147"/>
+                <rect key="frame" x="0.0" y="0.0" width="777" height="146.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5S-y0-PrL">
@@ -48,7 +48,7 @@
                         <color key="textColor" red="0.0" green="0.011418633162975311" blue="0.16902619600296021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册者手机号：1860&amp;&amp;&amp;&amp;999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfA-qz-8gS">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册者名称：某某某" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfA-qz-8gS">
                         <rect key="frame" x="137.5" y="66" width="587" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="Qy1-MT-WeQ"/>
@@ -57,7 +57,7 @@
                         <color key="textColor" red="0.0" green="0.01141863316" blue="0.16902619599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公司邮箱：141231221312312321@yiji.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sT6-ZI-1jt">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册者手机号：135XXXX2567" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sT6-ZI-1jt">
                         <rect key="frame" x="137.5" y="86" width="639.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="8xR-ly-KGJ"/>
@@ -121,8 +121,8 @@
                 <outlet property="gotoApp" destination="CH9-7D-Go3" id="tdv-fl-YVs"/>
                 <outlet property="gotoAppAction" destination="CH9-7D-Go3" id="IGn-hE-GiH"/>
                 <outlet property="iconImg" destination="oI1-hz-tFY" id="LDm-8r-IHt"/>
-                <outlet property="mailName" destination="sT6-ZI-1jt" id="I4O-d4-Sj3"/>
-                <outlet property="phoneNum" destination="tfA-qz-8gS" id="SNn-0p-6o2"/>
+                <outlet property="phoneNum" destination="sT6-ZI-1jt" id="SgV-we-OSc"/>
+                <outlet property="registerName" destination="tfA-qz-8gS" id="Gol-xy-NXS"/>
             </connections>
             <point key="canvasLocation" x="-273.5" y="-289.5"/>
         </tableViewCell>

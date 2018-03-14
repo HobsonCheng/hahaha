@@ -41,7 +41,7 @@ class MainVC: BaseNameVC {
     //TODO: 初始化tabber
     func  initTabber() {
     
-        let tabBarController = MainTabberVC()
+        let tabBarController = MainTabbarVC()
         self.addChildViewController(tabBarController);
         self.view.addSubview(tabBarController.view);
     
@@ -57,7 +57,9 @@ extension MainVC {
         
         ApiUtil.share.getProjectVersion(params: NSMutableDictionary()) { (status, data, msg) in
             
-            let appversion_new: Int! = AppVersion.deserialize(from: data)?.data
+            guard let appversion_new = AppVersion.deserialize(from: data)?.data else{
+                return
+            }
             
             var appversion: Int! = 0
             

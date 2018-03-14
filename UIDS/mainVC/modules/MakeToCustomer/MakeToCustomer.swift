@@ -19,8 +19,8 @@ class CustomerForm: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.FormObj?.FormTitles?.count != 0 {
-            genderVC(FormTitles: self.FormObj?.FormTitles, formName: (self.FormObj?.FormTitle!)!)
+        if let titles = self.FormObj?.FormTitles {
+            genderVC(FormTitles: titles, formName: (self.FormObj?.FormTitle!)!)
         }
     }
     
@@ -76,7 +76,8 @@ class CustomerForm: FormViewController {
         ApiUtil.share.saveSubscribe(params: params) { (status, data, msg) in
             
             Util.svpStop(ok: true,callback: {
-               VCController.pop(with: VCAnimationClassic.defaultAnimation())
+            
+//               VCController.pop(with: VCAnimationClassic.defaultAnimation())
             })
         }
         
@@ -93,7 +94,9 @@ class MakeToCustomer: BaseModuleView {
         let formVC = CustomerForm(style: UITableViewStyle.plain)
         formVC.FormObj = FormObj
         self.addSubview(formVC.view)
-        formVC.view.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: CGFloat(((FormObj.FormTitles?.count)! + 1)*90))
+        let count = FormObj.FormTitles?.count ?? 0
+        let height = CGFloat((count + 1)*90)
+        formVC.view.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: height)
         
         self.height = formVC.view.bottom + 10.0
         self.layer.masksToBounds = true

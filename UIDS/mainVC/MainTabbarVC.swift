@@ -16,7 +16,7 @@ struct TABBER_INFO {
 }
 
 
-class MainTabberVC: UITabBarController,MainTabBarDelegate {
+class MainTabbarVC: UITabBarController,MainTabBarDelegate {
     var tarbarConfigArr:[TABBER_INFO]!
     var mainTabBarView: MainTabBarView! //自定义的底部TabbarView
     
@@ -100,6 +100,7 @@ class MainTabberVC: UITabBarController,MainTabBarDelegate {
         
         for item in self.tarbarConfigArr{
             let viewcontroller = RootVC.init(name: "RootVC_tabber")
+            viewcontroller?.isHomePage = true
             viewcontroller?.pageData = item.pageinfo
             nvcArray.append(viewcontroller!)
         }
@@ -111,12 +112,12 @@ class MainTabberVC: UITabBarController,MainTabBarDelegate {
     //创建自定义Tabbar
     private func createMainTabBarView(){
         //1.获取系统自带的标签栏视图的frame,并将其设置为隐藏
-        let tabBarRect = self.tabBar.frame;
-        self.tabBar.isHidden = true;
+        let tabBarRect = self.tabBar.frame
+        self.tabBar.isHidden = true
         //3.使用得到的frame，和plist数据创建自定义标签栏
-        mainTabBarView = MainTabBarView(frame: tabBarRect,tabbarConfigArr:tarbarConfigArr!);
+        mainTabBarView = MainTabBarView(frame: tabBarRect,tabbarConfigArr:tarbarConfigArr!)
         mainTabBarView.delegate = self
-        self.view .addSubview(mainTabBarView)
+        self.view.addSubview(mainTabBarView)
     }
     
     //MARK: - MainTabBarDelegate

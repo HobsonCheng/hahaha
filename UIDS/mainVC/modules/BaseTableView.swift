@@ -29,7 +29,6 @@ extension BaseTableView: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         let text = "暂无数据...😶"
         let font = UIFont.systemFont(ofSize: 26)
         let textColor = UIColor.init(hexString: "444444")
-        
         let attributes = NSMutableDictionary()
         
         attributes.setObject(textColor!, forKey: NSAttributedStringKey.foregroundColor as NSCopying)

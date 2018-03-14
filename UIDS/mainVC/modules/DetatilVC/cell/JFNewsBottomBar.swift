@@ -13,6 +13,7 @@ protocol JFNewsBottomBarDelegate {
     func didTappedCollectButton(_ button: UIButton)
     func didTappedShareButton(_ button: UIButton)
     func didTappedCommentButton(_ button: UIButton)
+    func didTappedPraiseButton(_ button: UIButton)
 }
 
 class JFNewsBottomBar : UIView {
@@ -20,7 +21,19 @@ class JFNewsBottomBar : UIView {
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var collectionButton: UIButton!
     
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var praiseButton: UIButton!
     var delegate: JFNewsBottomBarDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.shareButton.setYJIcon(icon: .forward, iconSize: 16, forState: UIControlState.normal)
+        self.praiseButton.setYJIcon(icon: .praise2, iconSize: 16, forState: UIControlState.normal)
+        self.praiseButton.setYJIcon(icon: .praised0, iconSize:16,forState: UIControlState.selected)
+    }
+    
+    
     
     @IBAction func didTappedEditButton(_ button: UIButton) {
         delegate?.didTappedEditButton(button)
@@ -38,4 +51,8 @@ class JFNewsBottomBar : UIView {
         delegate?.didTappedShareButton(button)
     }
     
+    @IBAction func didTappedPraiseButton(_ button: UIButton) {
+        delegate?.didTappedPraiseButton(button)
+    }
+
 }

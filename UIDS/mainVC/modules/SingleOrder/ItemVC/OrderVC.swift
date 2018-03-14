@@ -29,8 +29,8 @@ public enum ORDER_TYPE: Int {
 private enum Reusable {
     
     static let grapCell = ReusableCell<GrapCell>(nibName: "GrapCell")
-    static let noingCell = ReusableCell<orderCell>(nibName: "orderCell")
-    static let overCell = ReusableCell<orderTwoCell>(nibName: "orderTwoCell")
+    static let noingCell = ReusableCell<OrderCell>(nibName: "OrderCell")
+    static let overCell = ReusableCell<OrderTwoCell>(nibName: "OrderTwoCell")
 }
 
 // MARK:- 常量
@@ -123,7 +123,7 @@ extension OrderVC {
         }else if self.orderType == ORDER_TYPE.over {
             
             let params = NSMutableDictionary()
-            params.setSafeObject("2,0", forKey: "status" as NSCopying)
+            params.setSafeObject("2", forKey: "status" as NSCopying)
             params.setSafeObject("1", forKey: "page" as NSCopying)
             params.setSafeObject("20", forKey: "page_context" as NSCopying)
 
@@ -291,9 +291,12 @@ extension OrderVC: WSUtilDelegate{
             count = count+1
         }
         
-        let msg: String
+        var msg: String = ""
         if cancel {
-            msg = "订单：\((getobj?.classify_name)!) 被抢了"
+            if let order = getobj?.classify_name{
+                msg = "订单：\(order) 被抢了"
+            }
+            
             
             viewModel.orderList.value[0].items.remove(at: count)
             
@@ -301,10 +304,10 @@ extension OrderVC: WSUtilDelegate{
             msg = "有新订单了，快去看看"
             
             let newOrderStr = order?.content
-            let newOrder = OrderCData.deserialize(from: newOrderStr)
-
-            viewModel.orderList.value[0].items.insert(newOrder!, at: 0)
             
+            if let newOrder = OrderCData.deserialize(from: newOrderStr){
+                viewModel.orderList.value[0].items.insert(newOrder, at: 0)
+            }
         }
         
         Util.msg(msg: msg, 1)

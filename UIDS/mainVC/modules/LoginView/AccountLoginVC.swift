@@ -12,6 +12,7 @@ import RxCocoa
 import RxSwift
 import RxGesture
 import NSObject_Rx
+import ESPullToRefresh
 
 class AccountLoginVC: BaseNameVC {
 
@@ -103,7 +104,9 @@ extension AccountLoginVC: AccountLoginable {
                 topview?.view.dodo.success("登录成功")
                 
                 UserUtil.share.saveUser(userInfo: data)
-                
+                if let vc = VCController.getPreviousWith(self) as? RootVC{
+                    vc.mainView?.es.startPullToRefresh()
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     
 //                    VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())

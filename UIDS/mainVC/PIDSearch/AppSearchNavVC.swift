@@ -41,7 +41,7 @@ protocol AppSearchVCDelectege {
     
 }
 
-class AppSearchNavVC: NaviBarVC {
+class AppSearchNavVC: NaviBarVC{
 
     var delegate: AppSearchVCDelectege?
     
@@ -92,7 +92,7 @@ class AppSearchNavVC: NaviBarVC {
         self.page = 1
         
         let searchField: UITextField = self.searchbar.value(forKey: "searchField") as! UITextField
-        
+        self.searchbar.delegate = self
         viewModel = SearchResultViewModel(searchBar: searchField)
         viewModel.searchUseable.do(onNext: { [weak self] (key) in
             
@@ -122,7 +122,10 @@ class AppSearchNavVC: NaviBarVC {
     
         
     }
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -404,6 +407,15 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
 }
+extension AppSearchNavVC:UISearchBarDelegate{
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        let mask = UIButton()
+//        mask.frame = self.view.frame
+//        mask.backgroundColor = UIColor.init(hex: 333, alpha: 0.3)
+//        self.view.addSubview(mask)
+////        mask.
+//    }
+}
 //历史数据  读存
 extension AppSearchNavVC {
     
@@ -423,7 +435,7 @@ extension AppSearchNavVC {
                     var count = 0
                     for item in getObj.data {
                         
-                        if item.pid == parj.pid {
+                        if item.app_group_info[0].app_id == parj.app_group_info[0].app_id {
                             getObj.data.remove(at: count)
                             break
                         }

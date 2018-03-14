@@ -10,9 +10,12 @@ import UIKit
 import Font_Awesome_Swift
 
 class TopicCell: UITableViewCell {
-
-    
-    var cellObj: TopicData?
+    // model
+    var cellObj: TopicData?{
+        didSet{
+           showData()
+        }
+    }
     var cellButton: UIButton?
     
     @IBOutlet weak var imgViewHeight: NSLayoutConstraint!
@@ -36,9 +39,14 @@ class TopicCell: UITableViewCell {
         self.icon.layer.cornerRadius = 20
         self.icon.layer.masksToBounds = true
         
-        self.forward.setFAIcon(icon: FAType.FAMailForward, iconSize: 14, forState: UIControlState.normal)
-        self.comment.setFAIcon(icon: FAType.FAComment, iconSize: 14, forState: UIControlState.normal)
-        self.zan.setFAIcon(icon: FAType.FAThumbsOUp, iconSize: 14, forState: UIControlState.normal)
+        self.forward.setYJIcon(icon: .forward, iconSize: 16, forState: UIControlState.normal)
+        self.comment.setYJIcon(icon: .comment, iconSize: 16, forState: UIControlState.normal)
+        self.zan.setYJIcon(icon: .praise2, iconSize: 16, forState: UIControlState.normal)
+        self.zan.setYJIcon(icon: .praised0, iconSize:16,forState: UIControlState.selected)
+        
+        //点击头像前往个人中心
+        setGotoPersonCenter()
+        self.autoresizesSubviews = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,10 +55,12 @@ class TopicCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func showData() {
+    private func showData() {
         if self.cellObj != nil {
+            if let url = URL.init(string: self.cellObj?.user_info.head_portrait ?? "https://;;") {
+                self.icon.sd_setImage(with: url, for: UIControlState.normal, completed: nil)
+            }
             
-            self.icon.sd_setImage(with: URL.init(string: self.cellObj?.user_info.head_portrait ?? "https://;;"), for: UIControlState.normal, completed: nil)
             self.username.text = self.cellObj?.user_info.zh_name
             self.addtime.text = self.cellObj?.add_time
             self.title.text = String.init(format: "来自：%@", (self.cellObj?.source)!)
@@ -59,7 +69,8 @@ class TopicCell: UITableViewCell {
             if self.cellObj?.attachment_value.count != 0 {
                 self.genderImgs()
             }
-            
+            //更新点赞按钮状态
+            self.zan.isSelected = cellObj?.praised == 1
             self.addNewButton()
         }
     }
@@ -117,6 +128,17 @@ class TopicCell: UITableViewCell {
         
     }
     
+    //MARK:- 点击头像前往个人中心
+    func setGotoPersonCenter(){
+        self.icon.rx.tap.do(onNext: {
+            let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+            getPage?.anyObj = self.cellObj?.user_info
+            if (getPage != nil) {
+                OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+            }
+        }).subscribe().disposed(by: rx.disposeBag)
+    }
+    
     private func touchcell(){
         
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_news, actionType: "content")
@@ -139,7 +161,9 @@ class TopicCell: UITableViewCell {
         
         
         cellButton?.snp.makeConstraints({ (make) in
-            make.top.left.right.bottom.equalToSuperview()
+            make.top.right.equalToSuperview()
+            make.bottom.equalTo(self.forward.snp.top)
+            make.left.equalTo(self.icon.right)
         })
     }
     
@@ -147,15 +171,31 @@ class TopicCell: UITableViewCell {
     //MARK: - action
     
     @IBAction func forwardAction(_ sender: Any) {
+        let shareView = Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?.last as! ShareView
+        shareView.show()
     }
     
     @IBAction func commentAction(_ sender: Any) {
-        
-        
-    }
-    @IBAction func zanAction(_ sender: Any) {
-        
-        
+        touchcell()
     }
     
+    @IBAction func zanAction(_ sender: UIButton) {
+        let isSelected = sender.isSelected == true ? false : true
+        //发送请求记录按钮状态
+        let params = NSMutableDictionary()
+        params.setValue(cellObj?.group_pid, forKey: "group_pid")
+        params.setValue(cellObj?.id, forKey: "group_invitation_id")
+        params.setValue(isSelected, forKey: "praise")
+        ApiUtil.share.cms_zan(params: params) { (status, data, msg) in
+            if B_ResponseStatus.success == status{
+                //请求成功，切换按钮状态
+                DispatchQueue.main.async(execute: {
+                    sender.isSelected = isSelected
+                })
+            }else{
+                Util.msg(msg: msg!, 3)
+            }
+        }
+     
+    }
 }
