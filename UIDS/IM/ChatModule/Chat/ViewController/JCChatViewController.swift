@@ -12,6 +12,7 @@ import MobileCoreServices
 
 class JCChatViewController: NaviBarVC {
     
+    var isTop: Bool = false
     open var conversation: JMSGConversation
     fileprivate var isGroup = false
     
@@ -252,6 +253,12 @@ class JCChatViewController: NaviBarVC {
     }
     
     override func goBack(_ sender: Any!) {
+        if isTop {
+            self.dismiss(animated: true, completion: {
+                
+            })
+            return
+        }
         _back()
     }
     
@@ -445,6 +452,22 @@ class JCChatViewController: NaviBarVC {
     }
     
     @objc func _getSingleInfo() {
+        
+        //跳转个人中心
+        //1: username . appkey
+        let userinfo = conversation.target as! JMSGUser
+
+    
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+        
+        let userModel = UserInfoData()
+        userModel.user_name = userinfo.username
+        userModel.appkey = userinfo.appKey
+        getPage?.anyObj = userModel
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
+        
 //        let vc = JCSingleSettingViewController()
 //        vc?.user = conversation.target as! JMSGUser
 //        navigationController?.pushViewController(vc, animated: true)
@@ -824,9 +847,9 @@ extension JCChatViewController: JCMessageDelegate {
     
     func tapAvatarView(message: JCMessageType) {
         toolbar.resignFirstResponder()
-        if message.options.alignment == .right {
+        if message.options.alignment == .right {//other
            
-        } else {
+        } else {//mine
            
         }
     }

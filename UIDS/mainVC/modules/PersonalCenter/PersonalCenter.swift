@@ -149,14 +149,43 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
     //点击了私聊
     func didTappedChatButton() {
         let appkey = otherInfo?.appkey
-        let userName = otherInfo?.username
-        
-        //进入私聊
-        let conversation = JMSGConversation.singleConversation(withUsername: userName)
+        let userName = otherInfo?.user_name
+    
+        if appkey != nil {
+         
+            JMSGConversation.createSingleConversation(withUsername: userName!, appKey: appkey!, completionHandler: { (result, error) in
+                if error == nil {
+                    let conv = result as! JMSGConversation
 
-        let vc = JCChatViewController(conversation: conversation)
-        navigationController?.pushViewController(vc, animated: true)
-        
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateConversation), object: nil, userInfo: nil)
+    
+                    let vc = JCChatViewController(conversation: conv)
+                    vc.isTop = true
+                    let naviVC = UINavigationController(rootViewController: vc)
+                    let topvc = VCController.getTopVC()
+                    topvc?.present(naviVC, animated: true, completion: {
+                        
+                    })
+                }
+            })
+            
+        }else {
+            JMSGConversation.createSingleConversation(withUsername: userName!, completionHandler: { (result, error) in
+                if error == nil {
+                    let conv = result as! JMSGConversation
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateConversation), object: nil, userInfo: nil)
+                    
+                    let vc = JCChatViewController(conversation: conv)
+                    vc.isTop = true
+                    let naviVC = UINavigationController(rootViewController: vc)
+                    let topvc = VCController.getTopVC()
+                    topvc?.present(naviVC, animated: true, completion: {
+                        
+                    })
+                }
+            })
+        }
     }
 
     //点击了添加好友

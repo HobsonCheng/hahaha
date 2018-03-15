@@ -32,7 +32,7 @@ class UserInfoData: BaseData {
     var update_time : String!
     var user_code : String!
     var user_code_code : Int!
-    var username : String!
+    var user_name : String!
     var username_code : Int!
     var zh_name : String!
     
