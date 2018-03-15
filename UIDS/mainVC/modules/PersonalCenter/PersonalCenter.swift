@@ -76,13 +76,12 @@ class PersonalCenter: BaseModuleView {
                 r1.relation_name = "添加关注"
                 r1.relation_type = 998
             }
-//            if ownInfo?.appkey != nil,info?.appkey != nil{
+            if ownInfo?.appkey != nil,info?.appkey != nil{
                 let r3 = Relation()
                 r3.relation_name = "私聊"
                 r3.relation_type = 666
                 relationList.append(r3)
-//            }
-            r1.color = "#579cdf"
+            }
             let r2 = Relation()
             if info?.is_friend == 1{
                 r2.relation_name = "删除好友"
@@ -92,7 +91,6 @@ class PersonalCenter: BaseModuleView {
                 r2.relation_name = "添加好友"
                 r2.relation_type = 889
             }
-            r2.color = "#579cdf"
             relationList.append(r1)
             relationList.append(r2)
             self.header?.list = relationList

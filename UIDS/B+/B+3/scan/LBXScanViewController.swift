@@ -116,6 +116,7 @@ open class LBXScanViewController: NaviBarVC, UIImagePickerControllerDelegate, UI
         if qRScanView == nil
         {
             qRScanView = LBXScanView(frame: self.view.frame,vstyle:scanStyle! )
+            qRScanView?.top = self.naviBar().bottom
             self.view.addSubview(qRScanView!)
         }
         qRScanView?.deviceStartReadying(readyStr: readyString)
