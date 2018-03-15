@@ -265,13 +265,13 @@ extension AppSet {
                  UserUtil.share.removerUser()
                 self?.vmOutput = self?.viewModel.transform(input: SettingViewModel.SettingInput(type: .setting))
                 self?.tableView.reloadData()
-                
-                
+
                 JMSGUser.logout({ (result, error) in
                     UserDefaults.standard.removeObject(forKey: kCurrentUserName)
                     UserDefaults.standard.removeObject(forKey: kCurrentUserPassword)
                 })
                 
+                VCController.pop(with: VCAnimationClassic.defaultAnimation())
             })
             alertController.addAction(selectFromAlbumAction)
             
