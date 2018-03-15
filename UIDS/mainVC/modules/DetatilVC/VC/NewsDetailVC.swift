@@ -125,8 +125,21 @@ class NewsDetailVC: NaviBarVC {
             for view in subViews!{
                 if view is TopicList{
                     let list = view as! TopicList
-                    list.isReload = true
-                    _ = list.reloadViewData()
+                    list.reload()
+                }
+            }
+        }else if preVC is MainVC{
+            let tabbarVC = preVC?.childViewControllers[0] as? MainTabbarVC
+            let index = (tabbarVC?.selectedIndex)!
+            if let rootVC = tabbarVC?.childViewControllers[index] as? RootVC{
+                let subViews = rootVC.mainView?.subviews
+                for view in subViews!{
+                    if let list = view as? TopicList{
+                        list.reload()
+                    }
+                    if let list = view as? MessagePool{
+                        list.reload()
+                    }
                 }
             }
         }

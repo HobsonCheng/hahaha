@@ -18,6 +18,8 @@ class MessagePool: BaseModuleView {
     var messagePoolData: [MessagePoolData]?
     var reloadOver: ReloadOver?
     var isOwner = true
+    var isReload = false
+    var pageContext = 20
     var itemObj: UserInfoData?{
         didSet{
             let userInfo = UserUtil.share.appUserInfo
@@ -62,13 +64,74 @@ class MessagePool: BaseModuleView {
         self.request()
         
     }
-    
+    func reload(){
+        let context = self.page! * 20
+        if isOwner{
+            let params = NSMutableDictionary()
+            let userInfo = UserUtil.share.appUserInfo
+            params.setValue(userInfo?.uid, forKey: "user_id")
+            params.setValue(context, forKey: "page_context")
+            params.setValue(0, forKey: "feed_type")
+            params.setValue(1,forKey: "page")
+            ApiUtil.share.getMessagePool(params: params, finish: { (status, data, msg) in
+                let tmpList:[MessagePoolData]? = MessagePoolModel.deserialize(from: data)?.data
+                guard let list = tmpList else{
+                    return
+                }
+                if tmpList?.count == 0 {
+                    
+                    self.refreshES!()
+                }
+                if self.page == 1 {
+                    self.height = 0
+                    self.removeAllSubviews()
+                    self.messagePoolData = list
+                }else{
+                    if let temp = self.messagePoolData{
+                        self.messagePoolData =  temp + list
+                    }
+                }
+                self.refreshES?()
+                DispatchQueue.main.async {
+                    self.genderlist(moveList: list)
+                }
+            })
+        }else{
+            let params = NSMutableDictionary()
+            params.setValue(0, forKey: "feed_type")
+            params.setValue(context, forKey: "page_context")
+            params.setValue(1, forKey: "page")
+            params.setValue(itemObj?.uid ?? 0, forKey: "user_id")
+            params.setValue(itemObj?.pid ?? 0, forKey: "user_pid")
+            ApiUtil.share.getOthersMessagePool(params: params, finish: { (status, data, msg) in
+                let tmpList:[MessagePoolData]? = MessagePoolModel.deserialize(from: data)?.data
+                guard let list = tmpList else{
+                    return
+                }
+                if tmpList?.count == 0 {
+                    
+                    self.refreshES!()
+                }
+                if self.page == 1 {
+                    self.height = 0
+                    self.removeAllSubviews()
+                    self.messagePoolData = list
+                }else{
+                    self.messagePoolData = (self.messagePoolData)! + list
+                }
+                self.refreshES?()
+                DispatchQueue.main.async {
+                    self.genderlist(moveList: list)
+                }
+            })
+        }
+    }
     private func request(){
         if isOwner{
             let params = NSMutableDictionary()
             let userInfo = UserUtil.share.appUserInfo
             params.setValue(userInfo?.uid, forKey: "user_id")
-            params.setValue(20, forKey: "page_context")
+            params.setValue(self.pageContext, forKey: "page_context")
             params.setValue(0, forKey: "feed_type")
             params.setValue(self.page,forKey: "page")
             ApiUtil.share.getMessagePool(params: params, finish: { (status, data, msg) in
@@ -93,12 +156,11 @@ class MessagePool: BaseModuleView {
                 DispatchQueue.main.async {
                     self.genderlist(moveList: list)
                 }
-                
             })
         }else{
             let params = NSMutableDictionary()
             params.setValue(0, forKey: "feed_type")
-            params.setValue(20, forKey: "page_context")
+            params.setValue(self.pageContext, forKey: "page_context")
             params.setValue(self.page, forKey: "page")
             params.setValue(itemObj?.uid ?? 0, forKey: "user_id")
             params.setValue(itemObj?.pid ?? 0, forKey: "user_pid")
@@ -123,7 +185,6 @@ class MessagePool: BaseModuleView {
                     self.genderlist(moveList: list)
                 }
             })
-
         }
     }
 

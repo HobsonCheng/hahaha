@@ -264,6 +264,7 @@ extension AppSet {
                  UserUtil.share.removerUser()
                 self?.vmOutput = self?.viewModel.transform(input: SettingViewModel.SettingInput(type: .setting))
                 self?.tableView.reloadData()
+                VCController.pop(with: VCAnimationClassic.defaultAnimation())
             })
             alertController.addAction(selectFromAlbumAction)
             
