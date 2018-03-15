@@ -373,7 +373,9 @@ extension RootVC {//扩展
 
 //MARK: - 增加刷新机制
 extension RootVC {
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.mainView?.es.autoPullToRefresh()
+    }
     func genderRefresh() {
         
         //上拉  下拉
