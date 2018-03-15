@@ -10,7 +10,7 @@ import UIKit
 import YHPhotoKit
 import MobileCoreServices
 
-class JCChatViewController: UIViewController {
+class JCChatViewController: NaviBarVC {
     
     open var conversation: JMSGConversation
     fileprivate var isGroup = false
@@ -31,12 +31,14 @@ class JCChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNaviDefulat()
+        self.navigationController?.navigationBar.isHidden = true
         _init()
     }
     
     override func loadView() {
         super.loadView()
-        let frame = CGRect(x: 0, y: 64, width: self.view.width, height: self.view.height - 64)
+        let frame = CGRect(x: 0, y: kNavibarH, width: self.view.width, height: self.view.height - kNavibarH)
         chatView = JCChatView(frame: frame, chatViewLayout: chatViewLayout)
         chatView.delegate = self
         chatView.messageDelegate = self
@@ -59,7 +61,7 @@ class JCChatViewController: UIViewController {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameChanged(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         if let group = conversation.target as? JMSGGroup {
-            self.title = group.displayName()
+            self.naviBar().setTitle(group.displayName())
         }
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
@@ -206,9 +208,9 @@ class JCChatViewController: UIViewController {
     
     private func _updateTitle() {
         if let group = conversation.target as? JMSGGroup {
-            title = group.displayName()
+            self.naviBar().setTitle(group.displayName())
         } else {
-            title = conversation.title
+            self.naviBar().setTitle(conversation.title)
         }
     }
 
@@ -242,13 +244,15 @@ class JCChatViewController: UIViewController {
             navButton.setImage(UIImage.loadImage("com_icon_user_w"), for: .normal)
             navButton.addTarget(self, action: #selector(_getSingleInfo), for: .touchUpInside)
         }
-        let item1 = UIBarButtonItem(customView: navButton)
-        navigationItem.rightBarButtonItems =  [item1]
-
-        let item2 = UIBarButtonItem(customView: leftButton)
-        navigationItem.leftBarButtonItems =  [item2]
+       
+        self.naviBar().setRightBarItem(navButton)
+        
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    override func goBack(_ sender: Any!) {
+        _back()
     }
     
     @objc func _back() {
@@ -447,10 +451,10 @@ class JCChatViewController: UIViewController {
     }
     
     @objc func _getGroupInfo() {
-//        let vc = JCGroupSettingViewController()
-//        let group = conversation.target as! JMSGGroup
-//        vc.group = group
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = JCGroupSettingViewController()
+        let group = conversation.target as! JMSGGroup
+        vc?.group = group
+        navigationController?.pushViewController(vc!, animated: true)
     }
 }
 

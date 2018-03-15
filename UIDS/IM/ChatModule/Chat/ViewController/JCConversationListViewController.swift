@@ -14,10 +14,21 @@ import Reachability
 class JCConversationListViewController: NaviBarVC {
     
     var datas: [JMSGConversation] = []
-    var systemDatas: [String] = []
+    var systemDatas: [IMGroupData] = []
+    
+    
+    override func goBack(_ sender: Any!) {
+        self.dismiss(animated: true) {
+            
+        }
+    }
+    
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.viewDidLoad()
+        self.naviBar().setTitle("会话列表")
+        self.navigationController?.navigationBar.isHidden = true
         request_groups()
         _init()
     }
@@ -45,10 +56,8 @@ class JCConversationListViewController: NaviBarVC {
     fileprivate var isConnecting = false
     
     private lazy var addButton = UIButton(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
-//    private lazy var searchController: JCSearchController = JCSearchController(searchResultsController: JCNavigationController(rootViewController: JCSearchResultViewController()))
-    private lazy var searchView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.width, height: 36))
     fileprivate lazy var tableview: UITableView = {
-        var tableview = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height))
+        var tableview = UITableView(frame: CGRect(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height-self.naviBar().bottom))
         tableview.delegate = self
         tableview.dataSource = self
         tableview.backgroundColor = UIColor(netHex: 0xe8edf3)
@@ -59,7 +68,7 @@ class JCConversationListViewController: NaviBarVC {
     fileprivate lazy var errorTips: JCNetworkTipsCell = JCNetworkTipsCell()
     fileprivate var showNetworkTips = false
     fileprivate lazy var emptyView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 64 + 36, width: self.view.width, height: self.view.height - 64 - 36))
+        let view = UIView(frame: CGRect(x: 0, y: self.naviBar().bottom, width: self.view.width, height: self.view.height - self.naviBar().bottom))
         view.isHidden = true
         view.backgroundColor = .white
         let tips = UILabel()
@@ -104,13 +113,6 @@ class JCConversationListViewController: NaviBarVC {
         
         _setupNavigation()
         JMessage.add(self, with: nil)
-//        let nav = searchController.searchResultsController as! JCNavigationController
-//        let vc = nav.topViewController as! JCSearchResultViewController
-//        searchController.delegate = self
-//        searchController.searchResultsUpdater = vc
-//        searchView.addSubview(searchController.searchBar)
-//        searchView.backgroundColor = UIColor(netHex: 0xe8edf3)
-//        tableview.tableHeaderView = searchView
         view.addSubview(tableview)
         view.addSubview(emptyView)
         
@@ -160,7 +162,7 @@ class JCConversationListViewController: NaviBarVC {
             self.datas = self.sortConverstaions(self.datas)
             self.tableview.reloadData()
             if self.datas.count == 0 {
-                self.emptyView.isHidden = false
+                self.emptyView.isHidden = true
             } else {
                 self.emptyView.isHidden = true
             }
@@ -258,21 +260,39 @@ extension JCConversationListViewController: UITableViewDelegate, UITableViewData
         return 65
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.systemDatas.count > 0 {
+            return 40
+        }
+        return 0
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if self.systemDatas.count > 0 && section == 0{
+            return "系统群"
+        }
+        return "通讯列表"
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if self.systemDatas.count > 0  && indexPath.section == 0{
             
-            Util.svploading(str: "申请加入中...")
+            MBProgressHUD_JChat.show(text: "申请加入中...", view: nil)
             
-            ApiUtil.share.applyGroup(params: NSMutableDictionary(), finish: { (status, data, msg) in
-                Util.svpStop(ok: true, callback: {
+            let item = self.systemDatas[indexPath.row]
+            
+            let params = NSMutableDictionary()
+            params.setValue(item.gid, forKey: "gid")
+            params.setValue(item.appkey, forKey: "appkey")
+            
+            ApiUtil.share.applyGroup(params: params, finish: { (status, data, msg) in
+                MBProgressHUD_JChat.hide(forView: nil, animated: true)
+                if B_ResponseStatus.success == status {
                     
-                })
-                
-                
+                }else {
+                    MBProgressHUD_JChat.show(text: msg!, view: nil, 1)
+                }
             })
-            
-
             
         }else {
             if showNetworkTips && indexPath.row == 0 {
@@ -290,10 +310,14 @@ extension JCConversationListViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if self.systemDatas.count > 0  && indexPath.section == 0{
+            return false
+        }
         return true
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         let action1 = UITableViewRowAction(style: .destructive, title: "删除") { (action, indexPath) in
             self._delete(indexPath)
         }
@@ -453,7 +477,7 @@ extension JCConversationListViewController {
     
     func _connectingSate() {
         let window = UIApplication.shared.delegate?.window
-        if let window = window {
+        if window != nil {
             isConnecting = true
             titleTips.text = "连接中"
             titleTipsView.isHidden = false
@@ -465,9 +489,19 @@ extension JCConversationListViewController {
     
     fileprivate func request_groups(){
         
+        MBProgressHUD_JChat.show(text: "获取系统群列表...", view: nil)
+        
         ApiUtil.share.getGroups(params: NSMutableDictionary()) { [weak self] (status, data, msg) in
-            self?.systemDatas = []
-            self?.tableview.reloadData()
+            
+            MBProgressHUD_JChat.hide(forView: nil, animated: true)
+            
+            if B_ResponseStatus.success == status {
+                let chatlist = IMGroupListModel.deserialize(from: data)?.data.groups
+                self?.systemDatas = chatlist!
+                self?.tableview.reloadData()
+            }else {
+                MBProgressHUD_JChat.show(text: msg!, view: nil, 1)
+            }
         }
         
     }

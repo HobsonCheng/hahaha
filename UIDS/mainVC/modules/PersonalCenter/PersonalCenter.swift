@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JMessage
 
 class PersonalCenter: BaseModuleView {
     
@@ -151,6 +152,12 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
     func didTappedChatButton() {
         let appkey = otherInfo?.appkey
         let userName = otherInfo?.username
+        
+        //进入私聊
+        let conversation = JMSGConversation.singleConversation(withUsername: userName)
+
+        let vc = JCChatViewController(conversation: conversation)
+        navigationController?.pushViewController(vc, animated: true)
         
     }
 

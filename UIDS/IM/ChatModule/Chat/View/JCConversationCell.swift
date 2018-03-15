@@ -59,18 +59,19 @@ class JCConversationCell: JCTableViewCell {
         return redPoin
     }()
     //MARK: - public func
-    open func bindGroupConversation(_ conversation: String) {
+    open func bindGroupConversation(_ conversation: IMGroupData) {
         statueView.isHidden = true
         redPoin.isHidden = true
         
         let fromData = DateFormatter()
-        formatter.dateFormat = "yyyy-mm-dd hh:mm:ss"
-        let date = formatter.date(from: "Jan 27, 2010, 10:00 AM PST")
-
-        dateLabel.text = date.conversationDate()
+        fromData.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = fromData.date(from: conversation.ctime)
+        dateLabel.text = date?.conversationDate()
         
+        msgLabel.text = "群简介：\((conversation.desc)!)"
+        titleLabel.text = conversation.name
         
-        msgLabel.text = "sdsds"
+        avatorView.sd_setImage(with: URL(string: conversation.avatar), completed: nil)
         
         backgroundColor = .white
     }

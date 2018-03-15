@@ -55,6 +55,10 @@ class MsgUtil: NSObject {
             
             let dataKey = AppKeyModel.deserialize(from: data)?.data
             
+            if dataKey == nil {
+                return
+            }
+            
             let appdelegate = UIApplication.shared.delegate as! AppDelegate
             
             JMessage.setupJMessage(appdelegate.app_launchOptions, appKey: dataKey, channel: nil, apsForProduction: true, category: nil, messageRoaming: true)
@@ -72,9 +76,67 @@ extension MsgUtil:BSuspensionViewDelegate{
     
     func suspensionViewClick(view: BSuspensionView) {
         
+        if Util.get_defult(key: kCurrentUserName) == nil {
+            
+            MBProgressHUD_JChat.showMessage(message: "登录中", toView: nil)
+            //获取用户im 登录信息
+            ApiUtil.share.getUser(params: NSMutableDictionary(), finish: {[weak self] (status, data, tips) in
+                MBProgressHUD_JChat.hide(forView: nil, animated: true)
+                if B_ResponseStatus.success == status {
+                    
+                    let imuser = IMUserModel.deserialize(from: data)?.data
+                    
+                    self?.loginIM(username: (imuser?.user_name)!, password: (imuser?.password)!)
+                    
+                }else {
+                
+                    MBProgressHUD_JChat.show(text: tips!, view: nil, 2)
+                }
+            })
         
+        } else {
+            
+            self.gotoChatlist()
+            
+        }
+
+    }
+    
+
+    
+    private func loginIM(username: String, password: String){
         
+        MBProgressHUD_JChat.showMessage(message: "授权中...", toView: nil)
+        JMSGUser.login(withUsername: username, password: password) {[weak self] (result, error) in
+            MBProgressHUD_JChat.hide(forView: nil, animated: true)
+            if error == nil {
+                Util.save_defult(key: kLastUserName, value: username)
+                JMSGUser.myInfo().thumbAvatarData({ (data, id, error) in
+                    if let data = data {
+                        let imageData = NSKeyedArchiver.archivedData(withRootObject: data)
+                        Util.save_defult(key: kLastUserAvator, value: imageData)
+                    } else {
+                        Util.removeObject(key: kLastUserAvator)
+                    }
+                })
+                Util.save_defult(key: kCurrentUserName, value: username)
+                Util.save_defult(key: kCurrentUserPassword, value: password)
+                
+                self?.gotoChatlist()
+            } else {
+                MBProgressHUD_JChat.show(text: "\(String.errorAlert(error! as NSError))", view: nil)
+            }
+        }
         
+    }
+    
+    private func gotoChatlist(){
+        
+        let navivc = UINavigationController(rootViewController: JCConversationListViewController(name: "JCConversationListViewController"))
+        let topvc = VCController.getTopVC()
+        topvc?.present(navivc, animated: true, completion: {
+            
+        })
     }
 
 }

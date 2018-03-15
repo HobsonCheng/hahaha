@@ -95,7 +95,7 @@ final class Util: NSObject{
 //    }
     
     //MARK: 存储 user set 信息
-    static func save_defult(key: String,value: String?){
+    static func save_defult(key: String,value: Any?){
         
         let userd = UserDefaults.standard
         
@@ -106,7 +106,11 @@ final class Util: NSObject{
         let userd = UserDefaults.standard
         return userd.object(forKey: key)
     }
-    
+    static func removeObject(key: String) {
+        let userd = UserDefaults.standard
+        userd.removeObject(forKey: key)
+        userd.synchronize()
+    }
     
     //MARK: 获取验证码
     static func getImgCode(type: String,callback: @escaping (_ Url: String?,_ codekey: String?)->()) {

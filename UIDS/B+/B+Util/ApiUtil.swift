@@ -813,9 +813,6 @@ class ApiUtil: NSObject {
         params.setValue("applyGroup", forKey: "ac")
         params.setValue("jiguang", forKey: "sn")
         
-        params.setValue("1", forKey: "page")
-        params.setValue("100", forKey: "page_context")
-        
         BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
             
             finish?(status,data,msg)

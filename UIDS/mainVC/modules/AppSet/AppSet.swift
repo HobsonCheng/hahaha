@@ -14,6 +14,7 @@ import Then
 import RxGesture
 import ReusableKit
 import RxDataSources
+import JMessage
 
 // MARK:- 复用
 private enum Reusable {
@@ -264,6 +265,13 @@ extension AppSet {
                  UserUtil.share.removerUser()
                 self?.vmOutput = self?.viewModel.transform(input: SettingViewModel.SettingInput(type: .setting))
                 self?.tableView.reloadData()
+                
+                
+                JMSGUser.logout({ (result, error) in
+                    UserDefaults.standard.removeObject(forKey: kCurrentUserName)
+                    UserDefaults.standard.removeObject(forKey: kCurrentUserPassword)
+                })
+                
             })
             alertController.addAction(selectFromAlbumAction)
             

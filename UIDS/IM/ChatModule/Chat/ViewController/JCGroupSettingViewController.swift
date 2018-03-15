@@ -13,8 +13,17 @@ class JCGroupSettingViewController: NaviBarVC {
     
     var group: JMSGGroup!
     
+    
+    override func goBack(_ sender: Any!) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setNaviDefulat()
+        self.navigationController?.navigationBar.isHidden = true
+        
         _init()
     }
 
@@ -50,7 +59,7 @@ class JCGroupSettingViewController: NaviBarVC {
         tableView.register(JCButtonCell.self, forCellReuseIdentifier: "JCButtonCell")
         tableView.register(JCMineInfoCell.self, forCellReuseIdentifier: "JCMineInfoCell")
         tableView.register(GroupAvatorCell.self, forCellReuseIdentifier: "GroupAvatorCell")
-        tableView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
+        tableView.frame = CGRect(x: 0, y: self.naviBar().bottom, width: view.width, height: view.height - self.naviBar().bottom)
         view.addSubview(tableView)
         
         

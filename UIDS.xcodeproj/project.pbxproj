@@ -89,6 +89,8 @@
 		E139375F201996BC00F32909 /* scan_scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E139375E201996BC00F32909 /* scan_scan@2x.png */; };
 		E1393761201996D200F32909 /* me_setting_feedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1393760201996D200F32909 /* me_setting_feedback@2x.png */; };
 		E1393763201996E100F32909 /* me_setting_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1393762201996E100F32909 /* me_setting_setting@2x.png */; };
+		E14B0389205A0E7500B76111 /* IMUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B0388205A0E7500B76111 /* IMUserModel.swift */; };
+		E14B038B205A0E8900B76111 /* IMGroupListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B038A205A0E8900B76111 /* IMGroupListModel.swift */; };
 		E153BBDD20241E0A00C7F786 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BBDC20241E0A00C7F786 /* SearchModel.swift */; };
 		E153BBDF20243D3600C7F786 /* UILableUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BBDE20243D3600C7F786 /* UILableUtil.swift */; };
 		E153BBE2202468DA00C7F786 /* AssembleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BBE0202468DA00C7F786 /* AssembleVC.swift */; };
@@ -536,6 +538,8 @@
 		E139375E201996BC00F32909 /* scan_scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_scan@2x.png"; sourceTree = "<group>"; };
 		E1393760201996D200F32909 /* me_setting_feedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_setting_feedback@2x.png"; sourceTree = "<group>"; };
 		E1393762201996E100F32909 /* me_setting_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_setting_setting@2x.png"; sourceTree = "<group>"; };
+		E14B0388205A0E7500B76111 /* IMUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMUserModel.swift; sourceTree = "<group>"; };
+		E14B038A205A0E8900B76111 /* IMGroupListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMGroupListModel.swift; sourceTree = "<group>"; };
 		E153BBDC20241E0A00C7F786 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		E153BBDE20243D3600C7F786 /* UILableUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableUtil.swift; sourceTree = "<group>"; };
 		E153BBE0202468DA00C7F786 /* AssembleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembleVC.swift; sourceTree = "<group>"; };
@@ -1315,6 +1319,8 @@
 				E1A71019205675630094545A /* JCDraft.swift */,
 				E1A7101A205675630094545A /* JCMessage.swift */,
 				E1A7101B205675630094545A /* JCRemind.swift */,
+				E14B0388205A0E7500B76111 /* IMUserModel.swift */,
+				E14B038A205A0E8900B76111 /* IMGroupListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2736,6 +2742,7 @@
 				E1C3E5652015DFD100B13306 /* GroupTopicSendVC.swift in Sources */,
 				E1A71081205675630094545A /* FileCell.swift in Sources */,
 				E1A7108B205675630094545A /* JCChatViewUpdate.swift in Sources */,
+				E14B0389205A0E7500B76111 /* IMUserModel.swift in Sources */,
 				E153BC26202ABDB900C7F786 /* LBXScanViewStyle.swift in Sources */,
 				E12D91CE2018928E00CFB9E9 /* AppSet.swift in Sources */,
 				E1A71097205675630094545A /* JCBusinessCardContent.swift in Sources */,
@@ -2773,6 +2780,7 @@
 				E1A710A5205675630094545A /* JCMessageVideoContentView.swift in Sources */,
 				E1C031B22006217C00B1A377 /* UIViewEXT.swift in Sources */,
 				E11B62A82018254B00CE5E1D /* JFShareItemCell.swift in Sources */,
+				E14B038B205A0E8900B76111 /* IMGroupListModel.swift in Sources */,
 				E1A7108A205675630094545A /* JCChatViewLayoutAttributesInfo.swift in Sources */,
 				E1A7112D205676210094545A /* DLLRUCache.m in Sources */,
 				E139375920198DBD00F32909 /* SetConfig.swift in Sources */,
@@ -2842,7 +2850,7 @@
 				E1A710AC205675630094545A /* GroupAvatorViewController.swift in Sources */,
 				E1A710C2205675640094545A /* JCEmoticonPageView.swift in Sources */,
 				E1A7108D205675630094545A /* JCGroupMemberCell.swift in Sources */,
-				E1884C75202FFCB000512321 /* MainTabberVC.swift in Sources */,
+				E1884C75202FFCB000512321 /* MainTabbarVC.swift in Sources */,
 				E139374F201988B700F32909 /* SettingCellModel.swift in Sources */,
 				E1E31B8B200F43B900776701 /* NibLoadable.swift in Sources */,
 				E1A7108F205675630094545A /* JCMessageAvatarView.swift in Sources */,
