@@ -65,11 +65,11 @@ class JCImageBrowserViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 0
+        flowLayout.itemSize = CGSize(width: kScreenW, height: kScreenH)
         imageBrowser = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         view.addSubview(imageBrowser)
         imageBrowser.frame = view.frame
         
-        imageBrowser.backgroundColor = UIColor.clear
         imageBrowser.delegate = self
         imageBrowser.dataSource = self
         imageBrowser.minimumZoomScale = 0
@@ -118,7 +118,7 @@ extension JCImageBrowserViewController: UICollectionViewDelegate, UICollectionVi
             } else {
                 cell.setImage(image: imageArr[indexPath.row])
             }
-            
+            cell.sizeToFit()
             cell.delegate = self
         }
         return cell

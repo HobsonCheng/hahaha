@@ -50,7 +50,6 @@ class OrderCell: UITableViewCell {
                 addtime.text = cellData?.add_time
                 iconButton.sd_setImage(with: URL.init(string: cellData?.form_user.head_portrait ?? ""), for: UIControlState.normal, completed: nil)
                 userName.text = cellData?.form_user.zh_name
-                
             }
         }
     }
@@ -117,7 +116,10 @@ class OrderCell: UITableViewCell {
     
     @IBAction func gotoPersonalCenter(_ sender: Any) {
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
-        getPage?.anyObj = self.cellData?.form_user
+        let user = UserInfoData()
+        user.uid = self.cellData?.form_user.uid
+        user.pid = self.cellData?.form_user.pid
+        getPage?.anyObj = user
         if (getPage != nil) {
             OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
         }

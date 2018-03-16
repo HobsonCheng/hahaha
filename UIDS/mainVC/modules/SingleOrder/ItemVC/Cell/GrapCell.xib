@@ -90,6 +90,7 @@
                     <constraint firstItem="KqW-5T-75B" firstAttribute="top" secondItem="S7G-iL-eFv" secondAttribute="bottom" constant="5" id="OME-QQ-GRc"/>
                     <constraint firstItem="CAb-aD-UCc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Q1X-c8-wFE"/>
                     <constraint firstItem="gaZ-yY-S1j" firstAttribute="centerY" secondItem="KqW-5T-75B" secondAttribute="centerY" id="QN0-5h-U4u"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S7G-iL-eFv" secondAttribute="trailing" constant="10" id="ScQ-KC-91e"/>
                     <constraint firstAttribute="trailingMargin" secondItem="CAb-aD-UCc" secondAttribute="trailing" id="e2q-Go-NyY"/>
                     <constraint firstItem="Rs9-qH-445" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fry-hr-RZq"/>
                     <constraint firstItem="S7G-iL-eFv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="fuZ-KB-ibm"/>

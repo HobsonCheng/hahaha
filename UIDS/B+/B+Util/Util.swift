@@ -218,12 +218,12 @@ final class Util: NSObject{
         SVProgressHUD.show(withStatus: str)
     }
     
-    static func svpStop(ok: Bool,callback: @escaping ()-> ()){
+    static func svpStop(ok: Bool,callback: @escaping ()-> (),hint:String){
         
         if ok {
-            SVProgressHUD.showSuccess(withStatus: "成功")
+            SVProgressHUD.showSuccess(withStatus: hint)
         }else {
-            SVProgressHUD.showError(withStatus: "失败")
+            SVProgressHUD.showError(withStatus: hint)
         }
         SVProgressHUD.dismiss(withDelay: 1) {
             callback()

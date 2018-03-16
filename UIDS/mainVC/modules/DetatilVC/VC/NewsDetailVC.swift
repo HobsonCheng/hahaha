@@ -8,9 +8,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-
+import SVProgressHUD
 class NewsDetailVC: NaviBarVC {
-
     
     var pageData: PageInfo?
     
@@ -34,16 +33,16 @@ class NewsDetailVC: NaviBarVC {
             }
             
             // 更新收藏状态
-//            bottomBarView.collectionButton.isSelected = model!.havefava == "1"
+            //            bottomBarView.collectionButton.isSelected = model!.havefava == "1"
             
             // 更新点赞状态
             bottomBarView.praiseButton.isSelected = model?.praised == 1
             
             // 相关链接
-//            if let links = model?.otherLinks {
-//                otherLinks = links
-//            }
-
+            //            if let links = model?.otherLinks {
+            //                otherLinks = links
+            //            }
+            
             // 是否添加删帖按钮
             if model?.can_delete == 1{
                 let rightItem = NaviBarItem(textItem: "删帖", target: self, action: #selector(deleteNewsClick))
@@ -60,7 +59,7 @@ class NewsDetailVC: NaviBarVC {
     
     // 转发弹层
     lazy var shareView : ShareView? = {
-       return Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?.last as! ShareView
+        return Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?.last as! ShareView
     }()
     
     /// 是否已经加载过webView
@@ -114,7 +113,7 @@ class NewsDetailVC: NaviBarVC {
         IQKeyboardManager.sharedManager().enableAutoToolbar = true
     }
     
-
+    
     // 刷新列表页
     func refreshPreList(){
         let preVC = VCController.getPreviousWith(self)
@@ -126,19 +125,23 @@ class NewsDetailVC: NaviBarVC {
                 if view is TopicList{
                     let list = view as! TopicList
                     list.reload()
+                }else if view is MessagePool{
+                    let list = view as! MessagePool
+                    _ = list.reloadViewData()
                 }
             }
         }else if preVC is MainVC{
             let tabbarVC = preVC?.childViewControllers[0] as? MainTabbarVC
             let index = (tabbarVC?.selectedIndex)!
             if let rootVC = tabbarVC?.childViewControllers[index] as? RootVC{
+                
                 let subViews = rootVC.mainView?.subviews
                 for view in subViews!{
                     if let list = view as? TopicList{
                         list.reload()
                     }
                     if let list = view as? MessagePool{
-                        list.reload()
+                       _ = list.reloadViewData()
                     }
                 }
             }
@@ -147,18 +150,30 @@ class NewsDetailVC: NaviBarVC {
     
     // 删帖
     @objc private func deleteNewsClick(){
-        let params = NSMutableDictionary()
-        params.setValue(model?.id, forKey: "group_invitation_id")
-        params.setValue(model?.group_pid, forKey: "group_pid")
-        ApiUtil.share.cms_DeleteNews(params: params) {[weak self] (status, data, msg) in
-            if B_ResponseStatus.success == status{
-                //请求成功，返回并刷新
-                self?.refreshPreList()
-                VCController.pop(with: VCAnimationClassic.defaultAnimation())
-            }else{
-                Util.msg(msg: msg!, 3)
+        let vc = UIAlertController(title: "确定删除该帖？", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction.init(title: "确定", style: .destructive, handler: { [weak self] (action) in
+            let params = NSMutableDictionary()
+            params.setValue(self?.model?.id, forKey: "group_invitation_id")
+            params.setValue(self?.model?.group_pid, forKey: "group_pid")
+            ApiUtil.share.cms_DeleteNews(params: params) { (status, data, msg) in
+                if B_ResponseStatus.success == status{
+                    SVProgressHUD.showSuccess(withStatus: "已删除")
+                    SVProgressHUD.dismiss(withDelay: 1)
+                    //请求成功，返回并刷新
+                    self?.refreshPreList()
+                    VCController.pop(with: VCAnimationClassic.defaultAnimation())
+                }else{
+                    Util.msg(msg: msg!, 3)
+                }
             }
-        }
+            SVProgressHUD.showSuccess(withStatus: "已删除")
+            SVProgressHUD.dismiss(withDelay: 1)
+        })
+        let action2 = UIAlertAction.init(title: "点错了", style: .cancel, handler: nil)
+        vc.addAction(action)
+        vc.addAction(action2)
+        VCController.getTopVC()?.present(vc, animated: true, completion: nil)
+        
     }
     
     /**
@@ -204,17 +219,17 @@ class NewsDetailVC: NaviBarVC {
             
             let tempImageView = UIImageView(frame: CGRect(x: x, y: y, width: width, height: height))
             tempImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(contentsOfFile: Bundle.main.path(forResource: "www/images/loading.jpg", ofType: nil)!), options: SDWebImageOptions.allowInvalidSSLCertificates, completed: nil)
-           
+            
             self.view.addSubview(tempImageView)
             
             // 显示出图片浏览器
             let newsPhotoBrowserVc = NewsPhotoBrowserVC()
-//            newsPhotoBrowserVc?.transitioningDelegate = self
+            //            newsPhotoBrowserVc?.transitioningDelegate = self
             newsPhotoBrowserVc?.modalPresentationStyle = .custom
             let imgs = self.model?.attachment_value.components(separatedBy: ",")
             newsPhotoBrowserVc?.photoParam = (imgs!, index)
             VCController.push(newsPhotoBrowserVc!, with: nil)
-
+            
             UIView.animate(withDuration: 0.3, animations: {
                 tempImageView.frame = CGRect(x: 0, y: (kScreenH - height * (kScreenW / width)) * 0.5, width: kScreenW, height: height * (kScreenW / width))
             }, completion: { (_) in
@@ -242,7 +257,7 @@ class NewsDetailVC: NaviBarVC {
         
         view.backgroundColor = UIColor.white
         view.addSubview(tableView)
-
+        
         view.addSubview(bottomBarView)
         view.addSubview(activityView)
         
@@ -297,7 +312,7 @@ class NewsDetailVC: NaviBarVC {
             }
             
         }
-
+        
     }
     
     // MARK: - 懒加载
@@ -361,6 +376,6 @@ class NewsDetailVC: NaviBarVC {
         footerView.addSubview(moreCommentButton)
         return footerView
     }()
-
+    
 }
 

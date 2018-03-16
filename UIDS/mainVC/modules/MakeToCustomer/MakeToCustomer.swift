@@ -62,8 +62,15 @@ class CustomerForm: FormViewController {
         self.view.endEditing(true)
         
         //将表单中输入的内容打印出来
-        let message = self.form.formValues().description
-        print(message)
+        for (_,value) in self.form.formValues().enumerated(){
+            if value.value is NSNull{
+                Util.svpStop(ok: false, callback: {
+                    
+                },hint: "表单不完整")
+                return
+            }
+        }
+        
     
         let sub_val = JSON.init(self.form.formValues()).rawString()
         
@@ -78,7 +85,7 @@ class CustomerForm: FormViewController {
             Util.svpStop(ok: true,callback: {
             
 //               VCController.pop(with: VCAnimationClassic.defaultAnimation())
-            })
+            },hint: "提交成功")
         }
         
     }

@@ -40,9 +40,9 @@ open class JCChatViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         }
         
         let avatarView = _avatarView as? JCMessageAvatarView
-        if avatarView != nil {
+//        if avatarView != nil {
             avatarView?.delegate = self.delegate
-        }
+//        }
         _contentView?.apply(message)
     }
     

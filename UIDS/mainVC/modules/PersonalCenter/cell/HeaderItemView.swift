@@ -16,6 +16,7 @@ class HeaderItemView: UIView {
     
     var button : UIButton?
     var lable : UILabel?
+    var iconCode : String?
     var type : HeaderItemTyep?{
         didSet{
             switch type!{
@@ -62,6 +63,11 @@ class HeaderItemView: UIView {
             $0.top = 70
             $0.height = 15
         })
+//        if let code = iconCode{
+//            self.button?.setYJIcon(icon: YJType(rawValue:iconCode), iconSize: 25, forState: .normal)
+//            self.button?.setYJIconWithCode(iconCode: code, forState: .normal)
+//        }
+        
         switch (self.type!){
         case .follower:
             self.button?.setYJIcon(icon: .follow, iconSize: 25, forState: .normal)
@@ -77,6 +83,10 @@ class HeaderItemView: UIView {
             self.button?.setYJIcon(icon: .follow4, iconSize: 25, forState: .normal)
         case .chat:
             self.button?.setYJIcon(icon: .comment2, iconSize: 25, forState: .normal)
+        case .release:
+            self.button?.setYJIcon(icon: .release, iconSize: 25, forState: .normal)
+        case .friend:
+            self.button?.setYJIcon(icon: .users4, iconSize: 25, forState: .normal)
         default:
             self.button?.setYJIcon(icon: .cart, iconSize: 25, forState: .normal)
         }

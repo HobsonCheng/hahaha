@@ -41,7 +41,6 @@ class PersonalCenter: BaseModuleView {
         let params = NSMutableDictionary()
         ApiUtil.share.getInfo(params: params, fininsh: { [weak self](status, data, msg) in
             let userInfo = UserUtil.share.appUserInfo
-            self?.header?.nameLabel.text = userInfo?.nick_name
             self?.header?.avatarButton.sd_setImage(with: URL.init(string: (userInfo?.head_portrait ?? "")), for: .normal, completed: nil)
             self?.header?.nameLabel.text = userInfo?.zh_name
             if userInfo?.relations.count == 0 {
@@ -60,7 +59,10 @@ class PersonalCenter: BaseModuleView {
     }
     func  setOthersHeaderInfo() {//别人的个人中心
         self.isOwner = false
-        ApiUtil.share.getRelationInfo(user_id: (itemObj?.uid ?? 0),app_id :itemObj?.pid ?? 0, finish: { (status, data, msg) in
+        let params = NSMutableDictionary()
+        params.setValue(itemObj?.uid, forKey: "user_id")
+        params.setValue(itemObj?.pid, forKey: "user_pid")
+        ApiUtil.share.getRelationInfo(params:params, finish: { (status, data, msg) in
             let info = UserInfoModel.deserialize(from: data)?.data
             self.otherInfo = info
             let ownInfo = UserUtil.share.appUserInfo
@@ -76,7 +78,7 @@ class PersonalCenter: BaseModuleView {
                 r1.relation_name = "添加关注"
                 r1.relation_type = 998
             }
-            if ownInfo?.appkey != nil,info?.appkey != nil{
+            if ownInfo?.appkey != nil && info?.appkey != nil{
                 let r3 = Relation()
                 r3.relation_name = "私聊"
                 r3.relation_type = 666
@@ -99,8 +101,60 @@ class PersonalCenter: BaseModuleView {
                 self?.refreshES!()
             }
             self.header?.avatarButton.isUserInteractionEnabled = false
-            
-            
+        })
+    }
+    //MARK :- 根据appkey设置头部
+    func setHeaderWithAppKey(){
+        let ownInfo = UserUtil.share.appUserInfo
+        if ownInfo?.user_name == itemObj?.user_name{
+            self.isOwner = true
+        }else{
+            self.isOwner = false
+        }
+        let params = NSMutableDictionary()
+        params.setValue(itemObj?.appkey, forKey: "appkey")
+        params.setValue(itemObj?.user_name, forKey: "username")
+        ApiUtil.share.getRelationInfo(params:params, finish: { (status, data, msg) in
+            let info = UserInfoModel.deserialize(from: data)?.data
+            self.otherInfo = info
+            self.header?.nameLabel.text = info?.zh_name
+            self.header?.avatarButton.sd_setImage(with: URL.init(string: info?.head_portrait ?? ""), for: .normal, completed: nil)
+            if self.isOwner{
+                self.header?.list = (info?.relations)!
+            }else{
+                var relationList =  [Relation]()
+                let r1 = Relation()
+                if info?.follow_status != 0 {
+                    r1.relation_name = "取消关注"
+                    r1.relation_type = 996
+                }else{
+                    r1.relation_name = "添加关注"
+                    r1.relation_type = 998
+                }
+                if ownInfo?.appkey != nil && info?.appkey != nil{
+                    let r3 = Relation()
+                    r3.relation_name = "私聊"
+                    r3.relation_type = 666
+                    relationList.append(r3)
+                }
+                let r2 = Relation()
+                if info?.is_friend == 1{
+                    r2.relation_name = "删除好友"
+                    r2.relation_type = 886
+                    
+                }else{
+                    r2.relation_name = "添加好友"
+                    r2.relation_type = 889
+                }
+                relationList.append(r1)
+                relationList.append(r2)
+                self.header?.list = relationList
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.header?.showMenu()
+                self?.refreshES!()
+            }
+            self.header?.avatarButton.isUserInteractionEnabled = false
         })
     }
     //MARK :- 下拉刷新调用
@@ -115,6 +169,12 @@ class PersonalCenter: BaseModuleView {
 }
 // MARK: - 个人中心，按钮点击的代理
 extension PersonalCenter: JFProfileHeaderViewDelegate{
+    func didTappedReleaseButton() {
+        let vc = RelationsVC()
+        vc?.relationType = RelationshipType.release
+        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
+    }
+    
     //好友列表
     func didTappedFriendsButton() {
         let vc = RelationsVC()
@@ -144,8 +204,18 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
             VCController.push(gotoLogin!, with: VCAnimationClassic.defaultAnimation())
         }
     }
-    
-
+    //点击了获客
+    func didTappedHuoke() {
+        let vc = RelationsVC()
+        vc?.relationType = RelationshipType.huoKe
+        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
+    }
+    //点击了抢单
+    func didTappedQiangdan() {
+        let vc = RelationsVC()
+        vc?.relationType = RelationshipType.qiangDan
+        VCController.push(vc!, with: VCAnimationClassic.defaultAnimation())
+    }
     //点击了私聊
     func didTappedChatButton() {
         let appkey = otherInfo?.appkey

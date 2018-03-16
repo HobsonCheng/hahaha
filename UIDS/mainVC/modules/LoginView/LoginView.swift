@@ -57,7 +57,6 @@ class LoginView: NaviBarVC {
     }
     
     override func goBack(_ sender: Any!) {
-        
         VCController.pop(with: VCAnimationBottom.defaultAnimation())
         
     }

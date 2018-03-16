@@ -51,4 +51,5 @@ class OrderUser: BaseData {
     var signature : String!
     var uid : Int!
     var zh_name : String!
+    var user_name:String!
 }

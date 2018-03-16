@@ -218,7 +218,12 @@ extension RootVC {//扩展
         }
         if let item = self.pageData?.anyObj as? UserInfoData{
             personalCenter.itemObj = item
-            personalCenter.setOthersHeaderInfo()
+            if item.uid == nil{
+                personalCenter.setHeaderWithAppKey()
+            }else{
+                personalCenter.setOthersHeaderInfo()
+            }
+            
         }else{
             personalCenter.setHeaderInfo()
         }
@@ -232,16 +237,12 @@ extension RootVC {//扩展
     func genderMessagePool(startY: UnsafeMutablePointer<CGFloat>){
         let messagePool = MessagePool.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
         messagePool.tag = Int(startY.pointee)
-        if let itemObj = self.pageData?.anyObj{
-            messagePool.itemObj = itemObj as? UserInfoData
-        }
-
         self.refreshCallback = messagePool.refreshCB
         messagePool.refreshES = self.esCallBack
-        
-        messagePool.genderList { [weak self] in
+        let itemObj = self.pageData?.anyObj as? UserInfoData
+        messagePool.genderList(callback: {[weak self] in
             self?.reloadMainScroll()
-        }
+        }, itemObj: itemObj)
         
         self.mainView?.addSubview(messagePool)
         
@@ -391,8 +392,9 @@ extension RootVC {
         self.mainView?.es.addInfiniteScrolling(animator: footer) { [weak self] in
             self?.loadMore()
         }
+        
     }
-    
+
     private func refresh() {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
@@ -408,9 +410,9 @@ extension RootVC {
                 }
                 
             }
-            
+//            self?.esCallBack!()
             if !find {
-                self?.mainView?.es.stopPullToRefresh()
+                self?.esCallBack!()
             }
         }
         

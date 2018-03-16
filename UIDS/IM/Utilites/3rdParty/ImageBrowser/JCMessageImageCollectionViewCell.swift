@@ -28,7 +28,7 @@ public class JCMessageImageCollectionViewCell: UICollectionViewCell {
         messageImage.contentMode = .scaleAspectFit
         messageImage.backgroundColor = UIColor.black
         messageImage.frame = UIScreen.main.bounds
-        
+
         messageImageContent.addSubview(messageImage)
         messageImageContent.delegate = self
         messageImageContent.maximumZoomScale = 2.0

@@ -91,6 +91,7 @@
                     <constraint firstItem="yc0-Ku-BR9" firstAttribute="top" secondItem="2Be-SD-MRF" secondAttribute="top" constant="10" id="ccV-Wk-zSo"/>
                     <constraint firstAttribute="trailingMargin" secondItem="tdL-vB-tFA" secondAttribute="trailing" id="lj8-LT-m4c"/>
                     <constraint firstItem="8rM-zX-Ek3" firstAttribute="leading" secondItem="yc0-Ku-BR9" secondAttribute="trailing" constant="5" id="mm6-Ip-Gv4"/>
+                    <constraint firstItem="vhS-Aq-JMb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8rM-zX-Ek3" secondAttribute="trailing" constant="10" id="w3N-QH-ZUe"/>
                     <constraint firstItem="eZJ-Rg-XFQ" firstAttribute="leading" secondItem="TPV-aD-PA3" secondAttribute="trailing" constant="5" id="wbA-PF-Jyd"/>
                 </constraints>
             </tableViewCellContentView>

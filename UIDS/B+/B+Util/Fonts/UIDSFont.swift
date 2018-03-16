@@ -23,10 +23,8 @@ public extension UITextField {
     
     public func setLeftViewYJIcon(icon: YJType, leftViewMode: UITextFieldViewMode = .always, orientation: UIImageOrientation = UIImageOrientation.down, textColor: UIColor = .black, backgroundColor: UIColor = .clear, size: CGSize? = nil) {
         FontLoader.loadFontIfNeeded()
-        
         let image = UIImage(icon: icon, size: size ?? CGSize(width: 30, height: 30), orientation: orientation, textColor: textColor, backgroundColor: backgroundColor)
         let imageView = UIImageView.init(image: image)
-        
         self.leftView = imageView
         self.leftViewMode = leftViewMode
     }
@@ -101,7 +99,19 @@ public extension UIButton {
         titleLabel.font = font!
         setTitle(icon.text, for: state)
     }
-    
+    func setYJIconWithCode(iconCode: String, forState state: UIControlState) {
+        FontLoader.loadFontIfNeeded()
+        guard let titleLabel = titleLabel else { return }
+        setAttributedTitle(nil, for: state)
+        let font = UIFont(name: YJStruct.FontName, size: titleLabel.font.pointSize)
+        assert(font != nil, YJStruct.ErrorAnnounce)
+        titleLabel.font = font!
+        let sindex = iconCode.index(iconCode.startIndex, offsetBy: 2)
+        let eindex = iconCode.index(iconCode.endIndex,offsetBy: -1)
+//        let sub = iconCode[sindex..<eindex]
+//        let text = String(sub)
+//        setTitle(value[0], for: state)
+    }
     /**
      To set an icon, use i.e. `buttonName.setYJIcon(YJType.YJGithub, iconSize: 35, forState: .Normal)`
      */

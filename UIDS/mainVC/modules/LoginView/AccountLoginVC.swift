@@ -108,7 +108,7 @@ extension AccountLoginVC: AccountLoginable {
                     vc.mainView?.es.startPullToRefresh()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    
+                  let vc =  VCController.getPreviousWith(self)
 //                    VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())
                     VCController.pop(with: VCAnimationBottom.defaultAnimation())
                 };

@@ -30,7 +30,6 @@ class GrapCell: UITableViewCell {
             if cellData != nil {
                 
                 let getStr = JSON.init(parseJSON: (cellData?.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "")
-                
                 content.text = getStr
                 userName.text = cellData?.user_name
                 
@@ -74,7 +73,6 @@ class GrapCell: UITableViewCell {
                         ApiUtil.share.cancelSubscribe(params: params, finish: { (status, data, msg) in
                             SVProgressHUD.showSuccess(withStatus: "已取消")
                             SVProgressHUD.dismiss(withDelay: 1)
-                            
                         })
                         if let messagePool = self?.superview as? MessagePool{
                             _ = messagePool.reloadViewData()
@@ -111,6 +109,8 @@ class GrapCell: UITableViewCell {
         }else if status == 3{
             self.eventbt.setTitle("已取消 ✕", for: .normal)
             self.eventbt.backgroundColor = UIColor.init(hexString: "#C1C1C1")
+        }else {
+            self.eventbt.setTitle("等待接单", for: .normal)
         }
         
     }
@@ -122,7 +122,10 @@ class GrapCell: UITableViewCell {
     
     @IBAction func goPersonCenter(_ sender: UIButton) {
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
-        getPage?.anyObj = self.cellData as AnyObject
+        let user = UserInfoData()
+        user.uid = self.cellData?.platform_uid
+        user.pid = self.cellData?.platform_id
+        getPage?.anyObj = user
         if (getPage != nil) {
             OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
         }

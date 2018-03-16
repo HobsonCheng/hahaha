@@ -295,6 +295,7 @@ class ApiUtil: NSObject {
     
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.uid, forKey: "user_id")
+        params.setValue(user?.pid, forKey: "user_pid")
         
 
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
@@ -310,12 +311,9 @@ class ApiUtil: NSObject {
         }
     }
     //MARK: - 获取其他用户的信息
-    func getRelationInfo(user_id:Int,app_id : Int,finish:ApiUtilFinished?){
-        let params = NSMutableDictionary()
+    func getRelationInfo(params: NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getInfo", forKey: "ac")
         params.setValue("pc", forKey: "sn")
-        params.setValue(user_id, forKey: "user_id")
-        params.setValue(app_id, forKey: "user_pid")
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
@@ -346,7 +344,7 @@ class ApiUtil: NSObject {
             }else {
                 Util.svpStop(ok: false,callback: {
                     
-                })
+                }, hint: "提交失败")
                 Util.msg(msg: msg!, 3)
             }
         }
@@ -363,6 +361,59 @@ class ApiUtil: NSObject {
             if B_ResponseStatus.success == status {
                 
                 fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: - 用户发布的订单列表
+    func getUserCreateSubscribeList(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getUserCreateSubscribeList", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        params.setValue("0,1", forKey: "status")
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+        
+    }
+    //MARK: - 用户承接的订单
+    func getUserGrapSubscribeList(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getUserSubscribeList", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        params.setValue("0,1,2", forKey: "status")
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+        
+    }
+    //MARK :- 获取发帖列表
+    func getCreatedInvitationListByUser(params:NSMutableDictionary,finish:@escaping ApiUtilFinished){
+        params.setValue("getCreatedInvitationListByUser", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish(status,data,msg)
             }else {
                 
                 Util.msg(msg: msg!, 3)
@@ -648,8 +699,6 @@ class ApiUtil: NSObject {
             params.setValue("getMessagePool", forKey: "ac")
             params.setValue("pc", forKey: "sn")
 
-            let user = UserUtil.share.appUserInfo
-            params.setValue(user?.pid, forKey: "do_pid")
             BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
                 
                 if B_ResponseStatus.success == status {

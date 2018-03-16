@@ -19,7 +19,10 @@ protocol JFProfileHeaderViewDelegate {
     func didTappedFriendsButton()
     func didTappedAddFriendButton(type:String)
     func didTappedAddFollowButton(type:String)
+    func didTappedHuoke()
+    func didTappedQiangdan()
     func reloadViewSize()
+    func didTappedReleaseButton()
 }
 enum HeaderItemTyep:Int {
     case follower = 10
@@ -32,6 +35,8 @@ enum HeaderItemTyep:Int {
     case addFollower = 998
     case deleteFollower = 996
     case chat = 666
+    case release = 8
+    case other
 }
 class JFProfileHeaderView: UIView {
     
@@ -103,6 +108,7 @@ class JFProfileHeaderView: UIView {
             let itemview = HeaderItemView().then({
                 $0.frame = CGRect.init(x: x, y: y, width: width, height: heigth)
                 $0.delegate = self
+                $0.iconCode = item.icon
                 $0.setUI(type: HeaderItemTyep(rawValue: item.relation_type!)!, relation: item)
             })
             
@@ -128,9 +134,9 @@ extension JFProfileHeaderView:HeaderItemProtocol{
         case .funs:
             self.delegate?.didTappedFunsButton()
         case .huoKe:
-            self.gotoPage(pageType: PAGE_TYPE_CustomerOrderList, actionType: "")
+            self.delegate?.didTappedHuoke()
         case .oder:
-            self.gotoPage(pageType: PAGE_TYPE_CustomerOrderList, actionType: "")
+            self.delegate?.didTappedQiangdan()
         case .friend:
             self.delegate?.didTappedFriendsButton()
         case .addFriend:
@@ -147,6 +153,9 @@ extension JFProfileHeaderView:HeaderItemProtocol{
             sender.type = .addFollower
         case .chat:
             self.delegate?.didTappedChatButton()
+        case .release:
+            self.delegate?.didTappedReleaseButton()
+        case .other: break
         }
     }
     //跳转

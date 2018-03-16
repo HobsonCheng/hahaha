@@ -18,15 +18,13 @@ class MessagePool: BaseModuleView {
     var messagePoolData: [MessagePoolData]?
     var reloadOver: ReloadOver?
     var isOwner = true
-    var isReload = false
-    var pageContext = 20
     var itemObj: UserInfoData?{
         didSet{
             let userInfo = UserUtil.share.appUserInfo
             if itemObj == nil{
                 isOwner = true
                 itemObj = userInfo
-            }else if itemObj?.uid == userInfo?.uid{
+            }else if itemObj?.uid == userInfo?.uid || itemObj?.user_name == userInfo?.user_name{
                 isOwner = true
             }else{
                 isOwner = false
@@ -51,87 +49,25 @@ class MessagePool: BaseModuleView {
     override func reloadViewData()-> Bool {
         self.page = 1
         self.request()
-        return true
+        return false
     }
     
     
     //MARK: - 生成
-    func genderList(callback: @escaping ReloadOver) {
-        
+    func genderList(callback: @escaping ReloadOver,itemObj : UserInfoData?) {
+        self.itemObj = itemObj
         self.reloadOver = callback
         self.page = 1
         
-        self.request()
-        
     }
-    func reload(){
-        let context = self.page! * 20
-        if isOwner{
-            let params = NSMutableDictionary()
-            let userInfo = UserUtil.share.appUserInfo
-            params.setValue(userInfo?.uid, forKey: "user_id")
-            params.setValue(context, forKey: "page_context")
-            params.setValue(0, forKey: "feed_type")
-            params.setValue(1,forKey: "page")
-            ApiUtil.share.getMessagePool(params: params, finish: { (status, data, msg) in
-                let tmpList:[MessagePoolData]? = MessagePoolModel.deserialize(from: data)?.data
-                guard let list = tmpList else{
-                    return
-                }
-                if tmpList?.count == 0 {
-                    
-                    self.refreshES!()
-                }
-                if self.page == 1 {
-                    self.height = 0
-                    self.removeAllSubviews()
-                    self.messagePoolData = list
-                }else{
-                    if let temp = self.messagePoolData{
-                        self.messagePoolData =  temp + list
-                    }
-                }
-                self.refreshES?()
-                DispatchQueue.main.async {
-                    self.genderlist(moveList: list)
-                }
-            })
-        }else{
-            let params = NSMutableDictionary()
-            params.setValue(0, forKey: "feed_type")
-            params.setValue(context, forKey: "page_context")
-            params.setValue(1, forKey: "page")
-            params.setValue(itemObj?.uid ?? 0, forKey: "user_id")
-            params.setValue(itemObj?.pid ?? 0, forKey: "user_pid")
-            ApiUtil.share.getOthersMessagePool(params: params, finish: { (status, data, msg) in
-                let tmpList:[MessagePoolData]? = MessagePoolModel.deserialize(from: data)?.data
-                guard let list = tmpList else{
-                    return
-                }
-                if tmpList?.count == 0 {
-                    
-                    self.refreshES!()
-                }
-                if self.page == 1 {
-                    self.height = 0
-                    self.removeAllSubviews()
-                    self.messagePoolData = list
-                }else{
-                    self.messagePoolData = (self.messagePoolData)! + list
-                }
-                self.refreshES?()
-                DispatchQueue.main.async {
-                    self.genderlist(moveList: list)
-                }
-            })
-        }
-    }
+
     private func request(){
         if isOwner{
             let params = NSMutableDictionary()
             let userInfo = UserUtil.share.appUserInfo
             params.setValue(userInfo?.uid, forKey: "user_id")
-            params.setValue(self.pageContext, forKey: "page_context")
+            params.setValue(userInfo?.pid, forKey: "user_pid")
+            params.setValue(20, forKey: "page_context")
             params.setValue(0, forKey: "feed_type")
             params.setValue(self.page,forKey: "page")
             ApiUtil.share.getMessagePool(params: params, finish: { (status, data, msg) in
@@ -158,12 +94,19 @@ class MessagePool: BaseModuleView {
                 }
             })
         }else{
+            let userInfo = itemObj!
             let params = NSMutableDictionary()
             params.setValue(0, forKey: "feed_type")
-            params.setValue(self.pageContext, forKey: "page_context")
+            params.setValue(20, forKey: "page_context")
             params.setValue(self.page, forKey: "page")
-            params.setValue(itemObj?.uid ?? 0, forKey: "user_id")
-            params.setValue(itemObj?.pid ?? 0, forKey: "user_pid")
+            if userInfo.uid == nil{
+                params.setValue(userInfo.appkey, forKey: "appkey")
+                params.setValue(userInfo.user_name, forKey: "username")
+            }else{
+                params.setValue(userInfo.uid, forKey: "user_id")
+                params.setValue(userInfo.pid, forKey: "user_pid")
+            }
+
             ApiUtil.share.getOthersMessagePool(params: params, finish: { (status, data, msg) in
                 let tmpList:[MessagePoolData]? = MessagePoolModel.deserialize(from: data)?.data
                 guard let list = tmpList else{
@@ -187,23 +130,12 @@ class MessagePool: BaseModuleView {
             })
         }
     }
-
-    private func genderTopicCell(itemObj: TopicData) -> TopicCell {
-        
-        let cell: TopicCell? = TopicCell.loadFromXib_Swift() as? TopicCell
-        cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 125)
-        cell?.icon.isUserInteractionEnabled = false
-        cell?.cellObj = itemObj
-        let size = itemObj.summarize.getSize(font: (cell?.content.font)!, viewWidth: (cell?.content.width)!)
-        
-        cell?.height = 115 + size.height
-        
-        if itemObj.attachment_value.count != 0 {
-            cell?.height = (cell?.height)! + (cell?.imgViewHeight.constant)!
-        }
-        return cell!
-    }
     
+}
+
+
+//MARK: - 绘制画面
+extension MessagePool{
     private func genderlist(moveList: [MessagePoolData]!){
         
         for item in moveList!{
@@ -222,7 +154,7 @@ class MessagePool: BaseModuleView {
             default:
                 continue
             }
-
+            
             cell?.top = self.height + 1
             self.addSubview(cell!)
             self.height = (cell?.bottom)!
@@ -231,16 +163,32 @@ class MessagePool: BaseModuleView {
         self.reloadOver?()
     }
     
-    func genderOrderCell(itemData : OrderCData) -> GrapCell?{
+    private func genderOrderCell(itemData : OrderCData) -> GrapCell?{
         let cell: GrapCell? = GrapCell.loadFromXib_Swift() as? GrapCell
         cell?.cellData = itemData
         //计算高度
         let getStr = JSON.init(parseJSON: (itemData.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "")
         let size = getStr?.getSize(font: UIFont.systemFont(ofSize: 15), viewWidth: kScreenW - 30.0)
         let height =  153 - 37 + (size?.height)!
+        cell?.iconButton.isUserInteractionEnabled = false
         cell?.height = height
         cell?.width = kScreenW
         return cell
     }
+    
+    private func genderTopicCell(itemObj: TopicData) -> TopicCell {
+        
+        let cell: TopicCell? = TopicCell.loadFromXib_Swift() as? TopicCell
+        cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 125)
+        cell?.icon.isUserInteractionEnabled = false
+        cell?.cellObj = itemObj
+        let size = itemObj.summarize.getSize(font: (cell?.content.font)!, viewWidth: (cell?.content.width)!)
+        
+        cell?.height = 115 + size.height
+        
+        if itemObj.attachment_value.count != 0 {
+            cell?.height = (cell?.height)! + (cell?.imgViewHeight.constant)!
+        }
+        return cell!
+    }
 }
-

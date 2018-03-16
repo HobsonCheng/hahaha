@@ -143,9 +143,7 @@ class JCChatViewController: NaviBarVC {
         return [
             SAIToolboxItem("page:pic", "照片", UIImage.loadImage("chat_tool_pic")),
             SAIToolboxItem("page:camera", "拍照", UIImage.loadImage("chat_tool_camera")),
-            SAIToolboxItem("page:video_s", "小视频", UIImage.loadImage("chat_tool_video_short")),
-            SAIToolboxItem("page:location", "位置", UIImage.loadImage("chat_tool_location")),
-            SAIToolboxItem("page:businessCard", "名片", UIImage.loadImage("chat_tool_businessCard")),
+            SAIToolboxItem("page:video_s", "小视频", UIImage.loadImage("chat_tool_video_short"))
             ]
     }()
     
@@ -456,8 +454,6 @@ class JCChatViewController: NaviBarVC {
         //跳转个人中心
         //1: username . appkey
         let userinfo = conversation.target as! JMSGUser
-
-    
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
         
         let userModel = UserInfoData()
@@ -468,9 +464,6 @@ class JCChatViewController: NaviBarVC {
             OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
         }
         
-//        let vc = JCSingleSettingViewController()
-//        vc?.user = conversation.target as! JMSGUser
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func _getGroupInfo() {
@@ -847,11 +840,28 @@ extension JCChatViewController: JCMessageDelegate {
     
     func tapAvatarView(message: JCMessageType) {
         toolbar.resignFirstResponder()
-        if message.options.alignment == .right {//other
-           
-        } else {//mine
-           
+        guard let sender = message.sender else{
+            return
         }
+        guard let appkey = sender.appKey else{
+            return
+        }
+        let username = sender.username
+
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+        
+        let userModel = UserInfoData()
+        userModel.user_name = username
+        userModel.appkey = appkey
+        getPage?.anyObj = userModel
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+        }
+//        if message.options.alignment == .right {//other
+//
+//        } else {//mine
+//
+//        }
     }
 
     func longTapAvatarView(message: JCMessageType) {
