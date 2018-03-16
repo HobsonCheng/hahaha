@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 
 protocol HeaderItemProtocol {
     func didClickItemButton(sender:HeaderItemView)

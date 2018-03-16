@@ -429,7 +429,7 @@ class JCChatViewController: NaviBarVC {
         let dic = NSDictionary(dictionary: (notification as NSNotification).userInfo!)
         let keyboardValue = dic.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let bottomDistance = UIScreen.main.bounds.size.height - keyboardValue.cgRectValue.origin.y
-        let duration = Double(dic.object(forKey: UIKeyboardAnimationDurationUserInfoKey) as! NSNumber)
+        let duration = Double(truncating: dic.object(forKey: UIKeyboardAnimationDurationUserInfoKey) as! NSNumber)
         
         UIView.animate(withDuration: duration, animations: {
         }) { (finish) in
@@ -834,9 +834,9 @@ extension JCChatViewController: JCMessageDelegate {
     }
 
     func message(message: JCMessageType, user: JMSGUser?, businessCardName: String, businessCardAppKey: String) {
-        if let user = user {
-            
-        }
+//        if user != nil {
+//
+//        }
     }
     
     func clickTips(message: JCMessageType) {
@@ -1165,7 +1165,7 @@ extension JCChatViewController: SAIInputBarDelegate, SAIInputBarDisplayable {
             let tempDic = reminds[index]
             let startIndex = tempDic.startIndex
             if currentIndex <= startIndex {
-                if string.characters.count == 0 {
+                if string.count == 0 {
                     for subIndex in index..<reminds.count {
                         let subTemp = reminds[subIndex]
                         subTemp.startIndex -= 1

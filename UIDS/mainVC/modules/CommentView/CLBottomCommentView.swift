@@ -86,7 +86,8 @@ class CLBottomCommentView: UIView,UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.addSubview(self.clTextView!)
         
-        if (textField.text?.count as! Int) > 4 {
+        let textlen = textField.text?.count as! Int
+        if textlen > 4 {
             let string = NSMutableString.init(string: textField.text!)
             self.clTextView?.commentTextView.text = string.substring(from: 4)
         }

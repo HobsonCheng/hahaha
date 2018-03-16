@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 import KMPlaceholderTextView
 import TextFieldEffects
 import LPDQuoteImagesView
@@ -48,12 +48,12 @@ extension GroupTopicSendVC {
     func genderNavi() {
         
         let left = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(GroupTopicSendVC.closeVC))
-        left?.button.setFAIcon(icon: FAType.FAClose, iconSize: 20, forState: UIControlState.normal)
+        left?.button.backgroundColor = UIColor.black
         self.naviBar().setLeftBarItem(left!)
         
         let right = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(GroupTopicSendVC.sendTxt))
         right?.tag = NAV_BAR_TYPE.NAV_BAR_TYPE_ADD_TOPOC.rawValue
-        right?.button.setFAIcon(icon: FAType.FASendO, iconSize: 20, forState: UIControlState.normal)
+        right?.backgroundColor = UIColor.red
         self.naviBar().setRightBarItem(right!)
         
     }

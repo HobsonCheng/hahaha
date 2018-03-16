@@ -123,17 +123,17 @@ extension NewsDetailVC: UITableViewDataSource, UITableViewDelegate {
         case 1: // 广告
             return 0
         case 2: // 相关阅读
-            var rowHeight = 100
-            let model = otherLinks[indexPath.row]
-            if model != nil {
-                //                let cell = tableView.dequeueReusableCell(withIdentifier: detailOtherLinkNoneIdentifier) as! JFDetailOtherNoneCell
-                //                // 缓存评论cell高度
-                //                otherLinks[indexPath.row].rowHeight = cell.getRowHeight(model)
-                //                rowHeight = otherLinks[indexPath.row].rowHeight
-                return CGFloat(rowHeight)
-            } else {
+            let rowHeight = 100
+//            let model = otherLinks[indexPath.row]
+//            if model != nil {
+//                //                let cell = tableView.dequeueReusableCell(withIdentifier: detailOtherLinkNoneIdentifier) as! JFDetailOtherNoneCell
+//                //                // 缓存评论cell高度
+//                //                otherLinks[indexPath.row].rowHeight = cell.getRowHeight(model)
+//                //                rowHeight = otherLinks[indexPath.row].rowHeight
+//                return CGFloat(rowHeight)
+//            } else {
                 return 100
-            }
+//            }
         case 3: // 评论
             var rowHeight = commentList[indexPath.row].rowHeight
             if rowHeight < 1 {

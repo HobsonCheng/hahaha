@@ -163,11 +163,11 @@ extension FileViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let content = message.content as! JMSGFileContent
             let type = message.ex.fileType
-            let fileName = content.fileName
+            _ = content.fileName
             switch fileType {
             case .doc:
                 content.fileData({ (data, msgId, error) in
-                    let vc = JCDocumentViewController()
+                    _ = JCDocumentViewController()
 //                    vc.title = fileName
 //                    vc.fileData = data
 //                    vc.filePath = content.originMediaLocalPath

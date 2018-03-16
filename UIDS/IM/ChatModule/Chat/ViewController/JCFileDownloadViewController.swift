@@ -111,8 +111,8 @@ class JCFileDownloadViewController: UIViewController {
             let content = message.content as! JMSGFileContent
             switch fileType.fileFormat() {
             case .document:
-                let vc = JCDocumentViewController()
-                
+//                let vc = JCDocumentViewController()
+                break
             case .video, .voice:
                 let url = URL(fileURLWithPath: content.originMediaLocalPath ?? "")
                 try! JCVideoManager.playVideo(data: Data(contentsOf: url), fileType, currentViewController: self)

@@ -83,14 +83,14 @@ extension MainScrollView: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         
         return nil
         
-        let animation = CABasicAnimation.init(keyPath: "transform")
-        animation.fromValue = NSValue.init(caTransform3D: CATransform3DIdentity)
-        animation.toValue = NSValue.init(caTransform3D: CATransform3DMakeRotation(CGFloat(M_PI_2), 0.0, 0.0, 1))
-        animation.duration = 0.25
-        animation.isCumulative = true
-        animation.repeatCount = MAXFLOAT;
-        
-        return animation;
+//        let animation = CABasicAnimation.init(keyPath: "transform")
+//        animation.fromValue = NSValue.init(caTransform3D: CATransform3DIdentity)
+//        animation.toValue = NSValue.init(caTransform3D: CATransform3DMakeRotation(CGFloat(Double.pi/2), 0.0, 0.0, 1))
+//        animation.duration = 0.25
+//        animation.isCumulative = true
+//        animation.repeatCount = MAXFLOAT;
+//        
+//        return animation;
         
     }
     

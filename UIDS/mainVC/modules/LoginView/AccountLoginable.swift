@@ -12,7 +12,7 @@ import Then
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 
 // MARK:- 事件
 struct AccountLoginEvent {
@@ -435,7 +435,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.contentMode = .scaleAspectFit
             $0.isUserInteractionEnabled = false
             $0.setTitleColor(kThemeTitielColor!, for: UIControlState.normal)
-            $0.setFAIcon(icon: FAType.FACommentO, iconSize: 18, forState: UIControlState.normal)
+            $0.backgroundColor = UIColor.yellow
         }
         
         // 添加

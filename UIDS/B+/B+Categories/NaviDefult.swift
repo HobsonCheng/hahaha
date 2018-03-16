@@ -19,7 +19,7 @@ extension NaviBarVC {
         
         if bgColor != nil {
             
-            let bgColorObj = UIColor.init(hexString: bgColor, withAlpha: 1)
+            let bgColorObj = UIColor(hexString: bgColor)
         
             self.naviBar().setNaviBarBackgroundColor(bgColorObj)
         }

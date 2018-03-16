@@ -60,7 +60,7 @@ extension RootVC {
         
         let colorStr = (bgData! as! NSDictionary).object(forKey: "bgColor") as! String
         
-        let bgColor = UIColor.init(hexString: colorStr, withAlpha: 1)
+        let bgColor = UIColor(hexString: colorStr)
     
         Util.save_defult(key: B_USER_KEY_NAV_BG_COLOR, value: colorStr)
         

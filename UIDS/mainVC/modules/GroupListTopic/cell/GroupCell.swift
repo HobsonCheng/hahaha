@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 
 
 class GroupCell: UITableViewCell {
@@ -39,8 +39,7 @@ class GroupCell: UITableViewCell {
     func showData() {
         if self.cellObj != nil {
             
-            self.icon.setFAIconWithName(icon: FAType.FAGroup, textColor: UIColor.black)
-            self.icon.setFAIconWithName(icon: FAType.FAGroup, textColor: UIColor.black, orientation: UIImageOrientation.up, backgroundColor: UIColor.white, size: CGSize.init(width: self.icon.width, height: self.icon.height))
+            self.icon.image = UIImage.init(named: "2.png")
             self.icon.layer.cornerRadius = 4
             self.icon.layer.masksToBounds = true
             self.icon.layer.borderColor = UIColor.lightGray.cgColor

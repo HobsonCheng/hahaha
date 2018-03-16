@@ -163,35 +163,7 @@ final class Util: NSObject{
     //MARK: TOASD 1: 普通 2：成功 3： 失败
     static func msg(msg: String,_ type: Int) {
         
-        let view = VCController.getTopVC()
-        
-        view?.view.dodo.style.bar.hideAfterDelaySeconds = 3
-        view?.view.dodo.style.bar.hideOnTap = true
-//        view?.view.dodo.style.bar.locationTop = false
-
-        
-        if (view?.isKind(of: NSClassFromString("NaviBarVC")!))!{
-            let navToP: NaviBarVC = view as! NaviBarVC
-            if navToP.naviBar() != nil {
-                navToP.view.dodo.topAnchor = navToP.naviBar().bottomAnchor
-            }else {
-                //寻找 navi
-                let navBarView = VCController.getTopVC()?.view.viewWithTag(999)
-                view?.view.dodo.topAnchor = navBarView?.bottomAnchor
-            }
-        }else {
-            //寻找 navi
-            let navBarView = VCController.getTopVC()?.view.viewWithTag(999)
-            view?.view.dodo.topAnchor = navBarView?.bottomAnchor
-        }
-        
-        if type == 2 {
-            view?.view.dodo.success(msg)
-        }else if type == 3 {
-            view?.view.dodo.error(msg)
-        }else{
-            view?.view.dodo.show(msg)
-        }
+        MBProgressHUD_JChat.show(text: msg, view: nil, 0.6)
         
     }
     
@@ -201,7 +173,7 @@ final class Util: NSObject{
         
         if bgColor != nil {
             
-            let bgColorObj = UIColor.init(hexString: bgColor, withAlpha: 1)
+            let bgColorObj = UIColor(hexString: bgColor)
             
             return bgColorObj ?? UIColor.blue
         }

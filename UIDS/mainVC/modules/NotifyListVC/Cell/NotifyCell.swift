@@ -21,7 +21,7 @@ class NotifyCell: UITableViewCell {
             let action_name = cellData?.action_name
             self.timeLabel.text = cellData?.add_time
             self.nameLabel.text = sender_name
-            let (sender,target) = cellData?.sender == cellData?.target ? ("您","自己") : (cellData?.sender_name,cellData?.target_name)
+            let (sender,_) = cellData?.sender == cellData?.target ? ("您","自己") : (cellData?.sender_name,cellData?.target_name)
             if let name = action_name{
                 switch name{
                 case "点赞":

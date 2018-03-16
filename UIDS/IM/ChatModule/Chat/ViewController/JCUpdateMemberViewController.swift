@@ -283,7 +283,7 @@ class JCUpdateMemberViewController: UIViewController {
             _classify(users)
             return
         }
-        let searchString = searchString.uppercased()
+//        let searchString = searchString.uppercased()
 //        filteredUsersArray = _JCFilterUsers(users: users, string: searchString)
 //        _classify(filteredUsersArray)
     }

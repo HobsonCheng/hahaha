@@ -544,14 +544,16 @@ extension SAIInputAccessoryView: UITextViewDelegate {
         _updateContentSizeForTextChanged(true)
     }
     
-    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
-        return delegate?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange) ?? true
+    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        return delegate?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange, interaction:interaction) ?? true
     }
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return delegate?.textView?(textView, shouldChangeTextIn: range, replacementText: text) ?? true
     }
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        return delegate?.textView?(textView, shouldInteractWith: URL, in: characterRange) ?? true
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        return delegate?.textView?(textView, shouldInteractWith: URL, in: characterRange, interaction:interaction) ?? true
     }
 }
     

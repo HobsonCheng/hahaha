@@ -9,13 +9,13 @@
 #ifndef Bridging_Header_h
 #define Bridging_Header_h
 
-#import <ChameleonFramework/Chameleon.h>
-#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+//#import <ChameleonFramework/Chameleon.h>
+//#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 //#import <iRate/iRate.h>
-#import <MagicalRecord/MagicalRecord.h>
-#import <PKRevealController/PKRevealController.h>
-#import <RETableViewManager/RETableViewManager.h>
-#import <REValidation/REValidation.h>
+//#import <MagicalRecord/MagicalRecord.h>
+//#import <PKRevealController/PKRevealController.h>
+//#import <RETableViewManager/RETableViewManager.h>
+//#import <REValidation/REValidation.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <HandyJSON/HandyJSON.h>
 #import <SDWebImage/SDWebImage-umbrella.h>

@@ -12,7 +12,7 @@ import Then
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 
 //MARK: 注册扩展 那边太拥挤了
 extension AccountLoginable where Self : BaseNameVC {//协议扩展
