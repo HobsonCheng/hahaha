@@ -24,17 +24,36 @@ class PageListInfo: NSObject {
         self.initData()
     }
     
-    func initData(){
-        
-        if !DownData.find_resourse_PageListInfo() {
-            return
-        };
-        
+    func readInfo(){
         let file = FileHandle.init(forReadingAtPath: DownData.resoursePathPageListInfo())
         let tmpData = file?.readDataToEndOfFile()
         let jsonStr = String(data: tmpData!, encoding: String.Encoding.utf8)
         
         self.pageListModel = PageListModel.deserialize(from: jsonStr)?.data
+    }
+    
+    func initData(){
+        
+        if !DownData.find_resourse_PageListInfo() {
+            
+            
+            if Util.isAlone() {
+                
+                let path = Bundle.main.path(forResource: "UIPageList", ofType: "json")
+                let file = FileHandle(forReadingAtPath: path!)
+                let dataAlone = file?.readDataToEndOfFile()
+                
+                let tmpData: NSMutableData? = NSMutableData()
+                tmpData?.append((dataAlone)!)
+                tmpData?.write(toFile: DownData.resoursePathPageListInfo(), atomically: true)
+            }
+            
+            readInfo()
+            
+            return
+        };
+        
+        readInfo()
     }
 }
 

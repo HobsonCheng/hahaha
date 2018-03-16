@@ -22,6 +22,8 @@ class SwiftIntroView: UIView, UIScrollViewDelegate {
     var view1: UIImageView!
     var view2: UIImageView!
     var view3: UIImageView!
+    var view4: UIImageView!
+    var view5: UIImageView!
     
     var delegate: SwiftIntroViewDelegate?
     
@@ -40,7 +42,14 @@ class SwiftIntroView: UIView, UIScrollViewDelegate {
         scrollView = UIScrollView(frame: self.frame)
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
-        scrollView.contentSize = CGSize(width: self.frame.size.width * 3, height: scrollView.frame.size.height)
+        if Util.isAlone() {
+            
+            let appinfo = AppInfoData.shared.appModel
+            scrollView.contentSize = CGSize(width: self.frame.size.width * (CGFloat((appinfo?.welcome_pic?.count)!)), height: scrollView.frame.size.height)
+            
+        }else{
+         scrollView.contentSize = CGSize(width: self.frame.size.width * 3, height: scrollView.frame.size.height)
+        }
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
         self.addSubview(scrollView)
     }
@@ -49,23 +58,69 @@ class SwiftIntroView: UIView, UIScrollViewDelegate {
     func initPageViews() {
         let originW = self.frame.size.width
         
-        view1 = UIImageView(frame: self.frame)
-        view1.frame.origin.x = originW * 0
-        
-        view2 = UIImageView(frame: self.frame)
-        view2.frame.origin.x = originW * 1
-        
-        view3 = UIImageView(frame: self.frame)
-        view3.frame.origin.x = originW * 2
-        
-        
-        view1.image = UIImage(named: "ios商店图1.jpg")
-        view2.image = UIImage(named: "ios商店图2.jpg")
-        view3.image = UIImage(named: "ios商店图3.jpg")
-        
-        self.scrollView.addSubview(view1)
-        self.scrollView.addSubview(view2)
-        self.scrollView.addSubview(view3)
+        if Util.isAlone() {
+            
+            let appinfo = AppInfoData.shared.appModel
+            let countnum = (appinfo?.welcome_pic?.count)!
+            if countnum >= 1 {
+                view1 = UIImageView(frame: self.frame)
+                view1.frame.origin.x = originW * 0
+                
+                view1.image = UIImage(named: "guiImage1.png")
+                self.scrollView.addSubview(view1)
+            }
+            if countnum >= 2 {
+                view2 = UIImageView(frame: self.frame)
+                view2.frame.origin.x = originW * 1
+                
+                view2.image = UIImage(named: "guiImage2.png")
+                self.scrollView.addSubview(view2)
+            }
+            
+            if countnum >= 3 {
+                view3 = UIImageView(frame: self.frame)
+                view3.frame.origin.x = originW * 2
+                
+                view3.image = UIImage(named: "guiImage3.png")
+                self.scrollView.addSubview(view3)
+            }
+            
+            if countnum >= 4 {
+                view4 = UIImageView(frame: self.frame)
+                view4.frame.origin.x = originW * 3
+                
+                view4.image = UIImage(named: "guiImage4.png")
+                self.scrollView.addSubview(view4)
+            }
+            
+            if countnum >= 5 {
+                view5 = UIImageView(frame: self.frame)
+                view5.frame.origin.x = originW * 4
+                
+                view5.image = UIImage(named: "guiImage5.png")
+                self.scrollView.addSubview(view5)
+            }
+            
+        }else {
+            view1 = UIImageView(frame: self.frame)
+            view1.frame.origin.x = originW * 0
+            
+            view2 = UIImageView(frame: self.frame)
+            view2.frame.origin.x = originW * 1
+            
+            view3 = UIImageView(frame: self.frame)
+            view3.frame.origin.x = originW * 2
+            
+            
+            view1.image = UIImage(named: "ios商店图1.jpg")
+            view2.image = UIImage(named: "ios商店图2.jpg")
+            view3.image = UIImage(named: "ios商店图3.jpg")
+            
+            self.scrollView.addSubview(view1)
+            self.scrollView.addSubview(view2)
+            self.scrollView.addSubview(view3)
+        }
+    
     }
     
     //初始化 pageControl

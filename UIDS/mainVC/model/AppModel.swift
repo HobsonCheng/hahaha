@@ -24,13 +24,7 @@ class AppInfoData: NSObject {
         self.initData()
     }
     
-    func initData(){
-        
-        
-        if !DownData.find_resourse_AppInfo() {
-            
-            return
-        };
+    func readInfo(){
         
         let file = FileHandle.init(forReadingAtPath: DownData.resoursePathAppInfo())
         let tmpData = file?.readDataToEndOfFile()
@@ -39,9 +33,39 @@ class AppInfoData: NSObject {
         self.appModel = AppModel.deserialize(from: jsonStr)?.data
     }
     
+    func initData(){
+        
+        
+        if !DownData.find_resourse_AppInfo() {
+            
+            if Util.isAlone() {
+                
+                let path = Bundle.main.path(forResource: "UIAppInfo", ofType: "json")
+                let file = FileHandle(forReadingAtPath: path!)
+                let dataAlone = file?.readDataToEndOfFile()
+                
+                let tmpData: NSMutableData? = NSMutableData()
+                tmpData?.append((dataAlone)!)
+                tmpData?.write(toFile: DownData.resoursePathAppInfo(), atomically: true)
+            }
+            
+            readInfo()
+            
+            return
+        };
+        
+        readInfo()
+    
+    }
+    
 }
 
 
+
+class AppAlone: BaseData{
+    
+    var alone: Int!
+}
 
 class AppVersion: BaseModel {
     var data: Int!

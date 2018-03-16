@@ -74,6 +74,16 @@ class DownData: NSObject {
         
         return false
     }
+    static func find_resourse_Icon()-> Bool{
+        
+        let fileManager = FileManager.default
+        let path = "\((self.resoursePath_Icon()))/tabBar_icon_1@2x.png"
+        if fileManager.fileExists(atPath: path){
+            return true
+        }
+        
+        return false
+    }
     
     static func movingTabberIcon(big: Bool,downUrl: String,iconName: String?){
         
