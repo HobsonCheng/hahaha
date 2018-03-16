@@ -59,8 +59,7 @@ class PhoneService {
 
             ApiUtil.share.userLoginByPhone(params: params, fininsh: { (status, data,msg) in
               
-                let topview = VCController.getTopVC()
-                topview?.view.dodo.success("登录成功")
+                Util.msg(msg: "登录成功", 1)
                 
                 UserUtil.share.saveUser(userInfo: data)
                 

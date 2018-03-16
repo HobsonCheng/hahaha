@@ -160,10 +160,12 @@ extension ScanQRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                 }
                 if let Url = URL(string: url) {
                     if UIApplication.shared.canOpenURL(Url) {
-                        UIApplication.shared.openURL(Url)
+                    
+                        UIApplication.shared.open(Url, options: [:], completionHandler: nil)
                     } else {
                         let newUrl = URL(string: "https://" + url)
-                        UIApplication.shared.openURL(newUrl!)
+                        UIApplication.shared.open(newUrl!, options: [:], completionHandler: nil)
+                
                     }
                     return
                 }
@@ -181,8 +183,8 @@ extension ScanQRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                 session.stopRunning()
                 JMSGUser.userInfoArray(withUsernameArray: [username], appKey: appkey, completionHandler: { (result, error) in
                     if error == nil {
-                        let users = result as! [JMSGUser]
-                        let user = users.first
+//                        let users = result as! [JMSGUser]
+//                        let user = users.first
 //                        let vc = JCUserInfoViewController()
 //                        vc.user = user
 //                        self.navigationController?.pushViewController(vc, animated: true)

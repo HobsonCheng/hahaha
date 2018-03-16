@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>UIDS.ttf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>UI大师</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -25,12 +23,12 @@
 			</dict>
 			<key>pid2</key>
 			<dict>
-				<key>UIPrerenderedIcon</key>
-				<true/>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>pid2</string>
 				</array>
+				<key>UIPrerenderedIcon</key>
+				<true/>
 			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -42,7 +40,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.master.ui</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -151,6 +149,10 @@
 	<string>需要您的同意,才能访问麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要您的同意,才能访问相机</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>UIDS.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

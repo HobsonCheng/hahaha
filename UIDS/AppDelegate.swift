@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func resetBadge(_ application: UIApplication) {
         application.applicationIconBadgeNumber = 0
-        application.cancelAllLocalNotifications()
+//        application.cancelAllLocalNotifications()
         JMessage.resetBadge()
     }
 }
@@ -114,8 +114,8 @@ extension AppDelegate: JMessageDelegate {
     
     private func cacheInvitation(event: JMSGNotificationEvent) {
         let friendEvent =  event as! JMSGFriendNotificationEvent
-        let user = friendEvent.getFromUser()
-        let reason = friendEvent.getReason()
+        _ = friendEvent.getFromUser()
+        _ = friendEvent.getReason()
         
         if UserDefaults.standard.object(forKey: kUnreadInvitationCount) != nil {
             let count = UserDefaults.standard.object(forKey: kUnreadInvitationCount) as! Int

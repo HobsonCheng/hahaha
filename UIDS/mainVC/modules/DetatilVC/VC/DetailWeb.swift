@@ -157,7 +157,7 @@ extension NewsDetailVC: UIWebViewDelegate {
                                         let cacheImagePath = SDImageCache.shared().defaultCachePath(forKey: cacheImageKey)
                                         // 发送图片占位标识和本地绝对路径给webView
                                         self?.bridge?.send("replaceimage\(imageString)~\(cacheImagePath!)")
-                                        print("图片已有缓存，发送给js \(cacheImagePath)")
+                                        print("图片已有缓存，发送给js \((cacheImagePath)!)")
                                         
                                         return
                                     }

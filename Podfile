@@ -8,16 +8,16 @@ workspace 'UIDS.xcworkspace'
 target 'UIDS' do
 
   pod 'DZNEmptyDataSet'
-  pod 'ChameleonFramework'
-  pod 'MagicalRecord'
+#  pod 'ChameleonFramework'
+#  pod 'MagicalRecord'
   #pod 'iRate'
   pod 'Then'
   
   pod 'HandyJSON'
   pod 'SwiftyJSON'
-  pod 'Dodo'
+#  pod 'Dodo'
   pod 'SDWebImage'
-  pod 'PermissionScope'#汉化
+#  pod 'PermissionScope'#汉化
   pod 'Alamofire'
   pod 'Reachability'
   
@@ -25,9 +25,9 @@ target 'UIDS' do
   #ui
   pod 'TYPagerController'
   pod 'SVProgressHUD'
-  pod 'PKRevealController'
-  pod 'RETableViewManager'
-  pod 'Font-Awesome-Swift'
+#  pod 'PKRevealController'
+#  pod 'RETableViewManager'
+#  pod 'Font-Awesome-Swift'
   pod 'ESPullToRefresh'
   pod 'IQKeyboardManagerSwift'#键盘
   pod 'SnapKit'

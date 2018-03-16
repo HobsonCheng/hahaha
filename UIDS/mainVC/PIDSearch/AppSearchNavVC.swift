@@ -18,7 +18,7 @@ import Differentiator
 import SwiftyJSON
 import ESPullToRefresh
 import DZNEmptyDataSet
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 
 enum HistoryKey {
     

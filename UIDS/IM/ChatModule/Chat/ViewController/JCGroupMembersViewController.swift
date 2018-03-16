@@ -123,7 +123,7 @@ extension JCGroupMembersViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let user = filteredUsersArray[indexPath.row]
+        _ = filteredUsersArray[indexPath.row]
 //        let vc = JCUserInfoViewController()
 //        vc.user = user
 //        navigationController?.pushViewController(vc, animated: true)

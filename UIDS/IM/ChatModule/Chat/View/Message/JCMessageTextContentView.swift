@@ -32,10 +32,11 @@ open class JCMessageTextContentView: KILabel, JCMessageContentViewType {
         self.urlLinkTapHandler = { label, url, range in
             if let Url = URL(string: url) {
                 if UIApplication.shared.canOpenURL(Url) {
-                    UIApplication.shared.openURL(Url)
+                    
+                    UIApplication.shared.open(Url, options: [:], completionHandler: nil)
                 } else {
                     let newUrl = URL(string: "https://" + url)
-                    UIApplication.shared.openURL(newUrl!)
+                    UIApplication.shared.open(newUrl!, options: [:], completionHandler: nil)
                 }
             }
         }

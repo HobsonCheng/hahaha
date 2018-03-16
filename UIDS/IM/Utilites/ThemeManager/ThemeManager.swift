@@ -107,8 +107,7 @@ final class ThemeManager: NSObject {
     }
 
     public func loadImage(_ imageName: String, _ style: ThemeStyle) -> UIImage? {
-
-        if imageName.isEmpty || imageName.characters.count == 0 {
+        if imageName.isEmpty || imageName.count == 0 {
             return nil
         }
 
@@ -129,10 +128,11 @@ final class ThemeManager: NSObject {
 
         var isImageUnder3x = false
         var imagePath  =  themeBundle.path(forResource: "image/" + name, ofType: type)
-        let nameLength = name.characters.count
+        let nameLength = name.count
 
         if imagePath == nil && name.hasSuffix("@2x") && nameLength > 3 {
             let index = name.index(name.endIndex, offsetBy: -3)
+        
             name = name.substring(with: Range<String.Index>(name.startIndex ..< index))
         }
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 
 enum NAV_BAR_TYPE: Int {
     case NAV_BAR_TYPE_ADD_GROUP = 10000

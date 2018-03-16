@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Font_Awesome_Swift
+//import Font_Awesome_Swift
 import Then
 import RxSwift
 protocol JFProfileHeaderViewDelegate {

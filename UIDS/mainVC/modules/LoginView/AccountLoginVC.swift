@@ -100,8 +100,7 @@ extension AccountLoginVC: AccountLoginable {
             result.paramsObj.setValue(getCodeKey, forKey: "code_key")
             ApiUtil.share.userLogin(params: result.paramsObj, fininsh: { (status, data, msg) in
                 
-                let topview = VCController.getTopVC()
-                topview?.view.dodo.success("登录成功")
+                Util.msg(msg: "登录成功", 1)
                 
                 UserUtil.share.saveUser(userInfo: data)
                 if let vc = VCController.getPreviousWith(self) as? RootVC{
