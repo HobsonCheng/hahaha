@@ -386,10 +386,19 @@ extension JCGroupSettingViewController: JCGroupSettingCellDelegate {
     func didSelectCell(cell: JCGroupSettingCell, indexPath: IndexPath) {
         let index = indexPath.section * 5 + indexPath.row
         let user = users[index]
-        if user.isEqual(to: JMSGUser.myInfo()) {
-           
-            return
+        
+        let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
+        let userModel = UserInfoData()
+        userModel.user_name = user.username
+        userModel.appkey = user.appKey
+        getPage?.anyObj = userModel
+        if (getPage != nil) {
+            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
         }
+//        if user.isEqual(to: JMSGUser.myInfo()) {
+//           
+//            return
+//        }
        
     }
 }

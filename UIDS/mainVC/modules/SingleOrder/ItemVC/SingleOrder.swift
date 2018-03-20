@@ -11,11 +11,9 @@ import TYPagerController
 
 
 fileprivate struct MetricSg {
-    
     static let leftTitle = "抢单"
     static let centerTitle = "正在进行"
     static let rightTitle = "已完成"
-    
 }
 
 class SingleOrder: BaseModuleView {
@@ -23,7 +21,7 @@ class SingleOrder: BaseModuleView {
 
     var pageVC = TYTabPagerController().then {
         
-        $0.pagerController.scrollView?.backgroundColor = kThemeGainsboroColor
+        $0.pagerController.scrollView?.backgroundColor = kThemeWhiteColor
         
         // 设置滚动条 属性
         $0.tabBarHeight = Metric.pagerBarHeight
@@ -62,7 +60,7 @@ extension SingleOrder {
         //分页
         // 给 PageTabBar 添加一个底部细线
         let bottomLine = UIView().then {
-            $0.backgroundColor = kThemeGainsboroColor
+            $0.backgroundColor = kThemeWhiteColor
         }
         self.pageVC.tabBar.addSubview(bottomLine)
         

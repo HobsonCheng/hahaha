@@ -43,7 +43,7 @@ class JCGroupMemberCell: UICollectionViewCell {
         addSubview(avatorView)
         addSubview(nickname)
         
-        addConstraint(_JCLayoutConstraintMake(avatorView, .centerY, .equal, contentView, .centerY, -10))
+        addConstraint(_JCLayoutConstraintMake(avatorView, .centerY, .equal, contentView, .centerY))
         addConstraint(_JCLayoutConstraintMake(avatorView, .width, .equal, nil, .notAnAttribute, 50))
         addConstraint(_JCLayoutConstraintMake(avatorView, .height, .equal, nil, .notAnAttribute, 50))
         addConstraint(_JCLayoutConstraintMake(avatorView, .centerX, .equal, contentView, .centerX))

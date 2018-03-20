@@ -24,4 +24,5 @@ class IMUserData: BaseData {
     var status : Int!
     var uid : Int!
     var user_name : String!
+    var ji_name: String!
 }

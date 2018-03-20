@@ -143,7 +143,7 @@ static VCController *globalVCController = nil;
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer
 {
     NSInteger vcCount = [[[VCController mainVCC] arrayVCSubs] count];
-    if(vcCount < 3)        // 只有2个或以下的VC时不允许进行右滑操作,因为有emptyVC所以加一个
+    if(vcCount < 2)        // 只有2个或以下的VC时不允许进行右滑操作,因为有emptyVC所以加一个
     {
         return;
     }

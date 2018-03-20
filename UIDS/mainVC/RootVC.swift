@@ -44,6 +44,10 @@ class RootVC: NaviBarVC{
             self.requestPageInfo()
     
         }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kLoginNotification), object: nil, queue: OperationQueue.current) { (n) in
+            self.mainView?.es.startPullToRefresh()
+        }
     }
     
     public func requestPageInfo(){

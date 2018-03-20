@@ -13,7 +13,7 @@ import RxSwift
 import RxGesture
 import NSObject_Rx
 import ESPullToRefresh
-
+let kLoginNotification = "kLoginNotification"
 class AccountLoginVC: BaseNameVC {
 
     override func viewDidLoad() {
@@ -37,8 +37,6 @@ class AccountLoginVC: BaseNameVC {
 
 //MARK: 初始化
 extension AccountLoginVC: AccountLoginable {
-    
-    
     // MARK:- 初始化 登录 输入框
     func initEnableMudule() {
         
@@ -98,17 +96,13 @@ extension AccountLoginVC: AccountLoginable {
         accountLoginView.loginResult.drive(onNext: { (result) in
             
             result.paramsObj.setValue(getCodeKey, forKey: "code_key")
-            ApiUtil.share.userLogin(params: result.paramsObj, fininsh: { (status, data, msg) in
+            ApiUtil.share.userLogin(params: result.paramsObj, fininsh: {[weak self] (status, data, msg) in
                 
                 Util.msg(msg: "登录成功", 1)
                 
                 UserUtil.share.saveUser(userInfo: data)
-                if let vc = VCController.getPreviousWith(self) as? RootVC{
-                    vc.mainView?.es.startPullToRefresh()
-                }
+                NotificationCenter.default.post(name: NSNotification.Name.init(kLoginNotification), object: nil)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                  let vc =  VCController.getPreviousWith(self)
-//                    VCController.popToHomeVC(with: VCAnimationBottom.defaultAnimation())
                     VCController.pop(with: VCAnimationBottom.defaultAnimation())
                 };
                 

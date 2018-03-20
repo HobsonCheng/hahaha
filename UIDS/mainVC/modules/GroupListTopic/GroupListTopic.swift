@@ -46,7 +46,7 @@ class GroupListTopic: BaseModuleView {
 
     private func request(){
         let params = NSMutableDictionary()
-        params.setValue(self.page, forKey: "page")
+        params.setValue(self.page, forKey: "page_index")
         params.setValue("20", forKey: "page_context")
         params.setValue(self.model_code, forKey: "code")
         params.setValue(self.pageData.page_key, forKey: "page")

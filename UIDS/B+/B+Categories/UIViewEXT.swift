@@ -99,3 +99,21 @@ extension UIView {
     }
     
 }
+// MARK: getOwnerVC
+extension UIView{
+    /**获取所在的VC*/
+    public func getVC() -> UIViewController?{
+        var nextResponder: UIResponder? = self
+        
+        repeat {
+            nextResponder = nextResponder?.next
+            
+            if let viewController = nextResponder as? UIViewController {
+                return viewController
+            }
+            
+        } while nextResponder != nil
+        
+        return nil
+    }
+}

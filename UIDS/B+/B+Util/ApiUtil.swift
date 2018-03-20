@@ -206,7 +206,6 @@ class ApiUtil: NSObject {
         params.setValue("1", forKey: "reply_authority")
         params.setValue("2", forKey: "replay_authority")
         params.setValue("1", forKey: "attachment")
-        params.setValue("cms", forKey: "sn")
         
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
@@ -342,9 +341,9 @@ class ApiUtil: NSObject {
 
                 fininsh?(status,data,msg)
             }else {
-                Util.svpStop(ok: false,callback: {
-                    
-                }, hint: "提交失败")
+//                Util.svpStop(ok: false,callback: {
+//                    
+//                }, hint: "提交失败")
                 Util.msg(msg: msg!, 3)
             }
         }
@@ -420,85 +419,7 @@ class ApiUtil: NSObject {
             }
         }
     }
-    //MARK: - 订单列表
-    func getUserSubscribeList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-        params.setValue("getUserSubscribeList", forKey: "ac")
-        params.setValue("subscribe", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                fininsh?(status,data,msg)
-            }else {
-                
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    //MARK: - 接单
-    func orderSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
-        params.setValue("orderSubscribe", forKey: "ac")
-        params.setValue("subscribe", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                fininsh?(status,data,msg)
-            }else {
-                
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    //MARK: - 订单处理
-    func confirmSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-        params.setValue("confirmSubscribe", forKey: "ac")
-        params.setValue("subscribe", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                fininsh?(status,data,msg)
-            }else {
-                
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    //MARK: - 订单取消
-    func cancelOrderSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-        params.setValue("cancelOrderSubscribe", forKey: "ac")
-        params.setValue("subscribe", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                fininsh?(status,data,msg)
-            }else {
-                
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    //MARK: - 取消自己发布的订单
-    func cancelSubscribe(params: NSMutableDictionary,finish:ApiUtilFinished?){
-        params.setValue("subscribe", forKey: "sn")
-        params.setValue("cancelSubscribe", forKey: "ac")
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                finish?(status,data,msg)
-            }else {
-                
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
+    
     //MARK: - 更新用户信息
     func updateInfo(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
      
@@ -538,6 +459,7 @@ class ApiUtil: NSObject {
         params.setValue("ArticleList", forKey: "model")
         params.setValue("getArticleByModel", forKey: "ac")
         params.setValue("project", forKey: "sn")
+//        let model = AppInfoData.shared.appModel
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
@@ -878,4 +800,100 @@ class ApiUtil: NSObject {
         }
     }
 }
-
+//MARK: - 预约获客
+extension ApiUtil{
+    //MARK:  获取用户相关的表单
+    func getUserFormList(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getUserFormList", forKey: "ac")
+        params.setValue("subscribe",forKey:"sn")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK:  订单列表
+    func getUserSubscribeList(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getUserSubscribeList", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK:  接单
+    func orderSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("orderSubscribe", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: 订单处理
+    func confirmSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("confirmSubscribe", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: 订单取消
+    func cancelOrderSubscribe(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("cancelOrderSubscribe", forKey: "ac")
+        params.setValue("subscribe", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                fininsh?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: 取消自己发布的订单
+    func cancelSubscribe(params: NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("subscribe", forKey: "sn")
+        params.setValue("cancelSubscribe", forKey: "ac")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+}

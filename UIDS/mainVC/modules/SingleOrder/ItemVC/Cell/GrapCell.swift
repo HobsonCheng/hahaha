@@ -20,6 +20,7 @@ class GrapCell: UITableViewCell {
     @IBOutlet weak var fromName: UILabel!
     @IBOutlet weak var iconButton: UIButton!
     
+    @IBOutlet weak var platForm: UILabel!
     @IBOutlet weak var userName: UILabel!
     
     @IBOutlet weak var addtime: UILabel!
@@ -29,10 +30,10 @@ class GrapCell: UITableViewCell {
         didSet {
             if cellData != nil {
                 
-                let getStr = JSON.init(parseJSON: (cellData?.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "")
+                let getStr = JSON.init(parseJSON: (cellData?.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "").replacingOccurrences(of: "\"", with: "")
                 content.text = getStr
                 userName.text = cellData?.user_name
-                
+                platForm.text = "来自：\(cellData?.platform_name ?? "未知")"
                 fromName.text = cellData?.classify_name
                 iconButton.sd_setImage(with: URL.init(string: cellData?.head_portrait ?? ""), for: UIControlState.normal, completed: nil)
                 addtime.text = cellData?.add_time
@@ -78,6 +79,10 @@ class GrapCell: UITableViewCell {
                             _ = messagePool.reloadViewData()
                             messagePool.reloadOver!()
                         }
+                        if let table = self?.superview as? UITableView{
+                            table.es.startPullToRefresh()
+                        }
+                        
                     })
                     let action2 = UIAlertAction.init(title: "点错了", style: .cancel, handler: nil)
                     vc.addAction(action)
@@ -86,6 +91,8 @@ class GrapCell: UITableViewCell {
                 }).subscribe()
             }else{
                 dispose?.dispose()
+                self.eventbt.setTitle("处理订单", for: .normal)
+                
                 dispose =  self.eventbt.rx.tap.do(onNext: {[weak self] in //触发点击抢单
                     
                     let params = NSMutableDictionary()
@@ -94,23 +101,52 @@ class GrapCell: UITableViewCell {
                     
                     ApiUtil.share.orderSubscribe(params: params, fininsh: { (status, data, msg) in
                         Util.msg(msg: "抢单成功", 2)
+                        if let table = self?.superview as? UITableView{
+                            table.es.startPullToRefresh()
+                        }
+                        if let messagePool = self?.superview as? MessagePool{
+                            _ = messagePool.reloadViewData()
+                            messagePool.reloadOver!()
+                        }
                     })
                     
                 }).subscribe()
-                
             }
-            
         }else if status == 1{
-            self.eventbt.setTitle((itemData.order_user.zh_name ?? "") + "正在处理您的订单 ►", for: .normal)
+            self.eventbt.setTitle("点击完成", for: .normal)
             self.eventbt.backgroundColor = UIColor.init(hexString: "#FC614C")
+            dispose?.dispose()
+            dispose =  self.eventbt.rx.tap.do(onNext: {[weak self] in //触发完成
+                let vc = UIAlertController(title: "完成订单？", message: nil, preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "确定", style: .destructive, handler: { (alert) in
+                    let params = NSMutableDictionary()
+                    params.setValue(self?.cellData?.order_id ?? "", forKey: "order_id")
+                    
+                    ApiUtil.share.confirmSubscribe(params: params, fininsh: { (status, data, msg) in
+                        
+                        Util.msg(msg: "订单完成", 2)
+                        if let table = self?.superview as? UITableView{
+                            table.es.startPullToRefresh()
+                        }
+                        if let messagePool = self?.superview as? MessagePool{
+                            _ = messagePool.reloadViewData()
+                            messagePool.reloadOver!()
+                        }
+                    })
+                })
+                let action2 = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+                vc.addAction(action)
+                vc.addAction(action2)
+                VCController.getTopVC()?.present(vc, animated: true, completion: nil)
+            }).subscribe()
         }else if status == 2{
-            self.eventbt.setTitle("您的订单已完成 ✓", for: .normal)
+            self.eventbt.setTitle("已完成 ✓", for: .normal)
             self.eventbt.backgroundColor = UIColor.init(hexString: "#5A5A5A")
         }else if status == 3{
             self.eventbt.setTitle("已取消 ✕", for: .normal)
             self.eventbt.backgroundColor = UIColor.init(hexString: "#C1C1C1")
         }else {
-            self.eventbt.setTitle("等待接单", for: .normal)
+            self.eventbt.setTitle("处理订单", for: .normal)
         }
         
     }
@@ -119,7 +155,6 @@ class GrapCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
     @IBAction func goPersonCenter(_ sender: UIButton) {
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
         let user = UserInfoData()

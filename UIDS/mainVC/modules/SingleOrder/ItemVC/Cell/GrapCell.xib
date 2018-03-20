@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rs9-qH-445">
-                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                        <rect key="frame" x="10" y="15" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="hUu-in-me4"/>
                             <constraint firstAttribute="width" constant="40" id="yHF-JA-TIw"/>
@@ -31,7 +31,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqW-5T-75B">
-                        <rect key="frame" x="55" y="41" width="33" height="20"/>
+                        <rect key="frame" x="55" y="40" width="33" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="7Bh-ZI-Zy0"/>
                         </constraints>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI大师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaZ-yY-S1j">
-                        <rect key="frame" x="93" y="41" width="42.5" height="20"/>
+                        <rect key="frame" x="93" y="40" width="42.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="cst-bq-SpT"/>
                         </constraints>
@@ -58,7 +58,7 @@
                         <state key="normal" title="处理订单"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eds-Ux-xfU">
-                        <rect key="frame" x="10" y="50" width="325" height="52.5"/>
+                        <rect key="frame" x="10" y="55" width="325" height="47.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -74,12 +74,18 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI大师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7G-iL-eFv">
-                        <rect key="frame" x="55" y="16" width="42.5" height="20"/>
+                        <rect key="frame" x="55" y="15" width="42.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="pMD-UF-SR4"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="来自：UI大师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="618-0Y-h5e">
+                        <rect key="frame" x="107.5" y="17" width="85.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.55675194300518127" green="0.55675194300518127" blue="0.55675194300518127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -88,13 +94,16 @@
                     <constraint firstItem="gaZ-yY-S1j" firstAttribute="leading" secondItem="KqW-5T-75B" secondAttribute="trailing" constant="5" id="GWV-A0-nYg"/>
                     <constraint firstItem="KqW-5T-75B" firstAttribute="leading" secondItem="Rs9-qH-445" secondAttribute="trailing" constant="5" id="N74-aE-IOd"/>
                     <constraint firstItem="KqW-5T-75B" firstAttribute="top" secondItem="S7G-iL-eFv" secondAttribute="bottom" constant="5" id="OME-QQ-GRc"/>
+                    <constraint firstItem="618-0Y-h5e" firstAttribute="leading" secondItem="S7G-iL-eFv" secondAttribute="trailing" constant="10" id="Pkq-dV-mlZ"/>
                     <constraint firstItem="CAb-aD-UCc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Q1X-c8-wFE"/>
                     <constraint firstItem="gaZ-yY-S1j" firstAttribute="centerY" secondItem="KqW-5T-75B" secondAttribute="centerY" id="QN0-5h-U4u"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S7G-iL-eFv" secondAttribute="trailing" constant="10" id="ScQ-KC-91e"/>
+                    <constraint firstItem="618-0Y-h5e" firstAttribute="centerY" secondItem="S7G-iL-eFv" secondAttribute="centerY" id="Xlo-1g-tb0"/>
                     <constraint firstAttribute="trailingMargin" secondItem="CAb-aD-UCc" secondAttribute="trailing" id="e2q-Go-NyY"/>
                     <constraint firstItem="Rs9-qH-445" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fry-hr-RZq"/>
-                    <constraint firstItem="S7G-iL-eFv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="fuZ-KB-ibm"/>
-                    <constraint firstItem="Rs9-qH-445" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="i5O-S6-7dI"/>
+                    <constraint firstItem="S7G-iL-eFv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="fuZ-KB-ibm"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="618-0Y-h5e" secondAttribute="trailing" constant="10" id="hRF-Ha-SqV"/>
+                    <constraint firstItem="Rs9-qH-445" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="i5O-S6-7dI"/>
                     <constraint firstItem="hnS-dk-pDz" firstAttribute="top" secondItem="eds-Ux-xfU" secondAttribute="bottom" constant="5" id="k1G-5o-zMs"/>
                     <constraint firstItem="S7G-iL-eFv" firstAttribute="leading" secondItem="Rs9-qH-445" secondAttribute="trailing" constant="5" id="k1t-Ag-PVp"/>
                     <constraint firstAttribute="trailing" secondItem="eds-Ux-xfU" secondAttribute="trailing" constant="10" id="owJ-Lm-pOg"/>
@@ -112,9 +121,10 @@
                 <outlet property="eventbt" destination="hnS-dk-pDz" id="S8J-bY-eoI"/>
                 <outlet property="fromName" destination="gaZ-yY-S1j" id="Ck2-v7-rhM"/>
                 <outlet property="iconButton" destination="Rs9-qH-445" id="FhC-FE-88A"/>
+                <outlet property="platForm" destination="618-0Y-h5e" id="sFF-on-qKf"/>
                 <outlet property="userName" destination="S7G-iL-eFv" id="wQ3-BS-s7A"/>
             </connections>
-            <point key="canvasLocation" x="-290" y="-38"/>
+            <point key="canvasLocation" x="-290.5" y="-38.5"/>
         </tableViewCell>
     </objects>
     <resources>

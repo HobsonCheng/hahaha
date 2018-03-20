@@ -10,7 +10,7 @@ import UIKit
 import SwiftForms
 import Then
 import SwiftyJSON
-
+import RxSwift
 
 class CustomerForm: FormViewController {
    
@@ -29,10 +29,9 @@ class CustomerForm: FormViewController {
     
         //创建form实例
         let form = FormDescriptor()
-        form.title = formName
         
         //第一个section分区
-        let section1 = FormSectionDescriptor(headerTitle: formName, footerTitle: nil)
+        let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         var row: FormRowDescriptor
         
@@ -64,9 +63,7 @@ class CustomerForm: FormViewController {
         //将表单中输入的内容打印出来
         for (_,value) in self.form.formValues().enumerated(){
             if value.value is NSNull{
-                Util.svpStop(ok: false, callback: {
-                    
-                },hint: "表单不完整")
+                Util.msg(msg: "请将表单填写完整", 1)
                 return
             }
         }
@@ -74,18 +71,18 @@ class CustomerForm: FormViewController {
     
         let sub_val = JSON.init(self.form.formValues()).rawString()
         
-        Util.svploading(str: "提交中...")
+//        Util.svploading(str: "提交中...")
         
         let params = NSMutableDictionary()
         params.setSafeObject(self.FormObj?.FormTitle!, forKey: "classify_name" as NSCopying)
         params.setSafeObject(sub_val, forKey: "sub_val" as NSCopying)
         
         ApiUtil.share.saveSubscribe(params: params) { (status, data, msg) in
-            
-            Util.svpStop(ok: true,callback: {
-            
-//               VCController.pop(with: VCAnimationClassic.defaultAnimation())
-            },hint: "提交成功")
+            Util.msg(msg: "提交成功", 2)
+//            Util.svpStop(ok: true,callback: {
+//            
+////               VCController.pop(with: VCAnimationClassic.defaultAnimation())
+//            },hint: "提交成功")
         }
         
     }
@@ -95,17 +92,34 @@ class CustomerForm: FormViewController {
 class MakeToCustomer: BaseModuleView {
 
     
-    public func genderInit(FormObj: FromModel){
+    public func genderInit(FormObj: FromModel,appKey:String,pageId:Int){
         
-    
-        let formVC = CustomerForm(style: UITableViewStyle.plain)
+        let formVC = CustomerForm(style: UITableViewStyle.grouped)
         formVC.FormObj = FormObj
+        formVC.tableView.tableHeaderView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenW, height: 50))
+        //复制按钮
+        let button = UIButton.init(type: .infoDark)
+        button.tintColor = UIColor.gray
+        button.frame = CGRect.init(x: kScreenW - 40, y: 30, width: 30, height: 30)
+        formVC.tableView.addSubview(button)
+        let appInfo = AppInfoData.shared.appModel
+        let app_id = appInfo?.app_id ?? 0
+        let group_id = appInfo?.group_id ?? 0
+        button.rx.tap.do(onNext: {
+            let board = UIPasteboard.general
+            board.string = "www.uidashi.com/hy?appid=\(app_id)&groupid=\(group_id)&pagekey=\(appKey)&pageid=\(pageId)&isfrom=two&type=default"
+            Util.msg(msg: "复制成功", 2)
+        }).subscribe().disposed(by: rx.disposeBag)
+        //标题
+        let lable = UILabel.init(frame: CGRect.init(x: 15, y: 0, width: kScreenW, height: 30))
+        lable.text = FormObj.FormTitle
+        formVC.tableView.addSubview(lable)
         self.addSubview(formVC.view)
         let count = FormObj.FormTitles?.count ?? 0
-        let height = CGFloat((count + 1)*90)
-        formVC.view.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: height)
+        let height = CGFloat((count + 1)*44) + 110
+        formVC.tableView.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height: height)
         
-        self.height = formVC.view.bottom + 10.0
+        self.height = formVC.view.bottom
         self.layer.masksToBounds = true
     }
     

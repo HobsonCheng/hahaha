@@ -101,6 +101,10 @@ class NewsDetailVC: NaviBarVC {
         setupWebViewJavascriptBridge()
         prepareUI()
         updateData()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kLoginNotification), object: nil, queue: OperationQueue.main) { [weak self] (n) in
+            self?.prepareUI()
+            self?.updateData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,6 +148,10 @@ class NewsDetailVC: NaviBarVC {
                        _ = list.reloadViewData()
                     }
                 }
+            }
+        }else if preVC is RelationsVC{
+            if let vc = preVC as? RelationsVC{
+                vc.tableView?.es.startPullToRefresh()
             }
         }
     }

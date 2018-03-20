@@ -78,6 +78,9 @@ class MessagePool: BaseModuleView {
                 if tmpList?.count == 0 {
                     
                     self.refreshES!()
+                    if let vc = self.getVC() as? RootVC{
+                        vc.mainView?.es.noticeNoMoreData()
+                    }
                 }
                 if self.page == 1 {
                     self.height = 0
@@ -115,6 +118,9 @@ class MessagePool: BaseModuleView {
                 if tmpList?.count == 0 {
 
                     self.refreshES!()
+                    if let vc = self.getVC() as? RootVC{
+                        vc.mainView?.es.noticeNoMoreData()
+                    }
                 }
                 if self.page == 1 {
                     self.height = 0

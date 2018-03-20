@@ -106,11 +106,17 @@ public extension UIButton {
         let font = UIFont(name: YJStruct.FontName, size: titleLabel.font.pointSize)
         assert(font != nil, YJStruct.ErrorAnnounce)
         titleLabel.font = font!
-        let sindex = iconCode.index(iconCode.startIndex, offsetBy: 2)
-        let eindex = iconCode.index(iconCode.endIndex,offsetBy: -1)
-//        let sub = iconCode[sindex..<eindex]
-//        let text = String(sub)
-//        setTitle(value[0], for: state)
+        let index = iconCode.index(iconCode.startIndex, offsetBy: 2)
+        let endIndex = iconCode.index(of: ";") ?? iconCode.endIndex
+        let subString = iconCode[index..<endIndex]
+        let str = String(subString)
+        guard let num = Int(str,radix:16) else{
+            return
+        }
+        if let s = UnicodeScalar(num){
+            let value = String(s)
+            setTitle(value, for: state)
+        }
     }
     /**
      To set an icon, use i.e. `buttonName.setYJIcon(YJType.YJGithub, iconSize: 35, forState: .Normal)`
@@ -441,7 +447,20 @@ public enum YJType : Int{
     static var count : Int{
         return YJIcons.count
     }
-    
+    static func getIconText(iconCode:String) -> String{
+        let index = iconCode.index(iconCode.startIndex, offsetBy: 2)
+        let endIndex = iconCode.index(of: ";") ?? iconCode.endIndex
+        let subString = iconCode[index..<endIndex]
+        let str = String(subString)
+        guard let num = Int(str,radix:16) else{
+            return ""
+        }
+        if let s = UnicodeScalar(num){
+            let value = String(s)
+            return value
+        }
+        return ""
+    }
     public var text:String?{
         return YJIcons[rawValue]
     }

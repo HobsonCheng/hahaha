@@ -24,10 +24,13 @@ struct OrderCData: HandyJSON {
     var order_pid : Int!
     var order_time : String!
     var order_uid : Int!
+    var order_header: String!
+    var order_nickname: String!
     var order_user : OrderUser!
     var pid : Int!
     var platform_id : Int!
     var platform_uid : Int!
+    var platform_name: String!
     var status : Int!
     var value : String!
     var form_user: OrderUser!

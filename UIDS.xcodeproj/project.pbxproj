@@ -453,6 +453,7 @@
 
 /* Begin PBXFileReference section */
 		310E0C2720577591004446C5 /* HeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
+		313B25EE205CF7FA00DA3810 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		314B710D205039AE00B455CB /* MessagePoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePoolModel.swift; sourceTree = "<group>"; };
 		314B7110205039F500B455CB /* MessagePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePool.swift; sourceTree = "<group>"; };
 		315EADB82059326E005F7E02 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
@@ -970,12 +971,12 @@
 		315EADB72059326E005F7E02 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				315EADBB2059326E005F7E02 /* GrapCell.xib */,
 				315EADB82059326E005F7E02 /* OrderCell.xib */,
 				315EADB92059326E005F7E02 /* OrderTwoCell.xib */,
-				315EADBA2059326E005F7E02 /* OrderTwoCell.swift */,
-				315EADBB2059326E005F7E02 /* GrapCell.xib */,
 				315EADBC2059326E005F7E02 /* GrapCell.swift */,
 				315EADBD2059326E005F7E02 /* OrderCell.swift */,
+				315EADBA2059326E005F7E02 /* OrderTwoCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1036,6 +1037,7 @@
 		95C2F0CD76E3AD6C4FCCBD23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				313B25EE205CF7FA00DA3810 /* Alamofire.framework */,
 				E16763A6202AD41300947323 /* AVFoundation.framework */,
 				5E0B3BDADA183A4F7C7B18FB /* Pods_UIDS.framework */,
 			);
@@ -2301,9 +2303,9 @@
 				TargetAttributes = {
 					E1A21DDB1FFF319300596BB7 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = LPRAXT87C5;
+						DevelopmentTeam = JL9U2ZHT4Q;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -3036,20 +3038,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = LPRAXT87C5;
+				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = UIDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.master.ui;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uimaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6b4cb8bb-1ac2-4594-a02a-8d51f8f25458";
-				PROVISIONING_PROFILE_SPECIFIER = AllApp;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -3064,20 +3066,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = LPRAXT87C5;
+				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = UIDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.master.ui;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uimaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6b4cb8bb-1ac2-4594-a02a-8d51f8f25458";
-				PROVISIONING_PROFILE_SPECIFIER = AllApp;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/UIDS/B+/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				USER_HEADER_SEARCH_PATHS = "";

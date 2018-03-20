@@ -46,14 +46,11 @@ class GroupTopicSendVC: NaviBarVC, LPDQuoteImagesViewDelegate {
 extension GroupTopicSendVC {
 
     func genderNavi() {
-        
-        let left = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(GroupTopicSendVC.closeVC))
-        left?.button.backgroundColor = UIColor.black
-        self.naviBar().setLeftBarItem(left!)
-        
+    
         let right = NaviBarItem.init(imageItem: CGRect.init(x: 0, y: 0, width: 44, height: 22), target: self, action: #selector(GroupTopicSendVC.sendTxt))
         right?.tag = NAV_BAR_TYPE.NAV_BAR_TYPE_ADD_TOPOC.rawValue
-        right?.backgroundColor = UIColor.red
+        right?.button.setYJIcon(icon: .release, forState: .normal)
+
         self.naviBar().setRightBarItem(right!)
         
     }

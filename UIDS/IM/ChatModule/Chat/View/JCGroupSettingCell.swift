@@ -43,8 +43,9 @@ public class JCGroupSettingCell: UITableViewCell {
     private lazy var flowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 30
+        flowLayout.itemSize = CGSize.init(width: 50, height: 80)
         return flowLayout
     }()
     private lazy var collectionView: UICollectionView = {
@@ -52,6 +53,7 @@ public class JCGroupSettingCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(JCGroupMemberCell.self, forCellWithReuseIdentifier: "JCGroupMemberCell")
+        
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = UIColor.clear
         return collectionView

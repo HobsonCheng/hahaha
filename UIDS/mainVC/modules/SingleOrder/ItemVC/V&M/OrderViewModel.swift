@@ -24,15 +24,14 @@ class OrderViewModel: NSObject {
     
     
     func getGarp(params: NSMutableDictionary,callback: @escaping ()->()){
-
+        
         let paramsAll = NSMutableDictionary()
         paramsAll.setObject("1", forKey: "page" as NSCopying)
         paramsAll.setObject("30", forKey: "page_context" as NSCopying)
-
         ApiUtil.share.getWaitSubscribeList(params: paramsAll) {[weak self] (status, data, msg) in
-
+            
             let datalist  = OrderCModel.deserialize(from: data)?.data
-
+            
             let section = [SectionModel(model: "", items: datalist!)]
             
             self?.orderList.value = section
@@ -42,18 +41,28 @@ class OrderViewModel: NSObject {
     }
     
     func getOrderList(params: NSMutableDictionary,callback: @escaping ()->()){
-        
-        ApiUtil.share.getUserSubscribeList(params: params) {[weak self] (status, data, msg) in
-
+        ApiUtil.share.getUserFormList(params: params) {[weak self] (status, data, msgq) in
             let datalist  = OrderCModel.deserialize(from: data)?.data
-            
+            if datalist == nil || datalist?.count == 0{
+                return
+            }
             let section = [SectionModel(model: "", items: datalist!)]
             
             self?.orderList.value = section
             
             callback()
-        
         }
+//        ApiUtil.share.getUserSubscribeList(params: params) {[weak self] (status, data, msg) in
+//
+//            let datalist  = OrderCModel.deserialize(from: data)?.data
+//
+//            let section = [SectionModel(model: "", items: datalist!)]
+//
+//            self?.orderList.value = section
+//
+//            callback()
+//
+//        }
     }
 }
 

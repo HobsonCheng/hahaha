@@ -59,7 +59,7 @@
                 <outlet property="menuView" destination="rsS-JR-Dap" id="HIa-aV-ayo"/>
                 <outlet property="nameLabel" destination="CZQ-BM-nPr" id="nLR-EU-8qG"/>
             </connections>
-            <point key="canvasLocation" x="406.5" y="286"/>
+            <point key="canvasLocation" x="544" y="290"/>
         </view>
     </objects>
     <resources>

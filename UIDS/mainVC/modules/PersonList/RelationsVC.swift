@@ -44,7 +44,7 @@ class RelationsVC: NaviBarVC,UITableViewDelegate, UITableViewDataSource {
         case RelationshipType.release:
             self.naviBar().setTitle("发布列表")
         case RelationshipType.huoKe:
-            self.naviBar().setTitle("获客订单")
+            self.naviBar().setTitle("预约获客")
         case RelationshipType.qiangDan:
             self.naviBar().setTitle("获客抢单")
         }
@@ -60,6 +60,7 @@ class RelationsVC: NaviBarVC,UITableViewDelegate, UITableViewDataSource {
     }
     func setUI(){
         self.tableView = UITableView(frame: self.view.frame, style: .plain)
+        self.tableView?.height = kScreenH - 64
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         self.tableView?.top = self.naviBar().bottom
@@ -76,8 +77,6 @@ class RelationsVC: NaviBarVC,UITableViewDelegate, UITableViewDataSource {
         switch self.relationType!{
         case .friend,.follow,.funs:
             self.tableView?.rowHeight = 60
-        case .huoKe:
-            self.tableView?.rowHeight = 120
         default:
             break
         }
@@ -100,12 +99,12 @@ extension RelationsVC {
         case .follow,.friend,.funs:
             relationCell = tableView.dequeueReusableCell(withIdentifier: "relation") as! RelationCell
         case .qiangDan:
+            oningCell = tableView.dequeueReusableCell(withIdentifier: "oning") as! OrderCell
+            oningCell.selectionStyle = .none
+        case .huoKe:
             grapCell = tableView.dequeueReusableCell(withIdentifier: "order") as! GrapCell
             grapCell.selectionStyle = .none
             grapCell.iconButton.isUserInteractionEnabled = false
-        case .huoKe:
-            oningCell = tableView.dequeueReusableCell(withIdentifier: "oning") as! OrderCell
-            oningCell.selectionStyle = .none
         case .release:
             topicCell = tableView.dequeueReusableCell(withIdentifier: "topic") as! TopicCell
             topicCell.selectionStyle = .none
@@ -123,15 +122,19 @@ extension RelationsVC {
             relationCell.itemData = self.userList![indexPath.row]
             return relationCell
         case .funs:
-            relationCell.actionBtn.setTitle("添加关注", for: .normal)
+            if self.userList![indexPath.row].follow_status == 0{
+                relationCell.actionBtn.setTitle("添加关注", for: .normal)
+            }else{
+                relationCell.actionBtn.setTitle("取消关注", for: .normal)
+            }
             relationCell.itemData = self.userList![indexPath.row]
             return relationCell
         case .huoKe:
-            oningCell.cellData = self.orderList?[indexPath.row]
-            return oningCell
-        case .qiangDan:
             grapCell.cellData   = self.orderList?[indexPath.row]
             return grapCell
+        case .qiangDan:
+            oningCell.cellData = self.orderList?[indexPath.row]
+            return oningCell
         case .release:
             topicCell.cellObj = self.topicList?[indexPath.row]
             return topicCell
@@ -190,7 +193,7 @@ extension RelationsVC {
 //        
 //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.relationType == .huoKe || self.relationType == .release{
+        if self.relationType == .huoKe || self.relationType == .release || self.relationType == .qiangDan{
             return
         }
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
@@ -292,7 +295,7 @@ extension RelationsVC{
                     self?.tableView?.es.stopLoadingMore()
                 }
             })
-        }else if self.relationType == .qiangDan{
+        }else if self.relationType == .huoKe{
             ApiUtil.share.getUserCreateSubscribeList(params: params) {[weak self] (status, data, msg) in
                 if status == B_ResponseStatus.success{
                     let datalist  = OrderCModel.deserialize(from: data)?.data
@@ -313,8 +316,9 @@ extension RelationsVC{
                     self?.tableView?.es.stopLoadingMore()
                 }
             }
-        }else if self.relationType == .huoKe{
-            ApiUtil.share.getUserGrapSubscribeList(params: params) {[weak self] (status, data, msg) in
+        }else if self.relationType == .qiangDan{
+            params.setValue("1", forKey: "status")
+            ApiUtil.share.getUserFormList(params: params) {[weak self] (status, data, msg) in
                 if status == B_ResponseStatus.success{
                 let datalist  = OrderCModel.deserialize(from: data)?.data
                     if datalist == nil || datalist?.count == 0{

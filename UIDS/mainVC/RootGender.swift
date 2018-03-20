@@ -212,6 +212,7 @@ extension RootVC {//扩展
     //MARK: 生成个人中心
     func genderPersonalCenter(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         let personalCenter = PersonalCenter.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        let userInfo = UserUtil.share.appUserInfo
         self.mainView?.addSubview(personalCenter)
         personalCenter.reloadCell = {[weak self] in
             self?.reloadMainScroll()
@@ -220,6 +221,8 @@ extension RootVC {//扩展
             personalCenter.itemObj = item
             if item.uid == nil{
                 personalCenter.setHeaderWithAppKey()
+            }else if (item.uid == userInfo?.uid && item.pid == userInfo?.pid){
+                personalCenter.setHeaderInfo()
             }else{
                 personalCenter.setOthersHeaderInfo()
             }
@@ -253,9 +256,11 @@ extension RootVC {//扩展
         
         let obj = self.findConfigData(name: "maketocustomer_content",model_id: model_id)
         let formobj = FromModel.deserialize(from: obj)
-        
+        let appKey = self.pageData?.page_key
+        let pageId = self.pageData?.page_id
         let maketoCustomer = MakeToCustomer.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
-        maketoCustomer.genderInit(FormObj: formobj!)
+        
+        maketoCustomer.genderInit(FormObj: formobj!,appKey:appKey!,pageId:pageId!)
         
         maketoCustomer.tag = Int(startY.pointee)
         
@@ -415,7 +420,10 @@ extension RootVC {
                 self?.esCallBack!()
             }
         }
-        
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            self.mainView?.es.stopPullToRefresh()
+            self.mainView?.es.stopLoadingMore()
+        }
     }
     private func loadMore() {
         
@@ -426,5 +434,10 @@ extension RootVC {
                 self?.mainView?.es.noticeNoMoreData()
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            self.mainView?.es.stopPullToRefresh()
+            self.mainView?.es.stopLoadingMore()
+        }
     }
+    
 }

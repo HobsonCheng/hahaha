@@ -113,10 +113,10 @@ class BRequestHandler: NSObject {
         }
         
         // uuid
-//        if let uuid = JFObjcTools.uuidString() {
-//            headers["X-DEVICE-ID"] = uuid
-//            print("请求头加入了device", uuid)
-//        }
+        //        if let uuid = JFObjcTools.uuidString() {
+        //            headers["X-DEVICE-ID"] = uuid
+        //            print("请求头加入了device", uuid)
+        //        }
         
         // 请求签名
         // 字典key排序
@@ -146,12 +146,12 @@ class BRequestHandler: NSObject {
             }
             
         }
-
-//        let md5Hex =  jointParameters.md5Data()!.map { String(format: "%02hhx", $0) }.joined().uppercased()
+        
+        //        let md5Hex =  jointParameters.md5Data()!.map { String(format: "%02hhx", $0) }.joined().uppercased()
         
         // 算法 hex(md5(headers + parameters + secret))
-//        headers["X-SIGNATURE"] = md5Hex
-//        print("请求头加入了signature", md5Hex)
+        //        headers["X-SIGNATURE"] = md5Hex
+        //        print("请求头加入了signature", md5Hex)
         
         return headers
     }
@@ -220,7 +220,6 @@ extension BRequestHandler {
     func get(APIString: String, parameters: [String : Any]?, finished: @escaping NetworkFinished) {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
         self.getApiUrl(apiName: APIString) { (apiurl) in
             
             self.afManager.request(apiurl!, parameters: parameters, headers: self.getHTTPHeaders(parameters: parameters)).responseJSON { (response) in

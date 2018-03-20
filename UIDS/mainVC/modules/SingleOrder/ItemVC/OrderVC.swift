@@ -131,6 +131,10 @@ extension OrderVC {
                 self?.tableView.es.stopPullToRefresh()
             })
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
+            self?.tableView.es.stopPullToRefresh()
+            self?.tableView.es.stopLoadingMore()
+        }
     }
     
     func refreshEvent() {
@@ -155,9 +159,9 @@ extension OrderVC {
         self.view.width = kScreenW
         
         let tableView = BaseTableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = kThemeWhiteColor
         tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
+//        tableView.tableFooterView = UIView()
         tableView.config()
         view.addSubview(tableView)
         self.tableView = tableView
@@ -207,6 +211,7 @@ extension OrderVC {
                 let cell = tv.dequeue(Reusable.overCell, for: indexPath)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.cellData = item
+        
                 return cell
             }
             
@@ -230,19 +235,20 @@ extension OrderVC: UITableViewDelegate {
         let itemData = viewModel.orderList.value[indexPath.section].items[indexPath.row]
 
         // 注册cell
+        let getStr = JSON.init(parseJSON: (itemData.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "")
+        let size = getStr?.getSize(font: UIFont.systemFont(ofSize: 15), viewWidth: kScreenW - 30.0)
         if self.orderType == ORDER_TYPE.grab {
 
         }else if self.orderType == ORDER_TYPE.oning {
 
-            return 153 - 37
+            return 183 - 37 + (size?.height)!
 
-        }else if self.orderType == ORDER_TYPE.over {
-            return 73
         }
-        let getStr = JSON.init(parseJSON: (itemData.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "")
-        let size = getStr?.getSize(font: UIFont.systemFont(ofSize: 15), viewWidth: kScreenW - 30.0)
-
-        return 153 - 37 + (size?.height)!
+        else if self.orderType == ORDER_TYPE.over {
+            return 67 + (size?.height)!
+        }
+        
+        return 183 - 37 + (size?.height)!
         
         
     }
@@ -292,7 +298,12 @@ extension OrderVC: WSUtilDelegate{
         }
         
         var msg: String = ""
+        let user = UserUtil.share.appUserInfo
         if cancel {
+
+            if order?.uid == user?.uid{
+                return
+            }
             if let order = getobj?.classify_name{
                 msg = "订单：\(order) 被抢了"
             }
@@ -301,6 +312,9 @@ extension OrderVC: WSUtilDelegate{
             viewModel.orderList.value[0].items.remove(at: count)
             
         }else {
+            if order?.uid == user?.uid{
+                return
+            }
             msg = "有新订单了，快去看看"
             
             let newOrderStr = order?.content

@@ -48,12 +48,16 @@ class TopicList: BaseModuleView {
     
     func request(){
         let vc = VCController.getTopVC()
-        vc?.startLoadEmpty(nil)
+        if self.page == 1{
+            
+            vc?.startLoadEmpty(nil)
+        }
+
         let params = NSMutableDictionary()
         params.setValue(self.page, forKey: "page")
         params.setValue("20", forKey: "page_context")
         params.setValue(self.groupItem?.name, forKey: "name")
-        params.setValue(self.groupItem?.id, forKey: "group_id")
+        params.setValue(self.groupItem?.id, forKey: "cms_group_id")
         params.setValue(self.groupItem?.pid, forKey: "group_pid")
         ApiUtil.share.getInvitationList(params: params) { [weak self] (status, data, msg) in
             let tmpList: [TopicData]! = TopicModel.deserialize(from: data)?.data

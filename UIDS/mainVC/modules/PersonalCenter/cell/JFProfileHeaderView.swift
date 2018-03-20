@@ -36,7 +36,6 @@ enum HeaderItemTyep:Int {
     case deleteFollower = 996
     case chat = 666
     case release = 8
-    case other
 }
 class JFProfileHeaderView: UIView {
     
@@ -69,6 +68,9 @@ class JFProfileHeaderView: UIView {
         if list.count == 0 {
             return
         }
+        list = list.filter { (r) -> Bool in
+            return HeaderItemTyep(rawValue: r.relation_type!) != nil
+        }
         self.height = 0
         self.menuView.removeAllSubviews()
         self.menuView.width = kScreenW
@@ -100,16 +102,17 @@ class JFProfileHeaderView: UIView {
                     row = row + 1
                 }
             }
-            
+        
             let x:CGFloat = hMargin + (width + hMargin) * CGFloat(i%col)
             let y:CGFloat = vMargin + (heigth + vMargin) * CGFloat(row)
-            
             
             let itemview = HeaderItemView().then({
                 $0.frame = CGRect.init(x: x, y: y, width: width, height: heigth)
                 $0.delegate = self
                 $0.iconCode = item.icon
-                $0.setUI(type: HeaderItemTyep(rawValue: item.relation_type!)!, relation: item)
+                if let type = HeaderItemTyep(rawValue: item.relation_type!){
+                    $0.setUI(type: type, relation: item)
+                }
             })
             
             self.itemViews.append(itemview)
@@ -117,7 +120,6 @@ class JFProfileHeaderView: UIView {
             self.menuView.addSubview(itemview)
             self.menuView.height = itemview.bottom + 10
         }
-//        self.autyHeight.constant = getHeight!
         self.height = self.menuView.bottom
     
         self.delegate?.reloadViewSize()
@@ -155,7 +157,6 @@ extension JFProfileHeaderView:HeaderItemProtocol{
             self.delegate?.didTappedChatButton()
         case .release:
             self.delegate?.didTappedReleaseButton()
-        case .other: break
         }
     }
     //跳转

@@ -60,8 +60,13 @@ class PersonalCenter: BaseModuleView {
     func  setOthersHeaderInfo() {//别人的个人中心
         self.isOwner = false
         let params = NSMutableDictionary()
-        params.setValue(itemObj?.uid, forKey: "user_id")
-        params.setValue(itemObj?.pid, forKey: "user_pid")
+        if itemObj?.uid == nil{
+            params.setValue(itemObj?.appkey, forKey: "appkey")
+            params.setValue(itemObj?.user_name, forKey: "username")
+        }else{
+            params.setValue(itemObj?.uid, forKey: "user_id")
+            params.setValue(itemObj?.pid, forKey: "user_pid")
+        }
         ApiUtil.share.getRelationInfo(params:params, finish: { (status, data, msg) in
             let info = UserInfoModel.deserialize(from: data)?.data
             self.otherInfo = info
@@ -220,15 +225,15 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
     func didTappedChatButton() {
         let appkey = otherInfo?.appkey
         let userName = otherInfo?.user_name
-    
+        
         if appkey != nil {
-         
+            
             JMSGConversation.createSingleConversation(withUsername: userName!, appKey: appkey!, completionHandler: { (result, error) in
                 if error == nil {
                     let conv = result as! JMSGConversation
-
+                    
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateConversation), object: nil, userInfo: nil)
-    
+                    
                     let vc = JCChatViewController(conversation: conv)
                     vc.isTop = true
                     let naviVC = UINavigationController(rootViewController: vc)
@@ -257,7 +262,7 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
             })
         }
     }
-
+    
     //点击了添加好友
     func didTappedAddFriendButton(type:String) {
         if type == "添加好友"{

@@ -19,23 +19,32 @@ class OrderTwoCell: UITableViewCell {
     @IBOutlet weak var fromName: UILabel!
     @IBOutlet weak var iconButton: UIButton!
     
+    @IBOutlet weak var content: UILabel!
     @IBOutlet weak var userName: UILabel!
     
+    @IBOutlet weak var platForm: UILabel!
     @IBOutlet weak var addtime: UILabel!
     
     var cellData: OrderCData? {
         didSet {
             if cellData != nil {
-                
+                let getStr = JSON.init(parseJSON: (cellData?.value)!).rawString()?.replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "").replacingOccurrences(of: "\"", with: "")
                 fromName.text = cellData?.classify_name
-                addtime.text = cellData?.order_time
-                iconButton.sd_setImage(with: URL.init(string: cellData?.form_user.head_portrait ?? ""), for: .normal, completed: nil)
-                userName.text = cellData?.form_user.zh_name
+                content.text = getStr
                 
-                if cellData?.order_status == 2 {
+                addtime.text = cellData?.add_time
+                iconButton.sd_setImage(with: URL.init(string: cellData?.order_header ?? ""), for: .normal, completed: nil)
+                userName.text = cellData?.order_nickname
+                platForm.text = "来自：\(cellData?.platform_name ?? "UI大师")"
+                if cellData?.form_status == 2 {
                     eventbt.setTitle("已完成", for: UIControlState.normal)
-                }else if cellData?.order_status == 0 {
+                    eventbt.backgroundColor = UIColor.init(hexString: "#007dff")
+                }else if cellData?.form_status == 3 {
                     eventbt.setTitle("已取消", for: UIControlState.normal)
+                    eventbt.backgroundColor = .gray
+                }else if cellData?.form_status == 4{
+                    eventbt.setTitle("已取消", for:.normal)
+                    eventbt.backgroundColor = .gray
                 }
                 
             }
@@ -62,8 +71,8 @@ class OrderTwoCell: UITableViewCell {
     @IBAction func gotoPersonalCenter(_ sender: Any) {
         let getPage = OpenVC.share.getPageKey(pageType: PAGE_TYPE_PersonInfo, actionType: "PersonInfo")
         let user = UserInfoData()
-        user.uid = self.cellData?.form_user.uid
-        user.pid = self.cellData?.form_user.pid
+        user.uid = self.cellData?.order_uid
+        user.pid = self.cellData?.order_pid
         getPage?.anyObj = user
         if (getPage != nil) {
             OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
