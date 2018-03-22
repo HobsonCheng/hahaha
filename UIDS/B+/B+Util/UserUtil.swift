@@ -33,7 +33,15 @@ class UserUtil: NSObject {
         }
         return false
     }
-    
+    static func getGroupId() -> Int{
+        //todo:
+        let appInfo = AppInfoData.shared.appModel
+        if isValid(){
+            return appInfo?.app_group_info?[1].group_id ?? 0
+        }else{
+            return appInfo?.app_group_info?[0].group_id ?? 0
+        }
+    }
     //MARK: 存储登录用户信息
     func saveUser(userInfo: String?) {
         if (userInfo?.isEmpty)! {
@@ -56,7 +64,7 @@ class UserUtil: NSObject {
         
         ZZDiskCacheHelper.saveObj(MY_APP_USER_INFO, value: newUserInfo)
     }
-
+    
     func getUserInfo(){
         ZZDiskCacheHelper.getObj(MY_APP_USER_INFO) { [weak self] (obj) in
             if (obj != nil){

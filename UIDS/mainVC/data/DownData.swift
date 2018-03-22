@@ -14,7 +14,7 @@ class DownData: NSObject {
     static func resoursePathAppInfo()-> String{
         let documentPaths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory,FileManager.SearchPathDomainMask.userDomainMask,true)
         let FileName = String.init(format: "%@/%@", documentPaths[0],"UIAppInfo.json")
-        
+            print("===\(FileName)")
         return FileName
     }
     static func resoursePathPageListInfo()-> String{

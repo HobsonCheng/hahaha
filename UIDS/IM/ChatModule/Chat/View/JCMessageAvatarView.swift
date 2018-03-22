@@ -31,18 +31,25 @@ open class JCMessageAvatarView: UIImageView, JCMessageContentViewType {
     
     open func apply(_ message: JCMessageType) {
         self.message = message
-        if message.senderAvator != nil {
-            image = message.senderAvator
-            return
-        }
-        weak var weakSelf = self
-        message.sender?.thumbAvatarData({ (data, id, error) in
-            if let data = data {
-                weakSelf?.image = UIImage(data: data)
-            } else {
-                self.image = self.userDefaultIcon
+        let urlStr = message.sender?.avatar
+//        self.image = UIImage.init
+        SDWebImageManager.shared().loadImage(with: URL.init(string: urlStr!), options: SDWebImageOptions(rawValue: 0), progress: nil) { (img, data, error, type, finished, url) in
+            if img != nil{
+                self.image = img
             }
-        })
+        }
+//        if message.senderAvator != nil {
+//            image = message.senderAvator
+//            return
+//        }
+//        weak var weakSelf = self
+//        message.sender?.thumbAvatarData({ (data, id, error) in
+//            if let data = data {
+//                weakSelf?.image = UIImage(data: data)
+//            } else {
+//                self.image = self.userDefaultIcon
+//            }
+//        })
     }
     
     private var message: JCMessageType!

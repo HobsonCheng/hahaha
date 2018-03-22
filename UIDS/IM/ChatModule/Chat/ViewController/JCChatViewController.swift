@@ -855,8 +855,11 @@ extension JCChatViewController: JCMessageDelegate {
         userModel.appkey = appkey
         getPage?.anyObj = userModel
         if (getPage != nil) {
-            OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+            self.dismiss(animated: true, completion: {
+                OpenVC.share.goToPage(pageType: (getPage?.page_type)!, pageInfo: getPage)
+            })
         }
+        
 //        if message.options.alignment == .right {//other
 //
 //        } else {//mine

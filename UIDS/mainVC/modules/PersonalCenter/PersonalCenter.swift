@@ -119,13 +119,14 @@ class PersonalCenter: BaseModuleView {
         let params = NSMutableDictionary()
         params.setValue(itemObj?.appkey, forKey: "appkey")
         params.setValue(itemObj?.user_name, forKey: "username")
-        ApiUtil.share.getRelationInfo(params:params, finish: { (status, data, msg) in
+        ApiUtil.share.getRelationInfo(params:params, finish: {[weak self] (status, data, msg) in
             let info = UserInfoModel.deserialize(from: data)?.data
-            self.otherInfo = info
-            self.header?.nameLabel.text = info?.zh_name
-            self.header?.avatarButton.sd_setImage(with: URL.init(string: info?.head_portrait ?? ""), for: .normal, completed: nil)
-            if self.isOwner{
-                self.header?.list = (info?.relations)!
+            self?.itemObj = info
+            self?.otherInfo = info
+            self?.header?.nameLabel.text = info?.zh_name
+            self?.header?.avatarButton.sd_setImage(with: URL.init(string: info?.head_portrait ?? ""), for: .normal, completed: nil)
+            if (self?.isOwner)!{
+                self?.header?.list = (info?.relations)!
             }else{
                 var relationList =  [Relation]()
                 let r1 = Relation()
@@ -146,20 +147,19 @@ class PersonalCenter: BaseModuleView {
                 if info?.is_friend == 1{
                     r2.relation_name = "删除好友"
                     r2.relation_type = 886
-                    
                 }else{
                     r2.relation_name = "添加好友"
                     r2.relation_type = 889
                 }
                 relationList.append(r1)
                 relationList.append(r2)
-                self.header?.list = relationList
+                self?.header?.list = relationList
             }
             DispatchQueue.main.async { [weak self] in
                 self?.header?.showMenu()
                 self?.refreshES!()
             }
-            self.header?.avatarButton.isUserInteractionEnabled = false
+            self?.header?.avatarButton.isUserInteractionEnabled = false
         })
     }
     //MARK :- 下拉刷新调用

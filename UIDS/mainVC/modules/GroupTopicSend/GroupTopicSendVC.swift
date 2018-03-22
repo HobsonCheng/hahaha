@@ -94,7 +94,7 @@ extension GroupTopicSendVC {
         
         let params = NSMutableDictionary()
         params.setValue(groupData.name, forKey: "name")
-        params.setValue(groupData.id, forKey: "group_id")
+        params.setValue(groupData.id, forKey: "cms_group_id")
         params.setValue(self.titleTextF?.text, forKey: "title")
         params.setValue(self.titleTextF?.text, forKey: "summarize")
         params.setValue(self.contentTxt?.text, forKey: "content")

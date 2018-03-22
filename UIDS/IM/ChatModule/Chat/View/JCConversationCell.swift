@@ -71,8 +71,7 @@ class JCConversationCell: JCTableViewCell {
         msgLabel.text = "群简介：\((conversation.desc)!)"
         titleLabel.text = conversation.name
         
-        avatorView.sd_setImage(with: URL(string: conversation.avatar), completed: nil)
-        
+        avatorView.sd_setImage(with: URL(string:conversation.avatar), placeholderImage: self.groupDefaultIcon, options: SDWebImageOptions.init(rawValue: 0), completed: nil)
         backgroundColor = .white
     }
     //MARK: - public func
@@ -154,27 +153,17 @@ class JCConversationCell: JCTableViewCell {
         if !isGroup {
             let user = conversation.target as? JMSGUser
             titleLabel.text = user?.displayName() ?? ""
-            user?.thumbAvatarData { (data, username, error) in
-                guard let imageData = data else {
-                    self.avatorView.image = self.userDefaultIcon
-                    return
-                }
-                let image = UIImage(data: imageData)
-                self.avatorView.image = image
-            }
+            let urlStr = user?.avatar
+            self.avatorView.sd_setImage(with: URL.init(string: urlStr!), placeholderImage: self.userDefaultIcon, options: .allowInvalidSSLCertificates, completed: nil)
+            
         } else {
             if let group = conversation.target as? JMSGGroup {
                 titleLabel.text = group.displayName()
                 if group.isShieldMessage {
                     statueView.isHidden = false
                 }
-                group.thumbAvatarData({ (data, _, error) in
-                    if let data = data {
-                        self.avatorView.image = UIImage(data: data)
-                    } else {
-                        self.avatorView.image = self.groupDefaultIcon
-                    }
-                })
+                let urlStr = group.avatar
+                self.avatorView.sd_setImage(with: URL.init(string: urlStr!), placeholderImage: self.groupDefaultIcon, options: .allowInvalidSSLCertificates, completed: nil)
             }
         }
 

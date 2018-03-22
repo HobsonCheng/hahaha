@@ -60,7 +60,6 @@ class AppSet: NaviBarVC {
             self.naviBar().setTitle("设置中心")
         }
         
-        
         self.initEnableMudule()
         self.initUI()
         self.bindUI()

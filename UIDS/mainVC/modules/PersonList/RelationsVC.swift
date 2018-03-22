@@ -296,7 +296,8 @@ extension RelationsVC{
                 }
             })
         }else if self.relationType == .huoKe{
-            ApiUtil.share.getUserCreateSubscribeList(params: params) {[weak self] (status, data, msg) in
+            params.setValue("0", forKey: "status")
+            ApiUtil.share.getUserFormList(params: params){[weak self] (status, data, msg) in
                 if status == B_ResponseStatus.success{
                     let datalist  = OrderCModel.deserialize(from: data)?.data
                     if datalist == nil || datalist?.count == 0{

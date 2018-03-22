@@ -187,7 +187,7 @@ extension CommentListVC: CLBottomCommentViewDelegate {
             let params = NSMutableDictionary()
             params.setValue(textView.commentTextView.text, forKey: "content")
             params.setValue(objData.id, forKey: "invitation_id")
-            params.setValue(objData.group_id, forKey: "group_id")
+            params.setValue(objData.group_id, forKey: "cms_group_id")
             
             ApiUtil.share.addReply(params: params) {[weak self] (status, data, msg) in
                 

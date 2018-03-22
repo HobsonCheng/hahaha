@@ -97,7 +97,7 @@ extension JCGroupSettingViewController: UITableViewDelegate, UITableViewDataSour
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 4
+        return 3
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -173,9 +173,9 @@ extension JCGroupSettingViewController: UITableViewDelegate, UITableViewDataSour
             }
             return cell!
         }
-        if indexPath.section == 3 {
-            return tableView.dequeueReusableCell(withIdentifier: "JCButtonCell", for: indexPath)
-        }
+//        if indexPath.section == 3 {
+//            return tableView.dequeueReusableCell(withIdentifier: "JCButtonCell", for: indexPath)
+//        }
         if indexPath.section == 1 && indexPath.row == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "GroupAvatorCell", for: indexPath)
         }
@@ -184,15 +184,15 @@ extension JCGroupSettingViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = .none
-        if indexPath.section == 3 {
-            guard let cell = cell as? JCButtonCell else {
-                return
-            }
-            cell.buttonColor = UIColor(netHex: 0xEB424D)
-            cell.buttonTitle = "退出此群"
-            cell.delegate = self
-            return
-        }
+//        if indexPath.section == 3 {
+//            guard let cell = cell as? JCButtonCell else {
+//                return
+//            }
+//            cell.buttonColor = UIColor(netHex: 0xEB424D)
+//            cell.buttonTitle = "退出此群"
+//            cell.delegate = self
+//            return
+//        }
         cell.accessoryType = .disclosureIndicator
         if indexPath.section == 0 {
             guard let cell = cell as? JCGroupSettingCell else {

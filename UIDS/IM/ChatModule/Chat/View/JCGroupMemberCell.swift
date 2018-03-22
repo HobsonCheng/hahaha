@@ -57,14 +57,15 @@ class JCGroupMemberCell: UICollectionViewCell {
     
     func bindDate(user: JMSGUser) {
         nickname.text = user.displayName()
-        user.thumbAvatarData { (data, id, error) in
-            if let data = data {
-                let image = UIImage(data: data)
-                self.avatorView.image = image
-            } else {
-                self.avatorView.image = self.userDefaultIcon
-            }
-        }
+        self.avatorView.sd_setImage(with: URL.init(string: user.avatar!), placeholderImage: self.userDefaultIcon, options: .allowInvalidSSLCertificates, completed: nil)
+//        user.thumbAvatarData { (data, id, error) in
+//            if let data = data {
+//                let image = UIImage(data: data)
+//                self.avatorView.image = image
+//            } else {
+//                self.avatorView.image = self.userDefaultIcon
+//            }
+//        }
     }
     
 }

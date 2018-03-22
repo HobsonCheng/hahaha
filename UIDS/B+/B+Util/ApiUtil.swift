@@ -186,7 +186,7 @@ class ApiUtil: NSObject {
         params.setValue("getGroupByModel", forKey: "ac")
         params.setValue("project", forKey: "sn")
         params.setValue("GroupListTopic", forKey: "model")
-        
+        params.setValue(UserUtil.getGroupId(), forKey: "group_id")
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
@@ -442,7 +442,7 @@ class ApiUtil: NSObject {
         params.setValue("SwipImgArea", forKey: "model")
         params.setValue("getSlideByModel", forKey: "ac")
         params.setValue("project", forKey: "sn")
-        
+        params.setValue(UserUtil.getGroupId(), forKey: "group_id")
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
@@ -459,6 +459,7 @@ class ApiUtil: NSObject {
         params.setValue("ArticleList", forKey: "model")
         params.setValue("getArticleByModel", forKey: "ac")
         params.setValue("project", forKey: "sn")
+        params.setValue(UserUtil.getGroupId(), forKey: "group_id")
 //        let model = AppInfoData.shared.appModel
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
@@ -495,7 +496,7 @@ class ApiUtil: NSObject {
         params.setValue("getInitiatorByModel", forKey: "ac")
         params.setValue("project", forKey: "sn")
         params.setValue("Slider", forKey: "model")
-        
+        params.setValue(UserUtil.getGroupId(), forKey: "group_id")
         BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
@@ -704,11 +705,9 @@ class ApiUtil: NSObject {
     func getFriendList(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getFriendList", forKey: "ac")
         params.setValue("pc", forKey: "sn")
-//        let group_id = AppInfoData.shared.appModel?.group_id
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.pid, forKey: "do_pid")
         params.setValue(user?.uid, forKey: "user_id")
-//        params.setValue(group_id, forKey: "group_id")
         BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
@@ -741,11 +740,9 @@ class ApiUtil: NSObject {
     func getFollowerList(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getFollowerList", forKey: "ac")
         params.setValue("pc", forKey: "sn")
-//        let group_id = AppInfoData.shared.appModel?.group_id
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.pid, forKey: "do_pid")
         params.setValue(user?.uid, forKey: "user_id")
-//        params.setValue(group_id, forKey: "group_id")
         BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {

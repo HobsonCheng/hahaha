@@ -68,7 +68,10 @@ extension SingleOrder {
             make.bottom.left.right.equalToSuperview()
             make.height.equalTo(1.0)
         }
-        
+        if VCController.getTopVC() is AssembleVC{
+            let vc = VCController.getVC("RootVC_tabber")
+            vc?.addChildViewController(self.pageVC)
+        }
         VCController.getTopVC()?.addChildViewController(self.pageVC)
         self.addSubview(self.pageVC.view)
         self.pageVC.didMove(toParentViewController: VCController.getTopVC())

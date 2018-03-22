@@ -104,7 +104,7 @@ class MakeToCustomer: BaseModuleView {
         formVC.tableView.addSubview(button)
         let appInfo = AppInfoData.shared.appModel
         let app_id = appInfo?.app_id ?? 0
-        let group_id = appInfo?.group_id ?? 0
+        let group_id = UserUtil.getGroupId()
         button.rx.tap.do(onNext: {
             let board = UIPasteboard.general
             board.string = "www.uidashi.com/hy?appid=\(app_id)&groupid=\(group_id)&pagekey=\(appKey)&pageid=\(pageId)&isfrom=two&type=default"

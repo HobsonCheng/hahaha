@@ -18,6 +18,8 @@ class TopicCell: UITableViewCell {
     }
     var cellButton: UIButton?
     
+    @IBOutlet weak var commentNum: UILabel!
+    @IBOutlet weak var praiseNum: UILabel!
     @IBOutlet weak var imgViewHeight: NSLayoutConstraint!
     @IBOutlet weak var showImgView: UIView!
     
@@ -63,6 +65,16 @@ class TopicCell: UITableViewCell {
             
             self.username.text = self.cellObj?.user_info.zh_name
             self.addtime.text = self.cellObj?.add_time
+            if cellObj?.praise_num == 0{
+               self.praiseNum.text = "赞"
+            }else{
+                self.praiseNum.text = "\(self.cellObj?.praise_num ?? 0)"
+            }
+            if cellObj?.replay_num == 0{
+                self.commentNum.text = "评论"
+            }else{
+                self.commentNum.text = "\(self.cellObj?.replay_num ?? 0)"
+            }
             self.title.text = String.init(format: "来自：%@", (self.cellObj?.source)!)
             self.content.text = self.cellObj?.title
             
@@ -186,12 +198,24 @@ class TopicCell: UITableViewCell {
         params.setValue(cellObj?.group_pid, forKey: "group_pid")
         params.setValue(cellObj?.id, forKey: "group_invitation_id")
         params.setValue(isSelected, forKey: "praise")
-        ApiUtil.share.cms_zan(params: params) { (status, data, msg) in
+        ApiUtil.share.cms_zan(params: params) {[weak self] (status, data, msg) in
             if B_ResponseStatus.success == status{
                 //请求成功，切换按钮状态
                 DispatchQueue.main.async(execute: {
                     sender.isSelected = isSelected
+                    if isSelected{
+                        self?.praiseNum.text = "\((Int((self?.praiseNum.text)!) ?? 0) + 1)"
+                    }else{
+                        let num = (Int((self?.praiseNum.text)!) ?? 0) - 1
+                        if num == 0{
+                            self?.praiseNum.text = "赞"
+                        }else{
+                            self?.praiseNum.text = "\(num)"
+                        }
+                        
+                    }
                 })
+                
             }else{
                 Util.msg(msg: msg!, 3)
             }
