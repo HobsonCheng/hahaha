@@ -80,20 +80,20 @@ extension AccountLoginable where Self : BaseNameVC{
         
         otherLoginView.weixinBtn.rx.tap.do(onNext: {
             
-            Util.msg(msg: "通用版APP是无法第三方授权登录", 1)
+            Util.msg(msg: "通用版APP无法第三方授权登录", 1)
             
             onNext(AccountLoginEvent.init(type: .weixin, title: "微信登陆"))
         }).subscribe().disposed(by: rx.disposeBag)
 
         otherLoginView.weiboBtn.rx.tap.do(onNext: {
             
-            Util.msg(msg: "通用版APP是无法第三方授权登录", 1)
+            Util.msg(msg: "通用版APP无法第三方授权登录", 1)
             
             onNext(AccountLoginEvent.init(type: .weibo, title: "微博登陆"))
         }).subscribe().disposed(by: rx.disposeBag)
 
         otherLoginView.qqBtn.rx.tap.do(onNext: {
-            Util.msg(msg: "通用版APP是无法第三方授权登录", 1)
+            Util.msg(msg: "通用版APP无法第三方授权登录", 1)
             onNext(AccountLoginEvent.init(type: .qq, title: "QQ登陆"))
         }).subscribe().disposed(by: rx.disposeBag)
         

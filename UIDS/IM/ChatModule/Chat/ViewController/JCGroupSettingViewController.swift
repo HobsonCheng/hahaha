@@ -20,8 +20,6 @@ class JCGroupSettingViewController: NaviBarVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setNaviDefulat()
         self.navigationController?.navigationBar.isHidden = true
         
         _init()

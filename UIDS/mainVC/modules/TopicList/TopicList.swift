@@ -10,7 +10,6 @@ import UIKit
 
 class TopicList: BaseModuleView {
     
-    
     var groupItem: GroupData?
     
     private var page: Int?
@@ -52,7 +51,7 @@ class TopicList: BaseModuleView {
             
             vc?.startLoadEmpty(nil)
         }
-
+        
         let params = NSMutableDictionary()
         params.setValue(self.page, forKey: "page")
         params.setValue("20", forKey: "page_context")
@@ -93,33 +92,33 @@ class TopicList: BaseModuleView {
             self?.genderlist(moveList: tmpList)
         }
     }
+    
+    private func genderlist(moveList: [TopicData]!){
         
-        private func genderlist(moveList: [TopicData]!){
+        for item in moveList!{
             
-            for item in moveList!{
-                
-                let cell = self.genderCellView(itemObj: item)
-                cell.top = self.height + 0.5
-                self.addSubview(cell)
-                self.height = cell.bottom
-            }
-            
-            self.reloadOver?()
+            let cell = self.genderCellView(itemObj: item)
+            cell.top = self.height + 0.5
+            self.addSubview(cell)
+            self.height = cell.bottom
         }
-        private func genderCellView(itemObj: TopicData) -> TopicCell {
-            
-            let cell: TopicCell? = TopicCell.loadFromXib_Swift() as? TopicCell
-            cell?.cellObj = itemObj
-            cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 125)
-            
-            let size = itemObj.summarize.getSize(font: (cell?.content.font)!, viewWidth: (cell?.content.width)!)
-            
-            cell?.height = 115 + size.height
-            
-            if itemObj.attachment_value.count != 0 {
-                cell?.height = (cell?.height)! + (cell?.imgViewHeight.constant)!
-            }
-            
-            return cell!
+        
+        self.reloadOver?()
+    }
+    private func genderCellView(itemObj: TopicData) -> TopicCell {
+        
+        let cell: TopicCell? = TopicCell.loadFromXib_Swift() as? TopicCell
+        cell?.cellObj = itemObj
+        cell?.frame = CGRect.init(x: 0, y: 0, width: self.width, height: 125)
+        
+        let size = itemObj.summarize.getSize(font: (cell?.content.font)!, viewWidth: (cell?.content.width)!)
+        
+        cell?.height = 115 + size.height
+        
+        if itemObj.attachment_value.count != 0 {
+            cell?.height = (cell?.height)! + (cell?.imgViewHeight.constant)!
         }
+        
+        return cell!
+    }
 }

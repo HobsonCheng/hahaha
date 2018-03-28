@@ -33,10 +33,10 @@ typedef void(^Touchevetion)(id objct , NSInteger eventType);
 - (NaviBar *)naviBar;
 
 
-- (void)navleftitems:(NSArray *)items touch:(Touchevetion )touchevet;
-
-
-- (void)navrightitems:(NSArray *)items touch:(Touchevetion )touchevet;
+//- (void)navleftitems:(NSArray *)items touch:(Touchevetion )touchevet;
+//
+//
+//- (void)navrightitems:(NSArray *)items touch:(Touchevetion )touchevet;
 
 - (void)navi_centerview:(NSArray *)items;
 @end

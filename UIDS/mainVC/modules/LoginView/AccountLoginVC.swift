@@ -96,7 +96,7 @@ extension AccountLoginVC: AccountLoginable {
         accountLoginView.loginResult.drive(onNext: { (result) in
             
             result.paramsObj.setValue(getCodeKey, forKey: "code_key")
-            ApiUtil.share.userLogin(params: result.paramsObj, fininsh: {[weak self] (status, data, msg) in
+            ApiUtil.share.userLogin(params: result.paramsObj, fininsh: {(status, data, msg) in
                 
                 Util.msg(msg: "登录成功", 1)
                 
@@ -104,7 +104,7 @@ extension AccountLoginVC: AccountLoginable {
                 NotificationCenter.default.post(name: NSNotification.Name.init(kLoginNotification), object: nil)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     VCController.pop(with: VCAnimationBottom.defaultAnimation())
-                };
+                }
                 
             })
             

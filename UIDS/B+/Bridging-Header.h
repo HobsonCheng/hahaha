@@ -73,7 +73,7 @@
 
 //宏参数
 
-#define  B_USER_KEY_NAV_BG_COLOR  @"B_USER_KEY_NAV_BG_COLOR"
+//#define  B_USER_KEY_NAV_BG_COLOR  @"B_USER_KEY_NAV_BG_COLOR"
 
 //七牛 host
 #define  QINIU_HOST_NAME    @"http://omzvdb61q.bkt.clouddn.com/"

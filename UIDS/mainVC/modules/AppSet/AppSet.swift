@@ -52,7 +52,6 @@ class AppSet: NaviBarVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNaviDefulat()
         
         if isUserInfo {
             self.naviBar().setTitle("个人信息")

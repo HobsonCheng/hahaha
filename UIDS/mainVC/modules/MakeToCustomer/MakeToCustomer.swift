@@ -50,12 +50,12 @@ class CustomerForm: FormViewController {
             self.submit()
         }
         section2.rows.append(row)
-        
+    
         form.sections = [section1,section2]
-        
+    
         self.form = form
     }
-    
+
     func submit() {
         //取消当前编辑状态
         self.view.endEditing(true)
@@ -80,7 +80,7 @@ class CustomerForm: FormViewController {
         ApiUtil.share.saveSubscribe(params: params) { (status, data, msg) in
             Util.msg(msg: "提交成功", 2)
 //            Util.svpStop(ok: true,callback: {
-//            
+//
 ////               VCController.pop(with: VCAnimationClassic.defaultAnimation())
 //            },hint: "提交成功")
         }

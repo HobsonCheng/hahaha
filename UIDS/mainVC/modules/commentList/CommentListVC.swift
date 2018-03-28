@@ -30,8 +30,6 @@ class CommentListVC: NaviBarVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNaviDefulat()
-        
         self.view.addSubview(self.tableView)
         
         tableView.register(UINib(nibName: "JFCommentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
@@ -131,6 +129,7 @@ extension CommentListVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! JFCommentCell
+        cell.selectionStyle = .none
         cell.delegate = self
         cell.commentModel = commentList[indexPath.row]
         return cell

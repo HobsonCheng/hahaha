@@ -13,6 +13,7 @@ typealias ReloadOver = () -> ()
 class ArticleList: BaseModuleView {    
     var articleList: [TopicData]?
     var reloadOver: ReloadOver?
+//    var articleCSS: ArticleCSSModel?
     var page : Int = 1
     //MARK: 创建页面
     func genderView(callback: @escaping ReloadOver){

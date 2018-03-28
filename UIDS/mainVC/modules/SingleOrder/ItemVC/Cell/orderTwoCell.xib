@@ -68,7 +68,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhS-Aq-JMb">
-                        <rect key="frame" x="265" y="43.5" width="70" height="35"/>
+                        <rect key="frame" x="265" y="68.5" width="70" height="35"/>
                         <color key="backgroundColor" red="0.0" green="0.475176394" blue="0.9991323352" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="Q0h-W2-NNM"/>
@@ -96,7 +96,6 @@
                     <constraint firstItem="yc0-Ku-BR9" firstAttribute="leading" secondItem="2Be-SD-MRF" secondAttribute="leading" constant="10" id="7QJ-Pb-FQO"/>
                     <constraint firstItem="aSv-dd-dTq" firstAttribute="leading" secondItem="8rM-zX-Ek3" secondAttribute="trailing" constant="10" id="8D4-dI-1UZ"/>
                     <constraint firstItem="eZJ-Rg-XFQ" firstAttribute="top" secondItem="8rM-zX-Ek3" secondAttribute="bottom" constant="5" id="HEl-Xn-4BN"/>
-                    <constraint firstItem="vhS-Aq-JMb" firstAttribute="centerY" secondItem="2Be-SD-MRF" secondAttribute="centerY" id="HdK-KJ-yEt"/>
                     <constraint firstAttribute="bottomMargin" secondItem="tdL-vB-tFA" secondAttribute="bottom" constant="-7" id="Laj-x6-QqV"/>
                     <constraint firstItem="8rM-zX-Ek3" firstAttribute="top" secondItem="2Be-SD-MRF" secondAttribute="top" constant="15" id="Muh-22-Hbw"/>
                     <constraint firstItem="TPV-aD-PA3" firstAttribute="leading" secondItem="yc0-Ku-BR9" secondAttribute="trailing" constant="5" id="SmT-02-IWo"/>
@@ -112,6 +111,7 @@
                     <constraint firstItem="vhS-Aq-JMb" firstAttribute="leading" secondItem="6e4-P8-rmO" secondAttribute="trailing" constant="10" id="sus-kn-Dta"/>
                     <constraint firstItem="vhS-Aq-JMb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8rM-zX-Ek3" secondAttribute="trailing" constant="10" id="w3N-QH-ZUe"/>
                     <constraint firstItem="eZJ-Rg-XFQ" firstAttribute="leading" secondItem="TPV-aD-PA3" secondAttribute="trailing" constant="5" id="wbA-PF-Jyd"/>
+                    <constraint firstItem="vhS-Aq-JMb" firstAttribute="centerY" secondItem="6e4-P8-rmO" secondAttribute="centerY" id="yPU-cO-8dF"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

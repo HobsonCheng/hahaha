@@ -84,7 +84,6 @@ class NotifyListVC: NaviBarVC,UITableViewDelegate,UITableViewDataSource {
     // MARK:-
     func genderUI(){
         //设置导航栏
-        self.setNaviDefulat()
         if getUnreadNumber() <= 0{
             self.naviBar().setTitle("消息列表")
         }else{

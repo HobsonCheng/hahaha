@@ -11,6 +11,7 @@ import UIKit
 
 typealias ESCallBack = () -> ()
 typealias VCRefreshCallBack = () -> ()
+let kNaviBarBackGroundColor = UIColor.init(hexString: "#0094f3")
 
 class RootVC: NaviBarVC{
 
@@ -29,9 +30,7 @@ class RootVC: NaviBarVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setNaviDefulat()
-        
+                
         self.naviBar().setTitle(self.pageData?.name)
         
         if(self.pageData?.parent_id == 0){

@@ -13,9 +13,6 @@ import UIKit
 class InputValidator: NSObject {
     
     
-    
-    
-    
     class func isCheckUsername(username: String) -> Bool {
         
         var ischeck = true
@@ -98,9 +95,11 @@ class InputValidator: NSObject {
     
     class func isvalidationPassword(password: String) -> Bool {
         
-        
         //检测密码
         let pwdType = AllRestrictionHandler.share.ucSetCofig.project_set?.pwd_condition
+        if pwdType == nil || pwdType == ""{
+            return false
+        }
         let pwdTypeBeytes = Util.strToByte(str: pwdType!)
         
         let pwd_combination: Int! = AllRestrictionHandler.share.ucSetCofig.project_set?.pwd_combination

@@ -18,34 +18,26 @@ import Differentiator
 import SwiftyJSON
 import ESPullToRefresh
 import DZNEmptyDataSet
-//import Font_Awesome_Swift
+
 
 enum HistoryKey {
-    
     static let HistoryKey_Phone = "HistoryKey_Phone"
     static let HistoryKey_Phone_item = "HistoryKey_Phone_item"
 }
 
 // MARK:- 复用
 private enum Reusable {
-    
     static let searchCell = ReusableCell<SearchVCell>(nibName: "SearchVCell")
 }
 
-
-
 protocol AppSearchVCDelectege {
-    
     //搜索结束
     func SearchpidEnd(pidObj: Any?)
-    
 }
 
 class AppSearchNavVC: NaviBarVC{
 
     var delegate: AppSearchVCDelectege?
-    
-    
     
     // DataSuorce
     var dataSource : RxTableViewSectionedReloadDataSource<SectionModel<String, Project>>!
@@ -78,6 +70,15 @@ class AppSearchNavVC: NaviBarVC{
         }
         
         Util.save_defult(key: KEY_ISNEED_GOTOAPP, value: "0")
+        //移除群聊悬浮层
+        let appWindow = UIApplication.shared.delegate?.window
+        if let window = appWindow{
+            for view in (window?.subviews)!{
+                if view is BSuspensionView{
+                    view.removeFromSuperview()
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -85,7 +86,7 @@ class AppSearchNavVC: NaviBarVC{
         self.setVCName("AppSearchNavVC_home")
         self.naviBar().setLeftBarItem(nil)
         self.naviBar().setTitle("欢迎登录您单位的app")
-        self.naviBar().setNaviBarBackgroundColor(UIColor.init(hex: 0x4b95ef, alpha: 1))
+        self.naviBar().setNaviBarBackgroundColor(UIColor.init(hexString: "#229aee"))
         
         self.searchTop.constant = self.naviBar().bottom
         
@@ -172,6 +173,7 @@ class AppSearchNavVC: NaviBarVC{
                 
                 
                 let scan = LBXScanViewController.init(name: "LBXScanViewController")
+                scan?.naviBar().setTitle("扫一扫")
                 scan?.scanStyle = style
                 VCController.push(scan!, with: VCAnimationBottom.defaultAnimation())
             }
@@ -255,19 +257,22 @@ extension AppSearchNavVC {
         
         self.tableview.tableFooterView = UIView()
         
-        self.view.backgroundColor = UIColor.init(hex: 0xf0f0f7, alpha: 1)
+        self.view.backgroundColor = UIColor.init(hex: 0xf1f0f6, alpha: 1)
 
         let searchField: UITextField = self.searchbar.value(forKey: "searchField") as! UITextField
         searchField.layer.cornerRadius = 1
         searchField.layer.masksToBounds = true
-//        searchField.backgroundColor = UIColor.init(hex: 0x59a8f1, alpha: 1)
-//        searchField.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
-//        searchField.textColor = UIColor.white
+        searchbar.setImage(UIImage.init(named:"search"), for: UISearchBarIcon.search, state: .normal)
+        searchbar.setImage(UIImage.init(named: "clear"), for: UISearchBarIcon.clear, state: .normal)
+        self.searchbar.superview?.backgroundColor = UIColor.init(hexString: "#229aee")
+        searchField.backgroundColor = UIColor.init(hex: 0x3aacf0, alpha: 1)
+        searchField.setValue(UIColor.init(hexString: "e3e3e3"), forKeyPath: "_placeholderLabel.textColor")
+        searchField.textColor = UIColor.white
      
         for subview in self.searchbar.subviews {
             for grandSonView in subview.subviews{
                 if grandSonView.isKind(of: NSClassFromString("UISearchBarBackground")!) {
-                    grandSonView.alpha = 0.0
+                    grandSonView.backgroundColor = UIColor.init(hexString: "229aee")
                     break
                 }
             }//for cacheViews

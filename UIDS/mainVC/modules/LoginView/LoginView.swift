@@ -41,7 +41,6 @@ class LoginView: NaviBarVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNaviDefulat()
         
         self.naviBar().setTitle("登录")
         
@@ -58,7 +57,6 @@ class LoginView: NaviBarVC {
     
     override func goBack(_ sender: Any!) {
         VCController.pop(with: VCAnimationBottom.defaultAnimation())
-        
     }
     
 }

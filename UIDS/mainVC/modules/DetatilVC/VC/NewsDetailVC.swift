@@ -81,7 +81,6 @@ class NewsDetailVC: NaviBarVC {
     // MARK: - 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNaviDefulat()
         self.otherLinks = []
         
         // 设置初始正文字体大小

@@ -65,9 +65,8 @@ class ApiUtil: NSObject {
         
         params.setValue("project", forKey: "sn")
         params.setValue("getPageList", forKey: "ac")
-        
+        params.setValue(1 , forKey:"is_adaptive")
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
             if B_ResponseStatus.success == status {
                 fininsh?(status,data,msg)
             }else {
@@ -136,7 +135,7 @@ class ApiUtil: NSObject {
         
         params.setValue("project", forKey: "sn")
         params.setValue("getPage", forKey: "ac")
-        
+        params.setValue(1,forKey:"is_adaptive")
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
@@ -153,7 +152,7 @@ class ApiUtil: NSObject {
         let params = NSMutableDictionary()
         params.setValue("project", forKey: "sn")
         params.setValue("getPageKeyList", forKey: "ac")
-        
+        params.setValue(1,forKey:"is_adaptive")
         let appinfo = AppInfoData.shared.appModel
         params.setValue(appinfo?.app_id, forKey: "app_id")
         params.setValue(appinfo?.group_id, forKey: "group_id")
@@ -701,6 +700,10 @@ class ApiUtil: NSObject {
             }
         }
     }
+    
+}
+// 个人中心
+extension ApiUtil{
     // MARK: - 好友列表
     func getFriendList(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getFriendList", forKey: "ac")
@@ -722,7 +725,7 @@ class ApiUtil: NSObject {
     func getFunsList(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getFanList", forKey: "ac")
         params.setValue("pc", forKey: "sn")
-
+        
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.pid, forKey: "do_pid")
         params.setValue(user?.uid, forKey: "user_id")
@@ -753,9 +756,24 @@ class ApiUtil: NSObject {
             }
         }
     }
+}
+
+
+//MARK: - im
+extension ApiUtil{
     // MARK: - im 用户
     func getUser(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getUser", forKey: "ac")
+        params.setValue("jiguang", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            finish?(status,data,msg)
+        }
+    }
+    // MARK: - im 项目key
+    func getProjectAppKey(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getProjectAppKey", forKey: "ac")
         params.setValue("jiguang", forKey: "sn")
         
         BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
@@ -786,17 +804,9 @@ class ApiUtil: NSObject {
             finish?(status,data,msg)
         }
     }
-    // MARK: - im 项目key
-    func getProjectAppKey(params:NSMutableDictionary,finish:ApiUtilFinished?){
-        params.setValue("getProjectAppKey", forKey: "ac")
-        params.setValue("jiguang", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
-            
-            finish?(status,data,msg)
-        }
-    }
 }
+
+
 //MARK: - 预约获客
 extension ApiUtil{
     //MARK:  获取用户相关的表单

@@ -15,11 +15,10 @@ struct TABBER_INFO {
     var index: Int
 }
 
-
 class MainTabbarVC: UITabBarController,MainTabBarDelegate {
     var tarbarConfigArr:[TABBER_INFO]!
     var mainTabBarView: MainTabBarView! //自定义的底部TabbarView
-    
+    var tabbarBg : String?
     //MARK: - Life Cycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
         
@@ -58,7 +57,7 @@ class MainTabbarVC: UITabBarController,MainTabBarDelegate {
         let getConfig = DownData.findConfigData(name: "module_TabberView_Tabber_layout", model_id: nil, config_key: (appinfo?.config_key)!)
         
         let tabobj = TabberModel.deserialize(from: getConfig)
-        
+        tabbarBg = tabobj?.bg?.bgColor
         
         let pageListinfo = PageListInfo.shared.pageListModel
         
@@ -91,7 +90,6 @@ class MainTabbarVC: UITabBarController,MainTabBarDelegate {
         return configArr;
     }
     
-    
     //创建视图控制器
     private func createControllers(){
         
@@ -116,6 +114,10 @@ class MainTabbarVC: UITabBarController,MainTabBarDelegate {
         self.tabBar.isHidden = true
         //3.使用得到的frame，和plist数据创建自定义标签栏
         mainTabBarView = MainTabBarView(frame: tabBarRect,tabbarConfigArr:tarbarConfigArr!)
+        if tabbarBg != nil{
+            mainTabBarView.backgroundColor = UIColor.init(hexString: tabbarBg)
+        }
+        
         mainTabBarView.delegate = self
         self.view.addSubview(mainTabBarView)
     }

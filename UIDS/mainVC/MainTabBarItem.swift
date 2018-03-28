@@ -13,7 +13,7 @@ class MainTabBarItem: UIControl {
     var itemDic:TABBER_INFO
     let imgView: UIImageView
     let titleLabel: UILabel
-    
+    let tabbarStyle : Tabbar_style?
     //属性观察器
     var currentSelectState = false {
         didSet{
@@ -27,8 +27,12 @@ class MainTabBarItem: UIControl {
 
                 imgView.image = norimge_sel
                 
-                let getnavColor = Util.getNavBgColor()
-                titleLabel.textColor = getnavColor
+                if let color = tabbarStyle?.fontStyle?.sel_color{
+                    titleLabel.textColor = UIColor.init(hexString: color)
+                }else{
+                    titleLabel.textColor = UIColor.init(hexString: "#007aff")
+                }
+                
             }else{
                 //没被选中
                 let iconname = String.init(format: "tabBar_icon_%zd", self.itemDic.index)
@@ -37,14 +41,19 @@ class MainTabBarItem: UIControl {
                 let norimge = UIImage.init(bundlePath: path_Name)
                 
                 imgView.image = norimge
-                titleLabel.textColor = UIColor.lightGray
+                if let color = tabbarStyle?.fontStyle?.nor_color{
+                    titleLabel.textColor = UIColor.init(hexString: color)
+                }else{
+                    titleLabel.textColor = UIColor.lightGray
+                }
+
             }
         }
     }
     
-    init(frame:CGRect, itemDic:TABBER_INFO, itemIndex:Int) {
+    init(frame:CGRect, itemDic:TABBER_INFO, itemIndex:Int,tabbarStyle:Tabbar_style?) {
         self.itemDic = itemDic
-        
+        self.tabbarStyle = tabbarStyle
         //布局使用的参数
         let defaulutLabelH:CGFloat = 20.0 //文字的高度
         var imgTop:CGFloat = 3
@@ -72,7 +81,10 @@ class MainTabBarItem: UIControl {
         titleLabel.text = itemDic.pageinfo.name
         titleLabel.textAlignment = NSTextAlignment.center
         titleLabel.font = UIFont.systemFont(ofSize: 11)
-        titleLabel.textColor = UIColor.lightGray
+        if let fontStyle = tabbarStyle?.fontStyle{
+            titleLabel.textColor = UIColor.init(hexString: fontStyle.nor_color ?? "#007aff ")
+        }
+        
         
         super.init(frame: frame)
         self.addSubview(imgView)

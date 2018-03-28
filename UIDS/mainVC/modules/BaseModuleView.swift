@@ -11,9 +11,7 @@ import UIKit
 class BaseModuleView: UIView {
     
     open var pageData: PageInfo!
-    
     open var model_code: String!
-    
     open var refreshCB: VCRefreshCallBack?
     open var refreshES: VCRefreshCallBack?
     

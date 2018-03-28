@@ -289,6 +289,9 @@ extension OrderVC: WSUtilDelegate{
         
         var getobj: OrderCData?
         var count = 0
+        if viewModel.orderList.value.count == 0 {
+            return
+        }
         for item in viewModel.orderList.value[0].items {
             if item.notify_id == order?.id {
                 getobj = item

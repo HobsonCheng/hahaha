@@ -55,7 +55,7 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
     var viewRank: NSInteger!
     //获取数据信息
     fileprivate func getInitiatorByModel(){
-                let params = NSMutableDictionary()
+        let params = NSMutableDictionary()
         params.setValue(self.pageData.page_key, forKey: "page")
         params.setValue(self.model_code, forKey: "code")
         
@@ -69,7 +69,7 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
     
     //MARK: 初始化页面信息
     public func genderInit(contentData: SliderContentMode,row: NSInteger,rank: NSInteger){
-    
+        
         self.allList = [Any]()
         
         self.viewRow = row
@@ -154,7 +154,7 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
             
             for (count,sonitem) in (item as! NSArray).enumerated() {
                 
-            
+                
                 let startX = (Int(self.width)*index) + ((count)%self.viewRank) * (W + rankMargin) + 5
                 let startY = (count/self.viewRank) * (H + rowMargin + 20)
                 let top = 10
@@ -235,7 +235,7 @@ class Slider: BaseModuleView,UIScrollViewDelegate {
         let itemobj = self.allList[bt.tag]
         
         if let pagedata = itemobj as? PageInfo{
-           OpenVC.share.goToPage(pageType: (pagedata.page_type)!, pageInfo: pagedata)
+            OpenVC.share.goToPage(pageType: (pagedata.page_type)!, pageInfo: pagedata)
         }else if let inital = itemobj as? InitiatorData{
             
             if inital.apply_type == 1 {//手机外部app
@@ -258,18 +258,17 @@ extension Slider {
     fileprivate func gotoOtherApp(inital: InitiatorData){
         
         let scheme = inital.ios_schema ?? ""
-        
-        let result = UIApplication.shared.canOpenURL(URL.init(string: scheme)!)
-        
-        if result {//ok
-         
-            UIApplication.shared.open(URL.init(string: scheme)!, options: [:], completionHandler: { (obj) in
+        if let url = URL.init(string: scheme){
+            let result = UIApplication.shared.canOpenURL(url)
+            if result {//ok
                 
-            })
-        }else {
-            Util.msg(msg: "暂未安装app", 0)
+                UIApplication.shared.open(URL.init(string: scheme)!, options: [:], completionHandler: { (obj) in
+                    
+                })
+            }else {
+                Util.msg(msg: "暂未安装app", 0)
+            }
         }
-        
     }
     
 }

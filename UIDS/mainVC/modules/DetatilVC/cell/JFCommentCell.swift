@@ -18,8 +18,8 @@ class JFCommentCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var starButton: UIButton!
-    @IBOutlet weak var commentButton: UIButton!
+//    @IBOutlet weak var starButton: UIButton!
+//    @IBOutlet weak var commentButton: UIButton!
     var delegate: JFCommentCellDelegate?
     
     var commentModel: ReplyData? {
@@ -29,7 +29,7 @@ class JFCommentCell: UITableViewCell {
             usernameLabel.text = commentModel?.user_info.zh_name
             timeLabel.text = commentModel?.add_time
             contentLabel.text = commentModel?.content
-            starButton.setTitle("\(10)", for: UIControlState())
+//            starButton.setTitle("\(10)", for: UIControlState())
         }
     }
     

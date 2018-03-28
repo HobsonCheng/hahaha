@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Font_Awesome_Swift
 import KMPlaceholderTextView
 import TextFieldEffects
 import LPDQuoteImagesView
@@ -27,7 +26,6 @@ class GroupTopicSendVC: NaviBarVC, LPDQuoteImagesViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNaviDefulat()
         self.naviBar().setTitle("发布")
 
         self.genderNavi()

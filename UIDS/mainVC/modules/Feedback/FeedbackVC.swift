@@ -19,7 +19,6 @@ class FeedbackVC: NaviBarVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNaviDefulat()
         self.naviBar().setTitle("意见反馈")
         
         genderUI()

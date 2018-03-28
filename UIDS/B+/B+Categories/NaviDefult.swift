@@ -10,19 +10,16 @@ import Foundation
 
 extension NaviBarVC {
     
-    
-    
-    
-    public func setNaviDefulat(){
-        
-        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
-        
-        if bgColor != nil {
-            
-            let bgColorObj = UIColor(hexString: bgColor)
-        
-            self.naviBar().setNaviBarBackgroundColor(bgColorObj)
-        }
-    }
+//    public func setNaviDefulat(){
+
+//        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
+//        self.naviBar().setNaviBarBackgroundColor(kSearchBarBackgroundColor)
+//        if bgColor != nil {
+//
+//            let bgColorObj = UIColor(hexString: bgColor)
+//
+//            self.naviBar().setNaviBarBackgroundColor(bgColorObj)
+//        }
+//    }
     
 }

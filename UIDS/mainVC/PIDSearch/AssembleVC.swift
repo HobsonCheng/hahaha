@@ -57,7 +57,17 @@ class AssembleVC: BaseNameVC {
         // Dispose of any resources that can be recreated.
     }
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appWindow = UIApplication.shared.delegate?.window
+        if let window = appWindow{
+            for view in (window?.subviews)!{
+                if view is BSuspensionView{
+                    view.removeFromSuperview()
+                }
+            }
+        }
+    }
     @IBAction func gobackAction(_ sender: Any) {
         VCController.pop(with: VCAnimationClassic.defaultAnimation())
     }

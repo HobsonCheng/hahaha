@@ -32,7 +32,9 @@ extension RootVC {
     func findConfigData(name: String,model_id: String) -> NSDictionary{
         return DownData.findConfigData(name: name, model_id: model_id, config_key: (self.pageData?.config_key)!)
     }
-    
+    func findCSSData(model_id:String) -> NSDictionary?{
+        return DownData.findCSSData(model_id: model_id, css_key: (self.pageData?.app_css_key)!)
+    }
     private func updateVC(){
         
         let navibarJson = JSON.init(parseJSON: (self.pageData?.config_key)!)
@@ -45,7 +47,8 @@ extension RootVC {
                 self.navibar_layout(dic: navibarLayout as! NSDictionary)
                 
                 
-            }else if ((configName?.range(of: "module_NaviBarView_NaviBar_content")) != nil){
+            }
+            if ((configName?.range(of: "module_NaviBarView_NaviBar_content")) != nil){
                 let navibarContent = item.1.rawValue
                 self.navibar_content(dic: navibarContent as! NSDictionary)
             }
@@ -61,8 +64,6 @@ extension RootVC {
         let colorStr = (bgData! as! NSDictionary).object(forKey: "bgColor") as! String
         
         let bgColor = UIColor(hexString: colorStr)
-    
-        Util.save_defult(key: B_USER_KEY_NAV_BG_COLOR, value: colorStr)
         
         self.naviBar().setNaviBarBackgroundColor(bgColor)
         
@@ -71,8 +72,8 @@ extension RootVC {
         
         let centerObj = dic["center"]
         self.naviBar().setTitle((centerObj as! NSDictionary).object(forKey: "title") as! String)
-        self.naviBar().setTitleColor((centerObj as! NSDictionary).object(forKey: "color") as! String)
-        
+        let color = (centerObj as! NSDictionary).object(forKey: "color") as! String
+        self.naviBar().setTitleColor(color)
         let leftList = dic["leftList"]
         self.navibar_leftViews(list: leftList as! NSArray)
         let rightList = dic["rightList"]

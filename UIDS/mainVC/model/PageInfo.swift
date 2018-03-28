@@ -60,9 +60,9 @@ class PageInfo: BaseData{
     var page_key: String?
     var model_id: String?
     var jump_url: String?
-    
+
     var page_name: String?
-    
+    var app_css_key: String?
     
     
     //扩展属性  便于特殊页面获取信息值

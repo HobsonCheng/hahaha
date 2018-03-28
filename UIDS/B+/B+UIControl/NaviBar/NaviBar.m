@@ -16,7 +16,7 @@
 // ==================================================================
 // 字体
 #define	kNaviBarTitleLabelFont				(18)
-#define	kNaviBarBackGroundColor				kUIColorOfHex(0x1ba9ba)
+#define	kNaviBarBackGroundColor				kUIColorOfHex(0x0094F3)
 #define kNaviBarTitleLabelColor             [UIColor colorWithHex:0x77FFFF alpha:1.0f]
 #define kNaviBarTitleLabelPressColor        [UIColor colorWithHex:0x77FFFF alpha:0.5f]
 #define kNaviBarTitleLabelDisableColor      [UIColor colorWithHex:0x77FFFF alpha:0.5f]
@@ -70,12 +70,12 @@ enum NaviBarTitleViewTags {
         [_viewBG setBackgroundColor:kNaviBarBackGroundColor];
         [self addSubview:_viewBG];
         
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"B_USER_KEY_NAV_BG_COLOR"]) {
-            
-        }else {
-            [[NSUserDefaults standardUserDefaults] setObject:@"#1ba9ba" forKey:@"B_USER_KEY_NAV_BG_COLOR"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
+//        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"B_USER_KEY_NAV_BG_COLOR"]) {
+//            
+//        }else {
+//            [[NSUserDefaults standardUserDefaults] setObject:@"#0094F3" forKey:@"B_USER_KEY_NAV_BG_COLOR"];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+//        }
         
         // 创建Label类型的Title
         _viewTitle = [[LightControl alloc] init];
@@ -470,7 +470,7 @@ enum NaviBarTitleViewTags {
             {
                 [_viewTitle setUserInteractionEnabled:YES];
                 
-                [titleLabel setTextColor:kNaviBarTitleLabelColor];
+//                [titleLabel setTextColor:kNaviBarTitleLabelColor];
                 
                 [titleLabel setFrame:CGRectMake((titleWidth - titleLabel.frame.size.width) / 2, 0, titleLabel.frame.size.width, spaceYEnd - spaceYStart)];
                 [titleArrow setViewOrigin:CGPointMake(titleLabel.frame.origin.x + titleLabel.frame.size.width + kNaviBarHMargine,
@@ -480,7 +480,7 @@ enum NaviBarTitleViewTags {
             {
                 [_viewTitle setUserInteractionEnabled:NO];
                 
-                [titleLabel setTextColor:[UIColor whiteColor]];
+//                [titleLabel setTextColor:[UIColor whiteColor]];
                 [titleLabel setFrame:CGRectMake(0, 0, titleWidth, spaceYEnd - spaceYStart)];
             }
         }
@@ -496,7 +496,7 @@ enum NaviBarTitleViewTags {
     if ([_viewTitle isKindOfClass:[LightControl class]] && [self isClickEnable])
     {
         UILabel *titleLabel = (UILabel *)[_viewTitle viewWithTag:kNaviBarTitleViewLabelViewTag];
-        [titleLabel setTextColor:kNaviBarTitleLabelPressColor];
+//        [titleLabel setTextColor:kNaviBarTitleLabelPressColor];
         
         [self sendActionsForControlEvents:UIControlEventTouchDown];
     }
@@ -507,7 +507,7 @@ enum NaviBarTitleViewTags {
     if ([_viewTitle isKindOfClass:[LightControl class]] && [self isClickEnable])
     {
         UILabel *titleLabel = (UILabel *)[_viewTitle viewWithTag:kNaviBarTitleViewLabelViewTag];
-        [titleLabel setTextColor:kNaviBarTitleLabelColor];
+//        [titleLabel setTextColor:kNaviBarTitleLabelColor];
         
         [self sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
@@ -518,7 +518,7 @@ enum NaviBarTitleViewTags {
     if ([_viewTitle isKindOfClass:[LightControl class]] && [self isClickEnable])
     {
         UILabel *titleLabel = (UILabel *)[_viewTitle viewWithTag:kNaviBarTitleViewLabelViewTag];
-        [titleLabel setTextColor:kNaviBarTitleLabelColor];
+//        [titleLabel setTextColor:kNaviBarTitleLabelColor];
         
         [self sendActionsForControlEvents:UIControlEventTouchUpOutside];
     }

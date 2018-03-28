@@ -30,7 +30,7 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好看的UI大师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drP-tR-sLz">
-                        <rect key="frame" x="55" y="10" width="85.5" height="20"/>
+                        <rect key="frame" x="55" y="10" width="321" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="ewc-Ik-3QD"/>
                         </constraints>
@@ -169,6 +169,7 @@
                     <constraint firstItem="Ohj-nP-J80" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="6UW-wg-BpQ"/>
                     <constraint firstItem="drP-tR-sLz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BuF-BX-AB5"/>
                     <constraint firstItem="a2q-YW-TYV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="G4V-N4-jDf"/>
+                    <constraint firstAttribute="trailing" secondItem="drP-tR-sLz" secondAttribute="trailing" constant="15" id="IhM-a0-qAY"/>
                     <constraint firstItem="G9M-9g-zpA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="N5X-bW-j2z"/>
                     <constraint firstItem="G9M-9g-zpA" firstAttribute="top" secondItem="O50-0Q-n1J" secondAttribute="bottom" constant="5" id="RYM-6o-MDI"/>
                     <constraint firstItem="bSu-nP-xzV" firstAttribute="top" secondItem="drP-tR-sLz" secondAttribute="bottom" constant="2" id="Z7i-ai-gka"/>

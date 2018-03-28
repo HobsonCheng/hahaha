@@ -127,7 +127,9 @@ extension MsgUtil:BSuspensionViewDelegate{
                 MBProgressHUD_JChat.show(text: "\(String.errorAlert(error! as NSError))", view: nil)
             }
         }
-        
+        DispatchQueue.main.asyncAfter(deadline: .now()+4) {
+            MBProgressHUD_JChat.hide(forView: nil, animated: true)
+        }
     }
     
     private func gotoChatlist(){
@@ -167,7 +169,9 @@ class BSuspensionView: UIButton {
         self.delegate = delegate
         
         self.isUserInteractionEnabled = true
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.white
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
         self.alpha = 0.8
         
         self.setImage(UIImage.init(named: "2.png"), for: UIControlState.normal)

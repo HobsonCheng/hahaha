@@ -80,7 +80,6 @@ class OtherWebVC: NaviBarVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNaviDefulat()
         self.naviBar().setLeftBarItem(nil)
     }
     

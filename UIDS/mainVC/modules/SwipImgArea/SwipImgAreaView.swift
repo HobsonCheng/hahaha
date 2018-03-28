@@ -540,6 +540,9 @@ class SwipImgAreaView: BaseModuleView, UICollectionViewDelegate, UICollectionVie
     }
     
     func pageControlIndexWithCurrentCellIndex(index: NSInteger) -> (Int) {
+        if imagePaths.count == 0{
+            return 0
+        }
         return Int(index % imagePaths.count)
     }
     

@@ -33,7 +33,6 @@ class RelationsVC: NaviBarVC,UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.page = 1
-        self.setNaviDefulat()
         switch self.relationType! {
         case RelationshipType.follow :
             self.naviBar().setTitle("关注列表")

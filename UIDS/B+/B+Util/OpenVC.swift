@@ -9,6 +9,7 @@
 import UIKit
 
 let PAGE_TYPE_login = "login"
+let PAGE_TYPE_reg = "reg"
 let PAGE_TYPE_custom = "custom"
 let PAGE_TYPE_default = "default"
 let PAGE_TYPE_news = "news"
@@ -69,8 +70,9 @@ class OpenVC: NSObject {
                 let nextv = LoginView.init(name: "LoginView")
                 VCController.push(nextv!, with: VCAnimationBottom.defaultAnimation());
             }
-            
-            break
+        case PAGE_TYPE_reg:
+            let regVC = RegVC.init(name:"RegVC")
+            VCController.push(regVC!, with: VCAnimationBottom.defaultAnimation())
         case PAGE_TYPE_custom:
             Util.msg(msg: "hybrid - 牛逼", 1)
             break

@@ -154,7 +154,7 @@ class JCConversationCell: JCTableViewCell {
             let user = conversation.target as? JMSGUser
             titleLabel.text = user?.displayName() ?? ""
             let urlStr = user?.avatar
-            self.avatorView.sd_setImage(with: URL.init(string: urlStr!), placeholderImage: self.userDefaultIcon, options: .allowInvalidSSLCertificates, completed: nil)
+            self.avatorView.sd_setImage(with: URL.init(string: urlStr ?? ""), placeholderImage: self.userDefaultIcon, options: .allowInvalidSSLCertificates, completed: nil)
             
         } else {
             if let group = conversation.target as? JMSGGroup {
@@ -163,7 +163,7 @@ class JCConversationCell: JCTableViewCell {
                     statueView.isHidden = false
                 }
                 let urlStr = group.avatar
-                self.avatorView.sd_setImage(with: URL.init(string: urlStr!), placeholderImage: self.groupDefaultIcon, options: .allowInvalidSSLCertificates, completed: nil)
+                self.avatorView.sd_setImage(with: URL.init(string: urlStr ?? ""), placeholderImage: self.groupDefaultIcon, options: .allowInvalidSSLCertificates, completed: nil)
             }
         }
 

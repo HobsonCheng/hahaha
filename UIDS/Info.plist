@@ -127,7 +127,6 @@
 		<string>iosamap</string>
 		<string>qqmap</string>
 		<string>comgooglemaps</string>
-		<string>baidumap</string>
 		<string>fx2</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>

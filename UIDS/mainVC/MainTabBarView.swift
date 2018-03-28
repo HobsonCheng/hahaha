@@ -16,17 +16,17 @@ protocol MainTabBarDelegate {
 class MainTabBarView: UIView {
     var delegate:MainTabBarDelegate? //代理,点击item
     var itemArray:[MainTabBarItem] = [] //标签Item数组
-    
+    var tabbarStyle : Tabbar_style?
     init(frame: CGRect,tabbarConfigArr:[TABBER_INFO]) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.white
+        getTabbarStyle()
         let screenW = UIScreen.main.bounds.size.width
         let itemWidth = screenW / CGFloat(tabbarConfigArr.count)
         for i in 0..<tabbarConfigArr.count{
             let itemDic = tabbarConfigArr[i];
             let itemFrame = CGRect(x: itemWidth * CGFloat(i) , y: 0, width: itemWidth, height: frame.size.height)
             //创建Item视图
-            let itemView = MainTabBarItem(frame: itemFrame, itemDic:itemDic, itemIndex: i)
+            let itemView = MainTabBarItem(frame: itemFrame, itemDic:itemDic, itemIndex: i,tabbarStyle: self.tabbarStyle)
             self.addSubview(itemView)
             self.itemArray.append(itemView)
             //添加事件点击处理
@@ -40,7 +40,21 @@ class MainTabBarView: UIView {
         }
     }
     
-    
+    private func getTabbarStyle(){
+        let appinfo = AppInfoData.shared.appModel
+        //获取和设置tabbar栏的背景色
+        let getBgColor = DownData.findConfigData(name: "productFooter_module_bg_104", model_id: nil, config_key: (appinfo?.config_key)!)
+        let getTabbarBg = Footer_style.deserialize(from: getBgColor)
+        if getTabbarBg == nil{
+            self.backgroundColor = UIColor.white
+        }else{
+            self.backgroundColor =  UIColor.init(hexString: getTabbarBg?.bgcolor ?? "#ffffff")
+        }
+        
+        //获取tabbarItem的样式
+        let getTabbarItemStyle = DownData.findConfigData(name: "module_TabberView_Tabber_content", model_id: nil, config_key: (appinfo?.config_key)!)
+        self.tabbarStyle = Tabbar_style.deserialize(from: getTabbarItemStyle)
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

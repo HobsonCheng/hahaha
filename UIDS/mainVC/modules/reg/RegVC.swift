@@ -18,7 +18,6 @@ class RegVC: NaviBarVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNaviDefulat()
         self.naviBar().setTitle("注册")
         
         view.backgroundColor = kThemeWhiteColor

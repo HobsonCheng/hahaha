@@ -11,7 +11,7 @@ import SwiftyJSON
 import ESPullToRefresh
 
 extension RootVC {//扩展
-
+    
     //MARK: 生成组件信息45
     func genderModelList() {
         
@@ -42,7 +42,7 @@ extension RootVC {//扩展
                 self.genderOneImg(model_id: tmpList[0], startY: &self.startY!)
                 break
             case "Slider" :
-                self.genderSlifer(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
+                self.genderSlider(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
                 break
             case "SwipImgArea" :
                 self.genderSwipImg(code: String(describing: modelName),model_id: tmpList[0], startY: &self.startY!)
@@ -80,18 +80,18 @@ extension RootVC {//扩展
         }else {
             self.mainView?.contentSize = CGSize.init(width: 0, height: (self.mainView?.height)! + 50);
         }
-    
+        
         self.mainView?.reloadEmptyDataSet()
         
         self.mainView?.es.stopPullToRefresh()
         
         self.reloadMainScroll()
         
-    
+        
     }
-
+    //MARK: 轮播图
     func genderSwipImg(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>){
-    
+        
         // 网络图，本地图混合
         let imagesURLStrings = [String]();
         // 图片配文字
@@ -101,13 +101,13 @@ extension RootVC {//扩展
         let bannerDemo = SwipImgAreaView.llCycleScrollViewWithFrame(CGRect.init(x: 0, y:startY.pointee, width: self.view.width, height: 200), imageURLPaths: imagesURLStrings, titles:titles, didSelectItemAtIndex: nil)
         
         bannerDemo.lldidSelectItemAtIndex = { index in
-            let item = bannerDemo.sliderlist![index]
-            
-            let otherweb = OtherWebVC.init(name: "webview")
-            otherweb?.urlString = item.open_url ?? "http://m.baidu.com"
-            VCController.push(otherweb!, with: VCAnimationClassic.defaultAnimation())
-
-            
+            if let list = bannerDemo.sliderlist{
+                let item = list[index]
+                
+                let otherweb = OtherWebVC.init(name: "webview")
+                otherweb?.urlString = item.open_url ?? "http://m.baidu.com"
+                VCController.push(otherweb!, with: VCAnimationClassic.defaultAnimation())
+            }
         }
         bannerDemo.customPageControlStyle = .fill
         bannerDemo.customPageControlInActiveTintColor = UIColor.red
@@ -130,19 +130,20 @@ extension RootVC {//扩展
         
         ApiUtil.share.getSlideByModel(params: params) { (status, data, msg) in
             
-            let list = SliderModel.deserialize(from: data)?.data.pics ?? [Pic]()
-            
-            for item in list {
-                bannerDemo.imagePaths.append(item.pic)
-                bannerDemo.titles.append(item.descriptionField ?? "")
-            }
-    
-            if bannerDemo.reloadViewData() {
+            if let data = SliderModel.deserialize(from: data)?.data{
+                let list = data.pics ?? [Pic]()
                 
+                for item in list {
+                    bannerDemo.imagePaths.append(item.pic)
+                    bannerDemo.titles.append(item.descriptionField ?? "")
+                }
+                
+                if bannerDemo.reloadViewData() {
+                    
+                }
+                
+                bannerDemo.sliderlist = list
             }
-            
-            bannerDemo.sliderlist = list
-            
         }
     }
     
@@ -159,7 +160,7 @@ extension RootVC {//扩展
         }else {
             oneImg.setUrl(url: "http://omzvdb61q.bkt.clouddn.com/UIdashi_9484892")
         }
-    
+        
         oneImg.tag = Int(startY.pointee)
         
         self.mainView!.addSubview(oneImg);
@@ -167,7 +168,7 @@ extension RootVC {//扩展
         startY.pointee = oneImg.bottom + 10
     }
     
-    func genderSlifer(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
+    func genderSlider(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
         
         let objContent = self.findConfigData(name: "Slider_content",model_id: model_id)
         
@@ -195,19 +196,23 @@ extension RootVC {//扩展
     //MARK: 生成文章列表
     func genderArticleList(code: String,model_id: String,startY: UnsafeMutablePointer<CGFloat>){
         
-        let aritclalist = ArticleList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
-        
-        aritclalist.pageData = self.pageData
-        aritclalist.model_code = code
-        aritclalist.genderView { [weak self] in
+        let articleList = ArticleList.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        //        if let cssDic = findCSSData(model_id: model_id){
+        //            articleList.articleCSS = ArticleCSSModel.deserialize(from: cssDic)
+        //        }
+        articleList.pageData = self.pageData
+        articleList.model_code = code
+        articleList.genderView { [weak self] in
             self?.reloadMainScroll()
         }
         
-        aritclalist.tag = Int(startY.pointee)
+        articleList.tag = Int(startY.pointee)
         
-        self.mainView?.addSubview(aritclalist)
+        self.mainView?.addSubview(articleList)
         
-        startY.pointee = aritclalist.bottom + 10
+        startY.pointee = articleList.bottom + 10
+        
+        
     }
     //MARK: 生成个人中心
     func genderPersonalCenter(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
@@ -245,7 +250,7 @@ extension RootVC {//扩展
         let itemObj = self.pageData?.anyObj as? UserInfoData
         messagePool.genderList(callback: {[weak self] in
             self?.reloadMainScroll()
-        }, itemObj: itemObj)
+            }, itemObj: itemObj)
         
         self.mainView?.addSubview(messagePool)
         
@@ -318,8 +323,8 @@ extension RootVC {//扩展
     
     //MARK: 生成获客抢单
     func genderSingleOrder(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
-    
-
+        
+        
         let singleOrder = SingleOrder.init(frame: CGRect.init(x: 0, y: startY.pointee, width: kScreenW, height: (self.mainView?.height)!))
         singleOrder.pageData = self.pageData
         singleOrder.genderView()
@@ -373,7 +378,7 @@ extension RootVC {//扩展
         
         
         self.mainView?.reloadEmptyDataSet()
-    
+        
     }
 }
 
@@ -399,7 +404,7 @@ extension RootVC {
         }
         
     }
-
+    
     private func refresh() {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
@@ -415,7 +420,7 @@ extension RootVC {
                 }
                 
             }
-//            self?.esCallBack!()
+            //            self?.esCallBack!()
             if !find {
                 self?.esCallBack!()
             }

@@ -13,3 +13,14 @@ class AritcleModel: BaseModel {
     var data: [TopicData]?
     
 }
+
+class ArticleCSSModel :BaseModel{
+    var value_info: ArticleCSSData!
+    var child_value: ArticleSonCSSData!
+}
+class ArticleCSSData{
+    var border: String!
+}
+class ArticleSonCSSData{
+    
+}

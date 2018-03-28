@@ -112,5 +112,13 @@ class DownData: NSObject {
         
         return NSDictionary()
     }
-    
+    static func findCSSData(model_id:String?,css_key:String) -> NSDictionary?{
+        let CSSData = JSON.init(parseJSON: css_key)
+        for item in CSSData{
+            if item.0 == model_id{
+                return item.1.rawValue as! NSDictionary
+            }
+        }
+        return nil
+    }
 }

@@ -9,8 +9,6 @@
 import UIKit
 //import iRate
 import SVProgressHUD
-
-
 struct MyRegex {
     let regex: NSRegularExpression?
     
@@ -169,16 +167,16 @@ final class Util: NSObject{
     
     static func getNavBgColor() -> UIColor {
         
-        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
-        
-        if bgColor != nil {
-            
-            let bgColorObj = UIColor(hexString: bgColor)
-            
-            return bgColorObj ?? UIColor.blue
-        }
+//        let bgColor: String? = Util.get_defult(key: B_USER_KEY_NAV_BG_COLOR) as? String
+//
+//        if bgColor != nil {
+//
+//            let bgColorObj = UIColor(hexString: bgColor)
+//
+//            return bgColorObj ?? UIColor.blue
+//        }
     
-        return UIColor.blue
+        return kNaviBarBackGroundColor!
     }
     
     static func svploading(str: String) {
@@ -283,18 +281,29 @@ final class Util: NSObject{
 
 
 // MARK:- 常用按钮颜色
-
+/** 白色*/
 let kThemeWhiteColor = UIColor.init(hexString: "0xFFFFFF")
+/** 白烟色*/
 let kThemeWhiteSmokeColor = UIColor.init(hexString: "0xF5F5F5")
-let kThemeGainsboroColor = UIColor.init(hexString: "0xF3F4F5")  // 亮灰色
-let kThemeOrangeRedColor = UIColor.init(hexString: "0xFF4500")  // 橙红色
+/** 亮灰色*/
+let kThemeGainsboroColor = UIColor.init(hexString: "0xF3F4F5")
+/**  橙红色*/
+let kThemeOrangeRedColor = UIColor.init(hexString: "0xFF4500")
+/** 雪白色*/
 let kThemeSnowColor = UIColor.init(hexString: "0xFFFAFA")
+/** 浅灰色*/
 let kThemeLightGreyColor = UIColor.init(hexString: "0xD3D3D3")
+/** 深灰色*/
 let kThemeGreyColor = UIColor.init(hexString: "0xA9A9A9")
+/** 联合国蓝*/
 let kThemeTomatoColor = UIColor.init(hexString: "0x5c92e0")
+/** 暗灰色*/
 let kThemeDimGrayColor = UIColor.init(hexString: "0x696969")
+/** 黑色*/
 let kThemeBlackColor = UIColor.init(hexString: "0x000000")
+/** 沙漠白*/
 let kThemeBackgroundColor = UIColor.init(hexString: "0xF4F4F4")
+/** 星空灰*/
 let kThemeTitielColor = UIColor.init(hexString: "0x9E9E9E")
 
 
