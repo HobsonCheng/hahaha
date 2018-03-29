@@ -13,7 +13,7 @@ import HandyJSON
 typealias ApiUtilFinished = (_ status: B_ResponseStatus, _ result: String?, _ tipString: String?) -> ()
 
 class ApiUtil: NSObject {
-
+    
     static let share = ApiUtil()
     
     //MARK: - 搜索项目
@@ -107,7 +107,7 @@ class ApiUtil: NSObject {
                 fininsh?(status,data,msg)
                 
                 ApiUtil.share.getInfo(params: NSMutableDictionary(), fininsh: nil)
-
+                
             }else {
                 Util.msg(msg: msg!, 3)
             }
@@ -290,18 +290,18 @@ class ApiUtil: NSObject {
     func getInfo(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
         params.setValue("getInfo", forKey: "ac")
         params.setValue("pc", forKey: "sn")
-    
+        
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.uid, forKey: "user_id")
         params.setValue(user?.pid, forKey: "user_pid")
         
-
+        
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
                 
                 UserUtil.share.saveUser(userInfo: data)
-            
+                
                 fininsh?(status,data,msg)
             }else {
                 Util.msg(msg: msg!, 3)
@@ -316,7 +316,7 @@ class ApiUtil: NSObject {
             
             if B_ResponseStatus.success == status {
                 
-//                UserUtil.share.saveUser(userInfo: data)
+                //                UserUtil.share.saveUser(userInfo: data)
                 
                 finish?(status,data,msg)
             }else {
@@ -337,12 +337,12 @@ class ApiUtil: NSObject {
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
-
+                
                 fininsh?(status,data,msg)
             }else {
-//                Util.svpStop(ok: false,callback: {
-//                    
-//                }, hint: "提交失败")
+                //                Util.svpStop(ok: false,callback: {
+                //
+                //                }, hint: "提交失败")
                 Util.msg(msg: msg!, 3)
             }
         }
@@ -421,7 +421,7 @@ class ApiUtil: NSObject {
     
     //MARK: - 更新用户信息
     func updateInfo(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-     
+        
         params.setValue("updateInfo", forKey: "ac")
         params.setValue("pc", forKey: "sn")
         
@@ -459,7 +459,7 @@ class ApiUtil: NSObject {
         params.setValue("getArticleByModel", forKey: "ac")
         params.setValue("project", forKey: "sn")
         params.setValue(UserUtil.getGroupId(), forKey: "group_id")
-//        let model = AppInfoData.shared.appModel
+        //        let model = AppInfoData.shared.appModel
         
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
             
@@ -506,26 +506,36 @@ class ApiUtil: NSObject {
             }
         }
     }
-    //MARK: - 意见反馈
-    func cms_addOpinion(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-        
-        params.setValue("addOpinion", forKey: "ac")
+    
+    
+    
+    
+}
+
+
+//MARK: - cms
+extension ApiUtil{
+    
+    //MARK: 删帖
+    func cms_DeleteNews(params: NSMutableDictionary,finish: ApiUtilFinished?){
+        params.setValue("delInvitation", forKey: "ac")
         params.setValue("cms", forKey: "sn")
         
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.pid, forKey: "do_pid")
-    
+        
         BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
             
             if B_ResponseStatus.success == status {
                 
-                fininsh?(status,data,msg)
+                finish?(status,data,msg)
             }else {
                 Util.msg(msg: msg!, 3)
             }
         }
     }
-    //MARK: - 点赞
+    
+    //MARK: 点赞
     func cms_zan(params: NSMutableDictionary,finish: ApiUtilFinished?) {
         
         params.setValue("praiseInvitation", forKey: "ac")
@@ -544,9 +554,15 @@ class ApiUtil: NSObject {
             }
         }
     }
-    //MARK: - 删帖
-    func cms_DeleteNews(params: NSMutableDictionary,finish: ApiUtilFinished?){
-        params.setValue("delInvitation", forKey: "ac")
+}
+
+//MARK: - 设置中心
+extension ApiUtil{
+    
+    //MARK: 意见反馈
+    func cms_addOpinion(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        
+        params.setValue("addOpinion", forKey: "ac")
         params.setValue("cms", forKey: "sn")
         
         let user = UserUtil.share.appUserInfo
@@ -556,30 +572,29 @@ class ApiUtil: NSObject {
             
             if B_ResponseStatus.success == status {
                 
-                finish?(status,data,msg)
+                fininsh?(status,data,msg)
             }else {
                 Util.msg(msg: msg!, 3)
             }
         }
     }
-    //MARK: - 消息列表
-    func getNotification(params : NSMutableDictionary,finish: ApiUtilFinished?){
-        params.setValue("getUserNotifyListByUser", forKey: "ac")
-        params.setValue("mc", forKey: "sn")
-        
-        let user = UserUtil.share.appUserInfo
-        params.setValue(user?.pid, forKey: "do_pid")
-        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
+    
+    //MARK: 关于
+    func getAppAbout(finish: ApiUtilFinished?){
+        let params = NSMutableDictionary()
+        params.setValue("project", forKey: "sn")
+        params.setValue("getAppAbout", forKey: "ac")
+        BRequestHandler.shared.get(APIString: "mt",parameters: params as? [String : Any]){
+            (status,data,msg) in
+            if B_ResponseStatus.success == status{
                 finish?(status,data,msg)
-            }else {
+            }else{
                 Util.msg(msg: msg!, 3)
             }
         }
     }
-    //MARK: - 未读消息总数
+    
+    //MARK: 未读消息总数
     func getUnreadNotficationTotal(finish: ApiUtilFinished?){
         let params = NSMutableDictionary()
         params.setValue("getUnreadUserNotifyTotal", forKey: "ac")
@@ -598,95 +613,11 @@ class ApiUtil: NSObject {
             }
         }
     }
-    //MARK: - 获取信息流
-    func getMessagePool(params:NSMutableDictionary,finish: ApiUtilFinished?){
-        params.setValue("getMessagePool", forKey: "ac")
-        params.setValue("pc", forKey: "sn")
-        
-        let user = UserUtil.share.appUserInfo
-        params.setValue(user?.pid, forKey: "do_pid")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                finish?(status,data,msg)
-            }else {
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    //MARK:- 其他人的信息流
-    func getOthersMessagePool(params:NSMutableDictionary,finish:ApiUtilFinished?){
-            params.setValue("getMessagePool", forKey: "ac")
-            params.setValue("pc", forKey: "sn")
-
-            BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
-                
-                if B_ResponseStatus.success == status {
-                    
-                    finish?(status,data,msg)
-                }else {
-                    Util.msg(msg: msg!, 3)
-                }
-            }
-    }
-    //MARK: - 添加好友
-    func addFriend(params:NSMutableDictionary,finish:ApiUtilFinished?){
-        params.setValue("addFriend", forKey: "ac")
-        params.setValue("pc", forKey: "sn")
-        
-        let user = UserUtil.share.appUserInfo
-        params.setValue(user?.pid, forKey: "do_pid")
-        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                finish?(status,data,msg)
-            }else {
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
     
-    //MARK: - 删除好友
-    func deleteFriend(params:NSMutableDictionary,finish:ApiUtilFinished?){
-        params.setValue("deleteFriend", forKey: "ac")
-        params.setValue("pc", forKey: "sn")
-        
-        let user = UserUtil.share.appUserInfo
-        params.setValue(user?.pid, forKey: "do_pid")
-        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                finish?(status,data,msg)
-            }else {
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    // MARK:- 添加关注
-    func addFollower(params:NSMutableDictionary,finish:ApiUtilFinished?){
-        params.setValue("addFollower", forKey: "ac")
-        params.setValue("pc", forKey: "sn")
-        
-        let user = UserUtil.share.appUserInfo
-        params.setValue(user?.pid, forKey: "do_pid")
-        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-                finish?(status,data,msg)
-            }else {
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    // MARK:- 取消关注
-    func deleteFollower(params:NSMutableDictionary,finish:ApiUtilFinished?){
-        params.setValue("deleteFollower", forKey: "ac")
-        params.setValue("pc", forKey: "sn")
+    //MARK: 消息列表
+    func getNotification(params : NSMutableDictionary,finish: ApiUtilFinished?){
+        params.setValue("getUserNotifyListByUser", forKey: "ac")
+        params.setValue("mc", forKey: "sn")
         
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.pid, forKey: "do_pid")
@@ -702,9 +633,12 @@ class ApiUtil: NSObject {
     }
     
 }
-// 个人中心
+
+
+//MARK: - 个人中心
 extension ApiUtil{
-    // MARK: - 好友列表
+    
+    // MARK: 好友列表
     func getFriendList(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getFriendList", forKey: "ac")
         params.setValue("pc", forKey: "sn")
@@ -721,7 +655,8 @@ extension ApiUtil{
             }
         }
     }
-    // MARK: - 获取粉丝列表
+    
+    // MARK: 获取粉丝列表
     func getFunsList(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getFanList", forKey: "ac")
         params.setValue("pc", forKey: "sn")
@@ -739,7 +674,8 @@ extension ApiUtil{
             }
         }
     }
-    // MARK: - 关注列表
+    
+    // MARK: 关注列表
     func getFollowerList(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getFollowerList", forKey: "ac")
         params.setValue("pc", forKey: "sn")
@@ -756,12 +692,118 @@ extension ApiUtil{
             }
         }
     }
+    
+    //MARK: 获取信息流
+    func getMessagePool(params:NSMutableDictionary,finish: ApiUtilFinished?){
+        params.setValue("getMessagePool", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    
+    //MARK: 其他人的信息流
+    func getOthersMessagePool(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("getMessagePool", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    
+    //MARK: 添加好友
+    func addFriend(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("addFriend", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    
+    //MARK: 删除好友
+    func deleteFriend(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("deleteFriend", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    
+    // MARK: 添加关注
+    func addFollower(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("addFollower", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    // MARK: 取消关注
+    func deleteFollower(params:NSMutableDictionary,finish:ApiUtilFinished?){
+        params.setValue("deleteFollower", forKey: "ac")
+        params.setValue("pc", forKey: "sn")
+        
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters:params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+                finish?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
 }
 
 
-//MARK: - im
+//MARK: - IM
 extension ApiUtil{
-    // MARK: - im 用户
+    // MARK: im 用户
     func getUser(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getUser", forKey: "ac")
         params.setValue("jiguang", forKey: "sn")
@@ -771,7 +813,7 @@ extension ApiUtil{
             finish?(status,data,msg)
         }
     }
-    // MARK: - im 项目key
+    // MARK: im 项目key
     func getProjectAppKey(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getProjectAppKey", forKey: "ac")
         params.setValue("jiguang", forKey: "sn")
@@ -781,7 +823,7 @@ extension ApiUtil{
             finish?(status,data,msg)
         }
     }
-    // MARK: - im 群列表
+    // MARK: im 群列表
     func getGroups(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("getGroups", forKey: "ac")
         params.setValue("jiguang", forKey: "sn")
@@ -794,7 +836,7 @@ extension ApiUtil{
             finish?(status,data,msg)
         }
     }
-    // MARK: - im 申请进群
+    // MARK: im 申请进群
     func applyGroup(params:NSMutableDictionary,finish:ApiUtilFinished?){
         params.setValue("applyGroup", forKey: "ac")
         params.setValue("jiguang", forKey: "sn")
