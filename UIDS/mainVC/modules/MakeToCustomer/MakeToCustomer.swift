@@ -13,7 +13,7 @@ import SwiftyJSON
 import RxSwift
 
 class CustomerForm: FormViewController {
-   
+    
     var FormObj: FromModel?
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class CustomerForm: FormViewController {
     
     
     func genderVC(FormTitles: [FromData]?,formName: String) {
-    
+        
         //创建form实例
         let form = FormDescriptor()
         
@@ -50,12 +50,12 @@ class CustomerForm: FormViewController {
             self.submit()
         }
         section2.rows.append(row)
-    
+        
         form.sections = [section1,section2]
-    
+        
         self.form = form
     }
-
+    
     func submit() {
         //取消当前编辑状态
         self.view.endEditing(true)
@@ -68,10 +68,10 @@ class CustomerForm: FormViewController {
             }
         }
         
-    
+        
         let sub_val = JSON.init(self.form.formValues()).rawString()
         
-//        Util.svploading(str: "提交中...")
+        //        Util.svploading(str: "提交中...")
         
         let params = NSMutableDictionary()
         params.setSafeObject(self.FormObj?.FormTitle!, forKey: "classify_name" as NSCopying)
@@ -79,10 +79,10 @@ class CustomerForm: FormViewController {
         
         ApiUtil.share.saveSubscribe(params: params) { (status, data, msg) in
             Util.msg(msg: "提交成功", 2)
-//            Util.svpStop(ok: true,callback: {
-//
-////               VCController.pop(with: VCAnimationClassic.defaultAnimation())
-//            },hint: "提交成功")
+            //            Util.svpStop(ok: true,callback: {
+            //
+            ////               VCController.pop(with: VCAnimationClassic.defaultAnimation())
+            //            },hint: "提交成功")
         }
         
     }
@@ -90,7 +90,7 @@ class CustomerForm: FormViewController {
 
 
 class MakeToCustomer: BaseModuleView {
-
+    
     
     public func genderInit(FormObj: FromModel,appKey:String,pageId:Int){
         
@@ -100,7 +100,7 @@ class MakeToCustomer: BaseModuleView {
         //复制按钮
         let button = UIButton.init(type: .infoDark)
         button.tintColor = UIColor.gray
-        button.frame = CGRect.init(x: kScreenW - 40, y: 30, width: 30, height: 30)
+        button.frame = CGRect.init(x: kScreenW - 25, y: 25, width: 20, height: 20)
         formVC.tableView.addSubview(button)
         let appInfo = AppInfoData.shared.appModel
         let app_id = appInfo?.app_id ?? 0

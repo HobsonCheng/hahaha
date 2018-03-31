@@ -11,9 +11,10 @@ import SwiftForms
 import SwiftyJSON
 
 class FeedbackVC: NaviBarVC {
-
+    
     lazy var formlist: FormViewController = {
         let tmp = FormViewController(style: UITableViewStyle.plain)
+        tmp.tableView.tableFooterView = UIView()
         return tmp
     }()
     
@@ -23,13 +24,13 @@ class FeedbackVC: NaviBarVC {
         
         genderUI()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
 }
 
 extension FeedbackVC {
@@ -80,7 +81,7 @@ extension FeedbackVC {
         let message = self.formlist.form.formValues().description
         print(message)
         
-
+        
         let sub_val = JSON.init(self.formlist.form.formValues())
         
         let params = NSMutableDictionary()

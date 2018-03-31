@@ -42,6 +42,7 @@ class SwiftIntroView: UIView, UIScrollViewDelegate {
         scrollView.isPagingEnabled = true
         scrollView.contentSize = CGSize(width: self.frame.size.width * 3, height: scrollView.frame.size.height)
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.showsHorizontalScrollIndicator = false
         self.addSubview(scrollView)
     }
     

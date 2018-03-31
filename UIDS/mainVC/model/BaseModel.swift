@@ -22,3 +22,11 @@ class BaseData: HandyJSON {
     
     required init() {}
 }
+/// 给只需要解析data的json使用
+class CommonModel:HandyJSON{
+    var data: String?
+    var code: String?
+    var msg: String?
+    
+    required init() {}
+}

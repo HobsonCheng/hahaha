@@ -15,6 +15,7 @@ import RxGesture
 import ReusableKit
 import RxDataSources
 import JMessage
+import WebKit
 
 // MARK:- 复用
 private enum Reusable {
@@ -34,7 +35,7 @@ fileprivate struct MetricAppSet {
 
 
 class AppSet: NaviBarVC {
-
+    
     var isUserInfo: Bool = false
     
     var pageData: PageInfo?
@@ -63,7 +64,7 @@ class AppSet: NaviBarVC {
         self.initUI()
         self.bindUI()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -182,7 +183,7 @@ extension AppSet: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-    
+        
         if isUserInfo {
             
             if indexPath.section == 0 && indexPath.row == 1 {
@@ -224,6 +225,27 @@ extension AppSet: UITableViewDelegate {
                     let messageVC = NotifyListVC(name: "NotifyListVC")
                     VCController.push(messageVC!, with: VCAnimationClassic.defaultAnimation())
                 }
+                if indexPath.section == 5 && indexPath.row == 4{
+                    
+                    ApiUtil.share.getAppAbout(finish: { (status, data, msg) in
+                        if status == B_ResponseStatus.success{
+                            DispatchQueue.main.async {
+                                let naviVC = NaviBarVC()
+                                naviVC?.naviBar().setTitle("关于")
+                                let webView = WKWebView.init()
+                                naviVC?.view.addSubview(webView)
+                                webView.backgroundColor = kThemeLightGreyColor
+                                webView.top = naviVC?.naviBar().bottom ?? 64
+                                webView.width = DeviceInfo.screenW
+                                webView.height = DeviceInfo.screenH - (naviVC?.naviBar().bottom ?? 64)
+                                let content = CommonModel.deserialize(from: data)?.data ?? ""
+                                webView.loadHTMLString(content, baseURL: nil)
+                                
+                                VCController.push(naviVC!, with: VCAnimationBottom.defaultAnimation())
+                            }
+                        }
+                    })
+                }
             }else {
                 if indexPath.section == 5 {
                     self.outApp()
@@ -241,7 +263,6 @@ extension AppSet: UITableViewDelegate {
                 }
             }
             
-            
         }
     }
 }
@@ -252,7 +273,7 @@ extension AppSet {
     // MARK:- 登录
     func jump2Login() {
         
-    
+        
     }
     //MARK: - 退出
     func outApp() {
@@ -260,10 +281,10 @@ extension AppSet {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             let alertController = UIAlertController.init(title: nil, message: "退出当前账号？", preferredStyle: .actionSheet)
             let selectFromAlbumAction = UIAlertAction(title: "确定", style: .default, handler: { [weak self] (touch) in
-                 UserUtil.share.removerUser()
+                UserUtil.share.removerUser()
                 self?.vmOutput = self?.viewModel.transform(input: SettingViewModel.SettingInput(type: .setting))
                 self?.tableView.reloadData()
-
+                
                 JMSGUser.logout({ (result, error) in
                     UserDefaults.standard.removeObject(forKey: kCurrentUserName)
                     UserDefaults.standard.removeObject(forKey: kCurrentUserPassword)

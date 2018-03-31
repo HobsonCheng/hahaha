@@ -9,7 +9,7 @@
 import UIKit
 
 class AssembleVC: BaseNameVC {
-
+    
     
     
     @IBOutlet weak var newtips: UILabel!
@@ -49,14 +49,14 @@ class AssembleVC: BaseNameVC {
             self?.getAppHostName()
         }
         
-       
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let appWindow = UIApplication.shared.delegate?.window
@@ -104,15 +104,17 @@ extension AssembleVC {
     //获取app 域名
     
     func getAppHostName() {
-       
+        if pObj?.app_group_info.count == 0 {
+            return
+        }
         BRequestHandler.shared.getAppHostNEW(app_id: (pObj?.app_group_info[0].app_id)!) { [weak self] (hostname) in
             //得到hostname
             BRequestHandler.shared.appHostName = hostname
-        
+            
             self?.getAppInfo()
         }
     }
-
+    
     func getAppInfo() {
         
         self.progressTip(num: 0.1, tip: "第一步完成")
@@ -242,7 +244,7 @@ extension AssembleVC {
             
             if (bigNum + 1) == count {
                 
-    
+                
                 let tmpimage = imageSel?.replacingOccurrences(of: "?imageMogr2/thumbnail/50x50!", with: "").replacingOccurrences(of: "?imageMogr2/thumbnail/60x60!", with: "")
                 
                 let getImgName: String!
@@ -286,7 +288,7 @@ extension AssembleVC {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 4 ) { [weak self] in
-    
+            
             self?.progressTip(num: 0.8, tip: "第四步完成")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
