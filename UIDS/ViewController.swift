@@ -23,34 +23,6 @@ class ViewController: UIViewController,SwiftIntroViewDelegate{
         let sgU = Util.shared
         sgU.checkAndRateWithController(vc:self)
         
-        
-        //下载设置json
-        if Util.isAlone(){
-            if !DownData.find_resourse_UCSetInfo() {
-                
-                let appinfo = AppInfoData.shared.appModel
-                
-                let params = NSMutableDictionary()
-                params.setValue(appinfo?.app_id, forKey: "pid")
-                
-                ApiUtil.share.allRestriction(params: params) {(status, data, msg) in
-                    
-                    //迁移写入指定文件
-                    if data != nil {
-                        
-                        let dataObj = data?.data(using: String.Encoding.utf8)
-                        let tmpData: NSMutableData? = NSMutableData()
-                        tmpData?.append((dataObj)!)
-                        tmpData?.write(toFile: DownData.resoursePathUCSetInfo(), atomically: true)
-                        AllRestrictionHandler.share.init_ucSetConfig()
-                        
-                    }
-                    
-                }
-            }
-        }
-        
-        self.moveTabberIcon()
         //main rootView
         self.startLaunPage()
     }
@@ -60,34 +32,8 @@ class ViewController: UIViewController,SwiftIntroViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func moveTabberIcon() {
-        
-        if !DownData.find_resourse_Icon() {
-            let path = DownData.resoursePath_Icon()
-            
-            for index in 1...6{
-                
-                var path_Name = String.init(format: "tabBar_icon_%d%@.png", index,"@2x")
-                var imgData = UIImage.init(named: path_Name)?.sd_imageData()
-                let tmpData: NSMutableData? = NSMutableData()
-                tmpData?.append((imgData)!)
-                let pathstr = "\((path))/\((path_Name))"
-                tmpData?.write(toFile: pathstr, atomically: true)
-                
-                path_Name = String.init(format: "tabBar_icon_%d%@.png", index,"_sel@2x")
-                imgData = UIImage.init(named: path_Name)?.sd_imageData()
-                let tmpData1: NSMutableData? = NSMutableData()
-                tmpData1?.append((imgData)!)
-                let pathstr1 = "\((path))/\((path_Name))"
-                tmpData1?.write(toFile: pathstr1, atomically: true)
-            }
-        
-        }
-    }
-    
     
     func startLaunPage(){
-        
         
         
         let userDefaults = UserDefaults.standard;
@@ -100,28 +46,17 @@ class ViewController: UIViewController,SwiftIntroViewDelegate{
             userDefaults.synchronize()
         }else{
             
-            if Util.isAlone(){
-                
+            if Util.get_defult(key: KEY_ISNEED_GOTOAPP) != nil && (Util.get_defult(key: KEY_ISNEED_GOTOAPP)) as! String == "1" {//主动进入pid
                 
                 let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
                 VCController.push(searchapp, with:nil)
                 
                 let mainvc = MainVC()
                 VCController.push(mainvc!, with: nil)
-                
             }else {
-                if Util.get_defult(key: KEY_ISNEED_GOTOAPP) != nil && (Util.get_defult(key: KEY_ISNEED_GOTOAPP)) as! String == "1" {//主动进入pid
-                    
-                    let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
-                    VCController.push(searchapp, with:nil)
-                    
-                    let mainvc = MainVC()
-                    VCController.push(mainvc!, with: nil)
-                }else {
-                    
-                    let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
-                    VCController.push(searchapp, with:nil)
-                }
+                
+                let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
+                VCController.push(searchapp, with:nil)
             }
             
             return
@@ -137,16 +72,6 @@ class ViewController: UIViewController,SwiftIntroViewDelegate{
     
     // SwiftIntroViewDelegate 方法
     func doneButtonClick() {
-        if Util.isAlone(){
-            
-            let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
-            VCController.push(searchapp, with:nil)
-            
-            let mainvc = MainVC()
-            VCController.push(mainvc!, with: nil)
-            
-            return
-        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             let searchapp = AppSearchNavVC(nibName: "AppSearchNavVC", bundle: nil);
             VCController.push(searchapp, with:nil)

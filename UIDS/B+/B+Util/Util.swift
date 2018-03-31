@@ -277,22 +277,6 @@ final class Util: NSObject{
         }
     }
     
-    static func isAlone() -> Bool{
-        
-        let documentPaths = Bundle.main.bundlePath
-        let FileName = String.init(format: "%@/%@", documentPaths,"App.json")
-        
-        let file = FileHandle.init(forReadingAtPath: FileName)
-        let tmpData = file?.readDataToEndOfFile()
-        let jsonStr = String(data: tmpData!, encoding: String.Encoding.utf8)
-        
-        let isAlone = AppAlone.deserialize(from: jsonStr)?.alone
-        
-        
-        
-        return isAlone == 1 ? true : false
-    }
-    
 }
 
 
