@@ -59,7 +59,7 @@ class ViewController: UIViewController,SwiftIntroViewDelegate{
         
         introView = SwiftIntroView(frame: self.view.frame)
         introView.delegate = self
-        introView.backgroundColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
+        introView.backgroundColor = kNaviBarBackGroundColor
         self.view.addSubview(introView)
         
     }

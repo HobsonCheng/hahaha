@@ -601,7 +601,8 @@ public enum YJType : Int{
     grabOrder3,//抢单 (2)
     clear,//清除
     search,//搜索
-    quto//问号
+    quto,//问号
+    report//举报
 }
 
 private let YJIcons = ["\u{e634}",
@@ -740,4 +741,5 @@ private let YJIcons = ["\u{e634}",
                        "\u{e665}",
                        "\u{ea22}",
                        "\u{e6c6}",
-                       "\u{e72d}"]
+                       "\u{e72d}",
+                       "\u{e668}"]

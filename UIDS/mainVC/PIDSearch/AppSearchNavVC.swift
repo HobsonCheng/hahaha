@@ -334,7 +334,7 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
-        var text = (YJType.quto.text ?? "？") +  "暂未找到您的单位APP，请联系您单位的网管"
+        var text = (YJType.quto.text ?? "？") + "暂未找到您的单位APP，请联系您单位的网管"
         
         if self.searchKey == nil || self.searchKey?.count == 0 {
             text = "搜索一个公司试一下"
@@ -347,8 +347,11 @@ extension AppSearchNavVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         attributes.setObject(textColor!, forKey: NSAttributedStringKey.foregroundColor as NSCopying)
         attributes.setObject(font ?? UIFont.systemFont(ofSize: 15), forKey: NSAttributedStringKey.font as NSCopying)
         let str = NSMutableAttributedString.init(string: text, attributes: attributes as? [NSAttributedStringKey : Any])
-        attributes.setObject(UIColor.init(hexString: "#3AACF0"), forKey: NSAttributedStringKey.foregroundColor as NSCopying)
-        str.setAttributes(attributes as! [NSAttributedStringKey : Any], range: NSRange.init(location: 0, length: 1))
+        if !(self.searchKey == nil || self.searchKey?.count == 0) {
+            attributes.setObject(UIColor.init(hexString: "#3AACF0"), forKey: NSAttributedStringKey.foregroundColor as NSCopying)
+            str.setAttributes((attributes as! [NSAttributedStringKey : Any]), range: NSRange.init(location: 0, length: 1))
+        }
+       
         return str
     }
     

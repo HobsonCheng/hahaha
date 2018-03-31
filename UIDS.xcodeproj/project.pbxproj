@@ -22,6 +22,7 @@
 		3168D844206FC91900E23A06 /* EasyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D843206FC91900E23A06 /* EasyAlert.swift */; };
 		3168D846206FCBBE00E23A06 /* SearchBarFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D845206FCBBE00E23A06 /* SearchBarFiled.swift */; };
 		3168D848206FCD8C00E23A06 /* UIDS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3168D847206FCD7300E23A06 /* UIDS.ttf */; };
+		3168D84A206FCF6200E23A06 /* DeviceInfoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D849206FCF6100E23A06 /* DeviceInfoUtil.swift */; };
 		318F62822068D6E200EB10C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318F62812068D6E100EB10C7 /* Assets.xcassets */; };
 		319C740C2053BB4100EF0935 /* RelationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319C740A2053BB4100EF0935 /* RelationCell.swift */; };
 		319C740F2053BF3800EF0935 /* RelationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319C740E2053BF3800EF0935 /* RelationCell.xib */; };
@@ -469,6 +470,7 @@
 		3168D843206FC91900E23A06 /* EasyAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyAlert.swift; sourceTree = "<group>"; };
 		3168D845206FCBBE00E23A06 /* SearchBarFiled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarFiled.swift; sourceTree = "<group>"; };
 		3168D847206FCD7300E23A06 /* UIDS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UIDS.ttf; sourceTree = "<group>"; };
+		3168D849206FCF6100E23A06 /* DeviceInfoUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoUtil.swift; sourceTree = "<group>"; };
 		318F62812068D6E100EB10C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		319C740A2053BB4100EF0935 /* RelationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationCell.swift; sourceTree = "<group>"; };
 		319C740E2053BF3800EF0935 /* RelationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelationCell.xib; sourceTree = "<group>"; };
@@ -2022,6 +2024,7 @@
 				E5E59ABE2014CE4E0040D30D /* SDAutoLayout */,
 				E1EA270D2011C5FB00F31796 /* DiskCache */,
 				E1C031C5200704CA00B1A377 /* LaunchGuide */,
+				3168D849206FCF6100E23A06 /* DeviceInfoUtil.swift */,
 				3168D845206FCBBE00E23A06 /* SearchBarFiled.swift */,
 				3168D843206FC91900E23A06 /* EasyAlert.swift */,
 				E594E07E2003AEE200BDF511 /* AppInfo.h */,
@@ -2700,6 +2703,7 @@
 				E1A71096205675630094545A /* JACMessageImageContentView.swift in Sources */,
 				E1BD55D9201B352C009482EC /* BaseTableView.swift in Sources */,
 				E5E59ACE2014CE580040D30D /* UIColor+YMHex.m in Sources */,
+				3168D84A206FCF6200E23A06 /* DeviceInfoUtil.swift in Sources */,
 				E1A711C2205679AA0094545A /* JCVideoManager.swift in Sources */,
 				E1A71173205676B90094545A /* JCDatePickerViwe.swift in Sources */,
 				E1A71089205675630094545A /* JCChatViewLayoutAttributes.swift in Sources */,

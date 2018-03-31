@@ -242,50 +242,7 @@ class ApiUtil: NSObject {
             }
         }
     }
-    //MARK: - CMS_detail
-    func getInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-        params.setValue("getInvitation", forKey: "ac")
-        params.setValue("cms", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                
-            }else {
-                Util.msg(msg: msg!, 3)
-            }
-            
-            fininsh?(status,data,msg)
-        }
-    }
-    //MARK: - 获取评论列表
-    func getRepliesByInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
-        params.setValue("getRepliesByInvitation", forKey: "ac")
-        params.setValue("cms", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                fininsh?(status,data,msg)
-            }else {
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
-    //MARK: - 添加评论
-    func addReply(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
-        params.setValue("addReply", forKey: "ac")
-        params.setValue("cms", forKey: "sn")
-        
-        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
-            
-            if B_ResponseStatus.success == status {
-                fininsh?(status,data,msg)
-            }else {
-                Util.msg(msg: msg!, 3)
-            }
-        }
-    }
+    
     //MARK: - 用户信息
     func getInfo(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
         params.setValue("getInfo", forKey: "ac")
@@ -507,15 +464,71 @@ class ApiUtil: NSObject {
         }
     }
     
-    
-    
-    
 }
 
 
 //MARK: - cms
 extension ApiUtil{
-    
+    //MARK: CMS_detail
+    func getInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getInvitation", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+            
+            fininsh?(status,data,msg)
+        }
+    }
+    //MARK: 获取评论列表
+    func getRepliesByInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?) {
+        params.setValue("getRepliesByInvitation", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
+    //MARK: 举报
+    func tipOffInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?){
+        params.setValue("cms", forKey: "sn")
+        params.setValue("tipOffinvitaion", forKey: "ac")
+        let user = UserUtil.share.appUserInfo
+        params.setValue(user?.pid, forKey: "do_pid")
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+        
+    }
+    //MARK: 添加评论
+    func addReply(params: NSMutableDictionary,fininsh: ApiUtilFinished?)  {
+        params.setValue("addReply", forKey: "ac")
+        params.setValue("cms", forKey: "sn")
+        
+        BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in
+            
+            if B_ResponseStatus.success == status {
+                fininsh?(status,data,msg)
+            }else {
+                Util.msg(msg: msg!, 3)
+            }
+        }
+    }
     //MARK: 删帖
     func cms_DeleteNews(params: NSMutableDictionary,finish: ApiUtilFinished?){
         params.setValue("delInvitation", forKey: "ac")

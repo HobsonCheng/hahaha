@@ -13,7 +13,7 @@ class TopicCell: UITableViewCell {
     // model
     var cellObj: TopicData?{
         didSet{
-           showData()
+            showData()
         }
     }
     var cellButton: UIButton?
@@ -41,7 +41,7 @@ class TopicCell: UITableViewCell {
         self.icon.layer.cornerRadius = 20
         self.icon.layer.masksToBounds = true
         
-        self.forward.setYJIcon(icon: .forward, iconSize: 16, forState: UIControlState.normal)
+        self.forward.setYJIcon(icon: .report, iconSize: 16, forState: UIControlState.normal)
         self.comment.setYJIcon(icon: .comment, iconSize: 16, forState: UIControlState.normal)
         self.zan.setYJIcon(icon: .praise2, iconSize: 16, forState: UIControlState.normal)
         self.zan.setYJIcon(icon: .praised0, iconSize:16,forState: UIControlState.selected)
@@ -50,13 +50,13 @@ class TopicCell: UITableViewCell {
         setGotoPersonCenter()
         self.autoresizesSubviews = false
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     private func showData() {
         if self.cellObj != nil {
             if let url = URL.init(string: self.cellObj?.user_info.head_portrait ?? "https://;;") {
@@ -66,7 +66,7 @@ class TopicCell: UITableViewCell {
             self.username.text = self.cellObj?.user_info.zh_name
             self.addtime.text = self.cellObj?.add_time
             if cellObj?.praise_num == 0{
-               self.praiseNum.text = "赞"
+                self.praiseNum.text = "赞"
             }else{
                 self.praiseNum.text = "\(self.cellObj?.praise_num ?? 0)"
             }
@@ -105,7 +105,7 @@ class TopicCell: UITableViewCell {
         var index = 0
         
         for item in imgs! {
-        
+            
             let startX = ((index)%rank) * (W + rankMargin)
             let startY = (index/rank) * (H + rowMargin)
             let top = 5
@@ -124,12 +124,12 @@ class TopicCell: UITableViewCell {
                 $0.tag = index
             }
             self.showImgView?.addSubview(touchBt)
-         
+            
             index = index + 1
             
             allHeight = Double(speedView.bottom)
         }
-     
+        
         
         self.imgViewHeight.constant = CGFloat(allHeight)
         
@@ -183,8 +183,31 @@ class TopicCell: UITableViewCell {
     //MARK: - action
     
     @IBAction func forwardAction(_ sender: Any) {
-        let shareView = Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?.last as! ShareView
-        shareView.show()
+        var actionArr = [AlertActionInfo]()
+        let params = NSMutableDictionary()
+        params.setValue(self.cellObj?.id, forKey: "group_invation_id")
+        params.setValue(self.cellObj?.group_pid, forKey: "group_pid")
+        let tortInfo = AlertActionInfo.init(title: "侵权举报", style: UIAlertActionStyle.destructive) { (action) in
+            params.setValue("侵权举报", forKey: "reason")
+            ApiUtil.share.tipOffInvitation(params: params, fininsh: { (status, data, msg) in
+                if status == B_ResponseStatus.success{
+                    Util.msg(msg: "举报成功", 2)
+                }
+            })
+        }
+        let damageInfo = AlertActionInfo.init(title: "有害信息举报", style: UIAlertActionStyle.destructive) { (action) in
+            params.setValue("有害信息举报", forKey: "reason")
+            ApiUtil.share.tipOffInvitation(params: params, fininsh: { (status, data, msg) in
+                if status == B_ResponseStatus.success{
+                    Util.msg(msg: "举报成功", 2)
+                }
+            })
+        }
+        let cancleInfo = AlertActionInfo.init(title: "取消", style: UIAlertActionStyle.cancel, actionClosure: nil)
+        actionArr.append(tortInfo)
+        actionArr.append(damageInfo)
+        actionArr.append(cancleInfo)
+        EasyAlert.showAlertVC(title: "举报", message: "请选择举报的类型", style: .alert, actionInfos: actionArr)
     }
     
     @IBAction func commentAction(_ sender: Any) {
@@ -220,6 +243,6 @@ class TopicCell: UITableViewCell {
                 Util.msg(msg: msg!, 3)
             }
         }
-     
+        
     }
 }

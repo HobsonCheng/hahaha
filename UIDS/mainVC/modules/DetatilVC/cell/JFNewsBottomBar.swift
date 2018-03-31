@@ -28,7 +28,7 @@ class JFNewsBottomBar : UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.shareButton.setYJIcon(icon: .forward, iconSize: 16, forState: UIControlState.normal)
+        self.shareButton.setYJIcon(icon: .report, iconSize: 16, forState: UIControlState.normal)
         self.praiseButton.setYJIcon(icon: .praise2, iconSize: 16, forState: UIControlState.normal)
         self.praiseButton.setYJIcon(icon: .praised0, iconSize:16,forState: UIControlState.selected)
     }
@@ -54,5 +54,5 @@ class JFNewsBottomBar : UIView {
     @IBAction func didTappedPraiseButton(_ button: UIButton) {
         delegate?.didTappedPraiseButton(button)
     }
-
+    
 }

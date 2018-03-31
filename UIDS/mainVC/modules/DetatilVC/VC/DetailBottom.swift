@@ -49,7 +49,31 @@ extension NewsDetailVC: JFNewsBottomBarDelegate, CLBottomCommentViewDelegate {
     }
     
     func didTappedShareButton(_ button: UIButton) {
-        self.shareView?.show()
+        var actionArr = [AlertActionInfo]()
+        let params = NSMutableDictionary()
+        params.setValue(self.model?.id, forKey: "group_invation_id")
+        params.setValue(self.model?.group_pid, forKey: "group_pid")
+        let tortInfo = AlertActionInfo.init(title: "侵权举报", style: UIAlertActionStyle.destructive) { (action) in
+            params.setValue("侵权举报", forKey: "reason")
+            ApiUtil.share.tipOffInvitation(params: params, fininsh: { (status, data, msg) in
+                if status == B_ResponseStatus.success{
+                    Util.msg(msg: "举报成功", 2)
+                }
+            })
+        }
+        let damageInfo = AlertActionInfo.init(title: "有害信息举报", style: UIAlertActionStyle.destructive) { (action) in
+            params.setValue("有害信息举报", forKey: "reason")
+            ApiUtil.share.tipOffInvitation(params: params, fininsh: { (status, data, msg) in
+                if status == B_ResponseStatus.success{
+                    Util.msg(msg: "举报成功", 2)
+                }
+            })
+        }
+        let cancleInfo = AlertActionInfo.init(title: "取消", style: UIAlertActionStyle.cancel, actionClosure: nil)
+        actionArr.append(tortInfo)
+        actionArr.append(damageInfo)
+        actionArr.append(cancleInfo)
+        EasyAlert.showAlertVC(title: "举报", message: "请选择举报的类型", style: .alert, actionInfos: actionArr)
     }
     
     func didTappedPraiseButton(_ button: UIButton) {
