@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phh-Sf-Nb4">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phh-Sf-Nb4">
                     <rect key="frame" x="0.0" y="66" width="375" height="60"/>
                     <subviews>
                         <searchBar contentMode="redraw" placeholder="搜索想要的公司" translatesAutoresizingMaskIntoConstraints="NO" id="cvy-Da-hi8">
