@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         app_launchOptions = launchOptions
 //        BQLAuthEngine.single.registerApp()
         IQKeyboardManager.sharedManager().enable = true
-        
         return true
     }
 
