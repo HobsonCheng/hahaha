@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Font_Awesome_Swift
 import Then
 import RxSwift
 protocol JFProfileHeaderViewDelegate {
@@ -41,9 +40,8 @@ class JFProfileHeaderView: UIView {
     
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
-    
-    @IBOutlet weak var autyHeight: NSLayoutConstraint!
-    
+        
+    @IBOutlet weak var menuHeight: NSLayoutConstraint!
     
     @IBOutlet weak var menuView: UIView!
     // 声明属性
@@ -118,7 +116,9 @@ class JFProfileHeaderView: UIView {
             self.itemViews.append(itemview)
             
             self.menuView.addSubview(itemview)
-            self.menuView.height = itemview.bottom + 10
+            self.menuHeight.constant = itemview.bottom + 10
+            self.layoutIfNeeded()
+//            self.menuView.height = itemview.bottom + 10
         }
         self.height = self.menuView.bottom
     

@@ -216,7 +216,7 @@ extension RootVC {//扩展
     }
     //MARK: 生成个人中心
     func genderPersonalCenter(model_id: String,startY: UnsafeMutablePointer<CGFloat>) {
-        let personalCenter = PersonalCenter.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 0))
+        let personalCenter = PersonalCenter.init(frame: CGRect.init(x: 0, y: startY.pointee, width: self.view.width, height: 240))
         let userInfo = UserUtil.share.appUserInfo
         self.mainView?.addSubview(personalCenter)
         personalCenter.reloadCell = {[weak self] in

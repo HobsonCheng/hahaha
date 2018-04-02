@@ -12,10 +12,11 @@ import JMessage
 class PersonalCenter: BaseModuleView {
     
     var reloadCell: ReloadOver?
-    var header: JFProfileHeaderView?
+    fileprivate var header: JFProfileHeaderView?
     var isOwner: Bool = true
     var itemObj: UserInfoData?
     var otherInfo : UserInfoData?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.genderView()
@@ -26,9 +27,9 @@ class PersonalCenter: BaseModuleView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func genderView(){
+    fileprivate func genderView(){
         header = (Bundle.main.loadNibNamed("JFProfileHeaderView", owner: nil, options: nil)?.last as! JFProfileHeaderView)
-        header?.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height:  200)
+        header?.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height:  240)
         header?.initView()
         header?.delegate = self
         self.addSubview(header!)
@@ -108,7 +109,7 @@ class PersonalCenter: BaseModuleView {
             self.header?.avatarButton.isUserInteractionEnabled = false
         })
     }
-    //MARK :- 根据appkey设置头部
+    //MARK : 根据appkey设置头部
     func setHeaderWithAppKey(){
         let ownInfo = UserUtil.share.appUserInfo
         if ownInfo?.user_name == itemObj?.user_name{
@@ -311,7 +312,7 @@ extension PersonalCenter: JFProfileHeaderViewDelegate{
     }
     
     func reloadViewSize() {
-        self.height = (self.header?.bottom)!
+        self.height = self.header?.bottom ?? 240
         self.reloadCell!()
     }
 }

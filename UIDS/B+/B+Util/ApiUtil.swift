@@ -502,7 +502,7 @@ extension ApiUtil{
     //MARK: 举报
     func tipOffInvitation(params: NSMutableDictionary,fininsh: ApiUtilFinished?){
         params.setValue("cms", forKey: "sn")
-        params.setValue("tipOffinvitaion", forKey: "ac")
+        params.setValue("tipOffInvitation", forKey: "ac")
         let user = UserUtil.share.appUserInfo
         params.setValue(user?.pid, forKey: "do_pid")
         BRequestHandler.shared.get(APIString: "mt", parameters: params as? [String : Any]) { (status, data, msg) in

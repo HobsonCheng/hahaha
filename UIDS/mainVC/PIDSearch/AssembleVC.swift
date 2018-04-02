@@ -17,6 +17,7 @@ class AssembleVC: BaseNameVC {
     @IBOutlet weak var sonTips: UILabel!
     @IBOutlet weak var mainTips: UILabel!
     @IBOutlet weak var appIcon: UIImageView!
+    @IBOutlet weak var gobackBtn: UIButton!
     var pObj: Project?
     var tiplist: [String]!
     
@@ -48,7 +49,9 @@ class AssembleVC: BaseNameVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.getAppHostName()
         }
-        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            self.gobackBtn.isHidden = false
+//        }
         
     }
     

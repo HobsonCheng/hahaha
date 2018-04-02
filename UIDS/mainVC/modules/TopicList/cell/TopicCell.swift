@@ -33,6 +33,7 @@ class TopicCell: UITableViewCell {
     
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var addtime: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -185,7 +186,7 @@ class TopicCell: UITableViewCell {
     @IBAction func forwardAction(_ sender: Any) {
         var actionArr = [AlertActionInfo]()
         let params = NSMutableDictionary()
-        params.setValue(self.cellObj?.id, forKey: "group_invation_id")
+        params.setValue(self.cellObj?.id, forKey: "group_invitation_id")
         params.setValue(self.cellObj?.group_pid, forKey: "group_pid")
         let tortInfo = AlertActionInfo.init(title: "侵权举报", style: UIAlertActionStyle.destructive) { (action) in
             params.setValue("侵权举报", forKey: "reason")

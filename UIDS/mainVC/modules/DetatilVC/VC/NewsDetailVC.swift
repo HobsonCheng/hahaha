@@ -211,7 +211,7 @@ class NewsDetailVC: NaviBarVC {
         bridge = WebViewJavascriptBridge(for: webView, webViewDelegate: self, handler: { (data, responseCallback) in
             responseCallback!("Response for message from ObjC")
             
-            guard let dict = data as! [String : AnyObject]! else {return}
+            guard let dict = data as! [String : AnyObject]? else {return}
             
             let index = Int(truncating: dict["index"] as! NSNumber)
             let x = CGFloat(truncating: dict["x"] as! NSNumber)

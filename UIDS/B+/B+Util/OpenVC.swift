@@ -74,7 +74,10 @@ class OpenVC: NSObject {
             let regVC = RegVC.init(name:"RegVC")
             VCController.push(regVC!, with: VCAnimationBottom.defaultAnimation())
         case PAGE_TYPE_custom:
-            Util.msg(msg: "hybrid - 牛逼", 1)
+            let webVc = OtherWebVC.init(name: "wap")
+            let url = pageInfo?.jump_url
+            webVc?.urlString = url
+            VCController.push(webVc!, with: VCAnimationClassic.defaultAnimation())
             break
         case PAGE_TYPE_news:
             let detail = NewsDetailVC.init(name: "DetatilVC")

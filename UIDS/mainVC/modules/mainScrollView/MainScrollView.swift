@@ -100,7 +100,7 @@ extension MainScrollView: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
             return nil
         }
         
-        let text = "吃🐔吃🐔"
+        let text = ""
         let textColor = UIColor.init(hexString: "444444")
         let attributes = NSMutableDictionary()
         let paragraph = NSMutableParagraphStyle()
