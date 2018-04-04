@@ -72,7 +72,7 @@ extension LoginView {
     }
 }
 //MARK : page vc deleaget
-extension LoginView: TYTabPagerControllerDelegate, TYTabPagerControllerDataSource {
+extension LoginView: TYTabPagerControllerDelegate, TYTabPagerControllerDataSource,TYTabPagerBarDelegate{
     
     func numberOfControllersInTabPagerController() -> Int {
         

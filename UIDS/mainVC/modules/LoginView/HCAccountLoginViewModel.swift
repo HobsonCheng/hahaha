@@ -59,7 +59,7 @@ class HCAccountLoginViewModel {
                 
                 return Observable.just(dic).asDriver(onErrorJustReturn: NSMutableDictionary())
             }else {
-            
+                
                 return Observable.just(NSMutableDictionary()).asDriver(onErrorJustReturn: NSMutableDictionary())
             }
             

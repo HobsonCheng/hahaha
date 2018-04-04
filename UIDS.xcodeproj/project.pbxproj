@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		310E0C2820577591004446C5 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E0C2720577591004446C5 /* HeaderItemView.swift */; };
+		3114D1EC2072768700094118 /* UIDS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3114D1EB2072767100094118 /* UIDS.ttf */; };
 		31233ED92068A15A00B82B14 /* bgImgTmp.png in Resources */ = {isa = PBXBuildFile; fileRef = 31233ED82068A15A00B82B14 /* bgImgTmp.png */; };
 		314B710E205039AE00B455CB /* MessagePoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314B710D205039AE00B455CB /* MessagePoolModel.swift */; };
 		314B7111205039F500B455CB /* MessagePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314B7110205039F500B455CB /* MessagePool.swift */; };
@@ -21,7 +22,6 @@
 		31687A462046F98C00D4F6AE /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31687A452046F98C00D4F6AE /* ShareView.xib */; };
 		3168D844206FC91900E23A06 /* EasyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D843206FC91900E23A06 /* EasyAlert.swift */; };
 		3168D846206FCBBE00E23A06 /* SearchBarFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D845206FCBBE00E23A06 /* SearchBarFiled.swift */; };
-		3168D848206FCD8C00E23A06 /* UIDS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3168D847206FCD7300E23A06 /* UIDS.ttf */; };
 		3168D84A206FCF6200E23A06 /* DeviceInfoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D849206FCF6100E23A06 /* DeviceInfoUtil.swift */; };
 		318F62822068D6E200EB10C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318F62812068D6E100EB10C7 /* Assets.xcassets */; };
 		319C740C2053BB4100EF0935 /* RelationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319C740A2053BB4100EF0935 /* RelationCell.swift */; };
@@ -455,6 +455,7 @@
 
 /* Begin PBXFileReference section */
 		310E0C2720577591004446C5 /* HeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
+		3114D1EB2072767100094118 /* UIDS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UIDS.ttf; sourceTree = "<group>"; };
 		31233ED82068A15A00B82B14 /* bgImgTmp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgImgTmp.png; sourceTree = "<group>"; };
 		313B25EE205CF7FA00DA3810 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		314B710D205039AE00B455CB /* MessagePoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePoolModel.swift; sourceTree = "<group>"; };
@@ -469,7 +470,6 @@
 		31687A452046F98C00D4F6AE /* ShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
 		3168D843206FC91900E23A06 /* EasyAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyAlert.swift; sourceTree = "<group>"; };
 		3168D845206FCBBE00E23A06 /* SearchBarFiled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarFiled.swift; sourceTree = "<group>"; };
-		3168D847206FCD7300E23A06 /* UIDS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UIDS.ttf; sourceTree = "<group>"; };
 		3168D849206FCF6100E23A06 /* DeviceInfoUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoUtil.swift; sourceTree = "<group>"; };
 		318F62812068D6E100EB10C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		319C740A2053BB4100EF0935 /* RelationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationCell.swift; sourceTree = "<group>"; };
@@ -1856,7 +1856,7 @@
 		E1C0321E200C3B2B00B1A377 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				3168D847206FCD7300E23A06 /* UIDS.ttf */,
+				3114D1EB2072767100094118 /* UIDS.ttf */,
 				E1E31B9820107E1400776701 /* uidashi.ttf */,
 			);
 			path = data;
@@ -2309,7 +2309,7 @@
 				TargetAttributes = {
 					E1A21DDB1FFF319300596BB7 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = JL9U2ZHT4Q;
+						DevelopmentTeam = 73TMTTWN9W;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -2338,7 +2338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3168D848206FCD8C00E23A06 /* UIDS.ttf in Resources */,
+				3114D1EC2072768700094118 /* UIDS.ttf in Resources */,
 				E1A711C720576F1D0094545A /* 2@3x.png in Resources */,
 				E11B62AE2018254B00CE5E1D /* JFNewsBottomBar.xib in Resources */,
 				E1BD55DB201B3750009482EC /* empty_placeholder@2x.png in Resources */,
@@ -3049,14 +3049,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
+				DEVELOPMENT_TEAM = 73TMTTWN9W;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = UIDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uimaster;
+				PRODUCT_BUNDLE_IDENTIFIER = com.master.ui1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3077,14 +3077,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = JL9U2ZHT4Q;
+				DEVELOPMENT_TEAM = 73TMTTWN9W;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = UIDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uimaster;
+				PRODUCT_BUNDLE_IDENTIFIER = com.master.ui1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

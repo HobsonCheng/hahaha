@@ -18,6 +18,7 @@ import SwiftyJSON
 import ESPullToRefresh
 import DZNEmptyDataSet
 import SnapKit
+import IQKeyboardManagerSwift
 
 //MARK: - 历史记录
 enum HistoryKey {
@@ -49,7 +50,7 @@ class AppSearchNavVC: NaviBarVC{
     //MARK: - 视图生命周期
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        IQKeyboardManager.sharedManager().enable = false
         if let name = UIApplication.shared.alternateIconName {
             UIApplication.shared.setAlternateIconName(nil) { (err:Error?) in
                 print("set icon error：\(String(describing: err))")
@@ -96,10 +97,13 @@ class AppSearchNavVC: NaviBarVC{
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.lightContent
     }
-    
 }
 //MARK: - gender UI
 extension AppSearchNavVC {

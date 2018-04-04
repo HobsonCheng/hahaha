@@ -15,7 +15,7 @@ import NSObject_Rx
 
 
 class RegVC: NaviBarVC {
-
+    //MARK: 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
         self.naviBar().setTitle("注册")
@@ -24,23 +24,20 @@ class RegVC: NaviBarVC {
         view.rx.tapGesture().do(onNext: { [weak self] _ in
             self?.view.endEditing(true)
         }).subscribe().disposed(by: rx.disposeBag)
-        //
         
         initEnableMudule()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
 
-//MARK: 初始化
+//MARK:- 初始化
 extension RegVC: AccountLoginable {
     
-    
-    // MARK:- 初始化 登录 输入框
+    // MARK: 初始化 登录 输入框
     func initEnableMudule() {
         
         // 创建 容器组件
@@ -55,7 +52,7 @@ extension RegVC: AccountLoginable {
         let passwordField_2 = initOtherField(type: 2, titleStr: "确认密码") {}
         let nicknameField = initOtherField(type: 3, titleStr: "昵称") {}
         let (regBtnView, regBT) = initRegBtnView { event in print(event ) }
-       
+        
         var getcodeo = ""
         weak var tmpimgCodeView: UITextField?
         tmpimgCodeView = UITextField()
@@ -63,25 +60,25 @@ extension RegVC: AccountLoginable {
         //加入 短信验证或者邮箱验证入
         let (smsCodeField,phoneCodeBt) = initSMSCode { }
         //单纯验证码
-        let  auth_code_type = AllRestrictionHandler.share.ucSetCofig.project_set?.regist_auth_code_type
+//        let  auth_code_type = AllRestrictionHandler.share.ucSetCofig.project_set?.regist_auth_code_type
         
         var imgCodeView: UITextField!
-        if auth_code_type == 0 {//图片验证码
-            imgCodeView = initImgCodeView(type: "regist") { [weak self] (codekey) in
-                getcodeo = codekey!
-                let regServise = RegVCService(input: (accountField, passwordField, passwordField_2, nicknameField, tmpimgCodeView!, regBT,UITextField()), codekey: getcodeo)
-                
-                regServise.loginBtnEnable.drive(onNext: { (beel) in
-                    
-                    regBT.isEnabled = beel
-                    
-                }).disposed(by: (self?.rx.disposeBag)!)
-                regServise.loginResult.drive().disposed(by: (self?.rx.disposeBag)!)
-                
-            }
-            tmpimgCodeView = imgCodeView
-        }else if auth_code_type == 1 {
-            
+//        if auth_code_type == 0 {//图片验证码
+//            imgCodeView = initImgCodeView(type: "regist") { [weak self] (codekey) in
+//                getcodeo = codekey!
+//                let regServise = RegVCService(input: (accountField, passwordField, passwordField_2, nicknameField, tmpimgCodeView!, regBT,UITextField()), codekey: getcodeo)
+//
+//                regServise.loginBtnEnable.drive(onNext: { (beel) in
+//
+//                    regBT.isEnabled = beel
+//
+//                }).disposed(by: (self?.rx.disposeBag)!)
+//                regServise.loginResult.drive().disposed(by: (self?.rx.disposeBag)!)
+//
+//            }
+//            tmpimgCodeView = imgCodeView
+//        }else if auth_code_type == 1 {
+        
             tmpimgCodeView = UITextField()
             imgCodeView = initImgCodeView(type: "regist") { [weak self] (codekey) in
                 getcodeo = codekey!
@@ -90,7 +87,11 @@ extension RegVC: AccountLoginable {
                 regServise.getCodeBtEnable.drive(onNext: { (beel) in
                     
                     phoneCodeBt.isEnabled = beel
-                    
+                    if beel{
+                        phoneCodeBt.backgroundColor = kNaviBarBackGroundColor
+                    }else{
+                        phoneCodeBt.backgroundColor = .lightGray
+                    }
                 }).disposed(by: (self?.rx.disposeBag)!)
                 
                 regServise.getCodeResult.drive(onNext: { (params) in
@@ -123,8 +124,8 @@ extension RegVC: AccountLoginable {
                 
             }
             tmpimgCodeView = imgCodeView
-        }
-    
+//        }
+        
         
         
         
@@ -206,8 +207,7 @@ extension RegVC: AccountLoginable {
             make.top.equalTo(smsCodeField.snp.bottom).offset(MetricGlobal.margin * 2)
             make.height.equalTo(Metric.fieldHeight)
         }
-
+        
     }
-    
     
 }

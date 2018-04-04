@@ -16,20 +16,20 @@ class AppKeyModel: BaseModel {
 private let MsgUtilShared = MsgUtil()
 
 class MsgUtil: NSObject {
-
+    
     static var shared : MsgUtil {
         return MsgUtilShared
     }
     
     func showUtil() {
-      
+        
         let suspen = BSuspensionView(frame: .zero)
         suspen.leanType = BSuspensionViewLeanType.Horizontal
         suspen.initBt(frame: .zero, delegate: self)
         suspen.frame = CGRect(x: kScreenW - 50, y: kScreenH - 150, width: 50, height: 50)
         let appwindow = UIApplication.shared.delegate?.window
         appwindow??.addSubview(suspen)
-    
+        
         MsgUtil.msg_IMInit()
     }
     
@@ -65,7 +65,7 @@ class MsgUtil: NSObject {
             _setupJMessage()
             
         }
-    
+        
     }
     
 }
@@ -87,22 +87,19 @@ extension MsgUtil:BSuspensionViewDelegate{
                     let imuser = IMUserModel.deserialize(from: data)?.data
                     
                     self?.loginIM(username: (imuser?.user_name)!, password: (imuser?.password)!)
-                    
-                }else {
-                
                     MBProgressHUD_JChat.show(text: tips!, view: nil, 2)
                 }
             })
-        
+            
         } else {
             
             self.gotoChatlist()
             
         }
-
+        
     }
     
-
+    
     
     private func loginIM(username: String, password: String){
         
@@ -140,7 +137,7 @@ extension MsgUtil:BSuspensionViewDelegate{
             
         })
     }
-
+    
 }
 
 //MARK - 生成视图
@@ -236,7 +233,7 @@ class BSuspensionView: UIButton {
                 newCenter = CGPoint(x: panPoint.x, y: touchWidth / 3)
             }else if minSpace == bottom {
                 newCenter = CGPoint(x: panPoint.x, y: screenHeight - touchWidth / 3)
-
+                
             }
             
             UIView.animate(withDuration: 0.25, animations: {

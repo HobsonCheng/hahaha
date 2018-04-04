@@ -40,7 +40,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.master.ui</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -98,6 +98,10 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>sciencemeetingoa</string>
+		<string>zhifubaoclientzaipang</string>
+		<string>sinanews</string>
+		<string>dingtalk</string>
 		<string>baidumap</string>
 		<string>dianping</string>
 		<string>tenpay</string>

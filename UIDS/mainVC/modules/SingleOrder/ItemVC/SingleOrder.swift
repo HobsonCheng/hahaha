@@ -70,11 +70,15 @@ extension SingleOrder {
         }
         if VCController.getTopVC() is AssembleVC{
             let vc = VCController.getVC("RootVC_tabber")
+            self.addSubview(self.pageVC.view)
             vc?.addChildViewController(self.pageVC)
+            self.pageVC.didMove(toParentViewController: vc)
+        }else{
+            VCController.getTopVC()?.addChildViewController(self.pageVC)
+            self.addSubview(self.pageVC.view)
+            self.pageVC.didMove(toParentViewController: VCController.getTopVC())
         }
-        VCController.getTopVC()?.addChildViewController(self.pageVC)
-        self.addSubview(self.pageVC.view)
-        self.pageVC.didMove(toParentViewController: VCController.getTopVC())
+        
         
         self.pageVC.view.frame = self.bounds
         

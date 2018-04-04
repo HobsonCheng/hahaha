@@ -14,6 +14,9 @@ import RxCocoa
 import NSObject_Rx
 //import Font_Awesome_Swift
 
+//用于确认密码
+fileprivate var pwd : String?
+
 //MARK: 注册扩展 那边太拥挤了
 extension AccountLoginable where Self : BaseNameVC {//协议扩展
     
@@ -41,7 +44,7 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
         
         // 添加
         btnView.addSubview(regBtn)
-     
+        
         // 布局
         regBtn.snp.makeConstraints { (make) in
             
@@ -49,7 +52,7 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
             make.height.equalTo(Metric.loginBtnHeight)
         }
         
-
+        
         return (btnView, regBtn)
     }
     
@@ -69,19 +72,22 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
             if type == 1 {
                 if AllRestrictionHandler.share.ucSetCofig.project_set?.regist_type == 2 {//条件注册
                     
-                    let bytes = Util.strToByte(str: (AllRestrictionHandler.share.ucSetCofig.project_set?.regist_condition)!)
+//                    let bytes = Util.strToByte(str: (AllRestrictionHandler.share.ucSetCofig.project_set?.regist_condition)!)
                     
-                    if (bytes[0] == "1") && (bytes[1] == "1") {
-                        $0.placeholder = "请输入手机号/邮箱号"
-                    }else if bytes[0] == "1" {
+//                    if (bytes[0] == "1") && (bytes[1] == "1") {
+//                        $0.placeholder = "请输入手机号/邮箱号"
+//                    }else if bytes[0] == "1" {
                         $0.placeholder = "请输入手机号"
-                    }else if bytes[1] == "1" {
-                        $0.placeholder = "请输入邮箱号"
-                    }
+//                    }else if bytes[1] == "1" {
+//                        $0.placeholder = "请输入邮箱号"
+//                    }
                 }else {
                     $0.placeholder = String.init(format: "请输入%@", titleStr!)
                 }
             }else {
+                if titleStr == "确认密码"{
+                    $0.placeholder = titleStr ?? "确认密码"
+                }
                 $0.placeholder = String.init(format: "请输入%@", titleStr!)
             }
             if type == 2 {//密码
@@ -89,23 +95,23 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
             }
         }
         
-//        // 输入内容 校验
+        // 输入内容 校验
         let fieldObservable = field.rx.text.skip(1).throttle(0.1, scheduler: MainScheduler.instance).map { (input: String?) -> Bool in
             guard let input  = input else { return false }
             print("\(input)")
             if type == 1 {
                 if AllRestrictionHandler.share.ucSetCofig.project_set?.regist_type == 2 {//条件注册
-                    let bytes = Util.strToByte(str: (AllRestrictionHandler.share.ucSetCofig.project_set?.regist_condition)!)
+//                    let bytes = Util.strToByte(str: (AllRestrictionHandler.share.ucSetCofig.project_set?.regist_condition)!)
                     
-                    if (bytes[0] == "1") && (bytes[1] == "1") {
-                        return InputValidator.isValidPhone(phoneNum: input) || InputValidator.isValidEmail(email: input)
-                    }else if bytes[0] == "1" {
+//                    if (bytes[0] == "1") && (bytes[1] == "1") {
+//                        return InputValidator.isValidPhone(phoneNum: input) || InputValidator.isValidEmail(email: input)
+//                    }else if bytes[0] == "1" {
                         return InputValidator.isValidPhone(phoneNum: input)
-                    }else if bytes[1] == "1" {
-                        return InputValidator.isValidEmail(email: input)
-                    }
+//                    }else if bytes[1] == "1" {
+//                        return InputValidator.isValidEmail(email: input)
+//                    }
                     
-                    return !input.isEmpty
+//                    return !input.isEmpty
                 }else {
                     return !input.isEmpty
                 }
@@ -115,7 +121,7 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
                 return !input.isEmpty
             }
         }
-
+        
         fieldObservable.map { (valid: Bool) -> UIColor in
             let color = valid ? kThemeGainsboroColor : kThemeOrangeRedColor
             return color!
@@ -145,7 +151,6 @@ extension AccountLoginable where Self : BaseNameVC {//协议扩展
                 $0.setYJIcon(icon: .person, iconSize: 20)
             }
         }
-        
         
         // 添加
         leftView.addSubview(tipLab)

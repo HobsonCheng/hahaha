@@ -67,9 +67,11 @@ class InputValidator: NSObject {
     class func isValidPhone(phoneNum: String) -> Bool {
         
         if self.isCheckUsername(username: phoneNum) {
-            if (phoneNum.count == 11){
-                
-                return true
+            let re = try? NSRegularExpression(pattern: "^[1][3,4,5,6,7,8][0-9]{9}$", options: .caseInsensitive)
+            if let re = re{
+                let range = NSMakeRange(0, phoneNum.lengthOfBytes(using: String.Encoding.utf8))
+                let result = re.matches(in: phoneNum, options: .reportProgress, range: range)
+                return result.count > 0
             }
         }
         
@@ -86,7 +88,6 @@ class InputValidator: NSObject {
                 let result = re.matches(in: email, options: .reportProgress, range: range)
                 return result.count > 0
             }
-            
             
         }
     

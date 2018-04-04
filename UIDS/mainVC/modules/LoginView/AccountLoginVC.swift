@@ -72,7 +72,7 @@ extension AccountLoginVC: AccountLoginable {
             
         }).disposed(by: rx.disposeBag)
         
-        //回去验证码
+        //获取验证码
         accountLoginView.smsBtnEnable.drive(onNext: { (params) in
             if params.object(forKey: "phone_Email_num") != nil {
                 let phone = params.object(forKey: "phone_Email_num")

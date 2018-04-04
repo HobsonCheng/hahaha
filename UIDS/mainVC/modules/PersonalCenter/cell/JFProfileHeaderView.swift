@@ -57,10 +57,6 @@ class JFProfileHeaderView: UIView {
         delegate?.didTappedAvatarButton()
     }
     
-    func initView() {
-        self.backgroundColor = Util.getNavBgColor()
-    }
-    
     
     func showMenu() {
         if list.count == 0 {

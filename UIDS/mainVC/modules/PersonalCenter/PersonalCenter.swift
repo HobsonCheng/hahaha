@@ -30,7 +30,9 @@ class PersonalCenter: BaseModuleView {
     fileprivate func genderView(){
         header = (Bundle.main.loadNibNamed("JFProfileHeaderView", owner: nil, options: nil)?.last as! JFProfileHeaderView)
         header?.frame = CGRect.init(x: 0, y: 0, width: kScreenW, height:  240)
-        header?.initView()
+        if let rootVc = self.superview?.getVC() as? RootVC{
+            header?.backgroundColor = rootVc.naviBar().backgroundColor
+        }
         header?.delegate = self
         self.addSubview(header!)
         self.autoresizesSubviews = false

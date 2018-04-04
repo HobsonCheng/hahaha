@@ -602,7 +602,9 @@ public enum YJType : Int{
     clear,//清除
     search,//搜索
     quto,//问号
-    report//举报
+    report,//举报
+    authPic,//图片验证码
+    authCode2//验证码2
 }
 
 private let YJIcons = ["\u{e634}",
@@ -742,4 +744,7 @@ private let YJIcons = ["\u{e634}",
                        "\u{ea22}",
                        "\u{e6c6}",
                        "\u{e72d}",
-                       "\u{e668}"]
+                       "\u{e668}",
+                       "\u{e755}",
+                       "\u{e669}"
+                       ]

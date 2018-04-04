@@ -54,8 +54,10 @@ class BRequestHandler: NSObject {
     fileprivate override init() {
         super.init();
         
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 8
         afManager = SessionManager(
-            configuration: URLSessionConfiguration.default
+            configuration: configuration
         )
         
         self.getAppHostName(callback: nil)
@@ -261,6 +263,7 @@ extension BRequestHandler {
             } else if json["code"].intValue == 0203 {
                 //自动进入登录
                 if (VCController.getTopVC()?.isKind(of: LoginView.self))! {
+                    finished(.notLogin, nil, "请重新登录(\(json["code"].intValue))")
                     return
                 }
                 let gotoLogin = LoginView.init(name: "LoginView")

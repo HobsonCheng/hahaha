@@ -122,6 +122,7 @@ extension AccountLoginable where Self : BaseNameVC{
     
         
         let forgetBtn = UIButton().then {
+            $0.isHidden = true
             $0.setTitleColor(Util.getNavBgColor(), for: .normal)
             $0.setTitle(Metric.forgetBtnTitle, for: .normal)
             $0.titleLabel?.font = Metric.forgetFontSize
@@ -316,7 +317,7 @@ extension AccountLoginable where Self : BaseNameVC{
     private func ImgCodeViewLeft() -> UIView {
         
         let leftView = UIView().then {
-            $0.frame = CGRect(x: 0, y: 0, width: 42, height: 44)
+            $0.frame = CGRect(x: 0, y: 0, width: 40, height: 44)
         }
         
         let tipBtn = UIButton().then {
@@ -325,7 +326,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.setTitleColor(kThemeTitielColor!, for: UIControlState.normal)
             $0.contentMode = .center
             $0.layer.masksToBounds = true
-            $0.setYJIcon(icon: .authCode, iconSize: 15, forState: UIControlState.normal)
+            $0.setYJIcon(icon: .authCode2, iconSize: 18, forState: UIControlState.normal)
         }
         
         // 添加
@@ -435,7 +436,7 @@ extension AccountLoginable where Self : BaseNameVC{
             $0.contentMode = .scaleAspectFit
             $0.isUserInteractionEnabled = false
             $0.setTitleColor(kThemeTitielColor!, for: UIControlState.normal)
-            $0.backgroundColor = UIColor.yellow
+            $0.setYJIcon(icon: .authCode2, forState: .normal)
         }
         
         // 添加
@@ -459,11 +460,10 @@ extension AccountLoginable where Self : BaseNameVC{
         }
         
         
-        
         let tipBtn = UIButton().then {
             $0.contentMode = .scaleAspectFit
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-            $0.backgroundColor = UIColor.init(hexString: "#4895e0")
+            $0.backgroundColor = kNaviBarBackGroundColor
             $0.setTitle("获取验证码", for: UIControlState.normal)
             $0.setTitleColor(UIColor.white, for: UIControlState.normal)
         }
@@ -482,9 +482,9 @@ extension AccountLoginable where Self : BaseNameVC{
         return (rightView,tipBtn)
     }
     
-    private func getCode(button: UIButton) {
-        
-        button.isUserInteractionEnabled = false
+//    private func getCode(button: UIButton) {
+//
+//        button.isUserInteractionEnabled = false
 
 //        Util.getSMSCode { (code) in
 //
@@ -495,7 +495,7 @@ extension AccountLoginable where Self : BaseNameVC{
 //                button.setTitle("获取失败请重试", for: UIControlState.normal)
 //            }
 //        }
-    }
+//    }
 
 }
 
